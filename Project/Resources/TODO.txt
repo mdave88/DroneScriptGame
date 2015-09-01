@@ -1,0 +1,1 @@
+LZMA compress data files (see Easylzma or SPPLzmaDecompressorWithProgress::Execute in DM)

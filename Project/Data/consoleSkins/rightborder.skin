@@ -1,0 +1,171 @@
+SKIN_MAP        "verticaltitle.png"
+SKIN_BACKCOLOR	{ 0.5 0.5 0.5 0.5 }
+
+CLOSE_BUTTON
+{
+	INACTIVE { 20  4 }
+	ACTIVE   { 20  4 }
+	PRESSED  { 20  4 }
+	DIMS     { 11 11 }
+	POSITION {  5  1 }
+	RELATIVE TR
+}
+
+MAXIMISE_BUTTON
+{
+	INACTIVE { 20 28 }
+	ACTIVE   { 20 28 }
+	PRESSED  { 20 28 }
+	DIMS     { 11 11 }
+	POSITION {  5 13 }
+	RELATIVE TR
+}
+
+REDUCE_BUTTON
+{
+	INACTIVE {  20 40 }
+	ACTIVE   {  20 40 }
+	PRESSED  {  20 40 }
+	DIMS     {  11 11 }
+	POSITION {   5 13 }
+	RELATIVE TR
+}
+
+ROLLUP_BUTTON
+{
+	INACTIVE { 32 16 }
+	ACTIVE   { 32 16 }
+	PRESSED  { 32 16 }
+	DIMS     { 11 11 }
+	POSITION {  5 25 }
+	RELATIVE TR
+}
+
+UNROLL_BUTTON
+{
+	INACTIVE { 20 16 }
+	ACTIVE   { 20 16 }
+	PRESSED  { 20 16 }
+	DIMS     { 11 11 }
+	POSITION {  5 25 }
+	RELATIVE TR
+}
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 50  3 }
+		ACTIVE   { 50  3 }
+		PRESSED  { 50  3 }
+		DIMS     { 14 11 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 50 50 }
+		ACTIVE   { 50 50 }
+		PRESSED  { 50 50 }
+		DIMS     { 14 11 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 50 15 }
+			ACTIVE   { 50 15 }
+			PRESSED  { 50 15 }
+			DIMS     { 14  2 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 50 17 }
+			ACTIVE   { 50 17 }
+			PRESSED  { 50 17 }
+			DIMS     { 14  2 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 50 19 }
+			ACTIVE   { 50 19 }
+			PRESSED  { 50 19 }
+			DIMS     { 14  2 }
+		}
+		EXTENDABLE
+		{
+			INACTIVE { 50 17 }
+			ACTIVE   { 50 17 }
+			PRESSED  { 50 17 }
+			DIMS     { 14  2 }
+		}
+	}
+	BACKGROUND { 50 21 14 29 }
+	FILLMODE TILED
+	POSITION LEFT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE { 19 0 }
+		ACTIVE   { 19 0 }
+		DIMS     { 28 3 }
+		FILLMODE TILED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE { 61 3 }
+		ACTIVE   { 61 3 }
+		DIMS     { 3 58 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE { 19 61 }
+		ACTIVE   { 19 61 }
+		DIMS     { 28  3 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE {  0 43 }
+		ACTIVE   {  0 43 }
+		DIMS     { 19 18 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE { 61  0 }
+		ACTIVE   { 61  0 }
+		DIMS     {  3  3 }
+		POSITION { -3 -3 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE {  0  0 }
+		ACTIVE   {  0  0 }
+		DIMS     { 19 43 }
+		POSITION {  0 -3 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE { 61 61 }
+		ACTIVE   { 61 61 }
+		DIMS     {  3  3 }
+		POSITION { -3  0 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 0 61 }
+		ACTIVE   { 0 61 }
+		DIMS     { 19 3 }
+		POSITION {  0 0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER RIGHT
+	TITLE_STRING ""
+	TITLE_FONTSIZE { 12 8 }
+}

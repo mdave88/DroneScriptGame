@@ -1,0 +1,71 @@
+// logger
+log(
+
+// global tables
+unitTable
+unitTable[
+itemTable
+itemTable[
+actorTable
+actorTable[
+
+mapSpawnPoints
+mapPathCorners
+mapTriggers
+mapTriggerTargets
+
+mapSpawnPoints[
+mapPathCorners[
+mapTriggers[
+mapTriggerTargets[
+
+mapSpawnPointsSize
+mapPathCornersSize
+mapTriggersSize
+mapTriggerTargetsSize
+
+
+// global functions
+quit
+state
+speed 
+
+kill_all()
+
+print()
+
+printtable(
+printtable(table)
+
+printPath(
+printPath(pathElement)
+printPathByElementName(
+printPathByElementName(pathElementName)
+printPathByElementIndex(
+printPathByElementIndex(pathElementName)
+printPaths()
+
+findClosestBSPEnityFromTable(
+findClosestBSPEnityFromTable(bspEntityTable, gameEntity)
+
+
+
+// LightSource
+light0
+light1
+light2
+light4
+
+LightSource(GLuint id)
+LightSource(GLuint i, vec3 a, vec3 d, vec3 s, vec3 p)
+
+// Scene
+rootNode
+
+// Entities
+Item(std::string name0 = "NonameItem", vec3 pos = vec3(0.0f))
+
+// Units
+Unit(vec3 pos = vec3(0.0f), int race = 0)
+Player(vec3 pos = vec3(0.0f), int race = 0)
+Zombie(vec3 pos = vec3(0.0f), int race = 0)

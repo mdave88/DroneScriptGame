@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{97BF69C4-3013-4E8F-A8F1-AC27640EE5FB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>proba2</RootNamespace>
+    <ProjectName>CrimsonCommon</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\libs\</OutDir>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\libs\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\luabind0.9\;$(SolutionDir)\..\Externals\lua_5.3\src\;$(SolutionDir)\src\;$(SolutionDir)\..\Externals\enet\include\;$(SolutionDir)\..\Externals\rapidjson\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BrowseInformation>true</BrowseInformation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>imageloadd.lib;consoled.lib;lua51.lib;luabind_d.lib;glut32.lib;glew32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;PhysXLoader.lib;PhysXCooking.lib;NxCharacter.lib;libboost_serialization-vc120-mt-gd-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\Externals\\include\Physx\lib\Win32\;$(SolutionDir)\..\Externals\\lib</AdditionalLibraryDirectories>
+      <AdditionalOptions> /ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\Externals\\include\Physx\lib\Win32\;$(SolutionDir)\..\Externals\\lib;$(SolutionDir)\..\Externals\\lib\CrimsonProject</AdditionalLibraryDirectories>
+      <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <Bscmake>
+      <PreserveSBR>true</PreserveSBR>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;GLEW_STATIC;_CONSOLE;_CRT_SECURE_NO_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\\include;$(SolutionDir)\..\Externals\\include\AL;$(SolutionDir)\..\Externals\\include\GL;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\CrimsonCommon\src\;$(SolutionDir)\CrimsonMath\;$(SolutionDir)\CrimsonPhysics\src\;$(SolutionDir)\CrimsonGameLogic\src\;$(SolutionDir)\CrimsonModels\;$(SolutionDir)\CrimsonGraphics\src\;$(SolutionDir)\CrimsonNetwork\src\;$(SolutionDir)\CrimsonBSP\src\;$(SolutionDir)\CrimsonSound\;$(SolutionDir)\..\Externals\\include\Physx\NxCharacter\include;$(SolutionDir)\..\Externals\\include\Physx\Cooking\include;$(SolutionDir)\..\Externals\\include\Physx\Physics\include;$(SolutionDir)\..\Externals\\include\Physx\Foundation\include;$(SolutionDir)\..\Externals\\include\Physx\PhysXLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\Externals\\include\Physx\lib\Win32\;$(SolutionDir)\..\Externals\\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imageload.lib;console.lib;lua51.lib;luabind.lib;glut32.lib;glew32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;PhysXLoader.lib;PhysXCooking.lib;NxCharacter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\Externals\\include\Physx\lib\Win32\;$(SolutionDir)\..\Externals\\lib</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\..\IDE\GtkRadiant 1.5.0\q3.game\baseq3\entities.ent" />
+    <None Include="..\..\..\IDE\GtkRadiant 1.5.0\q3.game\baseq3\extras.ent" />
+    <None Include="..\Data\MyGuiMedia\CrimsonClient.layout" />
+    <None Include="..\Data\MyGuiMedia\CrimsonMainMenu.layout" />
+    <None Include="..\Data\settings\consoleCommands" />
+    <None Include="..\Data\settings\constants.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\Data\settings\level.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\Data\settings\settings" />
+    <None Include="..\Data\shaders\skybox.frag" />
+    <None Include="..\Data\shaders\skybox.vert" />
+    <None Include="..\Resources\scripts\bsp.lua" />
+    <None Include="..\Resources\scripts\classDefinitions.lua" />
+    <None Include="..\Resources\scripts\gui.lua" />
+    <None Include="..\Resources\scripts\init.lua" />
+    <None Include="..\Resources\scripts\luaCommon.lua" />
+    <None Include="..\Resources\shaders\Common.frag" />
+    <None Include="..\Resources\shaders\Common.vert" />
+    <None Include="..\Resources\shaders\newone.frag" />
+    <None Include="..\Resources\shaders\newone.vert" />
+    <None Include="..\Resources\shaders\PostProc\Bloom\BloomPostShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\Bloom\BloomPreShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\BlurXShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\BlurYShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\DepthOfFieldShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\GrayScaleShaderFS.frag" />
+    <None Include="..\Resources\shaders\PostProc\PostProcShaderVS.vert" />
+    <None Include="..\Resources\shaders\ppl.frag" />
+    <None Include="..\Resources\shaders\ppl.vert" />
+    <None Include="..\Resources\shaders\simplest.frag" />
+    <None Include="..\Resources\shaders\simplest.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Common\Assert.cpp" />
+    <ClCompile Include="..\..\src\Common\Configs.cpp" />
+    <ClCompile Include="..\..\src\Common\ConstantManager.cpp" />
+    <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp" />
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCore.cpp" />
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInit.cpp" />
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInitXML.cpp" />
+    <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp" />
+    <ClCompile Include="..\..\src\Common\mem\MemPro.cpp" />
+    <ClCompile Include="..\..\src\Common\mem\VMem.cpp" />
+    <ClCompile Include="..\..\src\Common\UtilityFunctions.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Camera.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Entity.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Node.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\NodeGroup.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Player.cpp" />
+    <ClCompile Include="..\..\src\Math\matrix.cpp" />
+    <ClCompile Include="..\..\src\Math\misc.cpp" />
+    <ClCompile Include="..\..\src\Math\quaternion.cpp" />
+    <ClCompile Include="..\..\src\Math\vector.cpp" />
+    <ClCompile Include="..\..\src\Network\GameState.cpp" />
+    <ClCompile Include="..\..\src\Network\zlib\zlib.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Common\Assert.h" />
+    <ClInclude Include="..\..\src\Common\Configs.h" />
+    <ClInclude Include="..\..\src\Common\ConstantManager.h" />
+    <ClInclude Include="..\..\src\Common\CrimsonCommon.h" />
+    <ClInclude Include="..\..\src\Common\Directory.h" />
+    <ClInclude Include="..\..\src\Common\enginecore\EngineCore.h" />
+    <ClInclude Include="..\..\src\Common\GameDefines.h" />
+    <ClInclude Include="..\..\src\Common\luamanager\LuaManager.h" />
+    <ClInclude Include="..\..\src\Common\mem\MemPro.hpp" />
+    <ClInclude Include="..\..\src\Common\mem\VMem.hpp" />
+    <ClInclude Include="..\..\src\Common\Singleton.h" />
+    <ClInclude Include="..\..\src\Common\UtilityFunctions.h" />
+    <ClInclude Include="..\..\src\GameLogic\Camera.h" />
+    <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h" />
+    <ClInclude Include="..\..\src\GameLogic\Entity.h" />
+    <ClInclude Include="..\..\src\GameLogic\Node.h" />
+    <ClInclude Include="..\..\src\GameLogic\NodeGroup.h" />
+    <ClInclude Include="..\..\src\GameLogic\Player.h" />
+    <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
+    <ClInclude Include="..\..\src\Math\CrimsonMath.h" />
+    <ClInclude Include="..\..\src\Math\matrix.h" />
+    <ClInclude Include="..\..\src\Math\quaternion.h" />
+    <ClInclude Include="..\..\src\Math\vector.h" />
+    <ClInclude Include="..\..\src\Network\connection.h" />
+    <ClInclude Include="..\..\src\Network\CrimsonNetwork.h" />
+    <ClInclude Include="..\..\src\Network\events\ChatMessage.h" />
+    <ClInclude Include="..\..\src\Network\events\InputEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\KeyEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\Killshot.h" />
+    <ClInclude Include="..\..\src\Network\events\LuaCommand.h" />
+    <ClInclude Include="..\..\src\Network\events\MouseEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerDisconnectingEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerReadyEvent.h" />
+    <ClInclude Include="..\..\src\Network\GameState.h" />
+    <ClInclude Include="..\..\src\Network\NetworkObject.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zconf.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zlib.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

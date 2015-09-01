@@ -1,0 +1,165 @@
+// Default skin
+SKIN_MAP  		"yaxam.png"
+SKIN_BACKCOLOR	{ 0 0 0 0.5 }
+
+CLOSE_BUTTON
+{
+	INACTIVE {  25  22 }
+	ACTIVE   {  25  22 }
+	PRESSED  {  25  22 }
+	DIMS     {   9  21 }
+	POSITION { -10 -21 }
+	RELATIVE TR
+}
+
+MAXIMISE_BUTTON
+{
+	INACTIVE {   5  22 }
+	ACTIVE   {   5  22 }
+	PRESSED  {   5  22 }
+	DIMS     {   9  21 }
+	POSITION { -20 -21 }
+	RELATIVE TR
+}
+
+REDUCE_BUTTON
+{
+	INACTIVE {  15  22 }
+	ACTIVE   {  15  22 }
+	PRESSED  {  15  22 }
+	DIMS     {   9  21 }
+	POSITION { -20 -21 }
+	RELATIVE TR
+}
+
+ROLLUP_BUTTON
+{
+	INACTIVE {  35  22 }
+	ACTIVE   {  35  22 }
+	PRESSED  {  35  22 }
+	DIMS     {   9  21 }
+	POSITION { -30 -21 }
+	RELATIVE TR
+}
+
+UNROLL_BUTTON
+{
+	INACTIVE {  45  22 }
+	ACTIVE   {  45  22 }
+	PRESSED  {  45  22 }
+	DIMS     {   9  21 }
+	POSITION { -30 -21 }
+	RELATIVE TR
+}
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 175 21 }
+		ACTIVE   { 175 21 }
+		PRESSED  { 175 21 }
+		DIMS     {  10  5 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 175 99 }
+		ACTIVE   { 175 99 }
+		PRESSED  { 175 99 }
+		DIMS     {  10  5 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 175 65 }
+			ACTIVE   { 175 65 }
+			PRESSED  { 175 65 }
+			DIMS     {  10 16 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 175 81 }
+			ACTIVE   { 175 81 }
+			PRESSED  { 175 81 }
+			DIMS     {  10  1 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 175 82 }
+			ACTIVE   { 175 82 }
+			PRESSED  { 175 82 }
+			DIMS     {  10 16 }
+		}
+	}
+	BACKGROUND { 175 27 10 37 }
+	FILLMODE TILED
+	POSITION RIGHT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE { 88  0 }
+		ACTIVE   { 88  0 }
+		DIMS     { 19 21 }
+		FILLMODE TILED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE {  0 21 }
+		ACTIVE   {  0 21 }
+		DIMS     {  4 83 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE {   4 104 }
+		ACTIVE   {   4 104 }
+		DIMS     { 182   4 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE { 186 21 }
+		ACTIVE   { 186 21 }
+		DIMS     {   3 83 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE {  0   0 }
+		ACTIVE   {  0   0 }
+		DIMS     { 87  21 }
+		POSITION { -4 -21 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE { 108   0 }
+		ACTIVE   { 108   0 }
+		DIMS     {  81  21 }
+		POSITION { -78 -21 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE {  0 104 }
+		ACTIVE   {  0 104 }
+		DIMS     {  4   4 }
+		POSITION { -4   0 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 186 104 }
+		ACTIVE   { 186 104 }
+		DIMS     {   3   4 }
+		POSITION {   0   0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER TOP
+	TITLE_STRING ""
+	TITLE_FONTSIZE { 12 8 }
+}

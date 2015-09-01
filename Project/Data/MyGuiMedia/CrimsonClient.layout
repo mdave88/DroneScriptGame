@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MyGUI type="Layout" version="3.2.0">
+    <Widget type="Widget" skin="PanelSkin" position="0 0 285 230" layer="Main" name="bgPanel">
+        <Property key="Caption" value="Settings"/>
+        <Property key="Movable" value="false"/>
+        <Property key="Alpha" value="1"/>
+        <Widget type="TabControl" skin="TabControl" position="0 0 285 230">
+            <Widget type="TabItem" skin="" position="2 24 279 202" name="tabControl">
+                <Property key="Caption" value="server"/>
+                <Widget type="Button" skin="Button" position="10 80 130 40" layer="Main" name="connectButton">
+                    <Property key="Caption" value="Connect"/>
+                    <Property key="Enabled" value="true"/>
+                </Widget>
+                <Widget type="Button" skin="Button" position="140 80 130 40" layer="Main" name="exitButton">
+                    <Property key="Caption" value="Exit"/>
+                    <Property key="Enabled" value="true"/>
+                </Widget>
+                <Widget type="EditBox" skin="EditBox" position="10 40 200 30" name="addressEditBox">
+                    <Property key="Caption" value="localhost"/>
+                </Widget>
+                <Widget type="EditBox" skin="EditBox" position="210 40 60 30" name="portEditBox">
+                    <Property key="Caption" value="1234"/>
+                </Widget>
+                <Widget type="TextBox" skin="TextBox" position="10 20 140 20">
+                    <Property key="Caption" value="Server address:"/>
+                </Widget>
+                <Widget type="TextBox" skin="TextBox" position="190 180 90 20" name="infoTextBox">
+                    <Property key="Caption" value="version 0.9b"/>
+                </Widget>
+                <Widget type="TextBox" skin="TextBox" position="10 140 260 40" name="errorMsgTextBox"/>
+            </Widget>
+            <Widget type="TabItem" skin="" position="2 24 279 202">
+                <Property key="Caption" value="player"/>
+                <Widget type="TextBox" skin="TextBox" position="10 15 90 20">
+                    <Property key="Caption" value="Player name:"/>
+                </Widget>
+                <Widget type="EditBox" skin="EditBox" position="110 10 170 30" name="playernameEditBox">
+                    <Property key="Caption" value="unnamed player"/>
+                </Widget>
+                <Widget type="Widget" skin="ClientDefaultSkin" position="0 40 280 160" name="skinPanel">
+                    <Widget type="Widget" skin="PanelSkin" position="150 30 130 130" name="imageBgPanel">
+                        <Widget type="ImageBox" skin="ImageBox" position="3 3 122 122" name="skinImageBox">
+                            <Property key="ImageTexture" value="Avatars/reuc_hunk.jpg"/>
+                        </Widget>
+                    </Widget>
+                    <Widget type="ListBox" skin="ListBox" position="0 30 130 130" name="skinListBox">
+                        <Property key="AddItem" value="hunk"/>
+                        <Property key="AddItem" value="soldier"/>
+                        <Property key="AddItem" value="medic"/>
+                        <Property key="AddItem" value="engineer"/>
+                    </Widget>
+                    <Widget type="TextBox" skin="TextBox" position="10 10 120 20">
+                        <Property key="Caption" value="Select skin:"/>
+                    </Widget>
+                </Widget>
+            </Widget>
+        </Widget>
+    </Widget>
+    <Widget type="Window" skin="WindowC" position="0 160 284 70" layer="Popup" name="loadingWindow">
+        <Property key="Caption" value="Connecting to Server ..."/>
+        <Property key="Movable" value="false"/>
+        <Property key="Alpha" value="1"/>
+        <Widget type="ProgressBar" skin="ProgressBarFill" position="0 0 274 34" name="progressBar">
+            <Property key="RangePosition" value="0"/>
+            <Property key="Range" value="100"/>
+            <Widget type="TextBox" skin="TextBox" position="10 10 190 20"/>
+        </Widget>
+    </Widget>
+    <CodeGeneratorSettings/>
+</MyGUI>

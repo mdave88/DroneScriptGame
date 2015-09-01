@@ -1,0 +1,31 @@
+//// model attributes
+//#version 330
+//
+//// vertex data
+//layout (location = 0) in vec3	a_posL;
+//layout (location = 1) in vec3	a_normalL;
+//layout (location = 2) in vec3	a_tangentL;
+//layout (location = 3) in vec3	a_bitangentL;
+//layout (location = 4) in vec2	a_texcoordL;
+//
+//// vertex data
+//out vec3	v_posL;
+//out vec4	v_posW;
+//out vec3	v_normalL;
+//out vec3	v_tangentL;
+//out vec3	v_bitangentL;
+//out vec2	v_texcoordL;
+//
+//out vec3	v_normalW;
+//out vec3	v_tangentW;
+//out vec3	v_bitangentW;
+//
+//// matrices
+//uniform mat4	u_ModelMatrix;
+//uniform mat4	u_ModelViewMatrix;
+//uniform mat4	u_ModelViewProjectionMatrix;
+//uniform mat4	u_normalMatrix;
+//
+//// eye
+//uniform vec3	u_eyePositionW;
+//out vec3	v_viewW;

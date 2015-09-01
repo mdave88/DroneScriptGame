@@ -1,0 +1,1 @@
+-s settings -h localhost -p 1234 -instant

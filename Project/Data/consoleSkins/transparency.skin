@@ -1,0 +1,173 @@
+SKIN_MAP        "transparency.png"
+SKIN_BACKCOLOR	{ 1.0 1.0 1.0 0.2 }
+
+CLOSE_BUTTON
+{
+	INACTIVE {  96  28 }
+	ACTIVE   {  96  28 }
+	PRESSED  {  96  28 }
+	DIMS     {  16  16 }
+	POSITION { -16 -19 }
+	RELATIVE TR
+}
+
+MAXIMISE_BUTTON
+{
+	INACTIVE {  78  28 }
+	ACTIVE   {  78  28 }
+	PRESSED  {  78  28 }
+	DIMS     {  16  16 }
+	POSITION { -34 -19 }
+	RELATIVE TR
+}
+
+REDUCE_BUTTON
+{
+	INACTIVE {  60  28 }
+	ACTIVE   {  60  28 }
+	PRESSED  {  60  28 }
+	DIMS     {  16  16 }
+	POSITION { -34 -19 }
+	RELATIVE TR
+}
+
+ROLLUP_BUTTON
+{
+	INACTIVE {  24  28 }
+	ACTIVE   {  24  28 }
+	PRESSED  {  24  28 }
+	DIMS     {  16  16 }
+	POSITION { -52 -19 }
+	RELATIVE TR
+}
+
+UNROLL_BUTTON
+{
+	INACTIVE {  42  28 }
+	ACTIVE   {  42  28 }
+	PRESSED  {  42  28 }
+	DIMS     {  16  16 }
+	POSITION { -52 -19 }
+	RELATIVE TR
+}
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 96 43 }
+		ACTIVE   { 96 43 }
+		PRESSED  { 96 43 }
+		DIMS     { 16 18 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 96 79 }
+		ACTIVE   { 96 79 }
+		PRESSED  { 96 79 }
+		DIMS     { 16 16 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 96 72 }
+			ACTIVE   { 96 72 }
+			PRESSED  { 96 72 }
+			DIMS     { 16  1 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 96 73 }
+			ACTIVE   { 96 73 }
+			PRESSED  { 96 73 }
+			DIMS     { 16  1 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 96 74 }
+			ACTIVE   { 96 74 }
+			PRESSED  { 96 74 }
+			DIMS     { 16  1 }
+		}
+		EXTENDABLE
+		{
+			INACTIVE { 96 73 }
+			ACTIVE   { 96 73 }
+			PRESSED  { 96 73 }
+			DIMS     { 16  1 }
+		}
+	}
+	BACKGROUND { 96 62 16 2 }
+	FILLMODE TILED
+	POSITION RIGHT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE {  8  0 }
+		ACTIVE   {  8  0 }
+		DIMS     {  1 26 }
+		FILLMODE TILED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE { 0 26 }
+		ACTIVE   { 0 26 }
+		DIMS     { 8  1 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE {  8 97 }
+		ACTIVE   {  8 97 }
+		DIMS     {  1  8 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE { 128 26 }
+		ACTIVE   { 128 26 }
+		DIMS     {  8 1 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE {  0   0 }
+		ACTIVE   {  0   0 }
+		DIMS     {  8  26 }
+		POSITION { -8 -26 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE { 128   0 }
+		ACTIVE   { 128   0 }
+		DIMS     {   8  26 }
+		POSITION {   0 -26 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE {  0 97 }
+		ACTIVE   {  0 97 }
+		DIMS     {  8  8 }
+		POSITION { -8  0 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 128 97 }
+		ACTIVE   { 128 97 }
+		DIMS     {  8  8 }
+		POSITION {  0  0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER TOP
+	TITLE_FONTSIZE { 12 8 }
+	POSITION { 1 -15 }
+	RELATIVE TL
+	TITLE_MODE CENTERED
+}

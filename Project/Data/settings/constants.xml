@@ -1,0 +1,75 @@
+<constants>
+
+  <namespace name = "Controls">
+    <constant type = "float" name = "MouseSensitivity" value = "1.0" />
+  </namespace>
+
+  <namespace name = "ControlsKeys">
+    <constant type = "int" name = "Use" value = "e" />
+
+    <constant type = "int" name = "MoveForward" value = "w" />
+    <constant type = "int" name = "MoveBackward" value = "s" />
+    <constant type = "int" name = "MoveRight" value = "d" />
+    <constant type = "int" name = "MoveLeft" value = "a" />
+              
+    <!--<constant type = "int" name = "Rush" value = "SHIFT" />-->
+    <constant type = "int" name = "Jump" value = " " />
+    <constant type = "int" name = "ToggleCrouch" value = "c" />
+
+    <!--<constant type = "int" name = "AttackPrimary" value = "MOUSE_LEFT" />
+    <constant type = "int" name = "AttackSecondary" value = "MOUSE_RIGHT" />-->
+
+    <constant type = "int" name = "Reload" value = "r" />
+
+  </namespace>
+
+  
+  <namespace name = "GUI">
+    <constant type = "string" name = "ClientPreGameLayout" value = "CrimsonClient.layout" />
+    <constant type = "string" name = "ClientGameplayLayout" value = "CrimsonMainMenu.layout" />
+  </namespace>
+  
+  <namespace name = "Gameplay">
+    <constant type = "int" name = "NumMaxEnemies" value = "10" />
+    <constant type = "float" name = "GameSpeedMultiplier" value = "1.0" />
+
+    <namespace name = "Zombies">
+      <constant type = "int" name = "ZombieStartingHealth" value = "100" />
+      <constant type = "int" name = "ZombieLordStartingHealth" value = "200" />
+      <constant type = "int" name = "NumZombieSpawnOnDeath" value = "2" />
+    </namespace>
+    
+  </namespace>
+
+  <namespace name = "Physics">
+    <constant type = "bool" name = "EnableVRDClient" value = "false" />
+    <constant type = "bool" name = "EnableVRDServer" value = "true" />
+  </namespace>
+
+  <namespace name = "Levels">
+    <constant type = "string" name = "BspDir" value = "levels/bsp/" />
+  </namespace>
+
+  <namespace name = "Sounds">
+    <constant type = "string" name = "SoundsDir" value = "sounds/" />
+  </namespace>
+  
+  <namespace name = "Effects">
+    <constant type = "int" name = "MaxBulletHoles" value = "100" />
+
+    <constant type = "int" name = "MaxBulletHolesClient" value = "100" />
+    <constant type = "int" name = "MaxBulletHolesServer" value = "100" />
+
+    <namespace name = "Shaders">
+      <namespace name = "Bloom">
+        <constant type = "float" name = "Limit" value = "0.7" />
+      </namespace>
+
+      <namespace name = "DOF">
+        <constant type = "float" name = "FadeDist" value = "200.0" />
+        <constant type = "float" name = "Saturation" value = "0.02" />
+      </namespace>
+    </namespace>
+  </namespace>
+  
+</constants>

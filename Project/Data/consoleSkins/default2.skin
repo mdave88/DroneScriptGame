@@ -1,0 +1,155 @@
+// Default skin
+SKIN_BACKGROUND 	"console.png"
+SKIN_MAP  			"default2.png"
+SKIN_BACKCOLOR		{ 0 0 0 0.5 }
+
+CLOSE_BUTTON
+{
+	INACTIVE {  0  0 }
+	ACTIVE   { 16  0 }
+	PRESSED  { 32  0 }
+	DIMS     { 16 16 }
+	POSITION { -17 -21 }
+	RELATIVE TR
+}
+
+MAXIMISE_BUTTON
+{
+	INACTIVE {  0 16 }
+	ACTIVE   { 16 16 }
+	PRESSED  { 32 16 }
+	DIMS     { 16 16 }
+	POSITION { -34 -21 }
+	RELATIVE TR
+}
+
+REDUCE_BUTTON
+{
+	INACTIVE {  0 32 }
+	ACTIVE   { 16 32 }
+	PRESSED  { 32 32 }
+	DIMS     { 16 16 }
+	POSITION { -34 -21 }
+	RELATIVE TR
+}
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 48  0 }
+		ACTIVE   { 64  0 }
+		PRESSED  { 80  0 }
+		DIMS     { 16 16 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 48 36 }
+		ACTIVE   { 64 36 }
+		PRESSED  { 80 36 }
+		DIMS     { 16 16 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 48 16 }
+			ACTIVE   { 64 16 }
+			PRESSED  { 80 16 }
+			DIMS     { 16  2 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 48 21 }
+			ACTIVE   { 64 21 }
+			PRESSED  { 80 21 }
+			DIMS     { 16 10 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 48 32 }
+			ACTIVE   { 64 32 }
+			PRESSED  { 80 32 }
+			DIMS     { 16  2 }
+		}
+		EXTENDABLE
+		{
+			INACTIVE { 48 19 }
+			ACTIVE   { 64 19 }
+			PRESSED  { 80 19 }
+			DIMS     { 16  1 }
+		}
+	}
+	BACKGROUND { 48 34 16 2 }
+	FILLMODE TILED
+	POSITION RIGHT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE {  4 48 }
+		ACTIVE   {  4 74 }
+		DIMS     { 40 26 }
+		FILLMODE STRETCHED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE { 48 56 }
+		ACTIVE   { 48 72 }
+		DIMS     {  4  8 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE { 52 64 }
+		ACTIVE   { 52 80 }
+		DIMS     { 40  4 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE { 92 56 }
+		ACTIVE   { 92 72 }
+		DIMS     {  4  8 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE {  0  48 }
+		ACTIVE   {  0  74 }
+		DIMS     {  4  26 }
+		POSITION { -4 -26 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE { 44  48 }
+		ACTIVE   { 44  74 }
+		DIMS     {  4  26 }
+		POSITION {  0 -26 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE { 48 64 }
+		ACTIVE   { 48 80 }
+		DIMS     {  4  4 }
+		POSITION { -4  0 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 92 64 }
+		ACTIVE   { 92 80 }
+		DIMS     {  4  4 }
+		POSITION {  0  0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER TOP
+	TITLE_STRING ":)"
+	TITLE_FONTSIZE { 12 8 }
+	TITLE_MODE LEFT
+	FILLMODE STRETCHED
+}

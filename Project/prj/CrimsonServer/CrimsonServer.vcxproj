@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EA143F40-DF5E-497D-8ADC-7B0A817B962D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CrimsonServer</RootNamespace>
+    <ProjectName>CrimsonServer</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\include;$(SolutionDir)\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BrowseInformation>true</BrowseInformation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\libs\;$(SolutionDir)\..\Externals\lib\;$(SolutionDir)\..\Externals\include\Physx\lib\Win32\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>luabindd.lib;imageloadd.lib;ConsoleGLd.lib;CrimsonMathd.lib;CrimsonSoundd.lib;CrimsonModelsd.lib;CrimsonGraphicsd.lib;CrimsonPhysicsd.lib;CrimsonConsoled.lib;CrimsonNetworkd.lib;CrimsonGameLogicd.lib;CrimsonBSPd.lib;enetd.lib;ws2_32.lib;winmm.lib;lua51.lib;glut32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;PhysXLoader.lib;PhysXCooking.lib;NxCharacter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Bscmake>
+      <PreserveSBR>true</PreserveSBR>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\\include;$(SolutionDir)\..\Externals\\include\AL;$(SolutionDir)\..\Externals\\include\GL;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\CrimsonCommon\src\;$(SolutionDir)\CrimsonMath\;$(SolutionDir)\CrimsonPhysics\src\;$(SolutionDir)\CrimsonGameLogic\src\;$(SolutionDir)\CrimsonModels\;$(SolutionDir)\CrimsonGraphics\src\;$(SolutionDir)\CrimsonNetwork\src\;$(SolutionDir)\CrimsonBSP\src\;$(SolutionDir)\CrimsonSound\;$(SolutionDir)\..\Externals\\include\Physx\NxCharacter\include;$(SolutionDir)\..\Externals\\include\Physx\Cooking\include;$(SolutionDir)\..\Externals\\include\Physx\Physics\include;$(SolutionDir)\..\Externals\\include\Physx\Foundation\include;$(SolutionDir)\..\Externals\\include\Physx\PhysXLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\libs\;$(SolutionDir)\..\Externals\lib\;$(SolutionDir)\..\Externals\include\Physx\lib\Win32\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>luabind.lib;imageload.lib;ConsoleGL.lib;CrimsonMath.lib;CrimsonSound.lib;CrimsonModels.lib;CrimsonGraphics.lib;CrimsonPhysics.lib;CrimsonConsole.lib;CrimsonNetwork.lib;CrimsonGameLogic.lib;CrimsonBSP.lib;enet.lib;ws2_32.lib;winmm.lib;lua51.lib;glut32.lib;glew32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;PhysXLoader.lib;PhysXCooking.lib;NxCharacter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Server\Server.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Server\ServerLogic.cpp" />
+    <ClCompile Include="..\..\src\Server\ServerNetwork.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,122 @@
+SKIN_MAP        "horizontaltitle.png"
+SKIN_BACKCOLOR	{ 0.5 0.5 0.5 0.5 }
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 47 19 }
+		ACTIVE   { 47 19 }
+		PRESSED  { 47 19 }
+		DIMS     { 14 11 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 47 50 }
+		ACTIVE   { 47 50 }
+		PRESSED  { 47 50 }
+		DIMS     { 14 11 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 47 31 }
+			ACTIVE   { 47 31 }
+			PRESSED  { 47 31 }
+			DIMS     { 14  2 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 47 33 }
+			ACTIVE   { 47 33 }
+			PRESSED  { 47 33 }
+			DIMS     { 14  2 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 47 35 }
+			ACTIVE   { 47 35 }
+			PRESSED  { 47 35 }
+			DIMS     { 14  2 }
+		}
+		EXTENDABLE
+		{
+			INACTIVE { 47 33 }
+			ACTIVE   { 47 33 }
+			PRESSED  { 47 33 }
+			DIMS     { 14  2 }
+		}
+	}
+	BACKGROUND { 47 21 14 12 }
+	FILLMODE TILED
+	POSITION RIGHT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE {  3 16 }
+		ACTIVE   {  3 16 }
+		DIMS     { 58  3 }
+		FILLMODE TILED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE { 0 19 }
+		ACTIVE   { 0 19 }
+		DIMS     { 3 42 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE {  3 61 }
+		ACTIVE   {  3 61 }
+		DIMS     { 58  3 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE { 61 19 }
+		ACTIVE   { 61 19 }
+		DIMS     {  3 42 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE {  0 16 }
+		ACTIVE   {  0 16 }
+		DIMS     {  3  3 }
+		POSITION { -3 -3 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE { 61 16 }
+		ACTIVE   { 61 16 }
+		DIMS     {  3  3 }
+		POSITION {  0 -3 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 61 61 }
+		ACTIVE   { 61 61 }
+		DIMS     {  3  3 }
+		POSITION {  0  0 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE {  0 61 }
+		ACTIVE   {  0 61 }
+		DIMS     {  3  3 }
+		POSITION { -3  0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER NONE
+	TITLE_STRING ""
+	TITLE_FONTSIZE { 12 8 }
+	FILLMODE TILED
+}

@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{6171d1cc-2642-4b26-aa01-77f68fa6e550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\shaders">
+      <UniqueIdentifier>{cb82db7f-54e4-4a9e-92a7-d141aca97a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\scripts">
+      <UniqueIdentifier>{be08b2c9-572b-4224-b99e-f03953a46332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\settings">
+      <UniqueIdentifier>{a3d9d5de-97c5-4119-b2f9-899d1dd84736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\gui">
+      <UniqueIdentifier>{5008770b-bcaa-4429-9af1-cff50ab9d102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\shaders\PostProc">
+      <UniqueIdentifier>{5aab816f-584d-4332-b20f-726aac5650be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\shaders\PostProc\Bloom">
+      <UniqueIdentifier>{81c34df1-c931-4bf7-8455-b16fcebd995c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{34f20d60-d77b-433e-b451-69ac98631307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level">
+      <UniqueIdentifier>{034b3a8c-cbf5-4ad4-aef3-971d9f4a4fe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\EngineCore">
+      <UniqueIdentifier>{9317729f-c769-477c-a3bd-87e2b676c02e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\LuaManager">
+      <UniqueIdentifier>{42e0c9a4-72e9-4daa-b3c4-fa27c05b3d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\mem">
+      <UniqueIdentifier>{1b98f356-677e-46f2-9458-9681d0a50952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{e9d748dc-27c1-4f3e-ac34-f9c3a51f522e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Events">
+      <UniqueIdentifier>{95502869-560b-4c30-9bbe-8b1bfbecab7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\zlib">
+      <UniqueIdentifier>{e5d466b1-3cc5-419e-a50b-6a90a4f1a536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{cf33b976-3a53-4187-831c-cd136891cc32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{f9ea8992-6f10-42e7-be72-54d107019b86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\shaders\Common.frag">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\shaders\Common.vert">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\shaders\newone.frag">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\shaders\newone.vert">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Data\shaders\skybox.frag">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Data\shaders\skybox.vert">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Data\settings\settings">
+      <Filter>Resources\settings</Filter>
+    </None>
+    <None Include="..\Resources\shaders\ppl.frag">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\shaders\ppl.vert">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\scripts\bsp.lua">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Resources\scripts\classDefinitions.lua">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Resources\scripts\init.lua">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Resources\scripts\luaCommon.lua">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Data\settings\consoleCommands">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Data\MyGuiMedia\CrimsonMainMenu.layout">
+      <Filter>Resources\gui</Filter>
+    </None>
+    <None Include="..\Data\MyGuiMedia\CrimsonClient.layout">
+      <Filter>Resources\gui</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\BlurXShaderFS.frag">
+      <Filter>Resources\shaders\PostProc</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\BlurYShaderFS.frag">
+      <Filter>Resources\shaders\PostProc</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\DepthOfFieldShaderFS.frag">
+      <Filter>Resources\shaders\PostProc</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\GrayScaleShaderFS.frag">
+      <Filter>Resources\shaders\PostProc</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\PostProcShaderVS.vert">
+      <Filter>Resources\shaders\PostProc</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\Bloom\BloomPostShaderFS.frag">
+      <Filter>Resources\shaders\PostProc\Bloom</Filter>
+    </None>
+    <None Include="..\Resources\shaders\PostProc\Bloom\BloomPreShaderFS.frag">
+      <Filter>Resources\shaders\PostProc\Bloom</Filter>
+    </None>
+    <None Include="..\Resources\shaders\simplest.frag">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Resources\shaders\simplest.vert">
+      <Filter>Resources\shaders</Filter>
+    </None>
+    <None Include="..\Data\settings\constants.xml">
+      <Filter>Resources\settings</Filter>
+    </None>
+    <None Include="..\Resources\scripts\gui.lua">
+      <Filter>Resources\scripts</Filter>
+    </None>
+    <None Include="..\Data\settings\level.xml">
+      <Filter>Resources\level</Filter>
+    </None>
+    <None Include="..\..\..\IDE\GtkRadiant 1.5.0\q3.game\baseq3\entities.ent">
+      <Filter>Resources\level</Filter>
+    </None>
+    <None Include="..\..\..\IDE\GtkRadiant 1.5.0\q3.game\baseq3\extras.ent">
+      <Filter>Resources\level</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Common\Assert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\Configs.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\ConstantManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\UtilityFunctions.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp">
+      <Filter>Common\LuaManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInitXML.cpp">
+      <Filter>Common\EngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInit.cpp">
+      <Filter>Common\EngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCore.cpp">
+      <Filter>Common\EngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\mem\MemPro.cpp">
+      <Filter>Common\mem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\mem\VMem.cpp">
+      <Filter>Common\mem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Network\GameState.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Network\zlib\zlib.cpp">
+      <Filter>Network\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\misc.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\vector.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Camera.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Entity.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Node.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\NodeGroup.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Player.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Common\Assert.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Configs.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\ConstantManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\CrimsonCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Directory.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\GameDefines.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Singleton.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\UtilityFunctions.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\luamanager\LuaManager.h">
+      <Filter>Common\LuaManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\enginecore\EngineCore.h">
+      <Filter>Common\EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\mem\MemPro.hpp">
+      <Filter>Common\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\mem\VMem.hpp">
+      <Filter>Common\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\connection.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\CrimsonNetwork.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\GameState.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\NetworkObject.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\ChatMessage.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\InputEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\KeyEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\Killshot.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\LuaCommand.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\MouseEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\PlayerDisconnectingEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\PlayerReadyEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\zlib\zconf.h">
+      <Filter>Network\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\zlib\zlib.h">
+      <Filter>Network\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\CrimsonMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Camera.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Entity.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Node.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\NodeGroup.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Player.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

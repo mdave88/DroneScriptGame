@@ -1,0 +1,174 @@
+SKIN_MAP        "meditation.png"
+SKIN_BACKCOLOR	{ 0.75 0.75 0.75 0.5 }
+
+CLOSE_BUTTON
+{
+	INACTIVE {  30  30 }
+	ACTIVE   {  30  40 }
+	PRESSED  {  30  50 }
+	DIMS     {  12  10 }
+	POSITION { -12 -18 }
+	RELATIVE TR
+}
+
+MAXIMISE_BUTTON
+{
+	INACTIVE {  18  30 }
+	ACTIVE   {  18  40 }
+	PRESSED  {  18  50 }
+	DIMS     {  12  10 }
+	POSITION { -24 -18 }
+	RELATIVE TR
+}
+
+REDUCE_BUTTON
+{
+	INACTIVE {  18  30 }
+	ACTIVE   {  18  40 }
+	PRESSED  {  18  50 }
+	DIMS     {  12  10 }
+	POSITION { -24 -18 }
+	RELATIVE TR
+}
+
+ROLLUP_BUTTON
+{
+	INACTIVE {   6  30 }
+	ACTIVE   {   6  40 }
+	PRESSED  {   6  50 }
+	DIMS     {  12  10 }
+	POSITION { -36 -18 }
+	RELATIVE TR
+}
+
+UNROLL_BUTTON
+{
+	INACTIVE {   6  30 }
+	ACTIVE   {   6  40 }
+	PRESSED  {   6  50 }
+	DIMS     {  12  10 }
+	POSITION { -36 -18 }
+	RELATIVE TR
+}
+
+VSCROLL_BAR
+{
+	UP_BUTTON
+	{
+		INACTIVE { 42 31 }
+		ACTIVE   { 42 41 }
+		PRESSED  { 42 51 }
+		DIMS     { 13  9 }
+	}
+	DOWN_BUTTON
+	{
+		INACTIVE { 55 30 }
+		ACTIVE   { 55 40 }
+		PRESSED  { 55 50 }
+		DIMS     { 13  9 }
+	}
+	SCROLLER
+	{
+		TOP
+		{
+			INACTIVE { 68 30 }
+			ACTIVE   { 68 30 }
+			PRESSED  { 68 30 }
+			DIMS     { 13  1 }
+		}
+		MIDDLE
+		{
+			INACTIVE { 68 31 }
+			ACTIVE   { 68 31 }
+			PRESSED  { 68 31 }
+			DIMS     { 13  1 }
+		}
+		BOTTOM
+		{
+			INACTIVE { 68 32 }
+			ACTIVE   { 68 32 }
+			PRESSED  { 68 32 }
+			DIMS     { 13  1 }
+		}
+		EXTENDABLE
+		{
+			INACTIVE { 68 31 }
+			ACTIVE   { 68 31 }
+			PRESSED  { 68 31 }
+			DIMS     { 13  1 }
+		}
+	}
+	BACKGROUND { 68 33 13 8 }
+	FILLMODE TILED
+	POSITION RIGHT
+}
+
+BORDER
+{
+	TOP_BORDER
+	{
+		INACTIVE { 109  0 }
+		ACTIVE   {   9  0 }
+		DIMS     {   8 27 }
+		FILLMODE TILED
+	}
+	LEFT_BORDER
+	{
+		INACTIVE { 100 28 }
+		ACTIVE   {   0 28 }
+		DIMS     {   3  8 }
+		FILLMODE TILED
+	}
+	BOTTOM_BORDER
+	{
+		INACTIVE { 104 97 }
+		ACTIVE   {   4 97 }
+		DIMS     {  58  3 }
+		FILLMODE TILED
+	}
+	RIGHT_BORDER
+	{
+		INACTIVE { 197 28 }
+		ACTIVE   {  97 28 }
+		DIMS     {   3  8 }
+		FILLMODE TILED
+	}
+	TOP_LEFT_CORNER
+	{
+		INACTIVE { 100   0 }
+		ACTIVE   {   0   0 }
+		DIMS     {   8  27 }
+		POSITION {  -3 -27 }
+	}
+	TOP_RIGHT_CORNER
+	{
+		INACTIVE { 161   0 }
+		ACTIVE   {  61   0 }
+		DIMS     {  39  27 }
+		POSITION { -36 -27 }
+	}
+	BOTTOM_LEFT_CORNER
+	{
+		INACTIVE { 100 97 }
+		ACTIVE   {   0 97 }
+		DIMS     {   3  3 }
+		POSITION {  -3  0 }
+	}
+	BOTTOM_RIGHT_CORNER
+	{
+		INACTIVE { 197 97 }
+		ACTIVE   {  97 97 }
+		DIMS     {  3  3 }
+		POSITION {  0  0 }
+	}
+}
+
+TITLE_BAR
+{
+	TITLE_BORDER TOP
+	TITLE_STRING ""
+	TITLE_FONTSIZE { 12 8 }
+	POSITION { 1 -15 }
+	RELATIVE TL
+	TITLE_MODE CENTERED
+}

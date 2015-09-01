@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Paths>
+  <Path root="true">../Data/MyGuiMedia</Path>
+  <Path>../Data/MyGuiMedia/MyGUI_Media</Path>
+  <Path>../Data/MyGuiMedia/Common/Themes</Path>
+  <Path>../Data/MyGuiMedia/Common/Base</Path>
+  <Path>../Data/MyGuiMedia/Common/Demos</Path>
+  <Path>../Data/MyGuiMedia/Demos/Demo_Console</Path>
+</Paths>
