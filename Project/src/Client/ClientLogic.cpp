@@ -75,7 +75,7 @@ bool Client::init(Configs& configs, const std::string& hostAddress, uint port, b
 	m_hostPort = port;
 
 	new ConstantManager();
-	ConstantManager::getInstance()->loadConstants(getDataDir() + "settings/constants.xml");
+	ConstantManager::getInstance()->loadConstants(getDataDir() + "settings/constants.json");
 
 	
 	if (!initConsole())

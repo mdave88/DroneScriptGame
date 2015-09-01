@@ -532,5 +532,8 @@
     <None Include="..\..\Resources\shaders\skinning.frag">
       <Filter>Resources\Shaders</Filter>
     </None>
+    <None Include="..\..\Data\settings\constants.json">
+      <Filter>Resources\Settings</Filter>
+    </None>
   </ItemGroup>
 </Project>

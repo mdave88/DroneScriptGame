@@ -3,69 +3,6 @@
 
 #include "Common/luamanager/LuaManager.h"
 
-#include <RapidXml/rapidxml_print.hpp>
-#include <RapidXml/rapidxml_utils.hpp>
-
-
-using namespace rapidxml;
-typedef std::vector<xml_node<>*> XmlNodeVector;
-
-XmlNodeVector ConstantManager::parseXmlSubnodes(xml_node<>* xmlNode)
-{
-	XmlNodeVector subXmlNodes;
-
-	xmlNode = xmlNode->first_node();
-	while (xmlNode)
-	{
-		subXmlNodes.push_back(xmlNode);
-		xmlNode = xmlNode->next_sibling();
-	}
-
-	return subXmlNodes;
-}
-
-void ConstantManager::parseNamespace(const std::string& path, xml_node<>* xmlNode)
-{
-	std::string type, name, value;
-
-	//XmlNodeVector subXmlNodes = parseXmlSubnodes(xmlNode);
-	//ForEach (XmlNodeVector, subXmlNodes, it)
-	//{
-	//	const std::string nodeName = (*it)->name();
-	//	if (nodeName == "namespace")
-	//	{
-	//		name = (*it)->first_attribute("name")->value();
-	//		parseNamespace(path + name + "::", *it);
-
-	//		continue;
-	//	}
-
-	//	type = (*it)->first_attribute("type")->value();
-	//	name = path + (*it)->first_attribute("name")->value();
-	//	value = (*it)->first_attribute("value")->value();
-
-	//	if (type == "string")
-	//	{
-	//		setStringConstant(name, value);
-	//	}
-	//	else if (type == "int")
-	//	{
-	//		setIntConstant(name, atoi(value.c_str()));
-	//	}
-	//	else if (type == "float")
-	//	{
-	//		setFloatConstant(name, atof(value.c_str()));
-	//	}
-	//	else if (type == "bool")
-	//	{
-	//		setBoolConstant(name, value == "true");
-	//	}
-	//	else if (type == "vec3")
-	//	{
-	//		setVectorConstant(name, helperfuncs::conversion::strToVec3(value));
-	//	}
-	//}
-}
 
 ConstantManager::ConstantManager()
 {
@@ -82,29 +19,50 @@ ConstantManager::~ConstantManager()
 bool ConstantManager::loadConstants(const std::string& filename)
 {
 	char* buffer = helperfuncs::file::readFile(filename.c_str());
-	GX_ASSERT(buffer && "Error: resources cannot be loaded from constants.xml");
+	GX_ASSERT(buffer && "Error: resources cannot be loaded from constants.json");
 
-	//std::string xmlData(buffer);
-	//delete[] buffer;
+	rapidjson::Document d;
+	d.ParseInsitu(buffer);
 
-	//std::vector<char> xmlCopy(xmlData.begin(), xmlData.end());
-	//xmlCopy.push_back('\0');
+	const rapidjson::Value& value = d;
+	parseObject(value);
 
-	//xml_document<> doc;
-	//doc.parse < parse_declaration_node | parse_no_data_nodes > (&xmlCopy[0]);
-	//xml_node<>* rootXmlNode = doc.first_node("constants");
 
-	//// parse the namespaces
-	//XmlNodeVector subXmlNodes = parseXmlSubnodes(rootXmlNode);
-	//ForEach (XmlNodeVector, subXmlNodes, it)
-	//{
-	//	const std::string namepaceName = (*it)->first_attribute("name")->value();
-	//	parseNamespace(namepaceName + "::", *it);
-	//}
+	delete[] buffer;
 
 	return true;
 }
 
+void ConstantManager::parseObject(const rapidjson::Value& object)
+{
+	for(rapidjson::Value::ConstMemberIterator m = object.MemberBegin(); m != object.MemberEnd(); ++m)
+	{
+		if(m->value.IsObject())
+		{
+			parseObject(m->value);
+		}
+		else if(m->value.IsBool())
+		{
+			m_boolDirectory[m->name.GetString()] = m->value.GetBool();
+		}
+		else if(m->value.IsInt())
+		{
+			m_intDirectory[m->name.GetString()] = m->value.GetInt();
+		}
+		else if(m->value.IsDouble())
+		{
+			m_floatDirectory[m->name.GetString()] = m->value.GetDouble();
+		}
+		else if(m->value.IsString())
+		{
+			m_stringDirectory[m->name.GetString()] = std::string(m->value.GetString(), m->value.GetStringLength());
+		}
+		else
+		{
+			// TODO: handle vectors
+		}
+	}
+}
 
 // register methods to lua
 void ConstantManager::registerMethodsToLua()

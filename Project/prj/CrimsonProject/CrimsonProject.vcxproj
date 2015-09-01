@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Data\settings\consoleCommands" />
+    <None Include="..\..\Data\settings\constants.json" />
     <None Include="..\..\Data\settings\constants.xml" />
     <None Include="..\..\Data\settings\level.xml" />
     <None Include="..\..\Data\settings\settings" />

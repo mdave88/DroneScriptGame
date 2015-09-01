@@ -4,7 +4,8 @@
 
 #include "Common/Directory.h"
 #include "Common/Singleton.h"
-#include <RapidXml/rapidxml.hpp>
+
+#include <rapidjson/document.h>
 
 
 class ConstantManager : public Singleton<ConstantManager>
@@ -69,10 +70,8 @@ public:
 	// register methods to lua
 	static void registerMethodsToLua();
 
-
 private:
-	std::vector<rapidxml::xml_node<>*> parseXmlSubnodes(rapidxml::xml_node<>* xmlNode);
-	void parseNamespace(const std::string& path, rapidxml::xml_node<>* xmlNode);
+	void parseObject(const rapidjson::Value& object);
 
 private:
 	BoolDirectory			m_boolDirectory;

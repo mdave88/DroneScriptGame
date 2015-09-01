@@ -1,0 +1,28 @@
+{
+	"Controls": {
+		"MouseSensitivity": 1,
+		"ControlsKeys": {
+			"Use": "e",
+			"MoveForward": "w",
+			"MoveBackward": "s",
+			"MoveRight": "d",
+			"MoveLeft": "a"
+		}
+	},
+	"GUI": {
+		"ClientPreGameLayout": "CrimsonClient.layout",
+		"ClientGameplayLayout": "CrimsonMainMenu.layout"
+	},
+	"Effects": {
+		"Shaders": 
+		{
+			"Bloom": {
+				"Limit": 0.7
+			},
+			"DOF": {
+				"FadeDist": 200.0,
+				"Saturation": 0.02
+			}
+		}
+	}
+}
