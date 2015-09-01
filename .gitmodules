@@ -1,0 +1,19 @@
+[submodule "Externals/MyGui"]
+	path = Externals/MyGui
+	url = https://github.com/MyGUI/mygui
+[submodule "Externals/enet"]
+	path = Externals/enet
+	url = https://github.com/lsalzman/enet
+[submodule "Externals/luabind"]
+	path = Externals/luabind
+	url = https://github.com/luabind/luabind/
+	branch = 0.9
+[submodule "Externals/lua"]
+	path = Externals/lua
+	url = https://github.com/ejoy/lua
+[submodule "Externals/luabind-deboostified"]
+	path = Externals/luabind-deboostified
+	url = https://github.com/decimad/luabind-deboostified
+[submodule "Externals/rapidjson"]
+	path = Externals/rapidjson
+	url = https://github.com/miloyip/rapidjson
