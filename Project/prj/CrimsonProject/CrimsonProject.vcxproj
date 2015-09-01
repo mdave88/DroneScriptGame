@@ -236,7 +236,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CLIENT_SIDE;SERVER_SIDE;MYGUI_OPENGL_PLATFORM;MYGUI_STATIC;MYGUI_BUILD;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\luabind0.9\;$(SolutionDir)\..\Externals\lua_5.3\src\;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\..\Externals\AL\;$(SolutionDir)\src\;$(SolutionDir)\..\Externals\enet\include\;$(SolutionDir)\..\Externals\rapidjson\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\luabind\;$(SolutionDir)\..\Externals\lua\src\;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\..\Externals\AL\;$(SolutionDir)\src\;$(SolutionDir)\..\Externals\enet\include\;$(SolutionDir)\..\Externals\rapidjson\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BrowseInformation>true</BrowseInformation>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

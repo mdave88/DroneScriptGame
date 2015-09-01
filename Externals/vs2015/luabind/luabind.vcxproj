@@ -18,20 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\enet\callbacks.c" />
-    <ClCompile Include="..\..\enet\compress.c" />
-    <ClCompile Include="..\..\enet\host.c" />
-    <ClCompile Include="..\..\enet\list.c" />
-    <ClCompile Include="..\..\enet\packet.c" />
-    <ClCompile Include="..\..\enet\peer.c" />
-    <ClCompile Include="..\..\enet\protocol.c" />
-    <ClCompile Include="..\..\enet\unix.c" />
-    <ClCompile Include="..\..\enet\win32.c" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{86CA567F-F033-4AD7-8FB3-64528D99CDF9}</ProjectGuid>
-    <RootNamespace>enet</RootNamespace>
+    <ProjectGuid>{5FE7E9A5-853F-428B-BBDF-09BAD1157E9B}</ProjectGuid>
+    <RootNamespace>luabind</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,8 +77,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\$(ProjectName)\include\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\$(ProjectName)\;$(SolutionDir)\..\Externals\lua\src\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -133,6 +121,25 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\luabind\src\class.cpp" />
+    <ClCompile Include="..\..\luabind\src\class_info.cpp" />
+    <ClCompile Include="..\..\luabind\src\class_registry.cpp" />
+    <ClCompile Include="..\..\luabind\src\class_rep.cpp" />
+    <ClCompile Include="..\..\luabind\src\create_class.cpp" />
+    <ClCompile Include="..\..\luabind\src\error.cpp" />
+    <ClCompile Include="..\..\luabind\src\exception_handler.cpp" />
+    <ClCompile Include="..\..\luabind\src\function.cpp" />
+    <ClCompile Include="..\..\luabind\src\inheritance.cpp" />
+    <ClCompile Include="..\..\luabind\src\link_compatibility.cpp" />
+    <ClCompile Include="..\..\luabind\src\object_rep.cpp" />
+    <ClCompile Include="..\..\luabind\src\open.cpp" />
+    <ClCompile Include="..\..\luabind\src\pcall.cpp" />
+    <ClCompile Include="..\..\luabind\src\scope.cpp" />
+    <ClCompile Include="..\..\luabind\src\stack_content_by_name.cpp" />
+    <ClCompile Include="..\..\luabind\src\weak_ref.cpp" />
+    <ClCompile Include="..\..\luabind\src\wrapper_base.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
