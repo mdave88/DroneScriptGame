@@ -1,0 +1,1 @@
+NaiveIncludeOptimizer.exe "c:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\WDExpress.exe" "d:\dev\Dragon_Mania_UPD1\trunk\prj\Game_2012.sln" "Debug" "d:\dev\Dragon_Mania_UPD1\trunk\src"

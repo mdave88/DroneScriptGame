@@ -1,0 +1,3 @@
+@ECHO OFF
+echo processing %1 ...
+"d:\programozas\NormalHeightMapsCombiner\Release\NormalHeightMapsCombiner.exe" %1

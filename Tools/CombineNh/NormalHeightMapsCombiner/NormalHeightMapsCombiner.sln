@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NormalHeightMapsCombiner", "NormalHeightMapsCombiner\NormalHeightMapsCombiner.vcxproj", "{28375335-6801-4544-9BFF-0A63186E85F7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageFlipper", "ImageFlipper\ImageFlipper.vcxproj", "{70F47A37-8BCA-428E-8AFE-55954D780E57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28375335-6801-4544-9BFF-0A63186E85F7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28375335-6801-4544-9BFF-0A63186E85F7}.Debug|Win32.Build.0 = Debug|Win32
+		{28375335-6801-4544-9BFF-0A63186E85F7}.Release|Win32.ActiveCfg = Release|Win32
+		{28375335-6801-4544-9BFF-0A63186E85F7}.Release|Win32.Build.0 = Release|Win32
+		{70F47A37-8BCA-428E-8AFE-55954D780E57}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70F47A37-8BCA-428E-8AFE-55954D780E57}.Debug|Win32.Build.0 = Debug|Win32
+		{70F47A37-8BCA-428E-8AFE-55954D780E57}.Release|Win32.ActiveCfg = Release|Win32
+		{70F47A37-8BCA-428E-8AFE-55954D780E57}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
