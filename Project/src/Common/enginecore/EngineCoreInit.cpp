@@ -320,7 +320,7 @@ bool EngineCore::initAudioVisuals(const Configs& confings)
 	}
 
 	// blurtexture
-	helperfuncs::gfx::blankTexture(&m_blurTexture, 512, 3, GL_RGB);
+	utils::gfx::blankTexture(&m_blurTexture, 512, 3, GL_RGB);
 
 	m_pRenderContext = new graphics::RenderContext();
 	m_pRenderContext->setEnableBit("shadow", m_configs.m_shadowsOn);

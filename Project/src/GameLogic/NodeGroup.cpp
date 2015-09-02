@@ -28,19 +28,19 @@ NodeGroup::~NodeGroup()
 
 void NodeGroup::add(Node* pElement)
 {
-	const std::string name = helperfuncs::getClassName(*pElement);
+	const std::string name = utils::getClassName(*pElement);
 	addSPWithName(NodePtr(pElement), name, true);
 }
 
 void NodeGroup::addSP(NodePtr& element)
 {
-	const std::string name = helperfuncs::getClassName(*element);
+	const std::string name = utils::getClassName(*element);
 	addSPWithName(element, name, true);
 }
 
 void NodeGroup::addNoName(Node* pElement)
 {
-	//std::string uniqueName = helperfuncs::conversion::intToStr(elementIndex);
+	//std::string uniqueName = utils::conversion::intToStr(elementIndex);
 	//m_subnodes[uniqueName] = NodePtr(pElement);
 	//getNodeIdDirectory()[elementIndex++] = m_subnodes[uniqueName];
 	EngineCore::getInstance()->getNodeIdDirectory()[s_elementIndex] = NodePtr(pElement);
@@ -60,7 +60,7 @@ void NodeGroup::addSPWithName(NodePtr& element, const std::string& name, const b
 
 	if (calcIndex)
 	{
-		nodeName += helperfuncs::conversion::intToStr(elementIndex);
+		nodeName += utils::conversion::intToStr(elementIndex);
 	}
 
 	m_subnodes[nodeName] = element;

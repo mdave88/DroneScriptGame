@@ -12,7 +12,7 @@ SoundEmitter::SoundEmitter(const std::string& filename, const vec3& pos, const v
 	m_soundSource = SoundSourcePtr(new SoundSource());
 
 	const std::string soundDirPath = getDataDir() + CONST_STR("Sounds::SoundsDir");
-	if (helperfuncs::file::existFile(soundDirPath + filename))
+	if (utils::file::existFile(soundDirPath + filename))
 	{
 		m_soundSource->load(soundDirPath + filename);
 	}

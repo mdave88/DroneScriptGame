@@ -110,7 +110,7 @@ enum class NetworkPriority
 template <typename Archive>
 void serializeF32_F16(Archive& ar, float& attrib, uint& attribmask, uint& attribIndex)
 {
-	using namespace helperfuncs::conversion;
+	using namespace utils::conversion;
 
 	if (BIT_CHECK(attribmask, attribIndex++))
 	{
@@ -133,7 +133,7 @@ void serializeF32_F16(Archive& ar, float& attrib, uint& attribmask, uint& attrib
 template <typename Archive>
 void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribmask, uint32_t& attribIndex)
 {
-	using namespace helperfuncs::conversion;
+	using namespace utils::conversion;
 
 	if (BIT_CHECK(attribmask, attribIndex++))
 	{
@@ -156,7 +156,7 @@ void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribmask, uint32_t& att
 template <typename Archive>
 void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribmask, uint& attribIndex)
 {
-	using namespace helperfuncs::conversion;
+	using namespace utils::conversion;
 
 	if (BIT_CHECK(attribmask, attribIndex++))
 	{

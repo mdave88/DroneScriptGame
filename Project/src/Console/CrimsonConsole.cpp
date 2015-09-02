@@ -52,7 +52,7 @@ void GameConsole::init(float width, float height)
 			std::string command;
 			getline(file, command);
 
-			command = helperfuncs::tokenize(command, "\t").front();
+			command = utils::tokenize(command, "\t").front();
 
 			if (!command.empty())
 			{

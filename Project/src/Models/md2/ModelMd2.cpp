@@ -299,9 +299,9 @@ bool ModelMd2::load(const char* filename, TextureDirectory& textureDirectory, co
 		memcpy(textureNameTmp, &buffer[header->offsetSkins], 64 * sizeof(char));
 
 
-		std::string locationtemp = helperfuncs::file::getDir(std::string(filename));
+		std::string locationtemp = utils::file::getDir(std::string(filename));
 		std::string textureName(textureNameTmp);
-		helperfuncs::toLowerCase(textureName);
+		utils::toLowerCase(textureName);
 
 		std::string textemp = locationtemp + textureName;
 
@@ -311,7 +311,7 @@ bool ModelMd2::load(const char* filename, TextureDirectory& textureDirectory, co
 			loadTexture((char*) textemp.c_str(), m_decalMap, textureDirectory);
 
 			// normalheight map
-			std::string nhtemp = locationtemp + helperfuncs::file::getFileName(textemp) + "_nh.png";
+			std::string nhtemp = locationtemp + utils::file::getFileName(textemp) + "_nh.png";
 
 			if (!loadTexture((char*) nhtemp.c_str(), m_normalHeightMap, textureDirectory))
 			{

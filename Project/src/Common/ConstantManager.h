@@ -71,7 +71,7 @@ public:
 	static void registerMethodsToLua();
 
 private:
-	void parseObject(const rapidjson::Value& object);
+	void parseObject(const rapidjson::Value& object, const std::string& path = "");
 
 private:
 	BoolDirectory			m_boolDirectory;

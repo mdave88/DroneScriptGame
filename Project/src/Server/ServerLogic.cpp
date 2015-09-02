@@ -59,7 +59,7 @@ void Server::start()
 	{
 		m_networkLog = std::ofstream(networkLogFileName + ".csv");
 		networkLogFileName = "networklog";
-		networkLogFileName += helperfuncs::conversion::intToStr(networkLogFileIndex++);
+		networkLogFileName += utils::conversion::intToStr(networkLogFileIndex++);
 	}
 	while (!m_networkLog.is_open());
 

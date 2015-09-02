@@ -291,29 +291,29 @@ void EngineCore::renderFPS()
 	}
 
 
-	helperfuncs::gfx::printGL(helperfuncs::conversion::intToStr(m_fps), vec3(1, 1, 0));
+	utils::gfx::printGL(utils::conversion::intToStr(m_fps), vec3(1, 1, 0));
 
 	//std::stringstream ss;
 	//ss << "<color 0 1 0.5>health: </color>\t\t<color 1 1 0>";
-	//ss << helperfuncs::conversion::floatToStr( m_player->getHealth() );
+	//ss << utils::conversion::floatToStr( m_player->getHealth() );
 	//ss << "</color>\n";
 	//ss << "<color 0 1 0.5>weapon: </color>\t\t<color 1 1 0>";
 	//ss << m_player->getSelectedWeapon()->getName();
 	//ss << "</color>\n";
 	//ss << "<color 0 1 0.5>bullets left: </color>\t<color 1 1 0>";
-	//ss << helperfuncs::conversion::intToStr( m_player->getSelectedWeapon()->getBulletCount() );
+	//ss << utils::conversion::intToStr( m_player->getSelectedWeapon()->getBulletCount() );
 	//ss << "</color>\n\n";
 	//ss << "<color 0 1 0.5>player pos: </color>\t<color 1 1 0>";
-	//ss << helperfuncs::conversion::vec3ToStr(m_player->getPos());
+	//ss << utils::conversion::vec3ToStr(m_player->getPos());
 	//ss << "</color>\n";
 
-	////vec3 textPos = helperfuncs::gfx::printGL(text, vec3(1, 2, 0));
-	//helperfuncs::gfx::printGL(ss.str(), vec3(1, 2, 0));
+	////vec3 textPos = utils::gfx::printGL(text, vec3(1, 2, 0));
+	//utils::gfx::printGL(ss.str(), vec3(1, 2, 0));
 
-	////helperfuncs::gfx::printGL(";", textPos);
-	helperfuncs::gfx::flushScreenTextBuffer();
+	////utils::gfx::printGL(";", textPos);
+	utils::gfx::flushScreenTextBuffer();
 
-	helperfuncs::gfx::drawCrosshair();
+	utils::gfx::drawCrosshair();
 }
 
 /**

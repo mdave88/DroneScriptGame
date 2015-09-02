@@ -74,8 +74,8 @@ int serverMain(const int argc, char* argv[])
 
 	if (argc == 2)
 	{
-		const char* argumentsStr = helperfuncs::file::readFile(getResourcesDir() + "serverArgs.txt");
-		const std::vector<std::string> arguments = helperfuncs::tokenize(argumentsStr, " ");
+		const char* argumentsStr = utils::file::readFile(getResourcesDir() + "serverArgs.txt");
+		const std::vector<std::string> arguments = utils::tokenize(argumentsStr, " ");
 
 		port			= atoi(arguments[0].c_str());
 		broadCastRate	= atoi(arguments[1].c_str());
@@ -113,8 +113,8 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 	// read the arguments from clientArgs.txt
 	if (argc == 2)
 	{
-		const char* argumentsStr = helperfuncs::file::readFile(getResourcesDir() + "clientArgs.txt");
-		const std::vector<std::string> arguments = helperfuncs::tokenize(argumentsStr, " ");
+		const char* argumentsStr = utils::file::readFile(getResourcesDir() + "clientArgs.txt");
+		const std::vector<std::string> arguments = utils::tokenize(argumentsStr, " ");
 
 		for (uint i = 0; i < arguments.size(); i++)
 		{

@@ -1,8 +1,7 @@
+#pragma once
 
-#ifndef UTILITY_FUNCS_H
-#define UTILITY_FUNCS_H
 
-namespace helperfuncs
+namespace utils
 {
 
 #ifdef CLIENT_SIDE
@@ -23,6 +22,10 @@ vec3 printToScreen(const std::string& text, const vec3& textPos, bool posInPixel
 
 namespace conversion
 {
+
+const char* int2str(const int32_t num);
+const char* FormatStr(const char *fmt, ...);
+
 std::string intToStr(int i);
 std::string floatToStr(float f, int precision = 4);
 std::string vec3ToStr(const vec3& vec);
@@ -76,6 +79,4 @@ std::string getClassName(const T& t)
 	return name;
 }
 
-} // namespace helperfuncs
-
-#endif // UTILITY_FUNCS_H
+} // namespace utils

@@ -129,7 +129,7 @@ void EngineCore::loadMeshes(const rapidxml::xml_node<>* rootXmlNode, const bool 
 
 	//		if (getXmlBoolVariable(*iAnim, "default", false))
 	//		{
-	//			((models::ModelMd5*) m_meshDirectory[name])->setCurrentAnimationName(helperfuncs::file::getFileName(animName));
+	//			((models::ModelMd5*) m_meshDirectory[name])->setCurrentAnimationName(utils::file::getFileName(animName));
 	//		}
 	//	}
 	//	currentXmlNode = currentXmlNode->next_sibling("MeshMd5");
@@ -283,7 +283,7 @@ void EngineCore::parseLuaSettings(const xml_node<>* rootXmlNode, bool justDefini
 
 void EngineCore::parseXml(const std::string& filename, const bool justData)
 {
-	char* buffer = helperfuncs::file::readFile(filename.c_str());
+	char* buffer = utils::file::readFile(filename.c_str());
 	const std::string xmlData(buffer);
 	delete[] buffer;
 

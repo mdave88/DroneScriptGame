@@ -293,8 +293,8 @@ bool Model3ds::loadTextures(const char* location, TextureDirectory& textureDirec
 		}
 
 		std::string texturename(m_objectTextureCache[m_numObjects - 1].m_textureName);
-		const std::string locationtemp = helperfuncs::file::getDir(location);
-		helperfuncs::toLowerCase(texturename);
+		const std::string locationtemp = utils::file::getDir(location);
+		utils::toLowerCase(texturename);
 		//strupr((char*)texturename.c_str());
 
 		/*	##
@@ -314,7 +314,7 @@ bool Model3ds::loadTextures(const char* location, TextureDirectory& textureDirec
 			loadTexture((char*) textemp.c_str(), m_objects[o_i]->m_decalMap, textureDirectory);
 
 			// normalheight map
-			std::string nhtemp = locationtemp + helperfuncs::file::getFileName(textemp) + "_nh.png";
+			std::string nhtemp = locationtemp + utils::file::getFileName(textemp) + "_nh.png";
 
 			if (!loadTexture((char*) nhtemp.c_str(), m_objects[o_i]->m_normalHeightMap, textureDirectory))
 			{

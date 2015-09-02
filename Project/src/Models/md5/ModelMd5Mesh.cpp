@@ -18,7 +18,7 @@ bool ModelMd5::load(const char* meshFile, const char* animFile, MeshDirectory& m
 		}
 		meshDirectory[name] = md5;
 
-		md5->m_currentAnimationName = helperfuncs::file::getFileName(animFile);
+		md5->m_currentAnimationName = utils::file::getFileName(animFile);
 
 #ifdef GX_DEBUG_INFO
 		md5->m_debug_meshFileName = meshFile;

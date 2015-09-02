@@ -26,8 +26,8 @@ bool ModelMd5::loadAnim(const char* filename)
 		return 0;
 	}
 
-	m_animations[helperfuncs::file::getFileName(filename)] = AnimMd5();
-	AnimMd5* pAnim = &m_animations[helperfuncs::file::getFileName(filename)];
+	m_animations[utils::file::getFileName(filename)] = AnimMd5();
+	AnimMd5* pAnim = &m_animations[utils::file::getFileName(filename)];
 
 	while (!feof(fp))
 	{

@@ -3,11 +3,15 @@
 
 #include "Graphics/shaders/Shader.h"
 
+#include <atomic>
 #include <boost/filesystem.hpp>
 
+#ifdef WIN32 
+#define snprintf sprintf_s
+#endif
 
 
-namespace helperfuncs
+namespace utils
 {
 
 #ifdef CLIENT_SIDE
@@ -400,6 +404,52 @@ void flushScreenTextBuffer()
 
 namespace conversion
 {
+
+static const int RING_BUFFER_SIZE = 16;
+static const int SMALL_BUFFER_SIZE = 32;
+static const int BIG_BUFFER_SIZE = 1024;
+
+static char strBuffer[RING_BUFFER_SIZE][SMALL_BUFFER_SIZE];
+static char strFormatBuffer[RING_BUFFER_SIZE][BIG_BUFFER_SIZE];
+std::atomic<int> formatBufferIdx(0);
+
+const char* int2str(const int32_t num)
+{
+	static std::atomic<int> intBufferIdx(0);
+	const int idx = intBufferIdx.fetch_add(1);
+
+	snprintf(strBuffer[idx % RING_BUFFER_SIZE], SMALL_BUFFER_SIZE, "%d", num);
+
+	return strBuffer[idx % RING_BUFFER_SIZE];
+}
+
+const char* float2str(const float val)
+{
+	static std::atomic<int> floatBufferIdx(0);
+	const int idx = floatBufferIdx.fetch_add(1);
+
+	snprintf(strBuffer[idx % RING_BUFFER_SIZE], SMALL_BUFFER_SIZE, "%4.1f", val);
+
+	return strBuffer[idx % RING_BUFFER_SIZE];
+}
+
+const char* FormatStr(const char* fmt, ...)
+{
+	const int idx = formatBufferIdx.fetch_add(1);
+
+	va_list args;
+	va_start(args, fmt);
+
+#ifdef WIN32
+	GX_ASSERT(_vscprintf(fmt, args) < BIG_BUFFER_SIZE);
+#endif
+
+	vsnprintf(strFormatBuffer[idx % RING_BUFFER_SIZE], BIG_BUFFER_SIZE, fmt, args);
+	va_end(args);
+
+	return strFormatBuffer[idx % RING_BUFFER_SIZE];
+}
+
 std::string intToStr(int i)
 {
 	char buffer[33];
@@ -432,7 +482,7 @@ float strToFloat(const std::string& str)
  */
 vec3 strToVec3(const std::string& str)
 {
-	const std::vector<std::string> coordinates = helperfuncs::tokenize(str, " ");
+	const std::vector<std::string> coordinates = utils::tokenize(str, " ");
 	return vec3(atof(coordinates[0].c_str()), atof(coordinates[1].c_str()), atof(coordinates[2].c_str()));
 }
 
@@ -695,4 +745,4 @@ std::vector<std::string> tokenize(const std::string& str, const std::string& del
 	return tokens;
 }
 
-} // namespace helperfuncs
+} // namespace utils
