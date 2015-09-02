@@ -7,10 +7,10 @@
 
 
 SoundSource::SoundSource(const std::string& filename)
-	:	m_source(0),
-	    m_buffer(0),
-	    m_isLooped(false),
-	    m_isOpen(false)
+	: m_source(0)
+	, m_buffer(0)
+	, m_isLooped(false)
+	, m_isOpen(false)
 {
 	load(filename);
 }

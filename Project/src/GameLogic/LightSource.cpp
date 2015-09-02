@@ -24,9 +24,9 @@ Matrix biasMatrix = Matrix(	0.5, 0.0, 0.0, 0.0,
 
 
 LightSource::LightSource(GLuint id, LightType type)
-	:	m_id(id),
-	    m_type(type),
-	    m_shadowFboId(0)
+	: m_id(id)
+	, m_type(type)
+	, m_shadowFboId(0)
 {
 	if (m_id < ms_enabledLights.size())
 	{
@@ -39,9 +39,9 @@ LightSource::LightSource(GLuint id, LightType type)
 }
 
 LightSource::LightSource(GLuint id, const vec3& ambient, const vec3& diffuse, const vec3& specular, const vec3& pos, LightType type)
-	:	m_id(id),
-	    m_type(type),
-	    m_shadowFboId(0)
+	: m_id(id)
+	, m_type(type)
+	, m_shadowFboId(0)
 {
 	set(ambient, diffuse, specular, pos);
 	setBase(ambient, diffuse, specular, pos);
@@ -126,7 +126,7 @@ void LightSource::updateLightUniforms(const graphics::Shader* shader)
 
 void LightSource::animateLights()
 {
-	for (const auto entry: lightSourceDirectory)
+	for (const auto entry : lightSourceDirectory)
 	{
 		LightSourcePtr light = entry.second;
 

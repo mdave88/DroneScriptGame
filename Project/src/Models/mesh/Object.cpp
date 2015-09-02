@@ -5,13 +5,13 @@ namespace models
 {
 
 Object::Object()
-	:	m_numVertices(0),
-	    m_numTriangles(0),
+	: m_numVertices(0)
+	, m_numTriangles(0)
 
-	    m_pVertices(nullptr),
-	    m_pNormals(nullptr),
-	    m_pTriangles(nullptr),
-	    m_pTexcoords(nullptr)
+	, m_pVertices(nullptr)
+	, m_pNormals(nullptr)
+	, m_pTriangles(nullptr)
+	, m_pTexcoords(nullptr)
 {
 }
 

@@ -23,10 +23,10 @@ public:
 
 public:
 	MouseEvent(ushort type = NETOBJ_MOUSE_MOVE, int x = -1, int y = -1, int button = 0)
-		:	InputEvent(NETOBJ_MOUSE_MOVE),
-		    x(x),
-		    y(y),
-		    button(button)
+		: InputEvent(NETOBJ_MOUSE_MOVE)
+		, x(x)
+		, y(y)
+		, button(button)
 	{
 	}
 
@@ -34,10 +34,10 @@ public:
 	* Set normalized mouse coordinates. (The server do not need to know about the resolution on the client side.)
 	*/
 	MouseEvent(ushort type, int x, int y, bool normalize = false, float m_mouseSensitivity = 1.0f, int width = 0, int height = 0, int button = 0)
-		:	InputEvent(type),
-		    x(x),
-		    y(y),
-		    button(button)
+		: InputEvent(type)
+		, x(x)
+		, y(y)
+		, button(button)
 	{
 		if (normalize)
 		{

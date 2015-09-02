@@ -6,9 +6,9 @@ namespace models
 {
 
 JointMd5::JointMd5()
-	:	parent(0),
-	    height(0),
-	    height2(0)
+	: parent(0)
+	, height(0)
+	, height2(0)
 {
 }
 

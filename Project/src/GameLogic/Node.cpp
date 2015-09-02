@@ -2,18 +2,18 @@
 #include "Node.h"
 
 Node::Node(const vec3& pos, const vec3& rot)
-	:	m_id(0), 
-		m_pos(pos),
-		m_rot(rot),
+	: m_id(0)
+	, m_pos(pos)
+	, m_rot(rot)
 
-		m_name(""),
-		m_attribmask(0),
-		m_attribIndex(0),
-		m_isVisible(true),
-		m_isAnimated(true),
-		m_scale(vec3(1)),
-		m_pParentNode(nullptr),
-		m_networkPriority((uint8_t) NetworkPriority::HIGH)
+	, m_name("")
+	, m_attribmask(0)
+	, m_attribIndex(0)
+	, m_isVisible(true)
+	, m_isAnimated(true)
+	, m_scale(vec3(1))
+	, m_pParentNode(nullptr)
+	, m_networkPriority((uint8_t) NetworkPriority::HIGH)
 {
 }
 

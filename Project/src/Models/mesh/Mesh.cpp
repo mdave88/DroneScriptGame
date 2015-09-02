@@ -6,10 +6,10 @@ namespace models
 {
 
 Mesh::Mesh()
-	:	m_numObjects(0),
-		m_verticesVboId(0),
-		m_indicesVboId(0),
-		m_lastShaderProg(UINT32_MAX)
+	: m_numObjects(0)
+	, m_verticesVboId(0)
+	, m_indicesVboId(0)
+	, m_lastShaderProg(UINT32_MAX)
 {
 }
 

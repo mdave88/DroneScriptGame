@@ -19,8 +19,8 @@ namespace effects
 {
 
 EffectManager::EffectManager(float globalLifeTime)
-	:	m_globalLifeTime(globalLifeTime),
-		m_currentEffectIndex(0)
+	: m_globalLifeTime(globalLifeTime)
+	, m_currentEffectIndex(0)
 {
 }
 

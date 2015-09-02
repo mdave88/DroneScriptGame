@@ -191,7 +191,7 @@ void EngineCore::setupPostProcessing()
 
 	effectDirectory["depthOfFieldShader"] = graphics::ShaderPtr(new graphics::Shader(postProcVertexShader, postProcShaderPath + "DepthOfFieldShaderFS.frag"));
 	effectDirectory["depthOfFieldShader"]->setupUniforms({ "u_clarity", "u_near", "u_far", "u_fadeDistance", "s_blurBuffer", "s_depthBuffer" });
-		
+
 	CheckGLError();
 
 
@@ -377,32 +377,32 @@ void EngineCore::resetLuaScripts()
 
 	module(luaManagerState) [
 
-		// register directories
+	    // register directories
 #ifdef CLIENT_SIDE
-		class_<TextureDirectory>("TextureDirectory"),
-		class_<EffectDirectory>("EffectDirectory"),
-		class_<MeshDirectory>("MeshDirectory"),
-		class_<ShadedMeshDirectory>("ShadedMeshDirectory"),
+	    class_<TextureDirectory>("TextureDirectory"),
+	    class_<EffectDirectory>("EffectDirectory"),
+	    class_<MeshDirectory>("MeshDirectory"),
+	    class_<ShadedMeshDirectory>("ShadedMeshDirectory"),
 #endif
-		// register global functions
+	    // register global functions
 
-		def("getIndentNum", &getIndentNum),
-		def("updateIndentNum", &updateIndentNum),
-		def("logToConsole", &logToConsole),
+	    def("getIndentNum", &getIndentNum),
+	    def("updateIndentNum", &updateIndentNum),
+	    def("logToConsole", &logToConsole),
 
-		def("getEntity", &getEntityFunc),
+	    def("getEntity", &getEntityFunc),
 
 #ifdef CLIENT_SIDE
-		def("getLightSource", &getLightSource),
-		def("getMesh", &getMeshFunc),
-		def("getShadedMesh", &getShadedMeshFunc),
-		def("getTexture", &graphics::getTexture),
+	    def("getLightSource", &getLightSource),
+	    def("getMesh", &getMeshFunc),
+	    def("getShadedMesh", &getShadedMeshFunc),
+	    def("getTexture", &graphics::getTexture),
 #endif
-		def("getElapsedTime", &getElapsedTime),
-		
-		def("exitGame", &exitGame)
+	    def("getElapsedTime", &getElapsedTime),
 
-		//def("getMapElement", (Mesh* (EngineCore::*)(const std::string&, const std::string&)) &EngineCore::getMapElement)
+	    def("exitGame", &exitGame)
+
+	    //def("getMapElement", (Mesh* (EngineCore::*)(const std::string&, const std::string&)) &EngineCore::getMapElement)
 
 	];
 

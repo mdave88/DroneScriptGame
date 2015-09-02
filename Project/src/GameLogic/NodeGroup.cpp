@@ -95,7 +95,10 @@ void NodeGroup::removeSP(const NodePtr& element)
 {
 	const Node* pElement = element.get();
 
-	const auto elementMatcher = [pElement](const std::pair<const std::string, std::shared_ptr<Node>>& entry) { return entry.second.get() == pElement; };
+	const auto elementMatcher = [pElement](const std::pair<const std::string, std::shared_ptr<Node>>& entry)
+	{
+		return entry.second.get() == pElement;
+	};
 	const auto& it = std::find_if(m_subnodes.begin(), m_subnodes.end(), elementMatcher);
 	if (it != m_subnodes.end())
 	{

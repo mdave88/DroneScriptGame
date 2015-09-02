@@ -145,18 +145,18 @@ private:
 		Weight*		pWeights;
 
 		MeshMd5()
-			:	texid(0),
-			    normalMap(0),
-			    heightMap(0),
-			    normalHeightMap(0),
+			: texid(0)
+			, normalMap(0)
+			, heightMap(0)
+			, normalHeightMap(0)
 
-			    numVertices(0),
-			    numTriangles(0),
-			    numWeights(0),
+			, numVertices(0)
+			, numTriangles(0)
+			, numWeights(0)
 
-			    pVertices(nullptr),
-			    pTriangles(nullptr),
-			    pWeights(nullptr)
+			, pVertices(nullptr)
+			, pTriangles(nullptr)
+			, pWeights(nullptr)
 		{
 		}
 
@@ -264,10 +264,10 @@ private:
 		double	maxTime;
 
 		AnimMd5Info()
-			:	currentFrame(0),
-			    nextFrame(1),
-			    lastTime(0),
-			    maxTime(0)
+			: currentFrame(0)
+			, nextFrame(1)
+			, lastTime(0)
+			, maxTime(0)
 		{
 		}
 	};
@@ -280,8 +280,8 @@ private:
 		std::vector<FrameMd5>	frames;
 
 		AnimMd5()
-			:	numFrames(0),
-			    frameRate(0)
+			: numFrames(0)
+			, frameRate(0)
 		{
 		}
 

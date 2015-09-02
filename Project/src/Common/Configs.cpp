@@ -3,14 +3,14 @@
 
 
 Configs::Configs()
-	:	width0(400),
-	    height0(400),
-	    width(400),
-	    height(400),
-	    m_fullscreen(false),
-	    m_lightOn(false),
-	    m_shadowsOn(false),
-	    m_mouseSensitivity(1.0f)
+	: width0(400)
+	, height0(400)
+	, width(400)
+	, height(400)
+	, m_fullscreen(false)
+	, m_lightOn(false)
+	, m_shadowsOn(false)
+	, m_mouseSensitivity(1.0f)
 {
 }
 

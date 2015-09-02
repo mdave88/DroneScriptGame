@@ -8,19 +8,19 @@ namespace network
 {
 
 Server::Server(ushort port, short broadcastRate)
-	:	m_port(port),
-	    m_broadcastRate(broadcastRate),
-	    m_pServerHost(0),
-	    m_disconnectingClient(0),
-	    m_pFrontBuffer(nullptr),
-	    m_isServerRunning(false),
+	: m_port(port)
+	, m_broadcastRate(broadcastRate)
+	, m_pServerHost(0)
+	, m_disconnectingClient(0)
+	, m_pFrontBuffer(nullptr)
+	, m_isServerRunning(false)
 
-	    m_lastBroadcastTime(0.0f),
-	    m_lastAnimationTime(0.0f),
-	    m_dt(0.0f),
+	, m_lastBroadcastTime(0.0f)
+	, m_lastAnimationTime(0.0f)
+	, m_dt(0.0f)
 
-	    m_isGamePaused(true),
-	    m_pEngineCore(nullptr)
+	, m_isGamePaused(true)
+	, m_pEngineCore(nullptr)
 {
 	//pBackBuffer = &eventBuffer1;
 	//pFrontBuffer = &eventBuffer2;

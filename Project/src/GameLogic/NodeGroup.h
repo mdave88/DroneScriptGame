@@ -24,7 +24,7 @@ public:
 
 	void removeByName(const std::string& name);
 	void removeSP(const NodePtr& e);
-	
+
 	virtual void render(const graphics::RenderContext& context);
 	virtual void animate(const float dt);
 

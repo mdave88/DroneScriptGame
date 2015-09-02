@@ -63,7 +63,7 @@ enum class NetworkPriority
 									void load(Archive& ar, const uint version);									\
 									template <typename Archive>													\
 									void save(Archive& ar, const uint version) const;							\
- 
+
 // definitions for classes with symmetric serialization
 #define SERIALIZABLE(T)				template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\
 									template void T::serialize(boost::archive::binary_iarchive&, unsigned);		\
@@ -96,7 +96,7 @@ enum class NetworkPriority
 									template void T::save(boost::archive::text_oarchive&, unsigned) const;		\
 									template void T::load(boost::archive::binary_iarchive&, unsigned);			\
 									template void T::load(boost::archive::text_iarchive&, unsigned);			\
- 
+
 
 // definitions for serializable objects without clone() and updateProperties() methods (like GameState)
 #define SERIALIZABLE_NOT_UPD(T)		template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\

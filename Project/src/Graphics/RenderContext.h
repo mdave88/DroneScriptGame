@@ -19,12 +19,12 @@ class RenderContext
 {
 public:
 	RenderContext(Shader* pEffect = nullptr, Camera* pCamera = nullptr, const std::string& roleName = "none", float dt = 0)
-		:	m_viewPortWidth(0),
-		    m_viewPortHeight(0),
-		    m_roleName(roleName),
-		    m_pShader(pEffect),
-		    m_pCamera(pCamera),
-		    m_dt(dt)
+		: m_viewPortWidth(0)
+		, m_viewPortHeight(0)
+		, m_roleName(roleName)
+		, m_pShader(pEffect)
+		, m_pCamera(pCamera)
+		, m_dt(dt)
 	{
 	}
 

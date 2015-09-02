@@ -22,7 +22,7 @@ public:
 	{
 		return m_key;
 	}
-	
+
 	virtual void animate(const float dt)
 	{
 		LuaManager::getInstance()->callMethod(this, "animateL", dt);

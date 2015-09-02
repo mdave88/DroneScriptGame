@@ -6,8 +6,8 @@ PlayerDirectory playerDirectory;
 
 
 Player::Player(const vec3& pos, ushort race)
-	:	m_isLeftMB(false),
-		m_isRightMB(false)
+	: m_isLeftMB(false)
+	, m_isRightMB(false)
 {
 	for (int i = 0; i < 256; i++)
 	{

@@ -18,12 +18,12 @@ struct Vertex
 	texCoord	lightmapCoord;
 
 	Vertex(vec3 pos = vec3(0.0f), vec3 normal = vec3(0.0f), vec3 tangent = vec3(0.0f), vec3 bitangent = vec3(0.0f), texCoord texcoord = texCoord(0.0f, 0.0f), texCoord lightmapCoord = texCoord(0.0f, 0.0f))
-		:	pos(pos),
-		    normal(normal),
-		    tangent(tangent),
-		    bitangent(bitangent),
-		    texcoord(texcoord),
-		    lightmapCoord(lightmapCoord)
+		: pos(pos)
+		, normal(normal)
+		, tangent(tangent)
+		, bitangent(bitangent)
+		, texcoord(texcoord)
+		, lightmapCoord(lightmapCoord)
 	{
 	}
 

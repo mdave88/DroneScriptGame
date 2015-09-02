@@ -31,11 +31,11 @@ public:
 	Killshot(ushort type = NETOBJ_KILLSHOT) : NetworkObject(type) {}
 
 	Killshot(const std::string& target, const std::string& actorName, const vec3& pos, const vec3& force, ushort type = NETOBJ_KILLSHOT)
-		:	NetworkObject(type),
-		    target(target),
-		    actorName(actorName),
-		    pos(pos),
-		    force(force)
+		: NetworkObject(type)
+		, target(target)
+		, actorName(actorName)
+		, pos(pos)
+		, force(force)
 	{
 	}
 

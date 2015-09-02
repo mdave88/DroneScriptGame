@@ -67,7 +67,7 @@ public:
 	NodeGroup*	getEffectsNode() const;
 
 	graphics::RenderContext* getRenderContext();
-	
+
 	models::Mesh* getMesh(const std::string& name) const { return m_meshDirectory.at(name); }
 	MeshDirectory& getMeshDirectory() { return m_meshDirectory; }
 

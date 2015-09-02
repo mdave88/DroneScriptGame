@@ -6,7 +6,7 @@
 #include <atomic>
 #include <boost/filesystem.hpp>
 
-#ifdef WIN32 
+#ifdef WIN32
 #define snprintf sprintf_s
 #endif
 
@@ -388,7 +388,10 @@ void flushScreenTextBuffer()
 	}
 
 	// check elapsed times
-	auto end = std::remove_if(screenTextBuffer.begin(), screenTextBuffer.end(), [](const ScreenText& text) { return text.timeToStay < glutGet(GLUT_ELAPSED_TIME); });
+	auto end = std::remove_if(screenTextBuffer.begin(), screenTextBuffer.end(), [](const ScreenText& text)
+	{
+		return text.timeToStay < glutGet(GLUT_ELAPSED_TIME);
+	});
 	screenTextBuffer.erase(end, screenTextBuffer.end());
 
 	// reset graphics

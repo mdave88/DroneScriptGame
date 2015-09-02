@@ -256,7 +256,7 @@ void ModelMd5::normalizeVertexGroups()
 	{
 		uint numWeights = mesh.numWeights;
 
-		for (uint wi = 0; wi <mesh.numWeights; wi++)
+		for (uint wi = 0; wi < mesh.numWeights; wi++)
 		{
 			if (mesh.pWeights[wi].w <= epsilon)
 			{
@@ -388,17 +388,17 @@ void ModelMd5::normalizeVertexGroups()
 // --------------------------------------------------------------------------------------------------------
 
 ModelMd5::ModelMd5()
-	:	m_pVertexIndices(nullptr),
-	    m_pVertexArrayDynamic(nullptr),
+	: m_pVertexIndices(nullptr)
+	, m_pVertexArrayDynamic(nullptr)
 
-	    m_numJoints(0),
-	    m_numMeshes(0),
+	, m_numJoints(0)
+	, m_numMeshes(0)
 
-	    m_pBaseFrame(nullptr),
-	    m_pCurrentFrame(nullptr),
+	, m_pBaseFrame(nullptr)
+	, m_pCurrentFrame(nullptr)
 
-	    m_maxVertices(0),
-	    m_maxTriangles(0)
+	, m_maxVertices(0)
+	, m_maxTriangles(0)
 {
 }
 

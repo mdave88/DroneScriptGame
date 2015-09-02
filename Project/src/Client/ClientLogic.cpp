@@ -19,22 +19,22 @@ const short Client::k_clientIdLocalFull = 1000;
 
 
 Client::Client(const bool isThickClient)
-	:	m_dt(0.0f),
-		m_lastRenderTime(0.0f),
-		m_gamePaused(true),
-		m_processInput(true),
-		m_pEngineCore(nullptr),
+	: m_dt(0.0f)
+	, m_lastRenderTime(0.0f)
+	, m_gamePaused(true)
+	, m_processInput(true)
+	, m_pEngineCore(nullptr)
 
 #ifdef ENABLE_MYGUI
-		m_pGui(nullptr),
-		m_pGuiPlatform(nullptr),
-		m_pGuiImageLoader(nullptr),
+	, m_pGui(nullptr)
+	, m_pGuiPlatform(nullptr)
+	, m_pGuiImageLoader(nullptr)
 #endif
-		m_isGuiOpened(false),
+	, m_isGuiOpened(false)
 
-		m_pPeer(nullptr),
-		m_pClientHost(nullptr),
-		m_serviceResult(1)
+	, m_pPeer(nullptr)
+	, m_pClientHost(nullptr)
+	, m_serviceResult(1)
 {
 	if (!isThickClient)
 	{
@@ -77,7 +77,7 @@ bool Client::init(Configs& configs, const std::string& hostAddress, uint port, b
 	new ConstantManager();
 	ConstantManager::getInstance()->loadConstants(getDataDir() + "settings/constants.json");
 
-	
+
 	if (!initConsole())
 	{
 		return false;

@@ -6,11 +6,11 @@ namespace models
 {
 
 AnimatedMesh::AnimatedMesh()
-	:	m_isAnimationOn(true),
-	    m_animationSpeed(1.0f),
-	    m_isAnimationLooped(true),
-	    m_hasStanceChanged(true),
-	    m_currentAnimationName("idle")
+	: m_isAnimationOn(true)
+	, m_animationSpeed(1.0f)
+	, m_isAnimationLooped(true)
+	, m_hasStanceChanged(true)
+	, m_currentAnimationName("idle")
 {
 }
 

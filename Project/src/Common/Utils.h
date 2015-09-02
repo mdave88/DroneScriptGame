@@ -24,7 +24,7 @@ namespace conversion
 {
 
 const char* int2str(const int32_t num);
-const char* FormatStr(const char *fmt, ...);
+const char* FormatStr(const char* fmt, ...);
 
 std::string intToStr(int i);
 std::string floatToStr(float f, int precision = 4);

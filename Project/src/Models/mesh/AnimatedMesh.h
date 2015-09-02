@@ -15,10 +15,10 @@ struct AnimInfo
 	double	maxTime;
 
 	AnimInfo()
-		:	currentFrame(0),
-		    nextFrame(1),
-		    lastTime(0),
-		    maxTime(0.0)
+		: currentFrame(0)
+		, nextFrame(1)
+		, lastTime(0)
+		, maxTime(0.0)
 	{
 	}
 };

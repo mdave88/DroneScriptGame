@@ -23,26 +23,26 @@ bool ModelMd2::load(const char* meshFile, MeshDirectory& meshDirectory, TextureD
 }
 
 ModelMd2::ModelMd2()
-	:	m_time(0),
+	: m_time(0)
 
-		m_numVertices(0),
-		m_numTriangles(0),
-		m_numTexCoords(0),
+	, m_numVertices(0)
+	, m_numTriangles(0)
+	, m_numTexCoords(0)
 
-		// pointers
-		m_pTexcoords(nullptr),
-		m_pTangents(nullptr),
-		m_pVertices(nullptr),
-		m_pNormals(nullptr),
-		m_pTriangles(nullptr),
+	// pointers
+	, m_pTexcoords(nullptr)
+	, m_pTangents(nullptr)
+	, m_pVertices(nullptr)
+	, m_pNormals(nullptr)
+	, m_pTriangles(nullptr)
 
-		m_pVertexArray(nullptr),
-		m_pNormalArray(nullptr),
-		m_pTangentArray(nullptr),
-		m_pTriangleArray(nullptr),
-		m_pTexcoordArray(nullptr),
+	, m_pVertexArray(nullptr)
+	, m_pNormalArray(nullptr)
+	, m_pTangentArray(nullptr)
+	, m_pTriangleArray(nullptr)
+	, m_pTexcoordArray(nullptr)
 
-		m_numAnims(0)
+	, m_numAnims(0)
 {
 	m_numObjects = 1;
 }
