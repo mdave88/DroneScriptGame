@@ -17,3 +17,9 @@
 [submodule "Externals/rapidjson"]
 	path = Externals/rapidjson
 	url = https://github.com/miloyip/rapidjson
+[submodule "Externals/DevIL"]
+	path = Externals/DevIL
+	url = https://github.com/DentonW/DevIL
+[submodule "Externals/LuaLanes"]
+	path = Externals/LuaLanes
+	url = https://github.com/LuaLanes/lanes
