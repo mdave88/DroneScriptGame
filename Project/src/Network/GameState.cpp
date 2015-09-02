@@ -9,6 +9,8 @@
 #include "GameLogic/NodeGroup.h"
 
 #include "Common/enginecore/EngineCore.h"
+#include "console/CrimsonConsole.h"
+
 
 namespace network
 {
@@ -148,7 +150,7 @@ void GameState::apply(NodeGroup* pRootNode, NodeIdDirectory& clientEntities)
 			pRootNode->addWithName(pNodeClone, name);	// put the clone in the pRootNode (the clone() calls the updateProperties() that initializes the shadedMesh)
 
 			// register its name to the console
-			addKeywordToConsole(name);
+			GameConsole::addKeywordToConsole(name);
 		}
 	}
 

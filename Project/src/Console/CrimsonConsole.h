@@ -1,6 +1,4 @@
-
-#ifndef GAME_CONSOLE_H
-#define GAME_CONSOLE_H
+#pragma once
 
 #include <string>
 
@@ -29,8 +27,6 @@ public:
 
 	bool isOpen() const;
 	std::string getCommand() const;
+
+	static void addKeywordToConsole(const std::string& keyword);
 };
-
-void addKeywordToConsole(const std::string& keyword);
-
-#endif

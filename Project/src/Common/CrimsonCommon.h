@@ -1,12 +1,9 @@
-#ifndef COMMON_H
-#define COMMON_H
+#pragma once
 
-// stl containers
 #include <set>
 #include <map>
 #include <vector>
 
-// includes
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -64,14 +61,6 @@ void logToConsole(std::string str);
 
 const std::string getDataDir();
 const std::string getResourcesDir();
-
-void addKeywordToConsole(const std::string& keyword);
-
-#define REG_CONSTR(C)			thisClass.def(C);
-#define REG_FUNC(name, F)		{ thisClass.def(name, F);				addKeywordToConsole(std::string(name) + "( )"); }
-#define REG_ATTR(name, F)		{ thisClass.def_readwrite(name, F);		addKeywordToConsole(std::string(name)); }
-#define REG_PROP(name, G, S)	{ thisClass.property(name, G, S);		addKeywordToConsole(std::string(name)); }
-#define REG_PROPG(name, G)		{ thisClass.property(name, G);			addKeywordToConsole(std::string(name)); }
 
 void CheckGLError();
 
@@ -146,14 +135,3 @@ void	consoleSetColours(short fg, short bg);
 // error checking
 //#define CHKHEAP()  (check_heap(__FILE__, __LINE__))
 //void check_heap(char *file, int line);
-
-
-#define DEFINE_CLASS_PTR(C)							\
-class C;											\
-	typedef std::shared_ptr<C>		C##Ptr;			\
-	typedef std::shared_ptr<const C>	C##CPtr;	\
-	typedef std::weak_ptr<C>			C##WPtr;	\
-	typedef std::weak_ptr<const C>	C##WCPtr;		\
-
-
-#endif // COMMON_H

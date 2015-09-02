@@ -436,7 +436,7 @@ const char* float2str(const float val)
 	return strBuffer[idx % RING_BUFFER_SIZE];
 }
 
-const char* FormatStr(const char* fmt, ...)
+const char* formatStr(const char* fmt, ...)
 {
 	const int idx = formatBufferIdx.fetch_add(1);
 

@@ -3,8 +3,9 @@
 
 #include "GameLogic/Entity.h"
 
-
-LuaManager::LuaManager() : m_state(nullptr), m_isOpened(false)
+LuaManager::LuaManager()
+	: m_state(nullptr)
+	, m_isOpened(false)
 {
 }
 
@@ -139,11 +140,11 @@ void LuaManager::createTable(const std::string& tableName, const Entity* entitie
 			table[i + 1] = entities[i];
 			//setTableElement(tableName, i + 1, entities[i]);
 
-			addKeywordToConsole(entities[i]->getName());
+			GameConsole::addKeywordToConsole(entities[i]->getName());
 		}
 	}
 
-	addKeywordToConsole(tableName);
+	GameConsole::addKeywordToConsole(tableName);
 }
 
 /**
@@ -164,10 +165,10 @@ void LuaManager::createTable(const std::string& tableName, const std::set<Entity
 		table[i] = *entity;
 		i++;
 
-		addKeywordToConsole(entity->getName());
+		GameConsole::addKeywordToConsole(entity->getName());
 	}
 
-	addKeywordToConsole(tableName);
+	GameConsole::addKeywordToConsole(tableName);
 }
 
 /**
@@ -201,7 +202,7 @@ int LuaManager::registerEntity(const Entity& entity, const std::string& tableNam
 	}
 
 
-	addKeywordToConsole(entity.getName());
+	GameConsole::addKeywordToConsole(entity.getName());
 
 	return id;
 }
@@ -237,7 +238,7 @@ int LuaManager::registerEntitySP(const EntityPtr& entity, const std::string& tab
 	}
 
 
-	addKeywordToConsole(entity->getName());
+	GameConsole::addKeywordToConsole(entity->getName());
 
 	return entityTableSize + 1;
 }

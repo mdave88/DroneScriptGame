@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "CrimsonConsole.h"
+#include "Console/CrimsonConsole.h"
 
 #include <console/cl.h>
 
@@ -172,19 +172,10 @@ bool GameConsole::isOpen() const
 
 std::string GameConsole::getCommand() const
 {
-	return std::string(gConsole->GetCurrentCommand());
+	return gConsole->GetCurrentCommand();
 }
 
-void logToConsole2(std::string str)
-{
-	if (gConsole)
-	{
-		gConsole->Insert(str.c_str());
-	}
-}
-
-
-void addKeywordToConsole(const std::string& keyword)
+void GameConsole::addKeywordToConsole(const std::string& keyword)
 {
 	if (gVars)
 	{

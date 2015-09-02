@@ -1,8 +1,8 @@
-#ifndef LUA_MANAGER_H
-#define LUA_MANAGER_H
+#pragma once
 
 #include <set>
 #include <string>
+#include <iostream>
 
 extern "C"
 {
@@ -18,7 +18,8 @@ extern "C"
 #include <luabind/operator.hpp>
 #include <luabind/shared_ptr_converter.hpp>
 
-#include <iostream>
+#include "Console/CrimsonConsole.h"
+
 
 // creates a boost reference from the pointer
 #define REF_POINTER(T, p)	if (std::is_pointer<T>())	p = std::ref<T>(p);
@@ -80,7 +81,7 @@ public:
 			registerActorToTable("playerTable", element, name);
 		}
 
-		addKeywordToConsole(name);
+		GameConsole::addKeywordToConsole(name);
 
 		return size + 1;
 	}
@@ -320,4 +321,8 @@ private:
 	bool		m_isOpened;
 };
 
-#endif // LUA_MANAGER_H
+#define REG_CONSTR(C)			thisClass.def(C);
+#define REG_FUNC(name, F)		{ thisClass.def(name, F);				GameConsole::addKeywordToConsole(utils::conversion::formatStr("%( )", name)); }
+#define REG_ATTR(name, F)		{ thisClass.def_readwrite(name, F);		GameConsole::addKeywordToConsole(name); }
+#define REG_PROP(name, G, S)	{ thisClass.property(name, G, S);		GameConsole::addKeywordToConsole(name); }
+#define REG_PROPG(name, G)		{ thisClass.property(name, G);			GameConsole::addKeywordToConsole(name); }
