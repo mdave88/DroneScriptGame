@@ -32,7 +32,7 @@
 #include "Common/Singleton.h"
 #include "Common/Directory.h"
 
-#include "Common/UtilityFunctions.h"
+#include "Common/Utils.h"
 #include "Common/ConstantManager.h"
 
 #include "Math/CrimsonMath.h"

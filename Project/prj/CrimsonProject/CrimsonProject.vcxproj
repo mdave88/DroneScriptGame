@@ -29,7 +29,7 @@
     <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp" />
     <ClCompile Include="..\..\src\Common\mem\MemPro.cpp" />
     <ClCompile Include="..\..\src\Common\mem\VMem.cpp" />
-    <ClCompile Include="..\..\src\Common\UtilityFunctions.cpp" />
+    <ClCompile Include="..\..\src\Common\Utils.cpp" />
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
     <ClCompile Include="..\..\src\GameLogic\Camera.cpp" />
     <ClCompile Include="..\..\src\GameLogic\effects\EffectManager.cpp" />
@@ -85,7 +85,7 @@
     <ClInclude Include="..\..\src\Common\mem\MemPro.hpp" />
     <ClInclude Include="..\..\src\Common\mem\VMem.hpp" />
     <ClInclude Include="..\..\src\Common\Singleton.h" />
-    <ClInclude Include="..\..\src\Common\UtilityFunctions.h" />
+    <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
     <ClInclude Include="..\..\src\GameLogic\Camera.h" />
     <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h" />

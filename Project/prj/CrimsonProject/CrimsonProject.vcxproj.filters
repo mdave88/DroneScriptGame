@@ -230,7 +230,7 @@
     <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Common\UtilityFunctions.cpp">
+    <ClCompile Include="..\..\src\Common\Utils.cpp">
       <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
@@ -422,7 +422,7 @@
     <ClInclude Include="..\..\src\Common\CrimsonCommon.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Common\UtilityFunctions.h">
+    <ClInclude Include="..\..\src\Common\Utils.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
