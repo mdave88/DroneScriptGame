@@ -82,9 +82,6 @@
     <Filter Include="Common\LuaManager">
       <UniqueIdentifier>{dd373305-9a36-48df-a804-cfddc647657d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\mem">
-      <UniqueIdentifier>{67a2c3f9-a674-4e93-acf0-53389f9124b7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Network\GameState.cpp">
@@ -217,12 +214,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\Player.cpp">
       <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\mem\MemPro.cpp">
-      <Filter>Common\mem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\mem\VMem.cpp">
-      <Filter>Common\mem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Common\ConstantManager.cpp">
       <Filter>Common</Filter>
@@ -409,12 +400,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\Player.h">
       <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Common\mem\MemPro.hpp">
-      <Filter>Common\mem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Common\mem\VMem.hpp">
-      <Filter>Common\mem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Common\ConstantManager.h">
       <Filter>Common</Filter>
