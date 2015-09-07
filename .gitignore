@@ -65,6 +65,7 @@ build/
 *.pgd
 *.rsp
 *.sbr
+*.bsc
 *.tlb
 *.tli
 *.tlh
