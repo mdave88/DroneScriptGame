@@ -14,7 +14,7 @@ namespace events
 class PlayerReadyEvent : public NetworkObject
 {
 public:
-	static enum PlayerReadyType { NETOBJ_PLAYER_READY = NETOBJ_NONE + 1100 };
+	enum PlayerReadyType { NETOBJ_PLAYER_READY = NETOBJ_NONE + 1100 };
 
 	std::string name;
 

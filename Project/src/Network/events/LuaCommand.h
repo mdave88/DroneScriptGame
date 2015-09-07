@@ -20,7 +20,7 @@ namespace events
 class LuaCommand : public NetworkObject
 {
 public:
-	static enum LuaCommandType { NETOBJ_LUACOMM = NETOBJ_NONE + 300 };
+	enum LuaCommandType { NETOBJ_LUACOMM = NETOBJ_NONE + 300 };
 
 	std::string command;
 

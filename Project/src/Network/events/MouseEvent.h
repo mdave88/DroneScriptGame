@@ -14,8 +14,8 @@ namespace events
 class MouseEvent : public InputEvent
 {
 public:
-	static enum MouseEventType { NETOBJ_MOUSE_MOVE = NETOBJ_INPUT + 100, NETOBJ_MOUSE_ACTION, NETOBJ_MOUSE_DRAG };
-	static enum MouseButtonState { BUTTON1_DOWN, BUTTON1_UP, BUTTON2_DOWN, BUTTON2_UP };
+	enum MouseEventType { NETOBJ_MOUSE_MOVE = NETOBJ_INPUT + 100, NETOBJ_MOUSE_ACTION, NETOBJ_MOUSE_DRAG };
+	enum MouseButtonState { BUTTON1_DOWN, BUTTON1_UP, BUTTON2_DOWN, BUTTON2_UP };
 
 	int x, y;
 	int button;

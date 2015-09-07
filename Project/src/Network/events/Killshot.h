@@ -20,7 +20,7 @@ namespace events
 class Killshot : public NetworkObject
 {
 public:
-	static enum InputEventType { NETOBJ_KILLSHOT = NETOBJ_NONE + 200 };
+	enum InputEventType { NETOBJ_KILLSHOT = NETOBJ_NONE + 200 };
 
 	std::string target;
 	std::string actorName;

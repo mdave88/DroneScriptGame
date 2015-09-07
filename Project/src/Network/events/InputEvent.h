@@ -22,9 +22,9 @@ namespace events
 class InputEvent : public NetworkObject
 {
 public:
-	static enum InputEventType { NETOBJ_INPUT = NETOBJ_NONE + 100 };
+	enum InputEventType { NETOBJ_INPUT = NETOBJ_NONE + 100 };
 
-	static enum InputEventAction
+	enum InputEventAction
 	{
 		INPUTEVENT_USE = 0,
 

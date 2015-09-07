@@ -19,7 +19,7 @@ namespace events
 class ChatMessage : public NetworkObject
 {
 public:
-	static enum ChatMessageType { NETOBJ_CHATMSG = NETOBJ_NONE + 400 };
+	enum ChatMessageType { NETOBJ_CHATMSG = (int)NETOBJ_NONE + 400 };
 
 	std::string message;
 

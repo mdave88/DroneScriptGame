@@ -14,7 +14,7 @@ namespace network
 class NetworkObject
 {
 public:
-	static enum NetworkObjectType { NETOBJ_NONE };
+	enum NetworkObjectType { NETOBJ_NONE };
 
 	ushort	type;
 	bool	m_isUpdated;

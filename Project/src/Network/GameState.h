@@ -29,7 +29,7 @@ namespace network
  */
 struct ClientData : public NetworkObject
 {
-	static enum ClientDataType { NETOBJ_CLIENTDATA = NETOBJ_NONE + 2 };
+	enum ClientDataType { NETOBJ_CLIENTDATA = NETOBJ_NONE + 2 };
 
 	ENetPeer*			m_pPeer;
 	Player*				m_pPlayer;
@@ -64,7 +64,7 @@ typedef std::map<ushort, ClientData> ClientTable;
 class GameState : public NetworkObject
 {
 public:
-	static enum GameStateType { NETOBJ_GAMESTATE = NETOBJ_NONE + 1 };
+	enum GameStateType { NETOBJ_GAMESTATE = NETOBJ_NONE + 1 };
 
 	GameState() : NetworkObject(NETOBJ_GAMESTATE), m_hasClientTableChanged(true) {}
 	GameState(const ClientTable& clientTable, NodeIdDirectory& updatedEntities);

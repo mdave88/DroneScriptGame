@@ -12,18 +12,18 @@ namespace events
 class KeyEvent : public InputEvent
 {
 public:
-	static enum KeyEventType { NETOBJ_KEY_DOWN = NETOBJ_INPUT + 1, NETOBJ_KEY_UP };
+	enum KeyEventType { NETOBJ_KEY_DOWN = NETOBJ_INPUT + 1, NETOBJ_KEY_UP };
 
 	char keyCode;
 	char isAltDown, isCtrlDown, isShiftDown;
 
 public:
 	KeyEvent(ushort type = NETOBJ_KEY_DOWN, uint8_t keyCode = 0, bool isAltDown = 0, bool isCtrlDown = 0, bool isShiftDown = 0)
-		: InputEvent(type),
-		  keyCode(keyCode),
-		  isAltDown(isAltDown),
-		  isCtrlDown(isCtrlDown),
-		  isShiftDown(isShiftDown)
+		: InputEvent(type)
+		, keyCode(keyCode)
+		, isAltDown(isAltDown)
+		, isCtrlDown(isCtrlDown)
+		, isShiftDown(isShiftDown)
 	{
 	}
 

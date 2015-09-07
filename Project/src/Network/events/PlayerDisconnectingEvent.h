@@ -14,7 +14,7 @@ namespace events
 class PlayerDisconnectingEvent : public NetworkObject
 {
 public:
-	static enum PlayerDCType { NETOBJ_PLAYER_DC = NETOBJ_NONE + 1000 };
+	enum PlayerDCType { NETOBJ_PLAYER_DC = NETOBJ_NONE + 1000 };
 
 	std::string	data;
 	uint connectionID;
