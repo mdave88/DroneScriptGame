@@ -458,7 +458,7 @@ void ModelMd5::registerMethodsToLua()
 	thisClass.def(constructor<>());
 
 	thisClass.scope [
-	    def("load", &ModelMd5::load)
+		def("load", &ModelMd5::load)
 	];
 
 	module(LuaManager::getInstance()->getState()) [ thisClass ];

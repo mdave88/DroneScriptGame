@@ -112,7 +112,11 @@ void Entity::registerMethodsToLua()
 {
 	using namespace luabind;
 
+#ifdef USE_LUABIND_DEBOOSTIFIED
+	class_<Entity, Node> thisClass("Entity");
+#else
 	class_<Entity, NodePtr, bases<Node>> thisClass("Entity");
+#endif
 	thisClass.def(constructor<>());
 	thisClass.def(constructor<vec3>());
 

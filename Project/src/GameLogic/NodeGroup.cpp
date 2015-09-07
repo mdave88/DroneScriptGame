@@ -81,7 +81,7 @@ void NodeGroup::addSPWithName(NodePtr& element, const std::string& name, const b
 	element->setName(nodeName);
 	element->setId(elementIndex);
 
-	s_elementIndex = EngineCore::getInstance()->getNodeIdDirectory().size();
+	s_elementIndex = static_cast<uint16_t>(EngineCore::getInstance()->getNodeIdDirectory().size());
 }
 
 void NodeGroup::removeByName(const std::string& name)
@@ -171,7 +171,11 @@ void NodeGroup::registerMethodsToLua()
 {
 	using namespace luabind;
 
+#ifdef USE_LUABIND_DEBOOSTIFIED
+	class_<NodeGroup, Node> thisClass("NodeGroup");
+#else
 	class_<NodeGroup, NodePtr, bases<Node>> thisClass("NodeGroup");
+#endif
 	thisClass.def(constructor<>());
 	REG_FUNC("add", &NodeGroup::add);
 	REG_FUNC("addSP", &NodeGroup::addSP);

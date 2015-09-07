@@ -68,7 +68,11 @@ void SoundEmitter::registerMethodsToLua()
 {
 	using namespace luabind;
 
+#ifdef USE_LUABIND_DEBOOSTIFIED
+	class_<SoundEmitter, Node> thisClass("SoundEmitter");
+#else
 	class_<SoundEmitter, NodePtr, bases<Node>> thisClass("SoundEmitter");
+#endif
 	thisClass.def(constructor<>());
 	thisClass.def(constructor<std::string>());
 	thisClass.def(constructor<std::string, vec3>());

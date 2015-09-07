@@ -83,7 +83,11 @@ void Player::registerMethodsToLua()
 {
 	using namespace luabind;
 
+#ifdef USE_LUABIND_DEBOOSTIFIED
+	class_<Player, Entity> thisClass("Player");
+#else
 	class_<Player, NodePtr, bases<Entity>> thisClass("Player");
+#endif
 	thisClass.def(constructor<>());
 	thisClass.def(constructor<vec3>());
 	thisClass.def(constructor<vec3, int>());

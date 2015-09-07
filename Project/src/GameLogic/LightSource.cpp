@@ -290,15 +290,19 @@ void LightSource::registerMethodsToLua()
 {
 	using namespace luabind;
 
+#ifdef USE_LUABIND_DEBOOSTIFIED
+	class_<LightSource, Entity> thisClass("LightSource");
+#else
 	class_<LightSource, NodePtr, bases<Entity>> thisClass("LightSource");
+#endif
 	thisClass.def(constructor<GLuint>());
 	thisClass.def(constructor<GLuint, vec3, vec3, vec3, vec3>());
 
 	thisClass.enum_("LightType")
 	[
-	    value("LIGHTTYPE_DIRECTIONAL", 0),
-	    value("LIGHTTYPE_POINT", 1),
-	    value("LIGHTTYPE_SPOT", 2)
+		value("LIGHTTYPE_DIRECTIONAL", 0),
+		value("LIGHTTYPE_POINT", 1),
+		value("LIGHTTYPE_SPOT", 2)
 	];
 
 	REG_ATTR("type", &LightSource::m_type);
