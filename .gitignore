@@ -216,4 +216,21 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 *.tlog
-libs
+/Project/libs/ConsoleGL.lib
+/Project/libs/ConsoleGLd.lib
+/Project/libs/enet.lib
+/Project/libs/enetd.lib
+/Project/libs/ImageLoad.lib
+/Project/libs/ImageLoadd.lib
+/Project/libs/lua.lib
+/Project/libs/luabind-deboostified.lib
+/Project/libs/luabind-deboostifiedd.lib
+/Project/libs/luabind.lib
+/Project/libs/luabindd.lib
+/Project/libs/luad.lib
+/Project/libs/LuaLanes.lib
+/Project/libs/LuaLanesd.lib
+/Project/libs/MyGUI.OpenGLPlatform.lib
+/Project/libs/MyGUI.OpenGLPlatform_d.lib
+/Project/libs/MyGUIEngineStatic.lib
+/Project/libs/MyGUIEngineStatic_d.lib
