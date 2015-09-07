@@ -74,6 +74,7 @@ build/
 *.vspscc
 *.vssscc
 .builds
+*.idb
 *.pidb
 *.log
 *.scc
