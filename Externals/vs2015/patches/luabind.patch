@@ -1,0 +1,26 @@
+diff --git a/luabind/detail/call_function.hpp b/luabind/detail/call_function.hpp
+index 885e08f..51d8ec8 100644
+--- a/luabind/detail/call_function.hpp
++++ b/luabind/detail/call_function.hpp
+@@ -249,7 +249,7 @@ namespace luabind
+ 					rhs.m_called = true;
+ 				}
+ 
+-				~proxy_function_void_caller()
++				~proxy_function_void_caller() noexcept(false)
+ 				{
+ 					if (m_called) return;
+ 
+diff --git a/luabind/detail/call_member.hpp b/luabind/detail/call_member.hpp
+index de8d563..557db19 100644
+--- a/luabind/detail/call_member.hpp
++++ b/luabind/detail/call_member.hpp
+@@ -237,7 +237,7 @@ namespace luabind
+ 					rhs.m_called = true;
+ 				}
+ 
+-				~proxy_member_void_caller()
++				~proxy_member_void_caller() noexcept(false)
+ 				{
+ 					if (m_called) return;
+ 
