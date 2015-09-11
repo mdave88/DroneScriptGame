@@ -1,9 +1,6 @@
+#pragma once
 
 #define NOMINMAX
-
-#ifndef CONNECTION_HPP
-#define CONNECTION_HPP
-
 
 #include <stdint.h>
 #include <iostream>
@@ -332,5 +329,3 @@ void send(T& t, ENetPeer* peer, short compressionScheme = 1)
 }
 
 } // namespace network
-
-#endif // CONNECTION_HPP

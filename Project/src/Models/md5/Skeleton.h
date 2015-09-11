@@ -1,6 +1,4 @@
-
-#ifndef SKELETON_H
-#define SKELETON_H
+#pragma once
 
 namespace models
 {
@@ -40,5 +38,3 @@ public:
 };
 
 } // namespace models
-
-#endif // SKELETON_H

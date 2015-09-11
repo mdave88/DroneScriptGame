@@ -1,6 +1,4 @@
-
-#ifndef POLYTEX_H
-#define POLYTEX_H
+#pragma once
 
 struct poly3
 {
@@ -33,4 +31,3 @@ struct texCoord
 	texCoord(float u = 0.0f, float v = 0.0f) : u(u), v(v) {}
 };
 
-#endif

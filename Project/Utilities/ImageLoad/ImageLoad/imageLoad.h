@@ -1,5 +1,4 @@
-#ifndef IMAGELOAD_H
-#define IMAGELOAD_H
+#pragma once
 
 //OpenGL
 #ifdef WIN32
@@ -28,4 +27,3 @@ bool loadCubeMap(const std::string& mapname, const std::string& extension, GLuin
 bool isDevILDebugEnabled();
 void setDevILDebug(bool debugEnabled);
 
-#endif

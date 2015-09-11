@@ -1,6 +1,4 @@
-
-#ifndef PLAYER_DISCONNECTING_EVENT_H
-#define PLAYER_DISCONNECTING_EVENT_H
+#pragma once
 
 #include <iostream>
 
@@ -38,4 +36,3 @@ public:
 
 //BOOST_CLASS_EXPORT(network::events::PlayerDisconnectingEvent);
 
-#endif // PLAYER_DISCONNECTING_EVENT_H

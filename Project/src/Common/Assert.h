@@ -1,6 +1,4 @@
-
-#ifndef ASSERT_H
-#define ASSERT_H
+#pragma once
 
 #ifdef _DEBUG
 #define ASSERTS_ENABLED
@@ -20,5 +18,3 @@ void gameAssert(const char*, const char*, int, const char*, ...);
 #define GX_DEBUG_BREAK_IF(cond)
 
 #endif
-
-#endif // ASSERT_H

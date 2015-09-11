@@ -1,6 +1,4 @@
-
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#pragma once
 
 #define NOMINMAX
 
@@ -105,5 +103,3 @@ private:
 } // namespace network
 
 //BOOST_CLASS_EXPORT_KEY(network::GameState);
-
-#endif // GAMESTATE_HPP

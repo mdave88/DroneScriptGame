@@ -1,6 +1,4 @@
-
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 
 #define	PI 3.14159263f
 #define PIHALF 1.57079632679f
@@ -178,7 +176,3 @@ public:
 //
 //	bool isZeroVector() const;
 //};
-
-
-
-#endif

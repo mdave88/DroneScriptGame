@@ -1,6 +1,4 @@
-
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include "GameLogic/Node.h"
 
@@ -23,5 +21,3 @@ private:
 };
 
 typedef std::shared_ptr<Camera> CameraPtr;
-
-#endif // CAMERA_H

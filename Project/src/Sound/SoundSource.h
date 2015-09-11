@@ -1,6 +1,4 @@
-
-#ifndef SOUND_H
-#define SOUND_H
+#pragma once
 
 #include <AL/al.h>
 #include <AL/alc.h>
@@ -50,6 +48,3 @@ protected:
 };
 
 typedef std::shared_ptr<SoundSource> SoundSourcePtr;
-
-
-#endif // SOUND_H

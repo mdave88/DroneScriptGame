@@ -1,6 +1,4 @@
-
-#ifndef CONFIGS_H
-#define CONFIGS_H
+#pragma once
 
 class Configs
 {
@@ -20,4 +18,3 @@ public:
 	bool loadConfigs(const std::string& filename = "settings");
 };
 
-#endif // CONFIGS_H

@@ -1,4 +1,3 @@
-
 #pragma once
 
 
@@ -23,7 +22,6 @@
 #pragma warning (disable:4308)	// boost
 #pragma warning (disable:4244)	// boost
 #endif
-
 
 
 #define GX_DEBUG_INFO

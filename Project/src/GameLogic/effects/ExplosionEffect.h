@@ -1,9 +1,6 @@
-
-#ifndef EXPLOSION_EFFECT_H
-#define EXPLOSION_EFFECT_H
+#pragma once
 
 #include "GameLogic/Node.h"
-
 
 namespace physics
 {
@@ -33,5 +30,3 @@ private:
 typedef std::shared_ptr<ExplosionEffect> ExplosionEffectPtr;
 
 } // namespace effects
-
-#endif // EXPLOSION_EFFECT_H

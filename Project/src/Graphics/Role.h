@@ -1,6 +1,4 @@
-#ifndef ROLE_H
-#define ROLE_H
-
+#pragma once
 #include <vector>
 
 #include "Graphics/Material.h"
@@ -36,5 +34,3 @@ private:
 };
 
 } // namespace graphics
-
-#endif // ROLE_H

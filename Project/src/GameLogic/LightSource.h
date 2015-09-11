@@ -5,8 +5,7 @@
 *      Author: dave
 */
 
-#ifndef LIGHTSOURCE_H
-#define LIGHTSOURCE_H
+#pragma once
 
 #include "Entity.h"
 
@@ -121,5 +120,3 @@ LightSourcePtr getLightSource(const std::string& name);
 LightSourceDirectory& getLightSourceDirectory();
 
 BOOST_CLASS_EXPORT_KEY(LightSource);
-
-#endif // LIGHTSOURCE_H

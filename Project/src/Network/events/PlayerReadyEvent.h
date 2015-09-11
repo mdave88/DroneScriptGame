@@ -1,6 +1,4 @@
-
-#ifndef PLAYER_READY_EVENT_H
-#define PLAYER_READY_EVENT_H
+#pragma once
 
 #include <iostream>
 
@@ -34,5 +32,3 @@ public:
 } // namespace network
 
 //BOOST_CLASS_EXPORT(network::events::PlayerReadyEvent);
-
-#endif // PLAYER_READY_EVENT_H

@@ -1,8 +1,6 @@
-
 #define NOMINMAX
 
-#ifndef KILLSHOT_H
-#define KILLSHOT_H
+#pragma once
 
 #include "Network/NetworkObject.h"
 
@@ -77,5 +75,3 @@ public:
 } // namespace network
 
 //BOOST_CLASS_EXPORT(network::events::Killshot);
-
-#endif // KILLSHOT_H

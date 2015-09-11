@@ -1,6 +1,4 @@
-
-#ifndef EFFECT_MANAGER_H
-#define EFFECT_MANAGER_H
+#pragma once
 
 #include "GameLogic/Node.h"
 
@@ -32,5 +30,3 @@ protected:
 };
 
 } // namespace effects
-
-#endif // BULLET_HOLE_MANAGER_H

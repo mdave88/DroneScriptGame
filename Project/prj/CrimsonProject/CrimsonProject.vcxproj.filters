@@ -49,12 +49,6 @@
     <Filter Include="Sound">
       <UniqueIdentifier>{4cb9b3f0-c511-4391-a6b6-93a2daaaa8b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\Graphics">
-      <UniqueIdentifier>{afde1630-fbcf-4896-85ba-25a56ec71894}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameLogic\Graphics\Shaders">
-      <UniqueIdentifier>{a96d9be2-de27-44ed-b93c-5fc3587e419d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{d4e34cea-4429-4bd5-9ae1-222bd97fd5aa}</UniqueIdentifier>
     </Filter>
@@ -81,6 +75,12 @@
     </Filter>
     <Filter Include="Common\LuaManager">
       <UniqueIdentifier>{dd373305-9a36-48df-a804-cfddc647657d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{afde1630-fbcf-4896-85ba-25a56ec71894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Shaders">
+      <UniqueIdentifier>{a96d9be2-de27-44ed-b93c-5fc3587e419d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,19 +118,19 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\Material.cpp">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\RenderContext.cpp">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\Role.cpp">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\ShadedMesh.cpp">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\shaders\Shader.cpp">
-      <Filter>GameLogic\Graphics\Shaders</Filter>
+      <Filter>Graphics\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\Camera.cpp">
       <Filter>GameLogic</Filter>
@@ -296,22 +296,22 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\CrimsonGraphics.h">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\Material.h">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\RenderContext.h">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\Role.h">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\ShadedMesh.h">
-      <Filter>GameLogic\Graphics</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\shaders\Shader.h">
-      <Filter>GameLogic\Graphics\Shaders</Filter>
+      <Filter>Graphics\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\Camera.h">
       <Filter>GameLogic</Filter>

@@ -6,19 +6,17 @@
 
 Entity::Entity(const vec3& pos)
 	: Node(pos)
-	, m_eyePos(0, 0, 0)
+#ifdef CLIENT_SIDE
 	, m_animationFrameTime(0)
 	, m_animationFrame(0)
-#ifdef CLIENT_SIDE
 	, m_shadedMesh(graphics::ShadedMeshPtr())
 #endif
 {
 }
 
 Entity::Entity(const std::string& shadedMeshName, const vec3& pos)
-	:	m_eyePos(0, 0, 0)
 #ifdef CLIENT_SIDE
-	, m_animationFrameTime(0)
+	: m_animationFrameTime(0)
 	, m_animationFrame(0)
 	, m_shadedMeshName(shadedMeshName)
 #endif
@@ -45,38 +43,6 @@ void Entity::render(const graphics::RenderContext& context)
 		m_shadedMesh->render(context, this);
 	}
 #endif
-}
-
-// getters-setters
-bool Entity::isItem() const
-{
-	return false;
-}
-bool Entity::isUnit() const
-{
-	return false;
-}
-bool Entity::isPlayer() const
-{
-	return false;
-}
-bool Entity::isMesh() const
-{
-	return false;
-}
-bool Entity::isProjectile() const
-{
-	return false;
-}
-
-vec3 Entity::getEyePos() const
-{
-	return m_pos + m_eyePos;
-}
-
-void Entity::setEyePos(const vec3& eyePos)
-{
-	m_eyePos = eyePos;
 }
 
 float Entity::getDistance(Entity* entity) const
@@ -119,11 +85,6 @@ void Entity::registerMethodsToLua()
 #endif
 	thisClass.def(constructor<>());
 	thisClass.def(constructor<vec3>());
-
-	REG_FUNC("isUnit", &Entity::isUnit);
-	REG_FUNC("isPlayer", &Entity::isPlayer);
-	REG_FUNC("isItem", &Entity::isItem);
-	REG_FUNC("isProjectile", &Entity::isProjectile);
 
 	REG_FUNC("getDistance", &Entity::getDistance);
 

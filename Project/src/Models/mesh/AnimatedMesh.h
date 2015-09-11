@@ -1,6 +1,4 @@
-
-#ifndef ANIMATED_MESH_H
-#define ANIMATED_MESH_H
+#pragma once
 
 #include "Models/mesh/Mesh.h"
 
@@ -80,5 +78,3 @@ protected:
 };
 
 } //namespace models
-
-#endif	// ANIMATED_MESH_H

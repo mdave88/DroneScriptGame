@@ -1,5 +1,4 @@
-#ifndef SHADED_MESH_H
-#define SHADED_MESH_H
+#pragma once
 
 #include "Graphics/Role.h"
 #include "Models/mesh/Mesh.h"
@@ -38,5 +37,3 @@ protected:
 TextureDirectory& getTextureDirectory();
 GLuint getTexture(const std::string& name);
 } // namespace graphics
-
-#endif // SHADED_MESH_H

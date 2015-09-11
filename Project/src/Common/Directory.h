@@ -1,6 +1,4 @@
-
-#ifndef DIRECTORY_H
-#define DIRECTORY_H
+#pragma once
 
 #include <map>
 #include <memory>
@@ -106,5 +104,3 @@ Type* getElement(std::map<const std::string, Type>& map, const std::string& name
 
 	return nullptr;
 }
-
-#endif

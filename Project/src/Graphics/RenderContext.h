@@ -1,5 +1,4 @@
-#ifndef RENDERCONTEXT_H
-#define RENDERCONTEXT_H
+#pragma once
 
 #pragma warning( disable : 4512 ) // 'assignment operator could not be generated' because of const member
 
@@ -117,5 +116,3 @@ public:
 #pragma warning( default : 4512 )
 
 } // namespace graphics
-
-#endif // RENDERCONTEXT_H

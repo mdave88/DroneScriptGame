@@ -1,6 +1,4 @@
-
-#ifndef NODE_H
-#define NODE_H
+#pragma once
 
 #include "Graphics/RenderContext.h"
 #include "Common/luamanager/LuaManager.h"
@@ -153,6 +151,3 @@ protected:
 
 	uint8_t		m_networkPriority;
 };
-
-
-#endif // NODE_H

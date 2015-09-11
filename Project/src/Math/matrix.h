@@ -1,6 +1,4 @@
-
-#ifndef MATRIX_H
-#define MATRIX_H
+#pragma once
 
 #define vec3ToFloatA4(v,fa)	fa[0]=v.x; fa[1]=v.y; fa[2]=v.z; fa[3]=0;
 
@@ -83,5 +81,3 @@ public:
 };
 
 extern vec3 transformVector(const vec3& v, const vec3& trans, vec3 rot);
-
-#endif

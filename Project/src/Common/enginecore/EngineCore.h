@@ -1,6 +1,4 @@
-
-#ifndef ENGINECORE_H
-#define ENGINECORE_H
+#pragma once
 
 #include "Common/Configs.h"
 #include "Common/luamanager/LuaManager.h"
@@ -150,5 +148,3 @@ private:
 	SoundDirectory				m_soundDirectory;
 #endif
 };
-
-#endif // ENGINECORE_H

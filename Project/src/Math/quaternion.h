@@ -1,6 +1,4 @@
-
-#ifndef QUAT_H
-#define QUAT_H
+#pragma once
 
 class Quat
 {
@@ -48,5 +46,3 @@ public:
 		return os << q.s << " + " << q.x << "i + " << q.y << "j + " << q.z << "k";
 	}
 };
-
-#endif

@@ -1,8 +1,6 @@
-
 #define NOMINMAX
 
-#ifndef MOUSE_EVENT_H
-#define MOUSE_EVENT_H
+#pragma once
 
 #include "InputEvent.h"
 
@@ -68,5 +66,3 @@ public:
 } // namespace network
 
 //BOOST_CLASS_EXPORT(network::events::MouseEvent);
-
-#endif

@@ -1,6 +1,4 @@
-
-#ifndef OBJECT_H
-#define OBJECT_H
+#pragma once
 
 #include "Models/mesh/PolyTex.h"
 
@@ -84,4 +82,3 @@ public:
 
 } // namespace models
 
-#endif // OBJECT_H

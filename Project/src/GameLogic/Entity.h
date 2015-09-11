@@ -1,5 +1,4 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#pragma once
 
 #include "GameLogic/Node.h"
 
@@ -18,23 +17,10 @@ public:
 
 	virtual ~Entity();
 
-
 	virtual void render(const graphics::RenderContext& context);
-
 	virtual void animate(const float dt);
 
 	virtual float getDistance(Entity* entity) const;
-
-
-	// getters-setters
-	virtual bool isItem() const;
-	virtual bool isUnit() const;
-	virtual bool isPlayer() const;
-	virtual bool isMesh() const;
-	virtual bool isProjectile() const;
-
-	virtual vec3 getEyePos() const;
-	virtual void setEyePos(const vec3& pos);
 
 #ifdef CLIENT_SIDE
 	virtual void setShadedMesh(graphics::ShadedMeshPtr shadedMesh);
@@ -49,8 +35,6 @@ public:
 	static void registerMethodsToLua();
 
 protected:
-	vec3					m_eyePos;
-
 	float					m_animationFrame;
 	float					m_animationFrameTime;
 
@@ -63,5 +47,3 @@ protected:
 
 
 BOOST_CLASS_EXPORT_KEY(Entity);
-
-#endif //ENTITY_H

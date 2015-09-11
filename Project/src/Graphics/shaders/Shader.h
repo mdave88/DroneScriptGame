@@ -1,6 +1,4 @@
-
-#ifndef SHADER_H
-#define SHADER_H
+#pragma once
 
 class Camera;
 
@@ -65,5 +63,3 @@ ShaderPtr			getEffect(const std::string& name);
 EffectDirectory&	getEffectDirectory();
 
 } // namespace graphics
-
-#endif // SHADER_H

@@ -1,6 +1,4 @@
-
-#ifndef MESH_H
-#define MESH_H
+#pragma once
 
 #include "Models/mesh/Object.h"
 
@@ -67,5 +65,3 @@ bool calculateTangent(const vec3& v1, const vec3& v2, const vec3& v3, const texC
 bool calculateTangent(const Vertex& v1, const Vertex& v2, const Vertex& v3, vec3& tangent, vec3& bitangent);
 
 } // namespace models
-
-#endif	// MESH_H

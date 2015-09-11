@@ -1,6 +1,4 @@
-
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include "GameLogic/Entity.h"
 
@@ -40,5 +38,3 @@ protected:
 
 	//std::set<uint16_t> m_activeInputEvents;
 };
-
-#endif

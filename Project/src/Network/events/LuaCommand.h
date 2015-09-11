@@ -1,8 +1,6 @@
-
 #define NOMINMAX
 
-#ifndef LUA_COMMAND_H
-#define LUA_COMMAND_H
+#pragma once
 
 #include "Network/NetworkObject.h"
 
@@ -40,5 +38,3 @@ public:
 } // namespace network
 
 //BOOST_CLASS_EXPORT(network::events::LuaCommand);
-
-#endif // LUA_COMMAND_H

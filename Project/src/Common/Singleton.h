@@ -1,6 +1,4 @@
-
-#ifndef SINGLETON_H
-#define SINGLETON_H
+#pragma once
 
 template <class T>
 class Singleton
@@ -18,12 +16,9 @@ private:
 	static T* s_instance;
 };
 
-//////////////////////////////////////////////////////////////////////////
 
 template <class T>
 T* Singleton<T>::s_instance = 0;
-
-//////////////////////////////////////////////////////////////////////////
 
 template <class T>
 T* Singleton<T>::getInstance()
@@ -35,15 +30,11 @@ T* Singleton<T>::getInstance()
 	return s_instance;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 template <class T>
 bool Singleton<T>::hasInstance()
 {
 	return s_instance != 0;
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 template <class T>
 void Singleton<T>::destroyInstance()
@@ -52,8 +43,6 @@ void Singleton<T>::destroyInstance()
 	s_instance = 0;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 template <class T>
 Singleton<T>::Singleton()
 {
@@ -61,14 +50,8 @@ Singleton<T>::Singleton()
 	s_instance = (T*)this;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 template <class T>
 Singleton<T>::~Singleton()
 {
 	s_instance = 0;
 }
-
-///////////////////////////////////////////////////////////////////////////////
-
-#endif // SINGLETON_H

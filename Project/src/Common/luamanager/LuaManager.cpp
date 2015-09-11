@@ -183,19 +183,6 @@ int LuaManager::registerEntity(const Entity& entity, const std::string& tableNam
 	luabind::globals(m_state)["entityTableSize"] = id + 1;
 	luabind::globals(m_state)["entityTable"] [ entity.getName() ] = entity;
 
-	if (entity.isUnit())
-	{
-		registerActorToTable("unitTable", entity, entity.getName());
-		if (entity.isPlayer())
-		{
-			registerActorToTable("playerTable", entity, entity.getName());
-		}
-	}
-	else if (entity.isItem())
-	{
-		registerActorToTable("itemTable", entity, entity.getName());
-	}
-
 	if (!tableName.empty())
 	{
 		registerActorToTable(tableName, entity, entity.getName());
@@ -218,19 +205,6 @@ int LuaManager::registerEntitySP(const EntityPtr& entity, const std::string& tab
 	const int entityTableSize = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
 	luabind::globals(m_state)["entityTableSize"] = entityTableSize + 1;
 	luabind::globals(m_state)["entityTable"] [ entity->getName() ] = entity;
-
-	if (entity->isUnit())
-	{
-		registerActorToTable("unitTable", entity, entity->getName());
-		if (entity->isPlayer())
-		{
-			registerActorToTable("playerTable", entity, entity->getName());
-		}
-	}
-	else if (entity->isItem())
-	{
-		registerActorToTable("itemTable", entity, entity->getName());
-	}
 
 	if (!tableName.empty())
 	{
@@ -255,19 +229,6 @@ void LuaManager::unregisterEntity(const Entity& entity, const std::string& table
 	luabind::globals(m_state)["entityTableSize"] = id - 1;
 	luabind::globals(m_state)["entityTable"] [ entity.getName() ] = luabind::nil;
 
-	if (entity.isUnit())
-	{
-		unregisterActorFromTable("unitTable", entity.getName());
-		if (entity.isPlayer())
-		{
-			unregisterActorFromTable("playerTable", entity.getName());
-		}
-	}
-	else if (entity.isItem())
-	{
-		unregisterActorFromTable("itemTable", entity.getName());
-	}
-
 	if (!tableName.empty())
 	{
 		unregisterActorFromTable(tableName, entity.getName());
@@ -286,19 +247,6 @@ void LuaManager::unregisterEntitySP(const EntityPtr& entity, const std::string& 
 	luabind::globals(m_state)["entityTableSize"] = entityTableSize - 1;
 	luabind::globals(m_state)["entityTable"] [ entity->getName() ] = luabind::nil;
 
-	if (entity->isUnit())
-	{
-		unregisterActorFromTable("unitTable", entity->getName());
-		if (entity->isPlayer())
-		{
-			unregisterActorFromTable("playerTable", entity->getName());
-		}
-	}
-	else if (entity->isItem())
-	{
-		unregisterActorFromTable("itemTable", entity->getName());
-	}
-
 	if (!tableName.empty())
 	{
 		unregisterActorFromTable(tableName, entity->getName());
@@ -309,8 +257,8 @@ bool LuaManager::functionExist(const std::string& functionName)
 {
 	using namespace luabind;
 
-	object g = globals(m_state);
-	object func = g[ functionName.c_str() ];
+	const object g = globals(m_state);
+	const object func = g[ functionName.c_str() ];
 
 	return (func && type(func) == LUA_TFUNCTION);
 }

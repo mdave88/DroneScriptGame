@@ -1,8 +1,6 @@
-
 #define NOMINMAX
 
-#ifndef INPUT_EVENT_H
-#define INPUT_EVENT_H
+#pragma once
 
 #include "Network/NetworkObject.h"
 
@@ -76,5 +74,3 @@ public:
 } // namespace network
 
 //BOOST_CLASS_EXPORT_KEY(network::events::InputEvent);
-
-#endif	// INPUT_EVENT_H

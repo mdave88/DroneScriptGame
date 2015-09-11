@@ -1,6 +1,4 @@
-
-#ifndef MODELMD5_H
-#define MODELMD5_H
+#pragma once
 
 #include <imageLoad.h>
 
@@ -300,4 +298,3 @@ public:
 
 } // namespace models
 
-#endif // MODELMD5_H

@@ -1,9 +1,7 @@
 /*
  thanks to www.spacesimulator.net
  */
-
-#ifndef MODEL3DS_H
-#define MODEL3DS_H
+#pragma once
 
 #include <imageLoad.h>
 
@@ -111,5 +109,3 @@ protected:
 };
 
 } // namespace models
-
-#endif // MODEL3DS_H

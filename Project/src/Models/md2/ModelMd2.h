@@ -1,6 +1,4 @@
-
-#ifndef MODELMD2_H
-#define MODELMD2_H
+#pragma once
 
 #include <imageLoad.h>
 
@@ -140,5 +138,3 @@ protected:
 };
 
 } // namespace models
-
-#endif // MODELMD2_H

@@ -1,6 +1,4 @@
-
-#ifndef SERIALIZATION_DEFS_H
-#define SERIALIZATION_DEFS_H
+#pragma once
 
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
@@ -208,6 +206,3 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribmask, uint& attri
 #define UP_P(param)							updateProperty(this->param, other.param, serverSide)
 #define UP_CP(param)						param.updateProperties(other, serverSide)
 #define UP_CP_SPTR(param, type)				updateComplexPropertySP<type>(this->param, other.param, serverSide)
-
-
-#endif // SERIALIZATION_DEFS_H

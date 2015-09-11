@@ -1,6 +1,4 @@
-
-#ifndef CONSTANT_MANAGER_H
-#define CONSTANT_MANAGER_H
+#pragma once
 
 #include "Common/Directory.h"
 #include "Common/Singleton.h"
@@ -106,5 +104,3 @@ inline const std::string& CONST_STR(const std::string& name)
 {
 	return ConstantManager::getInstance()->getStringConstant(name);
 }
-
-#endif // CONSTANT_MANAGER_H

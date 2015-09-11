@@ -1,6 +1,4 @@
-
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#pragma once
 
 #include "Graphics/shaders/Shader.h"
 
@@ -45,5 +43,3 @@ private:
 #pragma warning( default : 4512 )
 
 } // namespace graphics
-
-#endif // MATERIAL_H

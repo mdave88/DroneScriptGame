@@ -1,6 +1,4 @@
-
-#ifndef NODEGROUP_H
-#define NODEGROUP_H
+#pragma once
 
 #include "GameLogic/Node.h"
 
@@ -57,5 +55,3 @@ protected:
 	bool			m_registerNodes;
 	NodeDirectory	m_subnodes;
 };
-
-#endif // NODEGROUP_H

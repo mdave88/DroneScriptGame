@@ -1,7 +1,6 @@
+#pragma once
 
 #define NOMINMAX
-
-#define CLIENT_SIDE
 
 //#define ENABLE_MYGUI
 

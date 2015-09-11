@@ -1,6 +1,4 @@
-
-#ifndef NETWORK_OBJECT_H
-#define NETWORK_OBJECT_H
+#pragma once
 
 namespace network
 {
@@ -32,5 +30,3 @@ public:
 };
 
 } // namespace network
-
-#endif // NETWORK_OBJECT_HPP

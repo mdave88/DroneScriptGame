@@ -1,6 +1,4 @@
-
-#ifndef SOUND_EFFECT_H
-#define SOUND_EFFECT_H
+#pragma once
 
 #include "GameLogic/Node.h"
 #include "Sound/SoundSource.h"
@@ -34,5 +32,3 @@ private:
 typedef std::shared_ptr<SoundEmitter> SoundEmitterPtr;
 
 } //namespace effects
-
-#endif // SOUND_EFFECT_H
