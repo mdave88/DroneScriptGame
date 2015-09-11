@@ -13,6 +13,11 @@
 
 #include <time.h>
 
+// rarely changed header files -> precompiled header
+#include "Common/GameDefines.h"
+#include "Common/Assert.h"
+#include "Common/Singleton.h"
+
 #ifdef CLIENT_SIDE
 // Glew
 #include <GL/glew.h>
@@ -23,10 +28,6 @@
 #include <GL/glut.h>
 #endif
 
-// rarely changed header files -> precompiled header
-#include "Common/GameDefines.h"
-#include "Common/Assert.h"
-#include "Common/Singleton.h"
 #include "Common/Directory.h"
 
 #include "Common/Utils.h"

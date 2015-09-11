@@ -9,8 +9,6 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\$(ProjectName)\;$(SolutionDir)\..\Externals\$(ProjectName)\include\;$(SolutionDir)\..\Externals\lua\src\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

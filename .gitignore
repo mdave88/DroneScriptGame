@@ -235,3 +235,5 @@ pip-log.txt
 /Project/libs/MyGUI.OpenGLPlatform_d.lib
 /Project/libs/MyGUIEngineStatic.lib
 /Project/libs/MyGUIEngineStatic_d.lib
+/Project/libs/CrimsonClientd.lib
+*.exp

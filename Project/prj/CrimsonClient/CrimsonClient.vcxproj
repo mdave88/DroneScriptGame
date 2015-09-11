@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -18,9 +18,7 @@
     <ClCompile Include="..\..\src\Project\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Externals\include\MyGUI\Common\Input\InputConverter.h" />
     <ClInclude Include="..\..\src\Client\Client.h" />
-    <ClInclude Include="..\..\src\GUI\OpenGLImageLoader_Devil.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3AFC5430-2AA3-4C42-A479-23570F5EE183}</ProjectGuid>
@@ -33,50 +31,41 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="..\..\..\Externals\vs2015\ExternalCommon.props" />
+    <Import Project="..\..\Common.props" />
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="..\..\..\Externals\vs2015\ExternalCommon.props" />
+    <Import Project="..\..\Common.props" />
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;MYGUI_OPENGL_PLATFORM;MYGUI_STATIC;GLEW_STATIC;CLIENT_SIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\luabind\;$(SolutionDir)\..\Externals\lua\src\;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\..\Externals\AL\;$(SolutionDir)\src\;$(SolutionDir)\..\Externals\enet\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <BrowseInformation>true</BrowseInformation>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>false</MinimalRebuild>
-      <PrecompiledHeaderFile>GameStdAfx.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>_DEBUG;CLIENT_SIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\libs\;$(SolutionDir)\..\Externals\lib\;$(SolutionDir)\..\Externals\include\Physx\lib\Win32\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua_5.3d.lib;luabindd.lib;imageloadd.lib;ConsoleGLd.lib;enetd.lib;ws2_32.lib;winmm.lib;glut32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;libboost_serialization-vc120-mt-gd-1_56.lib;libboost_zlib-vc120-mt-gd-1_56.lib;libboost_filesystem-vc120-mt-gd-1_56.lib;MyGUI.OpenGLPlatform_d.lib;MyGUIEngineStatic_d.lib;freetype2311_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>enetd.lib;luad.lib;luabindd.lib;imageloadd.lib;ConsoleGLd.lib;freetype2311_D.lib;libboost_serialization-vc140-mt-gd-1_59.lib;libboost_zlib-vc140-mt-gd-1_59.lib;libboost_filesystem-vc140-mt-gd-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSBR>true</PreserveSBR>
@@ -84,23 +73,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;MYGUI_OPENGL_PLATFORM;MYGUI_STATIC;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\\include;$(SolutionDir)\..\Externals\\include\AL;$(SolutionDir)\..\Externals\\include\GL;$(SolutionDir)\..\Externals\\include\MyGui;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;$(SolutionDir)\CrimsonCommon\src\;$(SolutionDir)\CrimsonConsole\;$(SolutionDir)\CrimsonMath\;$(SolutionDir)\CrimsonPhysics\src\;$(SolutionDir)\CrimsonGameLogic\src\;$(SolutionDir)\CrimsonModels\;$(SolutionDir)\CrimsonGraphics\src\;$(SolutionDir)\CrimsonNetwork\src\;$(SolutionDir)\CrimsonBSP\src\;$(SolutionDir)\CrimsonSound\;$(SolutionDir)\..\Externals\\include\Physx\NxCharacter\include;$(SolutionDir)\..\Externals\\include\Physx\Cooking\include;$(SolutionDir)\..\Externals\\include\Physx\Physics\include;$(SolutionDir)\..\Externals\\include\Physx\Foundation\include;$(SolutionDir)\..\Externals\\include\Physx\PhysXLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\libs\;$(SolutionDir)\..\Externals\lib\;$(SolutionDir)\..\Externals\include\Physx\lib\Win32\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>luabind.lib;imageload.lib;ConsoleGL.lib;CrimsonMath.lib;CrimsonSound.lib;CrimsonModels.lib;CrimsonGraphics.lib;CrimsonPhysics.lib;CrimsonConsole.lib;CrimsonNetwork.lib;CrimsonGameLogic.lib;CrimsonBSP.lib;enet.lib;ws2_32.lib;winmm.lib;lua51.lib;glut32.lib;glew32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;PhysXLoader.lib;PhysXCooking.lib;NxCharacter.lib;libboost_system-vc120-mt-1_56.lib;libboost_filesystem-vc120-mt-1_56.lib;Common.lib;MyGUIEngineStatic.lib;MyGUI.OpenGLPlatform.lib;freetype2311.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -67,20 +67,6 @@ public:
 		luabind::globals(m_state)["entityTableSize"] = size + 1;
 		luabind::globals(m_state)["entityTable"] [ name ] = element;
 
-		if (name.find("Unit") != std::string::npos)
-		{
-			registerActorToTable("unitTable", element, name);
-		}
-		else if (name.find("Item") != std::string::npos)
-		{
-			registerActorToTable("itemTable", element, name);
-		}
-		else if (name.find("Player") != std::string::npos)
-		{
-			registerActorToTable("unitTable", element, name);
-			registerActorToTable("playerTable", element, name);
-		}
-
 		GameConsole::addKeywordToConsole(name);
 
 		return size + 1;

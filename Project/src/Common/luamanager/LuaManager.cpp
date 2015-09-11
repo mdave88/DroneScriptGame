@@ -26,9 +26,6 @@ void LuaManager::init()
 	luabind::open(m_state);
 
 	createTable("entityTable");
-	createTable("unitTable");
-	createTable("playerTable");
-	createTable("itemTable");
 
 	m_isOpened = true;
 }
