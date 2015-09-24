@@ -10,6 +10,7 @@
 #include "GameLogic/LightSource.h"
 #endif
 
+#include <entityx/entityx.h>
 
 /**
  * Animates the game scene.

@@ -43,9 +43,6 @@
     <Filter Include="Models\md2">
       <UniqueIdentifier>{d1776f86-01d7-4c42-8065-40081b9617a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\Effects">
-      <UniqueIdentifier>{add9b928-9bb9-44d5-8ee4-89ea41e47226}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sound">
       <UniqueIdentifier>{4cb9b3f0-c511-4391-a6b6-93a2daaaa8b3}</UniqueIdentifier>
     </Filter>
@@ -81,6 +78,12 @@
     </Filter>
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{a96d9be2-de27-44ed-b93c-5fc3587e419d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\components">
+      <UniqueIdentifier>{8df1eb11-09f5-4e34-b964-5177cbbf7847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\effects">
+      <UniqueIdentifier>{add9b928-9bb9-44d5-8ee4-89ea41e47226}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -148,13 +151,13 @@
       <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\effects\EffectManager.cpp">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\effects\ExplosionEffect.cpp">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\effects\SoundEmitter.cpp">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
       <Filter>Console</Filter>
@@ -335,13 +338,13 @@
       <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\effects\EffectManager.h">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\effects\ExplosionEffect.h">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\effects\SoundEmitter.h">
-      <Filter>GameLogic\Effects</Filter>
+      <Filter>GameLogic\effects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
       <Filter>Console</Filter>
@@ -409,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Common\Utils.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\components\Components.h">
+      <Filter>GameLogic\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

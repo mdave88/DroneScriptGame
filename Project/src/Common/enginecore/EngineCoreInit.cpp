@@ -431,7 +431,6 @@ void EngineCore::resetLuaScripts()
 	Node::registerMethodsToLua();
 	NodeGroup::registerMethodsToLua();
 	Entity::registerMethodsToLua();
-	Door::registerMethodsToLua();
 	Player::registerMethodsToLua();
 #ifdef CLIENT_SIDE
 	LightSource::registerMethodsToLua();

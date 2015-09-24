@@ -7,7 +7,6 @@
 #include "Models/md5/ModelMd5.h"
 #endif
 
-#include "GameLogic/Door.h"
 #include "GameLogic/NodeGroup.h"
 
 #include <RapidXml/rapidxml_print.hpp>

@@ -79,6 +79,7 @@
     <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
     <ClInclude Include="..\..\src\GameLogic\Camera.h" />
+    <ClInclude Include="..\..\src\GameLogic\components\Components.h" />
     <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h" />
     <ClInclude Include="..\..\src\GameLogic\effects\EffectManager.h" />
     <ClInclude Include="..\..\src\GameLogic\effects\ExplosionEffect.h" />
@@ -222,7 +223,7 @@
       <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>enetd.lib;luad.lib;luabindd.lib;imageloadd.lib;ConsoleGLd.lib;freetype2311_D.lib;libboost_serialization-vc140-mt-gd-1_59.lib;libboost_zlib-vc140-mt-gd-1_59.lib;libboost_filesystem-vc140-mt-gd-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>enetd.lib;entityxd.lib;luad.lib;luabindd.lib;imageloadd.lib;ConsoleGLd.lib;freetype2311_D.lib;libboost_serialization-vc140-mt-gd-1_59.lib;libboost_zlib-vc140-mt-gd-1_59.lib;libboost_filesystem-vc140-mt-gd-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSBR>true</PreserveSBR>
@@ -242,7 +243,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>enet.lib;lua.lib;luabind.lib;imageload.lib;ConsoleGL.lib;freetype2311.lib;libboost_serialization-vc140-mt-1_59.lib;libboost_zlib-vc140-mt-1_59.lib;libboost_filesystem-vc140-mt-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>enet.lib;entityx.lib;lua.lib;luabind.lib;imageload.lib;ConsoleGL.lib;freetype2311.lib;libboost_serialization-vc140-mt-1_59.lib;libboost_zlib-vc140-mt-1_59.lib;libboost_filesystem-vc140-mt-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

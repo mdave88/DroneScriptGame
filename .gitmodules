@@ -23,3 +23,6 @@
 [submodule "Externals/LuaLanes"]
 	path = Externals/LuaLanes
 	url = https://github.com/LuaLanes/lanes
+[submodule "Externals/entityx"]
+	path = Externals/entityx
+	url = https://github.com/alecthomas/entityx
