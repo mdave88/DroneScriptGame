@@ -1,24 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\System.cc">
+    <ClCompile Include="..\..\entityx\entityx\System.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\Event.cc">
+    <ClCompile Include="..\..\entityx\entityx\Event.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\Entity.cc">
+    <ClCompile Include="..\..\entityx\entityx\Entity.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\help\Timer.cc">
+    <ClCompile Include="..\..\entityx\entityx\help\Timer.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\help\Pool.cc">
+    <ClCompile Include="..\..\entityx\entityx\help\Pool.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="c:\dev\DroneScriptGame\Externals\entityx\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
