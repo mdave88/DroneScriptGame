@@ -65,6 +65,7 @@ build/
 *.pgd
 *.rsp
 *.sbr
+*.exp
 *.bsc
 *.tlb
 *.tli
@@ -221,6 +222,8 @@ pip-log.txt
 /Project/libs/ConsoleGLd.lib
 /Project/libs/enet.lib
 /Project/libs/enetd.lib
+/Project/libs/entityx.lib
+/Project/libs/entityxd.lib
 /Project/libs/ImageLoad.lib
 /Project/libs/ImageLoadd.lib
 /Project/libs/lua.lib
@@ -236,4 +239,4 @@ pip-log.txt
 /Project/libs/MyGUIEngineStatic.lib
 /Project/libs/MyGUIEngineStatic_d.lib
 /Project/libs/CrimsonClientd.lib
-*.exp
+

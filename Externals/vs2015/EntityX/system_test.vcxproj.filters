@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="c:\dev\DroneScriptGame\Externals\entityx\entityx\System_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="c:\dev\DroneScriptGame\Externals\entityx\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1C133C56-E3BC-442A-8600-0604D7548A47}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

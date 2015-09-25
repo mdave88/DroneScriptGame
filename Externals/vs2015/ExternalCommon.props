@@ -10,6 +10,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\$(ProjectName)\;$(SolutionDir)\..\Externals\$(ProjectName)\include\;$(SolutionDir)\..\Externals\lua\src\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_MBCS;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
