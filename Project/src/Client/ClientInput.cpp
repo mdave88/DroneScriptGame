@@ -8,7 +8,7 @@
 
 #include "Common/enginecore/EngineCore.h"
 
-#include "GameLogic/Camera.h"
+#include "Graphics/Camera.h"
 #include "GameLogic/Player.h"
 
 #include "Console/CrimsonConsole.h"
@@ -128,10 +128,11 @@ void Client::keyDown(uint8_t key, int x, int y)
 		else if (command == "state")
 		{
 			TRACE_INFO("------------------------------------------------------------------", 0);
-			for (const auto& entry : EngineCore::getInstance()->getNodeIdDirectory())
-			{
-				TRACE_INFO(entry.first << "\t(" << entry.second->getId() << ")\t\t" << entry.second->getName(), 0);
-			}
+			///
+			//for (const auto& entry : EngineCore::getInstance()->getNodeIdDirectory())
+			//{
+			//	TRACE_INFO(entry.first << "\t(" << entry.second->getId() << ")\t\t" << entry.second->getName(), 0);
+			//}
 
 			flushPackets();
 		}

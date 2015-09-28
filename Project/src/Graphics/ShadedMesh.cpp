@@ -1,6 +1,9 @@
 #include "GameStdAfx.h"
 #include "Graphics/ShadedMesh.h"
+#include "Graphics/Role.h"
 #include "Graphics/RenderContext.h"
+
+#include "Models/mesh/Mesh.h"
 
 #include "Common/luamanager/LuaManager.h"
 

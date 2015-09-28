@@ -193,14 +193,14 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribmask, uint& attri
 #define SER_P(attrib)						if (BIT_CHECK(m_attribmask, m_attribIndex++)) ar & attrib;
 #define SER_P_STR(attrib)					if (BIT_CHECK(m_attribmask, m_attribIndex++)) ar & attrib;
 
-#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority) {	SER_P(attrib);													\
-											} else { 								serializeF32_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
+											} else									{	serializeF32_F16(ar, attrib, m_attribmask, m_attribIndex); }
 
-#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority) {	SER_P(attrib);													\
-											} else { 								serializeMatrix_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
+											} else									{	serializeMatrix_F16(ar, attrib, m_attribmask, m_attribIndex); }
 
-#define SER_P_VEC_F16(attrib, minPriority)	if (m_networkPriority >= minPriority) {	SER_P(attrib);													\
-											} else { 								serializeVec3_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_VEC_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
+											} else									{	serializeVec3_F16(ar, attrib, m_attribmask, m_attribIndex); }
 
 // attrib updating
 #define UP_P(param)							updateProperty(this->param, other.param, serverSide)

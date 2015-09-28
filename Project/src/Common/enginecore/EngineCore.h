@@ -35,25 +35,20 @@ public:
 	void		resetLuaScripts();
 	void		reloadLuaScripts();
 
-	void		deleteNode(const std::string& nodeName);
-
 	// getters-setters
-	NodeGroup*	getRootNode() const;
-	void		setRootNode(NodeGroup* pRootNode);
-	void		setRootNode(UnitDirectory& unitDirectory, ItemDirectory& itemDirectory, LightSourceDirectory& lightSourceDirectory);
-
 	Player*		getPlayer() const;
 	void		setPlayer(Player* pPlayer);
 
 	const Configs& getConfigs() const;
 
-	NodePtr getNode(const std::string& name) const { return m_nodeDirectory.at(name); }
-	NodePtr getNodeById(const uint16_t id) const { return m_nodeIdDirectory.at(id); }
-	NodeDirectory& getNodeDirectory() { return m_nodeDirectory; }
-	NodeIdDirectory& getNodeIdDirectory() { return m_nodeIdDirectory; }
+	///
+	//NodePtr getNode(const std::string& name) const { return m_nodeDirectory.at(name); }
+	//NodePtr getNodeById(const uint16_t id) const { return m_nodeIdDirectory.at(id); }
+	//NodeDirectory& getNodeDirectory() { return m_nodeDirectory; }
+	//NodeIdDirectory& getNodeIdDirectory() { return m_nodeIdDirectory; }
 
-	EntityPtr getEntity(const std::string& name) const { return m_entityDirectory.at(name); }
-	EntityDirectory& getEntityDirectory() { return m_entityDirectory; }
+	//EntityPtr getEntity(const std::string& name) const { return m_entityDirectory.at(name); }
+	//EntityDirectory& getEntityDirectory() { return m_entityDirectory; }
 
 #ifdef CLIENT_SIDE
 	void		onScreenResize(const int width, const int height);
@@ -61,8 +56,6 @@ public:
 	void		reloadTextures(const float textureResolutionDiv, const bool levelTextures);
 
 	Camera*		getCamera() const;
-
-	NodeGroup*	getEffectsNode() const;
 
 	graphics::RenderContext* getRenderContext();
 
@@ -105,11 +98,10 @@ private:
 
 private:
 	// game objects
-	Player*						m_pPlayer;
+	//Player*						m_pPlayer;
 	Camera*						m_pCamera;
-	NodeGroup*					m_pRootNode;
-	NodeGroup*					m_pShadersNode;
-	std::set<std::string>		m_deletedNodes;
+	//NodeGroup*					m_pRootNode;
+	//NodeGroup*					m_pShadersNode;
 
 	// fps
 	float						m_fps;
@@ -138,9 +130,9 @@ private:
 	std::vector<std::string>	m_luaDefinitonScripts;
 	std::vector<std::string>	m_luaInitializerScripts;
 
-	NodeDirectory				m_nodeDirectory;
-	NodeIdDirectory				m_nodeIdDirectory;
-	EntityDirectory				m_entityDirectory;
+	//NodeDirectory				m_nodeDirectory;
+	//NodeIdDirectory				m_nodeIdDirectory;
+	//EntityDirectory				m_entityDirectory;
 
 #ifdef CLIENT_SIDE
 	MeshDirectory				m_meshDirectory;

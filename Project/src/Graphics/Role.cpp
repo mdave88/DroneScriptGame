@@ -5,7 +5,7 @@
 
 #include "Models/mesh/Mesh.h"
 
-#include "GameLogic/Camera.h"
+#include "Graphics/Camera.h"
 #include "GameLogic/LightSource.h"
 
 

@@ -1,6 +1,6 @@
 #include "GameStdAfx.h"
 #include "Graphics/shaders/Shader.h"
-#include "GameLogic/Camera.h"
+#include "Graphics/Camera.h"
 
 namespace graphics
 {

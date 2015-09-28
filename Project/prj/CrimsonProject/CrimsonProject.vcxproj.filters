@@ -82,9 +82,6 @@
     <Filter Include="GameLogic\components">
       <UniqueIdentifier>{8df1eb11-09f5-4e34-b964-5177cbbf7847}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\effects">
-      <UniqueIdentifier>{add9b928-9bb9-44d5-8ee4-89ea41e47226}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Network\GameState.cpp">
@@ -134,30 +131,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\shaders\Shader.cpp">
       <Filter>Graphics\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Camera.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Entity.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\LightSource.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Node.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\NodeGroup.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\effects\EffectManager.cpp">
-      <Filter>GameLogic\effects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\effects\ExplosionEffect.cpp">
-      <Filter>GameLogic\effects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\effects\SoundEmitter.cpp">
-      <Filter>GameLogic\effects</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
       <Filter>Console</Filter>
@@ -215,9 +188,6 @@
     <ClCompile Include="..\..\src\Models\md5\Skeleton.cpp">
       <Filter>Models\md5</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Player.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Common\ConstantManager.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -226,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Common\Utils.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Graphics\Camera.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,35 +289,8 @@
     <ClInclude Include="..\..\src\Graphics\shaders\Shader.h">
       <Filter>Graphics\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Camera.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Entity.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\LightSource.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Node.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\NodeGroup.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h">
       <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\effects\EffectManager.h">
-      <Filter>GameLogic\effects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\effects\ExplosionEffect.h">
-      <Filter>GameLogic\effects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\effects\SoundEmitter.h">
-      <Filter>GameLogic\effects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
       <Filter>Console</Filter>
@@ -401,9 +347,6 @@
     <ClInclude Include="..\..\src\Models\md5\Skeleton.h">
       <Filter>Models\md5</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Player.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Common\ConstantManager.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -415,6 +358,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\components\Components.h">
       <Filter>GameLogic\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Graphics\Camera.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

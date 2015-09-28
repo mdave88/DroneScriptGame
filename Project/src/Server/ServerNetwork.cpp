@@ -1,9 +1,7 @@
 #include "GameStdAfx.h"
 #include "Server/Server.h"
 
-#include "GameLogic/Camera.h"
-#include "GameLogic/NodeGroup.h"
-#include "GameLogic/Player.h"
+#include "Graphics/Camera.h"
 
 #include "Network/connection.h"
 #include "Network/events/KeyEvent.h"
@@ -140,8 +138,9 @@ void Server::listen()
 
 						if (m_disconnectingClient > 0)
 						{
+							// TODO: use std lock
 							boost::mutex::scoped_lock lock(m_clientTableMutex);
-							m_pEngineCore->getRootNode()->removeByName(m_clientTable.at(m_disconnectingClient).clientName);
+							///m_pEngineCore->getRootNode()->removeByName(m_clientTable.at(m_disconnectingClient).clientName);
 							m_clientTable.erase(m_disconnectingClient);
 							TRACE_NETWORK("Client erased from client list.", 0);
 						}
@@ -243,7 +242,7 @@ void Server::processEvent(const std::string& stringData)
 				events::KeyEvent keyEvent;
 				if (unmarshal(keyEvent, stringData))
 				{
-					m_clientTable.at(m_event.peer->connectID).m_pPlayer->setKeyState(keyEvent.keyCode, keyEvent.type == events::KeyEvent::NETOBJ_KEY_DOWN);
+					///m_clientTable.at(m_event.peer->connectID).m_pPlayer->setKeyState(keyEvent.keyCode, keyEvent.type == events::KeyEvent::NETOBJ_KEY_DOWN);
 				}
 			}
 			break;
@@ -256,7 +255,7 @@ void Server::processEvent(const std::string& stringData)
 				events::MouseEvent mouseEvent;
 				if (unmarshal(mouseEvent, stringData))
 				{
-					m_clientTable.at(m_event.peer->connectID).m_pPlayer->setMouseState(mouseEvent);
+					///m_clientTable.at(m_event.peer->connectID).m_pPlayer->setMouseState(mouseEvent);
 				}
 			}
 			break;
@@ -274,10 +273,11 @@ void Server::processEvent(const std::string& stringData)
 					else if (luaCommand.command == "state")
 					{
 						TRACE_LUA("------------------------------------------------------------------", 0);
-						for (const auto& entry : m_pEngineCore->getNodeIdDirectory())
-						{
-							TRACE_LUA(entry.first << "\t(" << entry.second->getId() << ")\t\t" << entry.second->getName(), 0);
-						}
+						///
+						//for (const auto& entry : m_pEngineCore->getNodeIdDirectory())
+						//{
+						//	TRACE_LUA(entry.first << "\t(" << entry.second->getId() << ")\t\t" << entry.second->getName(), 0);
+						//}
 					}
 					else if (luaCommand.command.find("speed") != std::string::npos)
 					{
@@ -389,9 +389,10 @@ void Server::calculateStatistics(uint numUpdatedPackages, const ClientData& clie
 			for (auto& entry : changedEntities)
 			{
 				auto& entity = entry.second;
-				entity = EntityPtr((Entity*)entity->clone());
-				entity->setAttribIndex(0);
-				entity->setAttribMask(INT_MAX);
+				///
+				//entity = EntityPtr((Entity*)entity->clone());
+				//entity->setAttribIndex(0);
+				//entity->setAttribMask(INT_MAX);
 			}
 		}
 

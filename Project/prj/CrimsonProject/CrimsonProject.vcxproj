@@ -25,19 +25,11 @@
     <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp" />
     <ClCompile Include="..\..\src\Common\Utils.cpp" />
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\Camera.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\effects\EffectManager.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\effects\ExplosionEffect.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\effects\SoundEmitter.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\Entity.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\LightSource.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\Node.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\NodeGroup.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\Player.cpp" />
     <ClCompile Include="..\..\src\GameStdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\src\Graphics\Camera.cpp" />
     <ClCompile Include="..\..\src\Graphics\Material.cpp" />
     <ClCompile Include="..\..\src\Graphics\RenderContext.cpp" />
     <ClCompile Include="..\..\src\Graphics\Role.cpp" />
@@ -78,19 +70,10 @@
     <ClInclude Include="..\..\src\Common\Singleton.h" />
     <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
-    <ClInclude Include="..\..\src\GameLogic\Camera.h" />
     <ClInclude Include="..\..\src\GameLogic\components\Components.h" />
-    <ClInclude Include="..\..\src\GameLogic\CrimsonGameLogic.h" />
-    <ClInclude Include="..\..\src\GameLogic\effects\EffectManager.h" />
-    <ClInclude Include="..\..\src\GameLogic\effects\ExplosionEffect.h" />
-    <ClInclude Include="..\..\src\GameLogic\effects\SoundEmitter.h" />
-    <ClInclude Include="..\..\src\GameLogic\Entity.h" />
-    <ClInclude Include="..\..\src\GameLogic\LightSource.h" />
-    <ClInclude Include="..\..\src\GameLogic\Node.h" />
-    <ClInclude Include="..\..\src\GameLogic\NodeGroup.h" />
-    <ClInclude Include="..\..\src\GameLogic\Player.h" />
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
     <ClInclude Include="..\..\src\GameStdAfx.h" />
+    <ClInclude Include="..\..\src\Graphics\Camera.h" />
     <ClInclude Include="..\..\src\Graphics\CrimsonGraphics.h" />
     <ClInclude Include="..\..\src\Graphics\Material.h" />
     <ClInclude Include="..\..\src\Graphics\RenderContext.h" />

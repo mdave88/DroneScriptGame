@@ -1,13 +1,13 @@
 #include "GameStdAfx.h"
 #include "EngineCore.h"
 
-#include "GameLogic/CrimsonGameLogic.h"
-
 #ifdef CLIENT_SIDE
 #include "Models/3ds/Model3ds.h"
 #include "Models/md5/ModelMd5.h"
 
+#include "Graphics/Camera.h"
 #include "Graphics/shaders/Shader.h"
+#include "Graphics/ShadedMesh.h"
 #include "GameLogic/effects/SoundEmitter.h"
 #endif
 
@@ -20,7 +20,6 @@ void EngineCore::release()
 
 	//delete player;
 	delete m_pCamera;
-	delete m_pRootNode;
 #ifdef CLIENT_SIDE
 	delete m_pRenderContext;
 #endif
@@ -241,15 +240,6 @@ bool EngineCore::initLogic()
 
 	TRACE_INFO("Initializing logic.", 0);
 
-	m_pRootNode = new NodeGroup();
-
-#ifdef CLIENT_SIDE
-	m_pShadersNode = new NodeGroup(false);
-	m_pRootNode->setNodeRegistration(false);
-	m_pRootNode->add(m_pShadersNode);
-	m_pRootNode->setNodeRegistration(true);
-#endif
-
 	// lua scripts
 	TRACE_INFO("Parsing world xml.", 0);
 
@@ -429,11 +419,7 @@ void EngineCore::resetLuaScripts()
 	ConstantManager::registerMethodsToLua();
 
 	Node::registerMethodsToLua();
-	NodeGroup::registerMethodsToLua();
-	Entity::registerMethodsToLua();
-	Player::registerMethodsToLua();
 #ifdef CLIENT_SIDE
-	LightSource::registerMethodsToLua();
 	effects::SoundEmitter::registerMethodsToLua();
 #endif
 }
@@ -496,30 +482,8 @@ void EngineCore::reloadTextures(const float textureResolutionDiv, const bool lev
 }
 #endif
 
-void EngineCore::deleteNode(const std::string& nodeName)
-{
-	m_deletedNodes.insert(nodeName);
-}
-
 
 // getters-setters
-
-NodeGroup* EngineCore::getRootNode() const
-{
-	return m_pRootNode;
-}
-
-void EngineCore::setRootNode(NodeGroup* pRootNode)
-{
-	SAFEDEL(m_pRootNode);
-	m_pRootNode = pRootNode;
-}
-
-void EngineCore::setRootNode(UnitDirectory& unitDirectory, ItemDirectory& itemDirectory, LightSourceDirectory& lightSourceDirectory)
-{
-	//pRootNode->addSP(NodePtr e);
-}
-
 Camera* EngineCore::getCamera() const
 {
 	return m_pCamera;
@@ -536,11 +500,6 @@ void EngineCore::setPlayer(Player* pPlayer)
 }
 
 #ifdef CLIENT_SIDE
-NodeGroup* EngineCore::getEffectsNode() const
-{
-	return m_pShadersNode;
-}
-
 graphics::RenderContext* EngineCore::getRenderContext()
 {
 	return m_pRenderContext;

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "GameLogic/Node.h"
-
-class Camera : public Node
+class Camera
 {
 public:
 	Camera();
@@ -16,6 +14,9 @@ public:
 	const Matrix& getProjMatrix() const;
 
 private:
+	vec3	m_pos;
+	vec3	m_rot;
+
 	Matrix	m_projMat;
 	Matrix	m_viewMat;
 };

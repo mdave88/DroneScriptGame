@@ -1,12 +1,15 @@
 #pragma once
 
-#include "Graphics/Role.h"
-#include "Models/mesh/Mesh.h"
 
+namespace models
+{
+	class Mesh;
+}
 
 namespace graphics
 {
 
+class Role;
 typedef std::map<const std::string, Role*> RoleDirectory;
 
 class ShadedMesh

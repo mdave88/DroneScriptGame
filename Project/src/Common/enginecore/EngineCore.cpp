@@ -1,9 +1,7 @@
 #include "GameStdAfx.h"
 #include "EngineCore.h"
 
-#include "GameLogic/Camera.h"
-#include "GameLogic/NodeGroup.h"
-#include "GameLogic/Player.h"
+#include "Graphics/Camera.h"
 
 #ifdef CLIENT_SIDE
 #include "Sound/SoundSource.h"
@@ -23,15 +21,7 @@ void EngineCore::animate(float dt)
 
 	LuaManager::getInstance()->callFunction("animateSceneL", dt);
 
-	// remove deleted nodes
-	for (const std::string& deletedNodeName : m_deletedNodes)
-	{
-		m_pRootNode->removeByName(deletedNodeName);
-	}
-	m_deletedNodes.clear();
-
-	//m_pMap->animate(dt);
-	m_pRootNode->animate(dt);
+	// TODO: animate components
 
 #ifdef CLIENT_SIDE
 	//SoundSource::setListener(m_pPlayer->getEyePos(), vec3(0.0f), vec3(0, 0, -1), vec3(0, 1, 0));
@@ -239,7 +229,7 @@ void EngineCore::renderShadowMaps(const GLuint fboTarget)
 void EngineCore::renderScene(const GLuint fboTarget, const int debugLevel)
 {
 	// TODO move to animateSceneL()
-	getLightSource("light0")->setPos(m_pPlayer->getPos());
+	///getLightSource("light0")->setPos(m_pPlayer->getPos());
 
 	m_pRenderContext->m_pShader = nullptr;
 	m_pRenderContext->m_dt = 0;
@@ -267,6 +257,7 @@ void EngineCore::renderScene(const GLuint fboTarget, const int debugLevel)
 	//m_pMap->updateObservers(m_pCamera);
 	//m_pPlayer->setVisibility(true);					// always show the player
 
+	// TODO: render renderable components
 
 	glActiveTexture(GL_TEXTURE6);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
