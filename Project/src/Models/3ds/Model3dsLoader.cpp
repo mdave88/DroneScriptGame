@@ -70,7 +70,7 @@ void Model3ds::loadVertexBlock(std::ifstream* file)
 
 	for (int i = 0; i < *pQty; i++)
 	{
-		pCurrentObject->m_pVertices[i].set(0.0f);
+		pCurrentObject->m_pVertices[i] = vec3(0.0f);
 		file->read((char*) &pCurrentObject->m_pVertices[i], sizeof(vec3));
 	}
 

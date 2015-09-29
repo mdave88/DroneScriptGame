@@ -6,7 +6,7 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#include "Common/enginecore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 
 #include "Graphics/Camera.h"
 #include "Graphics/RenderContext.h"

@@ -6,7 +6,7 @@
 #include <boost/thread/thread.hpp>
 
 #include "Network/GameState.h"
-#include "Common/enginecore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 
 
 typedef std::map<std::string, entityx::Entity> NodeDirectory;

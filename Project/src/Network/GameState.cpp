@@ -6,7 +6,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/set.hpp>
 
-#include "Common/enginecore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 #include "console/CrimsonConsole.h"
 
 

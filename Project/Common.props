@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\;$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\AL;$(SolutionDir)\..\Externals\entityx\;$(SolutionDir)\..\Externals\luabind\;$(SolutionDir)\..\Externals\enet\include\;$(SolutionDir)\..\Externals\rapidjson\include\;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\;$(SolutionDir)\..\Externals\;$(SolutionDir)\..\Externals\AL;$(SolutionDir)\..\Externals\glm\;$(SolutionDir)\..\Externals\entityx\;$(SolutionDir)\..\Externals\luabind\;$(SolutionDir)\..\Externals\enet\include\;$(SolutionDir)\..\Externals\rapidjson\include\;$(SolutionDir)\Utilities\ImageLoad\ImageLoad\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_MBCS;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>GameStdAfx.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>

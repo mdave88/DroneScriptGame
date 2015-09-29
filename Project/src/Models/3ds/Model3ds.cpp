@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Model3ds.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 namespace models
 {
@@ -221,8 +221,8 @@ void Model3ds::buildVBOBuffers()
 			const vec3 v1 = m_pVerticesArray[v_i + 1].pos - m_pVerticesArray[v_i].pos;
 			const vec3 v2 = m_pVerticesArray[v_i + 2].pos - m_pVerticesArray[v_i].pos;
 
-			tmpPolyNormals[tp_i] = v1.cross(v2);
-			tmpPolyNormals[tp_i].normalize();
+			tmpPolyNormals[tp_i] = cross(v1, v2);
+			tmpPolyNormals[tp_i] = normalize(tmpPolyNormals[tp_i]);
 			tp_i++;
 
 			v_i += 3;
@@ -247,7 +247,7 @@ void Model3ds::buildVBOBuffers()
 			}
 
 			tmpVertNormals[n_i] = vSum / shared;
-			tmpVertNormals[n_i].normalize();
+			tmpVertNormals[n_i] = normalize(tmpVertNormals[n_i]);
 			n_i++;
 
 			vSum = vZero;

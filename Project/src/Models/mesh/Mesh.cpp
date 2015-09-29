@@ -267,15 +267,14 @@ bool calculateTangent(const vec3& v1, const vec3& v2, const vec3& v3, const texC
 	const float t1 = tc2.v - tc1.v;
 	const float t2 = tc3.v - tc1.v;
 
-
 	const float div = s1 * t2 - s2 * t1;
 	const float r = ((div == 0.0f) ? 0.0f : 1.0f / div);
 
 	tangent = vec3((t2 * x1 - t1 * x2) * r, (t2 * y1 - t1 * y2) * r, (t2 * z1 - t1 * z2) * r);
 	bitangent = vec3((s1 * x2 - s2 * x1) * r, (s1 * y2 - s2 * y1) * r, (s1 * z2 - s2 * z1) * r);
 
-	tangent.normalize();
-	bitangent.normalize();
+	tangent = normalize(tangent);
+	bitangent = normalize(bitangent);
 
 	return (div != 0.0f);
 }

@@ -67,12 +67,6 @@
     <Filter Include="Common">
       <UniqueIdentifier>{c3c9821e-36db-466c-a1d7-eae22001437a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\EngineCore">
-      <UniqueIdentifier>{2652bc93-babb-4058-9c84-518e22439433}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\LuaManager">
-      <UniqueIdentifier>{dd373305-9a36-48df-a804-cfddc647657d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{afde1630-fbcf-4896-85ba-25a56ec71894}</UniqueIdentifier>
     </Filter>
@@ -105,9 +99,6 @@
     <ClCompile Include="..\..\src\Math\matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Math\misc.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Math\quaternion.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -128,18 +119,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
       <Filter>Console</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\enginecore\EngineCore.cpp">
-      <Filter>Common\EngineCore</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInit.cpp">
-      <Filter>Common\EngineCore</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp">
-      <Filter>Common\LuaManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\Configs.cpp">
-      <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Project\main.cpp" />
     <ClCompile Include="..\..\src\Server\ServerLogic.cpp">
@@ -191,17 +170,26 @@
     <ClCompile Include="..\..\src\Graphics\Camera.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Math\vec2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Math\vec3.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreRender.cpp">
-      <Filter>Common\EngineCore</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Graphics\LightSource.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\LuaManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\ClientConfigs.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,20 +247,11 @@
     <ClInclude Include="..\..\src\Models\md5\ModelMd5.h">
       <Filter>Models\md5</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Models\CrimsonModels.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Math\CrimsonMath.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Math\matrix.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Math\quaternion.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Graphics\CrimsonGraphics.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\Material.h">
       <Filter>Graphics</Filter>
@@ -294,15 +273,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
       <Filter>Console</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Common\enginecore\EngineCore.h">
-      <Filter>Common\EngineCore</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Common\luamanager\LuaManager.h">
-      <Filter>Common\LuaManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Common\Configs.h">
-      <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Common\Directory.h">
       <Filter>Common</Filter>
@@ -365,14 +335,20 @@
     <ClInclude Include="..\..\src\GameLogic\Modules.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Math\vec2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Math\vec3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\LightSource.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\EngineCore.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\LuaManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\ClientConfigs.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

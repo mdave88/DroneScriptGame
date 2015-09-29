@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Server/Server.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 #include "Graphics/Camera.h"
 

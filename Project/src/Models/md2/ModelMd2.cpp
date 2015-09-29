@@ -261,7 +261,9 @@ bool ModelMd2::load(const char* filename, TextureDirectory& textureDirectory, co
 			m_pVertices[ i * m_numVertices + j ].z = (frame->verts[j].v[2] * frame->scale[2]) + frame->translate[2];
 
 			m_pVertices[ i * m_numVertices + j ] = transformVector(m_pVertices[ i * m_numVertices + j ], vec3(0.0f), vec3(90, 90, 0));
-			m_pNormals[ i * m_numVertices + j ].set( anorms[frame->verts[j].normalIndex] );
+
+			const float* normals = anorms[frame->verts[j].normalIndex];
+			m_pNormals[ i * m_numVertices + j ] = vec3(normals[0], normals[1], normals[2]);
 		}
 
 
@@ -361,15 +363,15 @@ void ModelMd2::animate(const float dt)
 	for (int p_i = 0; p_i < m_numTriangles; p_i++)
 	{
 		// Vertex 1
-		m_pVertexArray[v_i] = m_pVertices[ f1 * m_numVertices + m_pTriangles[p_i].vertIdx[2] ].interpolate(m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[2]], int_time);
+		m_pVertexArray[v_i] = interpolate(m_pVertices[f1 * m_numVertices + m_pTriangles[p_i].vertIdx[2]], m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[2]], int_time);
 
 		// Vertex 2
-		m_pVertexArray[v_i + 1] = m_pVertices[ f1 * m_numVertices + m_pTriangles[p_i].vertIdx[1] ].interpolate(m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[1]], int_time);
+		m_pVertexArray[v_i + 1] = interpolate(m_pVertices[ f1 * m_numVertices + m_pTriangles[p_i].vertIdx[1] ], m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[1]], int_time);
 
 		// Vertex 3
-		m_pVertexArray[v_i + 2] = m_pVertices[ f1 * m_numVertices + m_pTriangles[p_i].vertIdx[0] ].interpolate(m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[0]], int_time);
+		m_pVertexArray[v_i + 2] = interpolate(m_pVertices[ f1 * m_numVertices + m_pTriangles[p_i].vertIdx[0] ], m_pVertices[f2 * m_numVertices + m_pTriangles[p_i].vertIdx[0]], int_time);
 
-		//tangentArray[v_i] = tangentArray[v_i + 1] = tangentArray[v_i + 2] = tangents[ f1 * numVertices + triangles[p_i].vertIdx[0] ].interpolate(tangents[f2 * numVertices + triangles[p_i].vertIdx[0]], int_time);
+		//tangentArray[v_i] = tangentArray[v_i + 1] = tangentArray[v_i + 2] = interpolate(tangents[ f1 * numVertices + triangles[p_i].vertIdx[0] ], tangents[f2 * numVertices + triangles[p_i].vertIdx[0]], int_time);
 		vec3 tangent, bitangent;
 		calculateTangent(m_pVertexArray[v_i], m_pVertexArray[v_i + 1], m_pVertexArray[v_i + 2], m_pTexcoordArray[v_i], m_pTexcoordArray[v_i + 1], m_pTexcoordArray[v_i + 2], tangent, bitangent);
 		m_pTangentArray[v_i] = m_pTangentArray[v_i + 1] = m_pTangentArray[v_i + 2] = tangent;

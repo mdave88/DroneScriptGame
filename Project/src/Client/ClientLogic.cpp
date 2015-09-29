@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Client/Client.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 // OpenGL
 #include <GL/gl.h>
@@ -70,7 +70,7 @@ void Client::release()
 }
 
 // init
-bool Client::init(Configs& configs, const std::string& hostAddress, uint port, bool instantStart)
+bool Client::init(const ClientConfigs& configs, const std::string& hostAddress, uint port, bool instantStart)
 {
 	m_configs = configs;
 	m_hostAddress = hostAddress;

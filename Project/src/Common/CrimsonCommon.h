@@ -28,12 +28,19 @@
 #include <GL/glut.h>
 #endif
 
+//#define USE_GLM
+#ifdef USE_GLM
+#include <glm/glm.hpp>
+typedef glm::vec3 vec3;
+#endif
+
+#include "Math/vec3.h"
+#include "Math/matrix.h"
+
 #include "Common/Directory.h"
 
 #include "Common/Utils.h"
 #include "Common/ConstantManager.h"
-
-#include "Math/CrimsonMath.h"
 
 #include "GameLogic/SerializationDefs.h"
 

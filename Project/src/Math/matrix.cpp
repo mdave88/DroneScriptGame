@@ -2,6 +2,7 @@
 
 #include "Math/matrix.h"
 
+
 Matrix::Matrix()
 {
 	loadIdentity();
@@ -337,15 +338,15 @@ Matrix Matrix::inverse() const
 {
 	Matrix res;
 
-	vec3 T(m[3][0], m[3][1], m[3][2]);
+	const vec3 T(m[3][0], m[3][1], m[3][2]);
 
-	vec3 Rx(m[0][0], m[0][1], m[0][2]);
-	vec3 Ry(m[1][0], m[1][1], m[1][2]);
-	vec3 Rz(m[2][0], m[2][1], m[2][2]);
+	const vec3 Rx(m[0][0], m[0][1], m[0][2]);
+	const vec3 Ry(m[1][0], m[1][1], m[1][2]);
+	const vec3 Rz(m[2][0], m[2][1], m[2][2]);
 
-	float Tx = Rx.dot(T);
-	float Ty = Ry.dot(T);
-	float Tz = Rz.dot(T);
+	const float Tx = dot(Rx, T);
+	const float Ty = dot(Ry, T);
+	const float Tz = dot(Rz, T);
 
 	res.m[0][0] = m[0][0];
 	res.m[0][1] = m[1][0];
@@ -359,9 +360,9 @@ Matrix Matrix::inverse() const
 	res.m[2][1] = m[1][2];
 	res.m[2][2] = m[2][2];
 	res.m[2][3] = 0;
-	res.m[3][0] =      Tx;
-	res.m[3][1] =      Ty;
-	res.m[3][2] =      Tz;
+	res.m[3][0] = Tx;
+	res.m[3][1] = Ty;
+	res.m[3][2] = Tz;
 	res.m[3][3] = 1;
 
 	return res;

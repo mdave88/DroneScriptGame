@@ -3,9 +3,10 @@
 #define	PI 3.14159263f
 #define PIHALF 1.57079632679f
 #define PI_DEG 0.01745329f	//angle * PI_DEG = radians
-
 #define EPSILON 0.001
 
+
+#ifndef USE_GLM
 
 class vec3
 {
@@ -76,7 +77,7 @@ public:
 	//----------------------------------------------------------
 	// Special Operations
 	void normalize();
-	vec3 normalized();
+	vec3 normalized() const;
 
 	float dot(const vec3& v) const;
 	vec3 cross(const vec3& v) const;
@@ -96,3 +97,12 @@ public:
 		ar& z;
 	}
 };
+
+// compatible with glm
+float dot(const vec3& v1, const vec3& v2);
+vec3 cross(const vec3& v1, const vec3& v2);
+vec3 normalize(const vec3& v1);
+
+#endif // USE_GLM
+
+vec3 interpolate(const vec3& v1, vec3 v, float t);

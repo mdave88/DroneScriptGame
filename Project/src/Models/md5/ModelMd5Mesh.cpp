@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Models/md5/ModelMd5.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 namespace models
 {

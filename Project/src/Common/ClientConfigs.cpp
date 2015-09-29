@@ -1,8 +1,8 @@
 #include "GameStdAfx.h"
-#include "Configs.h"
+#include "Common/ClientConfigs.h"
 
 
-Configs::Configs()
+ClientConfigs::ClientConfigs()
 	: width0(400)
 	, height0(400)
 	, width(400)
@@ -25,7 +25,7 @@ Configs::Configs()
  * Loading the configurations from the settings file.
  * Using old C style file reading because it works the same way on linux/windows.
  */
-bool Configs::loadConfigs(const std::string& filename)
+bool ClientConfigs::loadConfigs(const std::string& filename)
 {
 	m_lightOn = false;
 	m_shadowsOn = false;

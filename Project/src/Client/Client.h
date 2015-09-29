@@ -7,7 +7,7 @@
 #include <enet/enet.h>
 
 #include "Network/CrimsonNetwork.h"
-#include "Common/enginecore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 
 #ifdef ENABLE_MYGUI
 #include <MyGUI/MyGUI.h>
@@ -43,7 +43,7 @@ public:
 
 
 	// init
-	bool init(Configs& configs, const std::string& hostAddress = "localhost", uint port = 80, bool instantStart = false);
+	bool init(const ClientConfigs& configs, const std::string& hostAddress = "localhost", uint port = 80, bool instantStart = false);
 	bool initConsole();
 	void initGraphics();
 	bool initEngineCore();
@@ -186,7 +186,7 @@ private:
 
 	GameConsole*						m_pGameConsole;
 
-	Configs								m_configs;
+	ClientConfigs						m_configs;
 
 #ifdef ENABLE_MYGUI
 	// gui attributes

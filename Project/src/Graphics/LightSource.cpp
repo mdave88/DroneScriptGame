@@ -1,10 +1,9 @@
 #include "GameStdAfx.h"
-#include "LightSource.h"
+#include "Graphics/LightSource.h"
 
 #include "Graphics/Camera.h"
-#include "Graphics/shaders/Shader.h"
 #include "Graphics/RenderContext.h"
-#include "Common/enginecore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 
 GLint LightSource::ms_numMaxLights = 0;
 std::vector<GLint> LightSource::ms_enabledLights = std::vector<GLint>();
@@ -73,7 +72,7 @@ void LightSource::updateUniforms(const graphics::Shader* shader)
 {
 	if (m_type == LIGHTTYPE_SPOT && !m_shadowFboId)
 	{
-		const Configs& configs = EngineCore::getInstance()->getConfigs();
+		const ClientConfigs& configs = EngineCore::getInstance()->getConfigs();
 		generateShadowFBO(configs.width, configs.height);
 	}
 

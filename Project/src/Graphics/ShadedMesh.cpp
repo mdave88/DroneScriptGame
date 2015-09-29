@@ -5,7 +5,7 @@
 
 #include "Models/mesh/Mesh.h"
 
-#include "Common/EngineCore/EngineCore.h"
+#include "GameLogic/EngineCore.h"
 
 
 

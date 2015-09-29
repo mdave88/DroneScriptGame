@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "ConstantManager.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 
 ConstantManager::ConstantManager()

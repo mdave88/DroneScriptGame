@@ -264,11 +264,11 @@ bool ModelMd5::buildFrameSkeleton(AnimMd5& anim, JointInfoMd5* pJointInfos, std:
 
 inline vec3 computeTriangleNormal(const vec3& p1, const vec3& p2, const vec3& p3)
 {
-	vec3 vec1(p2 - p1);
-	vec3 vec2(p3 - p1);
+	const vec3 vec1(p2 - p1);
+	const vec3 vec2(p3 - p1);
 
-	vec3 result = vec1.cross(vec2);
-	result.normalize();
+	vec3 result = cross(vec1, vec2);
+	result = normalize(result);
 
 	return result;
 }
@@ -320,7 +320,7 @@ void ModelMd5::computeWeightNormals()
 		// "Average" the surface normals, by normalizing them
 		for (uint i = 0; i < m_meshes[m].numVertices; ++i)
 		{
-			bindposeNorms[i].normalize();
+			bindposeNorms[i] = normalize(bindposeNorms[i]);
 		}
 
 		// Zero out all weight normals
@@ -354,7 +354,7 @@ void ModelMd5::computeWeightNormals()
 		// Normalize all weight normals
 		for (uint i = 0; i < m_meshes[m].numWeights; ++i)
 		{
-			m_meshes[m].pWeights[i].normal.normalize();
+			m_meshes[m].pWeights[i].normal = normalize(m_meshes[m].pWeights[i].normal);
 		}
 	}
 }
@@ -429,10 +429,10 @@ void ModelMd5::computeWeightTangents()
 			const vec3& n = bindposeNorms[i];
 			const vec3& t = bindposeTangents[i];
 
-			bindposeTangents[i] = (t - n * n.dot(t));
-			bindposeTangents[i].normalize();
+			bindposeTangents[i] = (t - n * dot(n, t));
+			bindposeTangents[i] = normalize(bindposeTangents[i]);
 
-			if ((n.cross(t)).dot(bindposeBitangents[i]) < 0.0f)
+			if(dot(cross(n, t), bindposeBitangents[i]) < 0.0f)
 			{
 				bindposeTangents[i] = -bindposeTangents[i];
 			}
@@ -469,7 +469,7 @@ void ModelMd5::computeWeightTangents()
 		// Normalize all weight normals
 		for (uint j = 0; j < m_meshes[m].numWeights; ++j)
 		{
-			m_meshes[m].pWeights[j].tangent.normalize();
+			m_meshes[m].pWeights[j].tangent = normalize(m_meshes[m].pWeights[j].tangent);
 		}
 	}
 }
@@ -513,7 +513,7 @@ void ModelMd5::prepareMesh(const MeshMd5& mesh, std::vector<JointMd5>& skeleton)
 				//}
 			}
 
-			m_pVertexArrayDynamic[i] = Vertex(finalVertex, -finalNormal, finalTangent, (-finalNormal).cross(finalTangent), mesh.pVertices[i].texCoord);
+			m_pVertexArrayDynamic[i] = Vertex(finalVertex, -finalNormal, finalTangent, cross(-finalNormal, finalTangent), mesh.pVertices[i].texCoord);
 		}
 		m_hasStanceChanged = false;
 

@@ -3,20 +3,19 @@
 #include "Math/quaternion.h"
 
 Quat::Quat(const vec3& v)
+	: x(v.x)
+	, y(v.y)
+	, z(v.z) 
 {
-	this->x = v.x;
-	this->y = v.y;
-	this->z = v.z;
-
 	calculateS();
 }
 
 Quat::Quat(float s, float x, float y, float z)
+	: x(x)
+	, y(y)
+	, z(z)
+	, s(s)
 {
-	this->s = s;
-	this->x = x;
-	this->y = y;
-	this->z = z;
 }
 
 void Quat::set(float s, float x, float y, float z)
@@ -245,25 +244,21 @@ Quat Quat::slerp(const Quat& a, const Quat& b, const float t)
 	}
 
 	/* Compute "cosine of angle between quaternions" using dot product */
-	Quat qa = a;
-	Quat qb = b;
+	const Quat& qa = a;
+	const Quat& qb = b;
 	float cosOmega = qa.dot(qb);
 
 	/* If negative dot, use -q1.  Two quaternions q and -q
 	 represent the same rotation, but may produce
 	 different slerp.  We chose q or -q to rotate using
 	 the acute angle. */
-	float q1w = b.s;
-	float q1x = b.x;
-	float q1y = b.y;
-	float q1z = b.z;
+	const float q1w = (cosOmega >= 0.0f) ? b.s : -b.s;
+	const float q1x = (cosOmega >= 0.0f) ? b.x : -b.x;
+	const float q1y = (cosOmega >= 0.0f) ? b.z : -b.y;
+	const float q1z = (cosOmega >= 0.0f) ? b.y : -b.z;
 
 	if (cosOmega < 0.0f)
 	{
-		q1w = -q1w;
-		q1x = -q1x;
-		q1y = -q1y;
-		q1z = -q1z;
 		cosOmega = -cosOmega;
 	}
 
@@ -286,14 +281,14 @@ Quat Quat::slerp(const Quat& a, const Quat& b, const float t)
 	{
 		/* Compute the sin of the angle using the
 		 trig identity sin^2(omega) + cos^2(omega) = 1 */
-		float sinOmega = sqrt(1.0f - (cosOmega * cosOmega));
+		const float sinOmega = sqrt(1.0f - (cosOmega * cosOmega));
 
 		/* Compute the angle from its sin and cosine */
-		float omega = atan2(sinOmega, cosOmega);
+		const float omega = atan2(sinOmega, cosOmega);
 
 		/* Compute inverse of denominator, so we only have
 		 to divide once */
-		float oneOverSinOmega = 1.0f / sinOmega;
+		const float oneOverSinOmega = 1.0f / sinOmega;
 
 		/* Compute interpolation parameters */
 		k0 = sin((1.0f - t) * omega) * oneOverSinOmega;

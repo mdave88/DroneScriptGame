@@ -19,7 +19,7 @@
 #endif
 
 
-Configs conf;
+ClientConfigs conf;
 network::Client* client;
 network::Server* server = nullptr;
 

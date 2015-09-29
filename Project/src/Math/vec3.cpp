@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Math/vec3.h"
 
-
+#ifndef USE_GLM
 vec3::vec3()
 {
 	x = y = z = 0;
@@ -246,7 +246,7 @@ void vec3::normalize()
 	z /= len;
 }
 
-vec3 vec3::normalized()
+vec3 vec3::normalized() const
 {
 	vec3 result(x, y, z);
 
@@ -311,4 +311,32 @@ bool vec3::isZeroVector() const
 	}
 
 	return false;
+}
+
+float dot(const vec3& v1, const vec3& v2)
+{
+	return v1.dot(v2);
+}
+
+vec3 cross(const vec3& v1, const vec3& v2)
+{
+	return v1.cross(v2);
+}
+
+vec3 normalize(const vec3& v)
+{
+	return v.normalized();
+}
+
+#endif // USE_GLM
+
+vec3 interpolate(const vec3& v1, vec3 v2, float t)
+{
+	const float inv_t = 1.0f - t;
+
+	v2.x = v1.x * inv_t + v2.x * t;
+	v2.y = v1.y * inv_t + v2.y * t;
+	v2.z = v1.z * inv_t + v2.z * t;
+
+	return v2;
 }

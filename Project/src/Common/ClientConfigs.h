@@ -1,6 +1,6 @@
 #pragma once
 
-class Configs
+class ClientConfigs
 {
 public:
 	int		width0, height0;
@@ -13,7 +13,7 @@ public:
 	float	m_mouseSensitivity;
 
 public:
-	Configs();
+	ClientConfigs();
 
 	bool loadConfigs(const std::string& filename = "settings");
 };
