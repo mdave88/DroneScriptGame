@@ -10,7 +10,8 @@ namespace graphics
 {
 
 class Role;
-typedef std::map<const std::string, Role*> RoleDirectory;
+class RenderContext;
+
 
 class ShadedMesh
 {
@@ -21,22 +22,16 @@ public:
 	ShadedMesh& operator=(const ShadedMesh& s);
 
 	void addRole(const std::string& name, Role* role);
-	void render(const graphics::RenderContext& context, const Entity* pOwner = nullptr);
+	void render(const graphics::RenderContext& context/*, const Entity* pOwner = nullptr*/);	// TODO: remove entity
 
 
 	// getters-setters
 	models::Mesh* getMesh() const;
 	void setMesh(models::Mesh* mesh);
-
-
-	// register to lua
-	static void registerMethodsToLua();
-
+	
 protected:
-	models::Mesh*	m_pMesh;
-	RoleDirectory	m_roles;
+	models::Mesh* m_pMesh;
+	std::map<const std::string, Role*> m_roles;
 };
 
-TextureDirectory& getTextureDirectory();
-GLuint getTexture(const std::string& name);
 } // namespace graphics

@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "Camera.h"
+#include "Graphics/Camera.h"
 
 Camera::Camera()
 {
@@ -33,6 +33,11 @@ void Camera::update(vec3 pos, vec3 rot)
 	m_transformMat = m_transformMat * transMat * rotMatT;
 
 	m_viewMat = m_transformMat.inverse();
+}
+
+const vec3& Camera::getPos() const
+{
+	return m_pos;
 }
 
 const Matrix& Camera::getViewMatrix() const

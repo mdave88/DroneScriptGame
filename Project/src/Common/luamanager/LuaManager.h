@@ -24,9 +24,6 @@ extern "C"
 // creates a boost reference from the pointer
 #define REF_POINTER(T, p)	if (std::is_pointer<T>())	p = std::ref<T>(p);
 
-class Entity;
-typedef std::shared_ptr<Entity> EntityPtr;
-
 
 class LuaManager : public Singleton<LuaManager>
 {
@@ -39,8 +36,7 @@ public:
 	void	doFile(const std::string& file);
 	void	doString(const std::string& command);
 
-	void	createTable(const std::string& tableName, const std::set<Entity*>& entities);
-	void	createTable(const std::string& tableName, const Entity* entities[] = nullptr, const int numEntities = 0);
+	void	createTable(const std::string& tableName/*, const std::set<Entity*>& entities*/);
 
 	void	printError(const luabind::error& e);
 	int		handleError(lua_State* state);
@@ -115,12 +111,6 @@ public:
 
 		return entityTableSize - 1;
 	}
-
-	int registerEntity(const Entity& entity, const std::string& tableName = "");
-	int registerEntitySP(const EntityPtr& entity, const std::string& tableName = "");
-
-	void unregisterEntity(const Entity& entity, const std::string& tableName = "");
-	void unregisterEntitySP(const EntityPtr& entity, const std::string& tableName = "");
 
 	template <typename Type>
 	Type* getActor(const std::string& actorName)

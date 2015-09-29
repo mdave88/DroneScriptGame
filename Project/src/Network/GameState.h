@@ -3,12 +3,14 @@
 #define NOMINMAX
 
 #include <enet/enet.h>
+#include <entityx/entityx.h>
 
-#include "NetworkObject.h"
-
+#include "Network/NetworkObject.h"
 
 class Player;
 class NodeGroup;
+
+typedef std::map<uint16_t, entityx::Entity> NodeIdDirectory;
 
 namespace network
 {

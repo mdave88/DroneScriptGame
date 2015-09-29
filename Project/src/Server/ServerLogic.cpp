@@ -1,7 +1,6 @@
 #include "GameStdAfx.h"
 #include "Server/Server.h"
-
-#include "GameLogic/NodeGroup.h"
+#include "Common/luamanager/LuaManager.h"
 
 
 namespace network
@@ -123,23 +122,13 @@ void Server::run()
 		m_dt = 0.1;
 	}
 
-	// engineCore animate
-	//physics::PhysicsManager::getInstance()->getPhysicsResults();
-
-	//physics::PhysicsManager::getInstance()->releaseDeadActors();
-	//CharacterController::releaseDeadControllers();
-
 	m_luaProcessingMutex.lock();
 
 	m_pEngineCore->animate(m_dt);
-	//m_pEngineCore->getMap()->animate(m_dt);
-	//m_pEngineCore->getRootNode()->animate(m_dt);
 
 	broadcast();
 
 	m_luaProcessingMutex.unlock();
-
-	//physics::PhysicsManager::getInstance()->startPhysics(m_dt);
 }
 
 bool Server::isRunning() const

@@ -5,9 +5,10 @@
 
 #include "Models/mesh/Mesh.h"
 
-#include "Common/luamanager/LuaManager.h"
+#include "Common/EngineCore/EngineCore.h"
 
-TextureDirectory	textureDirectory;
+
+
 namespace graphics
 {
 
@@ -39,7 +40,7 @@ ShadedMesh& ShadedMesh::operator=(const ShadedMesh& other)
 	return *this;
 }
 
-void ShadedMesh::render(const graphics::RenderContext& context, const Entity* pOwner)
+void ShadedMesh::render(const graphics::RenderContext& context/*, const Entity* pOwner*/)
 {
 	if (m_roles.empty())
 	{
@@ -50,9 +51,9 @@ void ShadedMesh::render(const graphics::RenderContext& context, const Entity* pO
 
 	if (context.m_roleName == "none")
 	{
-		Role::updateCommonUniforms(context, pOwner);
+		Role::updateCommonUniforms(context/*, pOwner*/);
 
-		const GLuint program = graphics::getEffect("simplest")->getProgram();
+		const GLuint program = EngineCore::getInstance()->getShader("simplest")->getProgram();
 
 		const uint numSubmeshes = std::max(1u, m_pMesh->getNumObjects());
 		for (uint i = 0; i < numSubmeshes; i++)
@@ -65,10 +66,10 @@ void ShadedMesh::render(const graphics::RenderContext& context, const Entity* pO
 		return;
 	}
 
-	RoleDirectory::iterator iRole = m_roles.find(context.m_roleName);
+	auto iRole = m_roles.find(context.m_roleName);
 	if (iRole != m_roles.end())
 	{
-		iRole->second->render(context, m_pMesh, pOwner);
+		iRole->second->render(context, m_pMesh/*, pOwner*/);
 	}
 }
 
@@ -76,26 +77,6 @@ void ShadedMesh::addRole(const std::string& name, Role* pRole)
 {
 	m_roles[name] = pRole;
 }
-
-
-// register to lua
-void ShadedMesh::registerMethodsToLua()
-{
-	using namespace luabind;
-
-	Role::registerMethodsToLua();
-
-	class_<ShadedMesh> thisClass("ShadedMesh");
-	thisClass.def(constructor<>());
-	thisClass.def(constructor<models::Mesh*>());
-
-	REG_FUNC("addRole", &ShadedMesh::addRole);
-	REG_FUNC("getMesh", &ShadedMesh::getMesh);
-	REG_FUNC("setMesh", &ShadedMesh::setMesh);
-
-	module(LuaManager::getInstance()->getState()) [thisClass ];
-}
-
 
 // getters-setters
 models::Mesh* ShadedMesh::getMesh() const
@@ -106,17 +87,6 @@ models::Mesh* ShadedMesh::getMesh() const
 void ShadedMesh::setMesh(models::Mesh* pMesh)
 {
 	m_pMesh = pMesh;
-}
-
-
-TextureDirectory& getTextureDirectory()
-{
-	return textureDirectory;
-}
-
-GLuint getTexture(const std::string& name)
-{
-	return textureDirectory.at(name);
 }
 
 } // namespace graphics

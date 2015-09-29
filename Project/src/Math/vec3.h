@@ -6,6 +6,7 @@
 
 #define EPSILON 0.001
 
+
 class vec3
 {
 public:
@@ -95,84 +96,3 @@ public:
 		ar& z;
 	}
 };
-
-
-
-
-
-
-
-
-
-//class vec4 {
-//public:
-//	float x, y, z, w;
-//
-//public:
-//
-//	// Constructors
-//	vec4();
-//	vec4(float a);
-//	vec4(float a, float b, float c, float d);
-//	vec4(vec3 v, float d);
-//	vec4(float t[4]);
-//
-//	void set(float a);
-//	void set(const vec3& v, float d);
-//	void set(float a, float b, float c, float d);
-//
-//	vec4 operator-() const;
-//
-//	friend std::ostream& operator<<(std::ostream& os, const vec4& v) {
-//		return os << v.x << "  " << v.y << "  " << v.z << "  " << v.w;
-//	}
-//
-//	//----------------------------------------------------------
-//	// Scalar multiplication
-//	vec4 operator*(float f) const;
-//	vec4 operator*(const vec4& v) const;
-//
-//	// Scalar division
-//	vec4 operator/(float f) const;
-//	vec4 operator/(const vec4& v) const;
-//
-//	//----------------------------------------------------------
-//	// vec4 Arithmetic Operations
-//	vec4 operator+(const vec4& w) const;
-//	vec4 operator-(const vec4& w) const;
-//
-//	// 3D Exterior Cross Product
-//	vec4 operator^(const vec4& v) const;
-//
-//	//----------------------------------------------------------
-//	// Shorthand Ops
-//	vec4& operator*=(float c);
-//	vec4& operator/=(float c);
-//
-//	vec4& operator+=(const vec4& w);
-//	vec4& operator-=(const vec4& w);
-//
-//	vec4& operator*=(const vec4& w);
-//	vec4& operator/=(const vec4& w);
-//
-//	bool operator==(const vec4& w) const;
-//	bool operator!=(const vec4& w) const;
-//	float operator[](int i) const;
-//
-//	//----------------------------------------------------------
-//	// vec4 Properties
-//	float length() const;
-//	float length2() const;
-//
-//	void setLength(float l);
-//
-//	//----------------------------------------------------------
-//	// Special Operations
-//	void normalize();
-//
-//	float dot(const vec4& v) const;
-//	vec4 cross(const vec4& v) const;
-//	vec4 rotate(vec3& axis, float angle) const;
-//
-//	bool isZeroVector() const;
-//};

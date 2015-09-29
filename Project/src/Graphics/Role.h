@@ -4,8 +4,6 @@
 #include "Graphics/Material.h"
 
 
-class Entity;
-
 namespace graphics
 {
 
@@ -21,13 +19,9 @@ public:
 
 	void addMaterial(Material* pMaterial);
 
-	void render(const graphics::RenderContext& context, models::Mesh* pMesh, const Entity* entity = nullptr);
+	void render(const graphics::RenderContext& context, models::Mesh* pMesh);
 
-	static void updateCommonUniforms(const graphics::RenderContext& context, const Entity* entity, const graphics::Shader* customEffect = nullptr);
-
-	// register to lua
-	static void registerMethodsToLua();
-
+	static void updateCommonUniforms(const graphics::RenderContext& context, const Matrix& modelMatrix = Matrix(), const graphics::Shader* customEffect = nullptr);
 
 private:
 	std::vector<Material*> m_materials;

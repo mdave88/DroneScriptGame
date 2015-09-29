@@ -9,6 +9,8 @@
 #include "Common/enginecore/EngineCore.h"
 
 
+typedef std::map<std::string, entityx::Entity> NodeDirectory;
+
 namespace network
 {
 

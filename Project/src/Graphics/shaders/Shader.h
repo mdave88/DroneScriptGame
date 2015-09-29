@@ -57,9 +57,4 @@ public:
 	std::map<std::string, GLint>	m_uniforms;
 };
 
-typedef std::shared_ptr<graphics::Shader>	ShaderPtr;
-
-ShaderPtr			getEffect(const std::string& name);
-EffectDirectory&	getEffectDirectory();
-
 } // namespace graphics

@@ -10,6 +10,7 @@ public:
 
 	void update(vec3 pos, vec3 rot);
 
+	const vec3& getPos() const;
 	const Matrix& getViewMatrix() const;
 	const Matrix& getProjMatrix() const;
 

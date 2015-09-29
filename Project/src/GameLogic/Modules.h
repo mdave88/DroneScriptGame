@@ -1,29 +1,7 @@
 #pragma once
 
-#include <string>
+#include "GameLogic/Components.h"
 
-struct Position
-{
-	Position(float x = 0.0f, float y = 0.0f) : x(x), y(y) {}
-
-	float x;
-	float y;
-};
-
-struct Direction
-{
-	Direction(float x = 0.0f, float y = 0.0f) : x(x), y(y) {}
-
-	float x;
-	float y;
-};
-
-struct Health
-{
-	Health(int health = 0) : health(health) {}
-
-	int health;
-};
 
 struct ModuleBase
 {
@@ -97,17 +75,5 @@ struct Ladar : public Sensor
 
 struct FuelCreator : public ModuleBase
 {
-
-};
-
-struct Explosive
-{
-	float damageBase;
-	int range;			// damage = <damageBase> modified using <range> and <distance>
-};
-
-class HandheldModule
-{
-public:
 
 };

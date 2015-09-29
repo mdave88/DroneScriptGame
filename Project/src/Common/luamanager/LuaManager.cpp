@@ -1,7 +1,6 @@
 #include "GameStdAfx.h"
 #include "Common/luamanager/LuaManager.h"
 
-#include "GameLogic/Entity.h"
 
 LuaManager::LuaManager()
 	: m_state(nullptr)
@@ -116,139 +115,31 @@ lua_State* LuaManager::getState()
 	return m_state;
 }
 
-
-/**
- * Creates a lua table and fills it with the given array of entities.
- *
- * @param tableName		The name of the new table.
- * @param entities		The contents of the new table.
- * @param numEntities	The size of the array "entities".
- */
-void LuaManager::createTable(const std::string& tableName, const Entity* entities[], const int numEntities)
-{
-	luabind::object table = luabind::newtable(m_state);
-	luabind::globals(m_state)[tableName.c_str()] = table;
-	luabind::globals(m_state)[tableName + "Size"] = numEntities;
-
-	if (entities)
-	{
-		for (int i = 0; i < numEntities; i++)
-		{
-			table[i + 1] = entities[i];
-			//setTableElement(tableName, i + 1, entities[i]);
-
-			GameConsole::addKeywordToConsole(entities[i]->getName());
-		}
-	}
-
-	GameConsole::addKeywordToConsole(tableName);
-}
-
 /**
  * Creates a lua table and fills it with the given collection of entities.
  *
  * @param tableName	The name of the new table.
  * @param entities	The contents of the new table.
  */
-void LuaManager::createTable(const std::string& tableName, const std::set<Entity*>& entities)
+void LuaManager::createTable(const std::string& tableName/*, const std::set<Entity*>& entities*/)
 {
 	luabind::object table = luabind::newtable(m_state);
 	luabind::globals(m_state)[tableName] = table;
-	luabind::globals(m_state)[tableName + "Size"] = entities.size();
+	//luabind::globals(m_state)[tableName + "Size"] = entities.size();
 
-	int i = 1;
-	for (const Entity* entity : entities)
-	{
-		table[i] = *entity;
-		i++;
+	///
+	//int i = 1;
+	//for (const Entity* entity : entities)
+	//{
+	//	table[i] = *entity;
+	//	i++;
 
-		GameConsole::addKeywordToConsole(entity->getName());
-	}
+	//	GameConsole::addKeywordToConsole(entity->getName());
+	//}
 
 	GameConsole::addKeywordToConsole(tableName);
 }
 
-/**
- * Registers the given entity on the lua side and puts it into the appropriate table.
- * The entityTable holds every entity. The unitTable hold only the units...
- *
- * @param entity	The entity to be registered on the lua side.
- */
-int LuaManager::registerEntity(const Entity& entity, const std::string& tableName)
-{
-	const int id = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
-	luabind::globals(m_state)["entityTableSize"] = id + 1;
-	luabind::globals(m_state)["entityTable"] [ entity.getName() ] = entity;
-
-	if (!tableName.empty())
-	{
-		registerActorToTable(tableName, entity, entity.getName());
-	}
-
-
-	GameConsole::addKeywordToConsole(entity.getName());
-
-	return id;
-}
-
-/**
- * Registers the given entity on the lua side and puts it into the appropriate table.
- * The entityTable holds every entity. The unitTable hold only the units...
- *
- * @param entity	The entity to be registered on the lua side.
- */
-int LuaManager::registerEntitySP(const EntityPtr& entity, const std::string& tableName)
-{
-	const int entityTableSize = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
-	luabind::globals(m_state)["entityTableSize"] = entityTableSize + 1;
-	luabind::globals(m_state)["entityTable"] [ entity->getName() ] = entity;
-
-	if (!tableName.empty())
-	{
-		registerActorToTable(tableName, entity, entity->getName());
-	}
-
-
-	GameConsole::addKeywordToConsole(entity->getName());
-
-	return entityTableSize + 1;
-}
-
-/**
- * Unregisters the given entity on the lua side and removes it from the appropriate table.
- * The entityTable holds every entity. The unitTable hold only the units...
- *
- * @param entity	The entity to be removed from the lua side.
- */
-void LuaManager::unregisterEntity(const Entity& entity, const std::string& tableName)
-{
-	const int id = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
-	luabind::globals(m_state)["entityTableSize"] = id - 1;
-	luabind::globals(m_state)["entityTable"] [ entity.getName() ] = luabind::nil;
-
-	if (!tableName.empty())
-	{
-		unregisterActorFromTable(tableName, entity.getName());
-	}
-}
-
-/**
- * Unregisters the given entity on the lua side and removes it from the appropriate table.
- * The entityTable holds every entity. The unitTable hold only the units...
- *
- * @param entity	The entity to be removed from the lua side.
- */
-void LuaManager::unregisterEntitySP(const EntityPtr& entity, const std::string& tableName)
-{
-	const int entityTableSize = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
-	luabind::globals(m_state)["entityTableSize"] = entityTableSize - 1;
-	luabind::globals(m_state)["entityTable"] [ entity->getName() ] = luabind::nil;
-
-	if (!tableName.empty())
-	{
-		unregisterActorFromTable(tableName, entity->getName());
-	}
-}
 
 bool LuaManager::functionExist(const std::string& functionName)
 {

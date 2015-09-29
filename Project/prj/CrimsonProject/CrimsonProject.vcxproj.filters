@@ -79,9 +79,6 @@
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{a96d9be2-de27-44ed-b93c-5fc3587e419d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\components">
-      <UniqueIdentifier>{8df1eb11-09f5-4e34-b964-5177cbbf7847}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Network\GameState.cpp">
@@ -114,9 +111,6 @@
     <ClCompile Include="..\..\src\Math\quaternion.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Math\vector.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Graphics\Material.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -139,9 +133,6 @@
       <Filter>Common\EngineCore</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInit.cpp">
-      <Filter>Common\EngineCore</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInitXML.cpp">
       <Filter>Common\EngineCore</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp">
@@ -198,6 +189,18 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\Camera.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\vec2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\vec3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreRender.cpp">
+      <Filter>Common\EngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Graphics\LightSource.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -266,9 +269,6 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Math\quaternion.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Math\vector.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Graphics\CrimsonGraphics.h">
@@ -356,10 +356,22 @@
     <ClInclude Include="..\..\src\Common\Utils.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\components\Components.h">
-      <Filter>GameLogic\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Graphics\Camera.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Components.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Modules.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\vec2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\vec3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Graphics\LightSource.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>

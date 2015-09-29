@@ -21,7 +21,7 @@
     <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp" />
     <ClCompile Include="..\..\src\Common\enginecore\EngineCore.cpp" />
     <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInit.cpp" />
-    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreInitXML.cpp" />
+    <ClCompile Include="..\..\src\Common\enginecore\EngineCoreRender.cpp" />
     <ClCompile Include="..\..\src\Common\luamanager\LuaManager.cpp" />
     <ClCompile Include="..\..\src\Common\Utils.cpp" />
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
@@ -30,6 +30,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\src\Graphics\Camera.cpp" />
+    <ClCompile Include="..\..\src\Graphics\LightSource.cpp" />
     <ClCompile Include="..\..\src\Graphics\Material.cpp" />
     <ClCompile Include="..\..\src\Graphics\RenderContext.cpp" />
     <ClCompile Include="..\..\src\Graphics\Role.cpp" />
@@ -38,7 +39,8 @@
     <ClCompile Include="..\..\src\Math\matrix.cpp" />
     <ClCompile Include="..\..\src\Math\misc.cpp" />
     <ClCompile Include="..\..\src\Math\quaternion.cpp" />
-    <ClCompile Include="..\..\src\Math\vector.cpp" />
+    <ClCompile Include="..\..\src\Math\vec2.cpp" />
+    <ClCompile Include="..\..\src\Math\vec3.cpp" />
     <ClCompile Include="..\..\src\Models\3ds\Model3ds.cpp" />
     <ClCompile Include="..\..\src\Models\3ds\Model3dsLoader.cpp" />
     <ClCompile Include="..\..\src\Models\md2\ModelMd2.cpp" />
@@ -70,11 +72,13 @@
     <ClInclude Include="..\..\src\Common\Singleton.h" />
     <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
-    <ClInclude Include="..\..\src\GameLogic\components\Components.h" />
+    <ClInclude Include="..\..\src\GameLogic\Components.h" />
+    <ClInclude Include="..\..\src\GameLogic\Modules.h" />
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
     <ClInclude Include="..\..\src\GameStdAfx.h" />
     <ClInclude Include="..\..\src\Graphics\Camera.h" />
     <ClInclude Include="..\..\src\Graphics\CrimsonGraphics.h" />
+    <ClInclude Include="..\..\src\Graphics\LightSource.h" />
     <ClInclude Include="..\..\src\Graphics\Material.h" />
     <ClInclude Include="..\..\src\Graphics\RenderContext.h" />
     <ClInclude Include="..\..\src\Graphics\Role.h" />
@@ -83,7 +87,8 @@
     <ClInclude Include="..\..\src\Math\CrimsonMath.h" />
     <ClInclude Include="..\..\src\Math\matrix.h" />
     <ClInclude Include="..\..\src\Math\quaternion.h" />
-    <ClInclude Include="..\..\src\Math\vector.h" />
+    <ClInclude Include="..\..\src\Math\vec2.h" />
+    <ClInclude Include="..\..\src\Math\vec3.h" />
     <ClInclude Include="..\..\src\Models\3ds\Model3ds.h" />
     <ClInclude Include="..\..\src\Models\CrimsonModels.h" />
     <ClInclude Include="..\..\src\Models\md2\anorms.h" />

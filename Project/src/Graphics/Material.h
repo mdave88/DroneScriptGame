@@ -25,10 +25,6 @@ public:
 	void setIntVariable(const std::string& variableName, const int value);
 	void setVector(const std::string& vectorName, const vec3& value);
 
-
-	// register to lua
-	static void registerMethodsToLua();
-
 private:
 	Shader*					m_pShader;
 

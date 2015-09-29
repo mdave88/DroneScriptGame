@@ -1,6 +1,8 @@
 #include "GameStdAfx.h"
 #include "Client/Client.h"
 
+#include "Common/luamanager/LuaManager.h"
+
 // OpenGL
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -8,7 +10,7 @@
 
 #include "Console/CrimsonConsole.h"
 
-#include "GameLogic/NodeGroup.h"
+#include "Graphics/RenderContext.h"
 
 
 namespace network

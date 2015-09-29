@@ -1,6 +1,8 @@
 #include "GameStdAfx.h"
 #include "Server/Server.h"
 
+#include "Common/luamanager/LuaManager.h"
+
 #include "Graphics/Camera.h"
 
 #include "Network/connection.h"
@@ -344,25 +346,26 @@ void Server::broadcast()
 	//m_pEngineCore->getMap()->updateObservers(m_pEngineCore->getCamera());
 	//m_serverState = getNodeDirectory();
 
-	const NodeIdDirectory& serverState = m_pEngineCore->getNodeIdDirectory();
+	///
+	//const NodeIdDirectory& serverState = m_pEngineCore->getNodeIdDirectory();
 
-	// for every client: calculate the changes and send it to client
-	for (auto& entry : m_clientTable)
-	{
-		// set the filter for the clients observer
-		//const std::set<ushort>& filter = m_pEngineCore->getMap()->getPerceptibleEntitiesByObserver(entry.first);
-		//m_package.setFilter(filter);
+	//// for every client: calculate the changes and send it to client
+	//for (auto& entry : m_clientTable)
+	//{
+	//	// set the filter for the clients observer
+	//	//const std::set<ushort>& filter = m_pEngineCore->getMap()->getPerceptibleEntitiesByObserver(entry.first);
+	//	//m_package.setFilter(filter);
 
-		// TODO: Extend the filter with the priority filtering.
-		// Priority could be circulated, like: prio-- -> set to max when reaches 0 : obj_prio > prio -> part of the collection
+	//	// TODO: Extend the filter with the priority filtering.
+	//	// Priority could be circulated, like: prio-- -> set to max when reaches 0 : obj_prio > prio -> part of the collection
 
-		const uint numUpdatedPackages = m_package.calculateChanges(entry.second.clientState, serverState);
-		m_package.setClientTable(m_clientTable);
+	//	const uint numUpdatedPackages = m_package.calculateChanges(entry.second.clientState, serverState);
+	//	m_package.setClientTable(m_clientTable);
 
-		//calculateStatistics(numUpdatedPackages, it->second);
+	//	//calculateStatistics(numUpdatedPackages, it->second);
 
-		send(m_package, entry.second.m_pPeer);
-	}
+	//	send(m_package, entry.second.m_pPeer);
+	//}
 
 	m_lastBroadcastTime = glutGet(GLUT_ELAPSED_TIME);
 }

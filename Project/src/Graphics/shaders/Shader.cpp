@@ -5,8 +5,6 @@
 namespace graphics
 {
 
-EffectDirectory effectDirectory;
-
 // static fields
 Shader* Shader::ms_pActiveShader = nullptr;
 int		Shader::ms_maxShaderQuality = 10;
@@ -457,18 +455,6 @@ void Shader::load(const std::string& vertexFile, const std::string& fragmentFile
 	}
 
 	setupCommonUniforms();
-}
-
-
-
-EffectDirectory& getEffectDirectory()
-{
-	return effectDirectory;
-}
-
-std::shared_ptr<Shader> getEffect(const std::string& name)
-{
-	return effectDirectory.at(name);
 }
 
 } // namespace graphics

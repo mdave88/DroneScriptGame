@@ -9,7 +9,7 @@
 #include "Common/enginecore/EngineCore.h"
 
 #include "Graphics/Camera.h"
-#include "GameLogic/Player.h"
+#include "Graphics/RenderContext.h"
 
 #include "Console/CrimsonConsole.h"
 

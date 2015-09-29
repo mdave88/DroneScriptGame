@@ -1,23 +1,17 @@
-/*
-* LightSource.h
-*
-*  Created on: 2009.03.21.
-*      Author: dave
-*/
-
 #pragma once
 
-#include "Entity.h"
+namespace graphics
+{
+	class RenderContext;
+}
 
 /**
  * @brief Base class of the light sources.
  *
  * Main properties: ambient, diffuse, specular colors and attenuation settings.
  */
-class LightSource : public Entity
+class LightSource
 {
-	SERIALIZABLE_CLASS
-
 public:
 	enum LightType
 	{
@@ -71,8 +65,8 @@ public:
 	void shadowingPass2(graphics::RenderContext& context);
 
 
-	// register to lua
-	static void registerMethodsToLua();
+	//// register to lua
+	//static void registerMethodsToLua();
 
 protected:
 	std::string					m_uniformName;
@@ -92,6 +86,9 @@ public:
 	LightType		m_type;
 
 	GLuint			m_id;
+
+	vec3			m_pos;
+	vec3			m_rot;
 
 	vec3			m_target;
 
@@ -113,10 +110,4 @@ public:
 	Matrix			m_shadowMatrix;
 };
 
-
-typedef std::shared_ptr<LightSource> LightSourcePtr;
-
-LightSourcePtr getLightSource(const std::string& name);
-LightSourceDirectory& getLightSourceDirectory();
-
-BOOST_CLASS_EXPORT_KEY(LightSource);
+//BOOST_CLASS_EXPORT_KEY(LightSource);

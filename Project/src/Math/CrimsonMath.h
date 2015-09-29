@@ -7,7 +7,7 @@
 #include <string.h>
 #include <iostream>
 
-#include "vector.h"
+#include "vec3.h"
 #include "matrix.h"
 #include "quaternion.h"
 

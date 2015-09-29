@@ -1,15 +1,8 @@
 #include "GameStdAfx.h"
 #include "Client/Client.h"
 
-#include "GameLogic/Player.h"
-
 // registering the serialized classes (needed for pointer types)
 //BOOST_CLASS_EXPORT_IMPLEMENT(Node);
-//BOOST_CLASS_EXPORT_IMPLEMENT(NodeGroup);
-//BOOST_CLASS_EXPORT_IMPLEMENT(Entity);
-//BOOST_CLASS_EXPORT_IMPLEMENT(Door);
-//BOOST_CLASS_EXPORT_IMPLEMENT(LightSource);
-//
 
 
 namespace network
@@ -145,30 +138,31 @@ void Client::listen()
 							case GameState::NETOBJ_GAMESTATE:
 								if (unmarshal(m_package, std::string((char*) m_event.packet->data, m_event.packet->dataLength)))
 								{
-									// apply the changes to our entities
-									m_package.apply(m_pEngineCore->getRootNode(), EngineCore::getInstance()->getNodeIdDirectory());
+									///
+									//// apply the changes to our entities
+									//m_package.apply(m_pEngineCore->getRootNode(), EngineCore::getInstance()->getNodeIdDirectory());
 
-									// if the clientList changed -> save it to the local variable
-									if (!m_package.getClientTable().empty())
-									{
-										m_clientTable = m_package.getClientTable();
-									}
+									//// if the clientList changed -> save it to the local variable
+									//if (!m_package.getClientTable().empty())
+									//{
+									//	m_clientTable = m_package.getClientTable();
+									//}
 
-									if (m_pEngineCore->getPlayer()->getName().empty())
-									{
-										// replace the dummy player with the real one
-										if (m_pEngineCore->getNodeDirectory().find(m_clientTable[m_pPeer->connectID].clientName) != m_pEngineCore->getNodeDirectory().end())
-										{
-											// remove the dummy player from the bsp map
-											//m_pEngineCore->getMap()->clearObservers();
-											// delete dummy player
-											delete m_pEngineCore->getPlayer();
-											m_pEngineCore->setPlayer(std::static_pointer_cast<Player>(m_pEngineCore->getNodeDirectory().at(m_clientTable[m_pPeer->connectID].clientName)).get());
+									//if (m_pEngineCore->getPlayer()->getName().empty())
+									//{
+									//	// replace the dummy player with the real one
+									//	if (m_pEngineCore->getNodeDirectory().find(m_clientTable[m_pPeer->connectID].clientName) != m_pEngineCore->getNodeDirectory().end())
+									//	{
+									//		// remove the dummy player from the bsp map
+									//		//m_pEngineCore->getMap()->clearObservers();
+									//		// delete dummy player
+									//		delete m_pEngineCore->getPlayer();
+									//		m_pEngineCore->setPlayer(std::static_pointer_cast<Player>(m_pEngineCore->getNodeDirectory().at(m_clientTable[m_pPeer->connectID].clientName)).get());
 
-											// add the player to the bsp map
-											//m_pEngineCore->getMap()->addObserver(m_clientId, m_pEngineCore->getPlayer());
-										}
-									}
+									//		// add the player to the bsp map
+									//		//m_pEngineCore->getMap()->addObserver(m_clientId, m_pEngineCore->getPlayer());
+									//	}
+									//}
 								}
 								m_gamePaused = false;
 

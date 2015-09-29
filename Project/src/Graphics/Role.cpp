@@ -6,7 +6,6 @@
 #include "Models/mesh/Mesh.h"
 
 #include "Graphics/Camera.h"
-#include "GameLogic/LightSource.h"
 
 
 namespace graphics
@@ -38,20 +37,20 @@ Role::~Role()
 	}
 }
 
-void Role::updateCommonUniforms(const graphics::RenderContext& context, const Entity* entity, const graphics::Shader* customShader)
+void Role::updateCommonUniforms(const graphics::RenderContext& context, const Matrix& modelMatrix, const graphics::Shader* customShader)
 {
 	const graphics::Shader* shader = (customShader != nullptr) ? customShader : context.m_pShader;
-	shader->updateCommonUniforms(context.m_pCamera, entity ? entity->getModelMatrix() : Matrix());
+	shader->updateCommonUniforms(context.m_pCamera, modelMatrix);
 
 	// update lights
 	const GLuint program = shader->getProgram();
-	LightSource::updateLightUniforms(shader);
+	///LightSource::updateLightUniforms(shader);
 
 	// Shadow
 	shader->setUniform1i("u_enableShadows", context.getEnableBit("shadow"));
 }
 
-void Role::render(const graphics::RenderContext& context, models::Mesh* pMesh, const Entity* pOwner)
+void Role::render(const graphics::RenderContext& context, models::Mesh* pMesh)
 {
 	const Shader* pEffect = context.m_pShader;
 
@@ -64,7 +63,9 @@ void Role::render(const graphics::RenderContext& context, models::Mesh* pMesh, c
 		}
 
 
-		Role::updateCommonUniforms(context, pOwner, pEffect);
+		/// TODO? pOwner modelMatrix
+		Matrix modelMatrix;
+		Role::updateCommonUniforms(context, modelMatrix, pEffect);
 
 		const GLuint program = pEffect->getProgram();
 		pMesh->preRender(program);
@@ -85,21 +86,6 @@ void Role::render(const graphics::RenderContext& context, models::Mesh* pMesh, c
 void Role::addMaterial(Material* pMaterial)
 {
 	m_materials.push_back(pMaterial);
-}
-
-
-// register to lua
-void Role::registerMethodsToLua()
-{
-	using namespace luabind;
-
-	Material::registerMethodsToLua();
-
-	class_<Role> thisClass("Role");
-	thisClass.def(luabind::constructor<>());
-	REG_FUNC("addMaterial", &Role::addMaterial);
-
-	module(LuaManager::getInstance()->getState()) [ thisClass ];
 }
 
 } // namespace graphics

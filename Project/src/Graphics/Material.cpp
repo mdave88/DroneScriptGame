@@ -1,7 +1,5 @@
 #include "GameStdAfx.h"
-#include "Material.h"
-
-#include "GameLogic/LightSource.h"
+#include "Graphics/Material.h"
 
 
 namespace graphics
@@ -104,7 +102,7 @@ Shader* Material::apply(Shader* pCustomEffect)
 
 
 	// enable lights if enabled in the opengl context
-	pCustomEffect->setUniform1iv("enabledLights", (GLsizei) LightSource::ms_enabledLights.size(), (const GLint*) LightSource::ms_enabledLights.data());
+	///pCustomEffect->setUniform1iv("enabledLights", (GLsizei) LightSource::ms_enabledLights.size(), (const GLint*) LightSource::ms_enabledLights.data());
 
 	//LightSource::updateAll?
 
@@ -129,25 +127,6 @@ void Material::resetTextures(Shader* pCustomEffect)
 		pCustomEffect->setTexture(entry.first.c_str(), 3 + idx, 0);
 		idx++;
 	}
-}
-
-// register to lua
-void Material::registerMethodsToLua()
-{
-	using namespace luabind;
-
-	class_<Material> thisClass("Material");
-	thisClass.def(constructor<>());
-	thisClass.def(constructor<Shader*>());
-
-	REG_FUNC("setTexture", &Material::setTexture);
-	REG_FUNC("setCubeTexture", &Material::setCubeTexture);
-
-	REG_FUNC("setFloatVariable", &Material::setFloatVariable);
-	REG_FUNC("setIntVariable", &Material::setIntVariable);
-	REG_FUNC("setVector", &Material::setVector);
-
-	module(LuaManager::getInstance()->getState()) [ thisClass ];
 }
 
 } // namespace graphics

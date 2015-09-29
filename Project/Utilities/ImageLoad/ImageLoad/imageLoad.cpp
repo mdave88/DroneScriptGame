@@ -71,7 +71,7 @@ bool loadTexture(const std::string& filename, GLuint& texid, TextureDirectory& t
 	if (enableDebugMessages)
 		std::cout << "Loading texture <" << filename << ">." << std::endl;
 
-	TextureDirectory::iterator it = textureDirectory.find(filename);
+	auto it = textureDirectory.find(filename);
 	if (it != textureDirectory.end()) {
 		if (enableDebugMessages)
 			std::cout << "\tTexture already loaded <" << filename << ">." << std::endl;
@@ -102,7 +102,7 @@ bool loadCubeMap(const std::string& mapname, const std::string& extension, GLuin
 	if (enableDebugMessages)
 		std::cout << "Loading cubemap <" << mapname << ">." << std::endl;
 
-	TextureDirectory::iterator it = textureDirectory.find(mapname);
+	auto it = textureDirectory.find(mapname);
 	if (it != textureDirectory.end()) {
 		if (enableDebugMessages)
 			std::cout << "\tCubemap already loaded." << std::endl;

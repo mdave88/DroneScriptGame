@@ -1,114 +1,85 @@
 #pragma once
 
 #include "Common/Configs.h"
-#include "Common/luamanager/LuaManager.h"
 
-#include <RapidXml/rapidxml.hpp>
-
-
+#ifdef CLIENT_SIDE
 #define	NUM_FBOS 4
 
 class Camera;
-class NodeGroup;
-
-class Mesh;
 
 namespace graphics
 {
-class RenderContext;
+	class RenderContext;
 }
-
+#endif
 
 class EngineCore : public Singleton<EngineCore>
 {
 public:
 	EngineCore();
 
-	bool		initLogic();
-	bool		initAudioVisuals(const Configs& confings);
-
-	void		release();
-
-	void		animate(float dt);
-	void		render(const int debugLevel = 0);
-
-	void		resetLuaScripts();
-	void		reloadLuaScripts();
+	bool initLogic();
+	bool initAudioVisuals(const Configs& confings);
+		 
+	void release();
+		 
+	void animate(float dt);
+	void render(const int debugLevel = 0);
+		 
+	void resetLuaScripts();
+	void reloadLuaScripts();
 
 	// getters-setters
-	Player*		getPlayer() const;
-	void		setPlayer(Player* pPlayer);
-
 	const Configs& getConfigs() const;
 
-	///
-	//NodePtr getNode(const std::string& name) const { return m_nodeDirectory.at(name); }
-	//NodePtr getNodeById(const uint16_t id) const { return m_nodeIdDirectory.at(id); }
-	//NodeDirectory& getNodeDirectory() { return m_nodeDirectory; }
-	//NodeIdDirectory& getNodeIdDirectory() { return m_nodeIdDirectory; }
-
-	//EntityPtr getEntity(const std::string& name) const { return m_entityDirectory.at(name); }
-	//EntityDirectory& getEntityDirectory() { return m_entityDirectory; }
-
 #ifdef CLIENT_SIDE
-	void		onScreenResize(const int width, const int height);
+	void onScreenResize(const int width, const int height);
+	void reloadTextures(const float textureResolutionDiv, const bool levelTextures);
 
-	void		reloadTextures(const float textureResolutionDiv, const bool levelTextures);
-
-	Camera*		getCamera() const;
-
+	Camera* getCamera() const;
 	graphics::RenderContext* getRenderContext();
 
 	models::Mesh* getMesh(const std::string& name) const { return m_meshDirectory.at(name); }
 	MeshDirectory& getMeshDirectory() { return m_meshDirectory; }
-
 	graphics::ShadedMeshPtr getShadedMesh(const std::string& name) const { return m_shadedMeshDirectory.at(name); };
 	ShadedMeshDirectory& getShadedMeshDirectory() { return m_shadedMeshDirectory; };
+
+	graphics::ShaderPtr getShader(const std::string& name) const { return m_shaderDirectory.at(name); };
 #endif
 
 private:
-	void		parseXml(const std::string& filename, const bool justData = false);
-	void		parseLuaSettings(const rapidxml::xml_node<>* rootXmlNode, bool justDefinitions = false);
-
 #ifdef CLIENT_SIDE
+	// setup
+	bool setupShaders();
+	void setupFBOs();
+	void setupPostProcessing();
+
 	// render
-	void		renderScene(const GLuint fboTarget = 0, int debugLevel = 0);
-	void		renderFPS();
-	//void		renderMotionBlur(GLuint textureID);
+	void renderScene(const GLuint fboTarget = 0, int debugLevel = 0);
+	void renderFPS();
+	//void renderMotionBlur(GLuint textureID);
 
 	// post processing
-	void		renderQuad(const GLuint program, const GLuint fboTexId, float strength = 1.0f);
-	void		renderShadowMaps(const GLuint fboTarget = 0);
-
-	void		renderDOF(const GLuint fboTarget = 0, const int debugLevel = 0);
-	void		renderBloom(const GLuint fboTarget = 0, const int debugLevel = 0);
-	void		renderGrayScale(const GLuint fboTarget = 0, const int debugLevel = 0);
-
-	// setup
-	bool		setupShaders();
-	void		setupFBOs();
-	void		setupPostProcessing();
-
-
-	// load entities and gfx
-	void		loadMeshes(const rapidxml::xml_node<>* rootXmlNode, const bool justData = false);
-	void		loadShadedMeshes(const rapidxml::xml_node<>* rootXmlNode);
-	//void		loadLevel(const rapidxml::xml_node<>* rootXmlNode, const bool justData = false);
+	void renderQuad(const GLuint program, const GLuint fboTexId, float strength = 1.0f);
+	void renderShadowMaps(const GLuint fboTarget = 0);
+	
+	void renderDOF(const GLuint fboTarget = 0, const int debugLevel = 0);
+	void renderBloom(const GLuint fboTarget = 0, const int debugLevel = 0);
+	void renderGrayScale(const GLuint fboTarget = 0, const int debugLevel = 0);
 #endif
 
 private:
-	// game objects
-	//Player*						m_pPlayer;
-	Camera*						m_pCamera;
-	//NodeGroup*					m_pRootNode;
-	//NodeGroup*					m_pShadersNode;
+	Configs						m_configs;
+	
+	// lua scripts
+	std::vector<std::string>	m_luaDefinitonScripts;
+	std::vector<std::string>	m_luaInitializerScripts;
 
-	// fps
+#ifdef CLIENT_SIDE
 	float						m_fps;
 	uint32_t					m_frame, m_elapsedTime, m_timeBase;
 
-#ifdef CLIENT_SIDE
-	// render context
+	Camera*						m_pCamera;
 	graphics::RenderContext*	m_pRenderContext;
 
 	// global textures
@@ -122,19 +93,10 @@ private:
 	GLuint						m_fbos[NUM_FBOS];
 	GLuint						m_fboColorTextures[NUM_FBOS];
 	GLuint						m_fboDepthTextures[NUM_FBOS];
-#endif
 
-	Configs						m_configs;
 
-	// lua scripts
-	std::vector<std::string>	m_luaDefinitonScripts;
-	std::vector<std::string>	m_luaInitializerScripts;
-
-	//NodeDirectory				m_nodeDirectory;
-	//NodeIdDirectory				m_nodeIdDirectory;
-	//EntityDirectory				m_entityDirectory;
-
-#ifdef CLIENT_SIDE
+	TextureDirectory			m_textureDirectory;
+	ShaderDirectory				m_shaderDirectory;
 	MeshDirectory				m_meshDirectory;
 	ShadedMeshDirectory			m_shadedMeshDirectory;
 	SoundDirectory				m_soundDirectory;

@@ -6,8 +6,6 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/set.hpp>
 
-#include "GameLogic/NodeGroup.h"
-
 #include "Common/enginecore/EngineCore.h"
 #include "console/CrimsonConsole.h"
 
@@ -51,7 +49,7 @@ NodeIdDirectory GameState::applyFilter(const NodeIdDirectory& entityDirectory)
 	for (const auto& entry : entityDirectory)
 	{
 		const uint16_t entryId = entry.first;
-		const NodePtr& entryNode = entry.second;
+		const auto& entryNode = entry.second;
 
 		if (m_filter.find(entryId) != m_filter.end())
 		{
@@ -81,31 +79,32 @@ uint GameState::calculateChanges(NodeIdDirectory& clientState, const NodeIdDirec
 
 	uint changesNum = 0;
 
-	// filter out entities invisible to the client if its not the first update
-	NodeIdDirectory filteredState = (clientState.empty()) ? serverState : applyFilter(serverState);
-	for (const auto& entry : filteredState)
-	{
-		const uint16_t entryId = entry.first;
-		const NodePtr& entryNode = entry.second;
+	///
+	//// filter out entities invisible to the client if its not the first update
+	//NodeIdDirectory filteredState = (clientState.empty()) ? serverState : applyFilter(serverState);
+	//for (const auto& entry : filteredState)
+	//{
+	//	const uint16_t entryId = entry.first;
+	//	const NodePtr& entryNode = entry.second;
 
-		if (clientState.find(entryId) != clientState.end())
-		{
-			// update properties
-			if (clientState[entryId]->updateProperties(*entryNode.get()))
-			{
-				m_updatedEntities[entryId] = clientState[entryId];						// updated -> add to changed entities and send it
-				changesNum++;
-			}
-		}
-		else
-		{
-			// create new entity
-			// TODO EntityPtr -> NodePtr
-			clientState[entryId] = NodePtr(entryNode->clone());							// new entity	-> update client table
-			m_updatedEntities[entryId] = clientState[entryId];							//				-> add to changed entities and send it
-			changesNum++;
-		}
-	}
+	//	if (clientState.find(entryId) != clientState.end())
+	//	{
+	//		// update properties
+	//		if (clientState[entryId]->updateProperties(*entryNode.get()))
+	//		{
+	//			m_updatedEntities[entryId] = clientState[entryId];						// updated -> add to changed entities and send it
+	//			changesNum++;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		// create new entity
+	//		// TODO EntityPtr -> NodePtr
+	//		clientState[entryId] = NodePtr(entryNode->clone());							// new entity	-> update client table
+	//		m_updatedEntities[entryId] = clientState[entryId];							//				-> add to changed entities and send it
+	//		changesNum++;
+	//	}
+	//}
 
 
 	// find deleted entities
@@ -132,38 +131,39 @@ uint GameState::calculateChanges(NodeIdDirectory& clientState, const NodeIdDirec
  */
 void GameState::apply(NodeGroup* pRootNode, NodeIdDirectory& clientEntities)
 {
-	// update modified entities
-	for (const auto& item : m_updatedEntities)
-	{
-		const NodePtr& entry = item.second;
+	///
+	//// update modified entities
+	//for (const auto& item : m_updatedEntities)
+	//{
+	//	const NodePtr& entry = item.second;
 
-		const auto& it = clientEntities.find(item.first);
-		if(it != clientEntities.end())
-		{
-			it->second->updateProperties(*entry.get(), false);
-		}
-		else
-		{
-			const std::string& name = entry->getName();
-			Node* pNodeClone = entry->clone();
-			pNodeClone->setId(item.first);
-			pRootNode->addWithName(pNodeClone, name);	// put the clone in the pRootNode (the clone() calls the updateProperties() that initializes the shadedMesh)
+	//	const auto& it = clientEntities.find(item.first);
+	//	if(it != clientEntities.end())
+	//	{
+	//		it->second->updateProperties(*entry.get(), false);
+	//	}
+	//	else
+	//	{
+	//		const std::string& name = entry->getName();
+	//		Node* pNodeClone = entry->clone();
+	//		pNodeClone->setId(item.first);
+	//		pRootNode->addWithName(pNodeClone, name);	// put the clone in the pRootNode (the clone() calls the updateProperties() that initializes the shadedMesh)
 
-			// register its name to the console
-			GameConsole::addKeywordToConsole(name);
-		}
-	}
+	//		// register its name to the console
+	//		GameConsole::addKeywordToConsole(name);
+	//	}
+	//}
 
-	// delete entities
-	for (const int entityId : m_deletedEntitiesById)
-	{
-		const auto& clientEntity = clientEntities.find(entityId);
-		if (clientEntity != clientEntities.end())
-		{
-			pRootNode->removeByName(clientEntity->second->getName());
-			clientEntities.erase(entityId);
-		}
-	}
+	//// delete entities
+	//for (const int entityId : m_deletedEntitiesById)
+	//{
+	//	const auto& clientEntity = clientEntities.find(entityId);
+	//	if (clientEntity != clientEntities.end())
+	//	{
+	//		pRootNode->removeByName(clientEntity->second->getName());
+	//		clientEntities.erase(entityId);
+	//	}
+	//}
 }
 
 
@@ -202,18 +202,19 @@ template <typename Archive>
 void GameState::serialize(Archive& ar, const uint version)
 {
 	ar& type;
-	ar& m_hasClientTableChanged;
+	///
+	//ar& m_hasClientTableChanged;
 
-	ar& BOOST_SERIALIZATION_NVP(m_updatedEntities);
-	ar& m_deletedEntitiesById;
-	ar& BOOST_SERIALIZATION_NVP(m_clientTable);
+	//ar& BOOST_SERIALIZATION_NVP(m_updatedEntities);
+	//ar& m_deletedEntitiesById;
+	//ar& BOOST_SERIALIZATION_NVP(m_clientTable);
 
-	if (m_hasClientTableChanged)
-	{
-		//TRACE_NETWORK("clientTable Changed", 0);
-		ar& BOOST_SERIALIZATION_NVP(m_clientTable);
-		m_hasClientTableChanged = false;
-	}
+	//if (m_hasClientTableChanged)
+	//{
+	//	//TRACE_NETWORK("clientTable Changed", 0);
+	//	ar& BOOST_SERIALIZATION_NVP(m_clientTable);
+	//	m_hasClientTableChanged = false;
+	//}
 }
 
 SERIALIZABLE_NOT_UPD(GameState);
