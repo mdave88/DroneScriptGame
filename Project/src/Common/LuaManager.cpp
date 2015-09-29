@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "Common/luamanager/LuaManager.h"
+#include "Common/LuaManager.h"
 
 
 LuaManager::LuaManager()

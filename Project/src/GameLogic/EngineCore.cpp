@@ -1,6 +1,6 @@
 #include "GameStdAfx.h"
-#include "Common/EngineCore/EngineCore.h"
-#include "Common/luamanager/LuaManager.h"
+#include "GameLogic/EngineCore.h"
+#include "Common/LuaManager.h"
 
 #include "Graphics/RenderContext.h"
 

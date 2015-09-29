@@ -1,6 +1,7 @@
 #include "GameStdAfx.h"
+#include "GameLogic/EngineCore.h"
+
 #ifdef CLIENT_SIDE
-#include "Common/EngineCore/EngineCore.h"
 
 #include <imageLoad.h>
 #include "Graphics/Camera.h"
