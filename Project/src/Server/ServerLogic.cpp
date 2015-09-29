@@ -48,8 +48,7 @@ Server::~Server()
  */
 void Server::start()
 {
-	new ConstantManager();
-	ConstantManager::getInstance()->loadConstants(getDataDir() + "settings/constants.xml");
+	ConstantManager::getInstance()->loadConstants(CONST_STR("dataDir") + "/settings/constants.xml");
 
 	// open network log file (tries to find a new name for it)
 	int networkLogFileIndex = 2;

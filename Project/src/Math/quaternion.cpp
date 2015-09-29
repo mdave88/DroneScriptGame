@@ -5,7 +5,7 @@
 Quat::Quat(const vec3& v)
 	: x(v.x)
 	, y(v.y)
-	, z(v.z) 
+	, z(v.z)
 {
 	calculateS();
 }

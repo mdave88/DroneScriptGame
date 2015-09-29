@@ -11,16 +11,16 @@
 
 bool EngineCore::setupShaders()
 {
-	m_shaderDirectory["simplest"] = graphics::ShaderPtr(new graphics::Shader(getResourcesDir() + "shaders/simplest"));
-	m_shaderDirectory["storeDepth"] = graphics::ShaderPtr(new graphics::Shader(getResourcesDir() + "shaders/storeDepth"));
+	m_shaderDirectory["simplest"] = graphics::ShaderPtr(new graphics::Shader(CONST_STR("resourcesDir") + "/shaders/simplest"));
+	m_shaderDirectory["storeDepth"] = graphics::ShaderPtr(new graphics::Shader(CONST_STR("resourcesDir") + "/shaders/storeDepth"));
 
-	m_shaderDirectory["cubeMappingShader"] = graphics::ShaderPtr(new graphics::Shader(getResourcesDir() + "shaders/skybox"));
+	m_shaderDirectory["cubeMappingShader"] = graphics::ShaderPtr(new graphics::Shader(CONST_STR("resourcesDir") + "/shaders/skybox"));
 
 	m_shaderDirectory["cubeMappingShader"]->setupUniforms({ "tex", "environmentMap" });
 	m_shaderDirectory["cubeMappingShader"]->setUniform1i("tex", 0);
 	m_shaderDirectory["cubeMappingShader"]->setUniform1i("environmentMap", 1);
 
-	m_shaderDirectory["newone"] = graphics::ShaderPtr(new graphics::Shader(getResourcesDir() + "shaders/newone"));
+	m_shaderDirectory["newone"] = graphics::ShaderPtr(new graphics::Shader(CONST_STR("resourcesDir") + "/shaders/newone"));
 
 	setupPostProcessing();
 
@@ -97,20 +97,20 @@ void EngineCore::setupFBOs()
 
 			switch(status)
 			{
-			case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
-				TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT.\n", 0);
-				break;
+				case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+					TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT.\n", 0);
+					break;
 
-			case GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT:
-				TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS.\n", 0);
-				break;
+				case GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT:
+					TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS.\n", 0);
+					break;
 
-			case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
-				TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT.\n", 0);
-				break;
+				case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+					TRACE_ERROR("Error: GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT.\n", 0);
+					break;
 
-			case GL_FRAMEBUFFER_UNSUPPORTED:
-				TRACE_ERROR("Error: GL_FRAMEBUFFER_UNSUPPORTED.\n", 0);
+				case GL_FRAMEBUFFER_UNSUPPORTED:
+					TRACE_ERROR("Error: GL_FRAMEBUFFER_UNSUPPORTED.\n", 0);
 			}
 		}
 
@@ -130,7 +130,7 @@ void EngineCore::setupPostProcessing()
 {
 	setupFBOs();
 
-	const std::string postProcShaderPath = getResourcesDir() + "shaders/PostProc/";
+	const std::string postProcShaderPath = CONST_STR("resourcesDir") + "shaders/PostProc/";
 	const std::string postProcVertexShader = postProcShaderPath + "PostProcShaderVS.vert";
 
 	// load shaders

@@ -28,7 +28,7 @@ bool Client::initGui(bool instantStart)
 	// set mygui resource paths
 	MyGUI::xml::Document doc;
 
-	if (!doc.open(std::string(getDataDir() + "MyGuiMedia/resources.xml")))
+	if (!doc.open(std::string(CONST_STR("dataDir") + "/MyGuiMedia/resources.xml")))
 	{
 		doc.getLastError();
 		GX_ASSERT(0 && "Error: resources cannot be loaded from resources.xml\n %s", doc.getLastError());

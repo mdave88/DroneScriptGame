@@ -3,6 +3,37 @@
 
 #include <malloc.h>
 
+
+void CheckGLError()
+{
+	GLuint error = glGetError();
+
+	if(error != GL_NO_ERROR)
+	{
+		switch(error)
+		{
+		case GL_INVALID_ENUM:
+			TRACE_ERROR("GL_INVALID_ENUM\n", 0);
+			break;
+
+		case GL_INVALID_VALUE:
+			TRACE_ERROR("GL_INVALID_VALUE\n", 0);
+			break;
+
+		case GL_INVALID_OPERATION:
+			TRACE_ERROR("GL_INVALID_OPERATION\n", 0);
+			break;
+
+		case GL_OUT_OF_MEMORY:
+			TRACE_ERROR("GL_OUT_OF_MEMORY\n", 0);
+			break;
+		};
+
+		TRACE_ERROR("Unknown gl error: " << error, 0);
+	}
+}
+
+
 // console indentation
 int indentNum = 0;
 
@@ -22,46 +53,6 @@ void updateIndentNum(int inc)
 		indentNum += inc;
 	}
 }
-
-const std::string getDataDir()
-{
-	return "../Data/";
-}
-
-const std::string getResourcesDir()
-{
-	return "../Resources/";
-}
-
-void CheckGLError()
-{
-	GLuint error = glGetError();
-
-	if (error != GL_NO_ERROR)
-	{
-		switch (error)
-		{
-			case GL_INVALID_ENUM:
-				TRACE_ERROR("GL_INVALID_ENUM\n", 0);
-				break;
-
-			case GL_INVALID_VALUE:
-				TRACE_ERROR("GL_INVALID_VALUE\n", 0);
-				break;
-
-			case GL_INVALID_OPERATION:
-				TRACE_ERROR("GL_INVALID_OPERATION\n", 0);
-				break;
-
-			case GL_OUT_OF_MEMORY:
-				TRACE_ERROR("GL_OUT_OF_MEMORY\n", 0);
-				break;
-		};
-
-		TRACE_ERROR("Unknown gl error: " << error, 0);
-	}
-}
-
 
 // logging
 

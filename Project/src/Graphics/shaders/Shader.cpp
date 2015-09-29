@@ -250,11 +250,11 @@ GLuint loadShaderFile(const GLenum type, const char* filename, const uint glslVe
 		char vertexShaderFileName[256];
 		if (glslVersion == 0)
 		{
-			sprintf_s(vertexShaderFileName, "%s/shaders/Common_vOld.vert", getResourcesDir().c_str());
+			sprintf_s(vertexShaderFileName, "%s/shaders/Common_vOld.vert", CONST_STR("resourcesDir").c_str());
 		}
 		else
 		{
-			sprintf_s(vertexShaderFileName, "%s/shaders/Common_v%d.vert", getResourcesDir().c_str(), glslVersion);
+			sprintf_s(vertexShaderFileName, "%s/shaders/Common_v%d.vert", CONST_STR("resourcesDir").c_str(), glslVersion);
 		}
 
 		if (fopen_s(&commonShaderFile, vertexShaderFileName, "rb") != 0)
@@ -268,11 +268,11 @@ GLuint loadShaderFile(const GLenum type, const char* filename, const uint glslVe
 		char fragmentShaderFileName[256];
 		if (glslVersion == 0)
 		{
-			sprintf_s(fragmentShaderFileName, "%s/shaders/Common_vOld.frag", getResourcesDir().c_str());
+			sprintf_s(fragmentShaderFileName, "%s/shaders/Common_vOld.frag", CONST_STR("resourcesDir").c_str());
 		}
 		else
 		{
-			sprintf_s(fragmentShaderFileName, "%s/shaders/Common_v%d.frag", getResourcesDir().c_str(), glslVersion);
+			sprintf_s(fragmentShaderFileName, "%s/shaders/Common_v%d.frag", CONST_STR("resourcesDir").c_str(), glslVersion);
 		}
 
 		if (fopen_s(&commonShaderFile, fragmentShaderFileName, "rb") != 0)

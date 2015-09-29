@@ -6,7 +6,8 @@
 
 ConstantManager::ConstantManager()
 {
-	setStringConstant("dataDir", getDataDir());
+	setStringConstant("dataDir", "../Data");
+	setStringConstant("resourcesDir", "../Resources");
 }
 
 ConstantManager::~ConstantManager()

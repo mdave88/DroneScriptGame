@@ -62,15 +62,13 @@ typedef uint16_t ushort;
 #define SAFEDEL2(pointer)	if (pointer) { delete[] pointer; pointer = 0; }
 
 
+void CheckGLError();
+
 // console and script operations
 int getIndentNum();
 void updateIndentNum(int inc);
 void logToConsole(std::string str);
 
-const std::string getDataDir();
-const std::string getResourcesDir();
-
-void CheckGLError();
 
 // logger operations
 #define LOGLEVEL_INFO			0

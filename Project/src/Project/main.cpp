@@ -74,7 +74,7 @@ int serverMain(const int argc, char* argv[])
 
 	if (argc == 2)
 	{
-		const char* argumentsStr = utils::file::readFile(getResourcesDir() + "serverArgs.txt");
+		const char* argumentsStr = utils::file::readFile(CONST_STR("resourcesDir") + "/serverArgs.txt");
 		const std::vector<std::string> arguments = utils::tokenize(argumentsStr, " ");
 
 		port			= atoi(arguments[0].c_str());
@@ -107,13 +107,14 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 	std::string	hostAddress;
 	int			hostPort = 0;
 
-	int		numDbgBreaks = 0;
-	int*	debugBreakArray = new int[20];
+	int			numDbgBreaks = 0;
+	int*		debugBreakArray = new int[20];
 
 	// read the arguments from clientArgs.txt
 	if (argc == 2)
 	{
-		const char* argumentsStr = utils::file::readFile(getResourcesDir() + "clientArgs.txt");
+		new ConstantManager();
+		const char* argumentsStr = utils::file::readFile(CONST_STR("resourcesDir") + "/clientArgs.txt");
 		const std::vector<std::string> arguments = utils::tokenize(argumentsStr, " ");
 
 		for (uint i = 0; i < arguments.size(); i++)

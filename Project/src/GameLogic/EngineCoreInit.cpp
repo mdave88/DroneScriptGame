@@ -86,7 +86,7 @@ bool EngineCore::initAudioVisuals(const ClientConfigs& confings)
 
 	// sounds
 	SoundSource::audioInit();
-	SoundSourcePtr backgroundNoise = SoundSourcePtr(new SoundSource(getDataDir() + "Desert.wav"));
+	SoundSourcePtr backgroundNoise = SoundSourcePtr(new SoundSource(CONST_STR("dataDir") + "/Desert.wav"));
 
 	backgroundNoise->set(vec3(0, -20, 0), vec3(0.0f), true);
 	backgroundNoise->update();

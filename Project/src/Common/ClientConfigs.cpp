@@ -30,7 +30,7 @@ bool ClientConfigs::loadConfigs(const std::string& filename)
 	m_lightOn = false;
 	m_shadowsOn = false;
 
-	std::ifstream file((getDataDir() + "settings/" + filename).c_str(), std::ios::in);
+	std::ifstream file((CONST_STR("dataDir") + "/settings/" + filename).c_str(), std::ios::in);
 	if (!file.is_open())
 	{
 		TRACE_ERROR("Error: Cannot open config file.", 0);

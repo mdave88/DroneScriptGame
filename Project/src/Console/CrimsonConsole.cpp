@@ -24,9 +24,10 @@ void GameConsole::init(float width, float height)
 {
 	cl = new ConsoleLibrary(width, height);
 
-	const std::string consoleSkin	= getDataDir() + "consoleSkins/noborder.skin";
-	const std::string verdana14Font	= getDataDir() + "consoleSkins/verdana-14.font";
-	const std::string verdana12Font	= getDataDir() + "consoleSkins/verdana-12.font";
+	const char* dataDir = CONST_STR("dataDir").c_str();
+	const std::string consoleSkin	= utils::conversion::formatStr("%s/consoleSkins/noborder.skin", dataDir);
+	const std::string verdana14Font	= utils::conversion::formatStr("%s/consoleSkins/verdana-14.font", dataDir);
+	const std::string verdana12Font	= utils::conversion::formatStr("%s/consoleSkins/verdana-12.font", dataDir);
 
 	gConsole->SetTitle("Survive");
 	gConsole->SetCharTable((char*) verdana14Font.c_str(), 1);
@@ -44,7 +45,7 @@ void GameConsole::init(float width, float height)
 	gConsole->SetWindowSettings(width, height);
 	gConsole->Resize(gConsole->GetWidth(), 100);
 
-	std::ifstream file(getDataDir() + "settings/consoleCommands", std::ifstream::in);
+	std::ifstream file(utils::conversion::formatStr("%s/settings/consoleCommands", dataDir), std::ifstream::in);
 	if (file.is_open())
 	{
 		while (!file.eof())
