@@ -18,12 +18,40 @@
 //	float y;
 //};
 
-struct Movement
+struct Serializable
 {
-	Movement(float x = 0.0f, float y = 0.0f, float dirX = 0.0f, float dirY = 0.0f) : x(x), y(y), dirX(x), dirY(y) {}
+	uint8_t id;
+	uint32_t attribmask;
+	uint32_t attribIndex;
+
+	NetworkPriority networkPriority;
+
+	template <typename Archive>
+	void load(Archive& ar, const uint version) = 0;
+	template <typename Archive>
+	void save(Archive& ar, const uint version) const = 0;
+};
+
+struct Movement : public Serializable
+{
+	Movement(vec2 pos(0.0f), vec2 dir(0.0f)) : pos(pos), dir(dir) {}
 	
-	float x, y;
-	float dirX, dirY;
+	vec2 pos;
+	vec2 dir;
+	float speed;
+	//vec2 vel;
+
+	template <typename Archive>
+	void load(Archive& ar, const uint version)
+	{
+
+	}
+
+	template <typename Archive>
+	void save(Archive& ar, const uint version) const
+	{
+
+	}
 };
 
 struct Health
@@ -37,13 +65,4 @@ struct Explosive
 {
 	float damageBase;
 	int range;			// damage = <damageBase> modified using <range> and <distance>
-};
-
-struct Serializable
-{
-	uint8_t id;
-	uint32_t attribmask;
-	uint32_t attribIndex;
-
-	NetworkPriority networkPriority;
 };

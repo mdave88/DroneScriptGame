@@ -6,8 +6,10 @@
 #define EPSILON 0.001
 
 
-#ifndef USE_GLM
+#ifdef USE_GLM
+typedef glm::vec3 vec3;
 
+#else
 class vec3
 {
 public:

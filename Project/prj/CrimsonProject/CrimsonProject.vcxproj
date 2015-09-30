@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\src\Common\LuaManager.cpp" />
     <ClCompile Include="..\..\src\Common\Utils.cpp" />
     <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Drone.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="..\..\src\Graphics\shaders\Shader.cpp" />
     <ClCompile Include="..\..\src\Math\matrix.cpp" />
     <ClCompile Include="..\..\src\Math\quaternion.cpp" />
+    <ClCompile Include="..\..\src\Math\vec2.cpp" />
     <ClCompile Include="..\..\src\Math\vec3.cpp" />
     <ClCompile Include="..\..\src\Models\3ds\Model3ds.cpp" />
     <ClCompile Include="..\..\src\Models\3ds\Model3dsLoader.cpp" />
@@ -70,6 +72,7 @@
     <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
     <ClInclude Include="..\..\src\GameLogic\Components.h" />
+    <ClInclude Include="..\..\src\GameLogic\Drone.h" />
     <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
     <ClInclude Include="..\..\src\GameLogic\Modules.h" />
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
@@ -83,6 +86,7 @@
     <ClInclude Include="..\..\src\Graphics\shaders\Shader.h" />
     <ClInclude Include="..\..\src\Math\matrix.h" />
     <ClInclude Include="..\..\src\Math\quaternion.h" />
+    <ClInclude Include="..\..\src\Math\vec2.h" />
     <ClInclude Include="..\..\src\Math\vec3.h" />
     <ClInclude Include="..\..\src\Models\3ds\Model3ds.h" />
     <ClInclude Include="..\..\src\Models\md2\anorms.h" />
