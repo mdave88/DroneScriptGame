@@ -78,6 +78,7 @@ bool Client::connect(const std::string& host, uint port)
 		/* had run out without any significant m_event.            */
 		enet_peer_reset(m_pPeer);
 		enet_host_destroy(m_pClientHost);
+		m_pClientHost = nullptr;
 		enet_deinitialize();
 
 		TRACE_ERROR("Error: Connection to server failed.", 0);
@@ -210,6 +211,11 @@ void Client::listen()
  */
 void Client::disconnect()
 {
+	if(!m_pClientHost)
+	{
+		return;
+	}
+
 	// Send disconnecting request
 	m_disconnectingEvent.connectionID = m_pPeer->connectID;
 	network::send(m_disconnectingEvent, m_pPeer);

@@ -32,11 +32,14 @@ EngineCore::EngineCore()
 
 void EngineCore::release()
 {
-	LuaManager::getInstance()->close();
+	if(LuaManager::hasInstance())
+	{
+		LuaManager::getInstance()->close();
+	}
 
 #ifdef CLIENT_SIDE
-	delete m_pCamera;
-	delete m_pRenderContext;
+	SAFEDEL(m_pCamera);
+	SAFEDEL(m_pRenderContext);
 
 	for (auto& entry : m_meshDirectory)
 	{
@@ -48,7 +51,10 @@ void EngineCore::release()
 		glDeleteTextures(1, &entry.second);
 	}
 
-	m_soundDirectory["backgroundNoise"]->release();
+	if(m_soundDirectory.count("backgroundNoise") > 0)
+	{
+		m_soundDirectory["backgroundNoise"]->release();
+	}
 	SoundSource::audioExit();
 #endif
 }

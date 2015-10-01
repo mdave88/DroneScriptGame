@@ -69,7 +69,7 @@ private:
 #endif
 
 private:
-	ClientConfigs						m_configs;
+	ClientConfigs				m_configs;
 	
 	// lua scripts
 	std::vector<std::string>	m_luaDefinitonScripts;

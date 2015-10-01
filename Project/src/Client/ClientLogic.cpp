@@ -132,7 +132,7 @@ void Client::initGraphics()
 
 bool Client::initEngineCore()
 {
-	new EngineCore();
+	m_pEngineCore = new EngineCore();
 
 	// connect to server
 	if (!connect(m_hostAddress, m_hostPort))
@@ -153,8 +153,6 @@ bool Client::initEngineCore()
 	}
 
 	setLoadingProgress(5, "Initializing physx..");
-
-	m_pEngineCore = EngineCore::getInstance();
 
 	// init engine
 	setLoadingProgress(25, "Initializing sfx/gfx..");
