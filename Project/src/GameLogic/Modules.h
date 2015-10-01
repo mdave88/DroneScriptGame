@@ -3,8 +3,30 @@
 #include "GameLogic/Components.h"
 
 
+enum class ModuleType
+{
+	Battery,
+	Mobylity,
+	Memory,
+	Hdd,
+	Welder,
+	Jackhammer,
+	RadioTransmitter,
+	RadioReceiver,
+	Radar,
+	Ladar,
+	FuelCreator,
+};
+
 struct ModuleBase
 {
+	ModuleBase(int energyCostPerTurn = 0, int fuelCostPerTurn = 0, bool isActive = false)
+		: energyCostPerTurn(energyCostPerTurn)
+		, fuelCostPerTurn(fuelCostPerTurn)
+		, isActive(isActive)
+	{
+	}
+
 	int energyCostPerTurn;	// FuelModule
 	int fuelCostPerTurn;	// EnergyModule
 	bool isActive;
@@ -16,7 +38,7 @@ struct Battery : public ModuleBase
 	int capacity;
 };
 
-struct Mobylity : public ModuleBase
+struct Mobility : public ModuleBase
 {
 	float maxSpeed;
 	float speed;	// set by the drone

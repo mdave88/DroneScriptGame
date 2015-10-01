@@ -1,11 +1,9 @@
 #pragma once
 
-#define	PI 3.14159263f
-#define PIHALF 1.57079632679f
-#define PI_DEG 0.01745329f	//angle * PI_DEG = radians
+#ifdef USE_GLM
+typedef glm::vec2 vec2;
 
-#define EPSILON 0.001
-
+#else
 class vec2
 {
 public:
@@ -92,3 +90,4 @@ public:
 		ar& y;
 	}
 };
+#endif // USE_GLM
