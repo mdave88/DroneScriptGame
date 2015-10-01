@@ -226,11 +226,11 @@ void Client::disconnect()
 	//// Waiting for ACK
 	//bool acked = false;
 	//int startTime = glutGet(GLUT_ELAPSED_TIME);
-
+	//
 	//while (glutGet(GLUT_ELAPSED_TIME) - startTime < 3000 && enet_host_service(m_clientHost, &m_event, 3000) > 0) {
 	//	switch (m_event.type) {
 	//		case ENET_EVENT_TYPE_RECEIVE:
-
+	//
 	//			if (unmarshal(m_netObject, std::string((char*) m_event.packet->data, m_event.packet->dataLength))) {
 	//				if (m_netObject.type == events::PlayerDisconnectingEvent::NETOBJ_PLAYER_DC) {
 	//					if (unmarshal(m_disconnectingEvent, std::string((char*) m_event.packet->data, m_event.packet->dataLength))) {
@@ -241,9 +241,9 @@ void Client::disconnect()
 	//					}
 	//				}
 	//			}
-
+	//
 	//			enet_packet_destroy(m_event.packet);
-
+	//
 	//			break;
 	//	}
 	//}

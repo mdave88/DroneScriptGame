@@ -14,6 +14,7 @@ GameConsole::GameConsole()
 
 GameConsole::~GameConsole()
 {
+	releaseKeys();
 	if (cl)
 	{
 		delete cl;

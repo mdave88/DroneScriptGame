@@ -56,15 +56,11 @@ Client::~Client()
 void Client::release()
 {
 	releaseGui();
-
-	m_pGameConsole->releaseKeys();
-	delete m_pGameConsole;
-
-	ConstantManager::destroyInstance();
-
 	disconnect();
 
-	m_pEngineCore->release();
+	SAFEDEL(m_pGameConsole);
+
+	ConstantManager::destroyInstance();
 	EngineCore::destroyInstance();
 	LuaManager::destroyInstance();
 }

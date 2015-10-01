@@ -30,6 +30,11 @@ EngineCore::EngineCore()
 #endif
 }
 
+EngineCore::~EngineCore()
+{
+	release();
+}
+
 void EngineCore::release()
 {
 	if(LuaManager::hasInstance())

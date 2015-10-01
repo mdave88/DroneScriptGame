@@ -17,6 +17,7 @@ class EngineCore : public Singleton<EngineCore>
 {
 public:
 	EngineCore();
+	~EngineCore();
 
 	bool initLogic();
 	bool initAudioVisuals(const ClientConfigs& confings);
