@@ -1,7 +1,7 @@
 #include "GameStdAfx.h"
 #include "Math/vec2.h"
 
-
+#ifndef USE_GLM
 vec2::vec2()
 {
 	x = y = 0;
@@ -258,4 +258,26 @@ bool vec2::isZeroVector() const
 	}
 
 	return false;
+}
+
+float dot(const vec2& v1, const vec2& v2)
+{
+	return v1.dot(v2);
+}
+
+vec2 normalize(const vec2& v)
+{
+	return v.normalized();
+}
+
+#endif // USE_GLM
+
+vec2 interpolate(const vec2& v1, vec2 v2, float t)
+{
+	const float inv_t = 1.0f - t;
+
+	v2.x = v1.x * inv_t + v2.x * t;
+	v2.y = v1.y * inv_t + v2.y * t;
+
+	return v2;
 }

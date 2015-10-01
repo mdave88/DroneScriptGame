@@ -34,7 +34,7 @@ struct Serializable
 
 struct Movement : public Serializable
 {
-	Movement(vec2 pos(0.0f), vec2 dir(0.0f)) : pos(pos), dir(dir) {}
+	Movement(vec2 pos = vec2(0.0f), vec2 dir = vec2(0.0f)) : pos(pos), dir(dir) {}
 	
 	vec2 pos;
 	vec2 dir;

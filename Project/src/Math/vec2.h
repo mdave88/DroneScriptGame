@@ -90,4 +90,11 @@ public:
 		ar& y;
 	}
 };
+
+// compatible with glm
+float dot(const vec2& v1, const vec2& v2);
+vec2 normalize(const vec2& v1);
+
 #endif // USE_GLM
+
+vec2 interpolate(const vec2& v1, vec2 v, float t);
