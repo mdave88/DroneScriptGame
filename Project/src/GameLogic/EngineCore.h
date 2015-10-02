@@ -32,6 +32,7 @@ public:
 
 	// getters-setters
 	const ClientConfigs& getConfigs() const;
+	long getElapsedTime() const;
 
 #ifdef CLIENT_SIDE
 	void onScreenResize(const int width, const int height);

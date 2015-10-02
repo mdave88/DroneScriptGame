@@ -110,7 +110,7 @@ void Client::keyDown(uint8_t key, int x, int y)
 	m_keyEvent.set(network::events::KeyEvent(network::events::KeyEvent::NETOBJ_KEY_DOWN, key));
 
 #ifndef SERVER_SIDE
-	m_pEngineCore->getPlayer()->setKeyState(key, true);
+	///m_pEngineCore->getPlayer()->setKeyState(key, true);
 #endif
 
 	// enter on console
@@ -221,7 +221,7 @@ void Client::keyUp(uint8_t key, int x, int y)
 
 
 #ifndef SERVER_SIDE
-	m_pEngineCore->getPlayer()->setKeyState(key, false);
+	///m_pEngineCore->getPlayer()->setKeyState(key, false);
 #endif
 
 	if (m_isGuiOpened)

@@ -25,4 +25,16 @@
 
 
 #define GX_DEBUG_INFO
-//#define ENABLE_BLOOD_EFFECT
+
+// short version of unsigned int
+#ifndef uint
+typedef uint32_t uint;
+#endif
+
+#ifndef ushort
+typedef uint16_t ushort;
+#endif
+
+// safely delete pointers
+#define SAFEDEL(pointer)	if (pointer) { delete pointer; pointer = 0; }
+#define SAFEDEL2(pointer)	if (pointer) { delete[] pointer; pointer = 0; }

@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "ConstantManager.h"
+#include "Common/ConstantManager.h"
 
 #include "Common/LuaManager.h"
 
@@ -35,7 +35,7 @@ void ConstantManager::parseObject(const rapidjson::Value& object, const std::str
 {
 	for(rapidjson::Value::ConstMemberIterator m = object.MemberBegin(); m != object.MemberEnd(); ++m)
 	{
-		const char* name = path.empty() ? m->name.GetString() : utils::conversion::formatStr("%s::%s", path.c_str(), m->name.GetString());
+		const char* name = path.empty() ? m->name.GetString() : utils::formatStr("%s::%s", path.c_str(), m->name.GetString());
 
 		if(m->value.IsObject())
 		{

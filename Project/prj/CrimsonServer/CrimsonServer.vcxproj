@@ -50,6 +50,8 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\lua\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SERVER_SIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -77,11 +79,88 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Common\Assert.h" />
+    <ClInclude Include="..\..\src\Common\ClientConfigs.h" />
+    <ClInclude Include="..\..\src\Common\ConstantManager.h" />
+    <ClInclude Include="..\..\src\Common\CrimsonCommon.h" />
+    <ClInclude Include="..\..\src\Common\Directory.h" />
+    <ClInclude Include="..\..\src\Common\GameDefines.h" />
+    <ClInclude Include="..\..\src\Common\LuaManager.h" />
+    <ClInclude Include="..\..\src\Common\Singleton.h" />
+    <ClInclude Include="..\..\src\Common\Utils.h" />
+    <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
+    <ClInclude Include="..\..\src\GameLogic\Components.h" />
+    <ClInclude Include="..\..\src\GameLogic\Drone.h" />
+    <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
+    <ClInclude Include="..\..\src\GameLogic\Modules.h" />
+    <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
+    <ClInclude Include="..\..\src\GameStdAfx.h" />
+    <ClInclude Include="..\..\src\Math\matrix.h" />
+    <ClInclude Include="..\..\src\Math\quaternion.h" />
+    <ClInclude Include="..\..\src\Math\vec2.h" />
+    <ClInclude Include="..\..\src\Math\vec3.h" />
+    <ClInclude Include="..\..\src\Network\connection.h" />
+    <ClInclude Include="..\..\src\Network\CrimsonNetwork.h" />
+    <ClInclude Include="..\..\src\Network\events\ChatMessage.h" />
+    <ClInclude Include="..\..\src\Network\events\InputEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\KeyEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\Killshot.h" />
+    <ClInclude Include="..\..\src\Network\events\LuaCommand.h" />
+    <ClInclude Include="..\..\src\Network\events\MouseEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerDisconnectingEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerReadyEvent.h" />
+    <ClInclude Include="..\..\src\Network\GameState.h" />
+    <ClInclude Include="..\..\src\Network\NetworkObject.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zconf.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zlib.h" />
     <ClInclude Include="..\..\src\Server\Server.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Common\Assert.cpp" />
+    <ClCompile Include="..\..\src\Common\ClientConfigs.cpp" />
+    <ClCompile Include="..\..\src\Common\ConstantManager.cpp" />
+    <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp" />
+    <ClCompile Include="..\..\src\Common\LuaManager.cpp" />
+    <ClCompile Include="..\..\src\Common\Utils.cpp" />
+    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Drone.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp" />
+    <ClCompile Include="..\..\src\GameStdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\matrix.cpp" />
+    <ClCompile Include="..\..\src\Math\quaternion.cpp" />
+    <ClCompile Include="..\..\src\Math\vec2.cpp" />
+    <ClCompile Include="..\..\src\Math\vec3.cpp" />
+    <ClCompile Include="..\..\src\Network\GameState.cpp" />
+    <ClCompile Include="..\..\src\Network\zlib\zlib.cpp" />
+    <ClCompile Include="..\..\src\Project\main.cpp" />
     <ClCompile Include="..\..\src\Server\ServerLogic.cpp" />
     <ClCompile Include="..\..\src\Server\ServerNetwork.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\consoleCommands" />
+    <None Include="..\..\Data\settings\constants.json" />
+    <None Include="..\..\Data\settings\settings" />
+    <None Include="..\..\Data\settings\settings2" />
+    <None Include="..\..\Resources\clientArgs.txt" />
+    <None Include="..\..\Resources\scripts\bsp.lua" />
+    <None Include="..\..\Resources\scripts\classDefinitions.lua" />
+    <None Include="..\..\Resources\scripts\gui.lua" />
+    <None Include="..\..\Resources\scripts\init.lua" />
+    <None Include="..\..\Resources\scripts\luaCommon.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resources\serverArgs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\constants.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\level.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

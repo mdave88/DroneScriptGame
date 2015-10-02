@@ -138,13 +138,9 @@ void exitGame(int status)
 	exit(status);
 }
 
-long getElapsedTime()
+long getElapsedTimeFunc()
 {
-#ifdef CLIENT_SIDE
-	return glutGet(GLUT_ELAPSED_TIME);
-#else
-	return glutGet(GLUT_ELAPSED_TIME);
-#endif
+	return EngineCore::getInstance()->getElapsedTime();
 }
 
 #ifdef CLIENT_SIDE
@@ -177,7 +173,7 @@ void EngineCore::resetLuaScripts()
 	    def("updateIndentNum", &updateIndentNum),
 	    def("logToConsole", &logToConsole),
 
-	    def("getElapsedTime", &getElapsedTime),
+	    def("getElapsedTime", &getElapsedTimeFunc),
 
 	    def("exitGame", &exitGame)
 	];
@@ -227,4 +223,13 @@ graphics::RenderContext* EngineCore::getRenderContext()
 const ClientConfigs& EngineCore::getConfigs() const
 {
 	return m_configs;
+}
+
+long EngineCore::getElapsedTime() const
+{
+#ifdef CLIENT_SIDE
+	return glutGet(GLUT_ELAPSED_TIME);
+#else
+	return 0;
+#endif
 }

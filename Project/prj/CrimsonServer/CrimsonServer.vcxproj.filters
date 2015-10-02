@@ -1,20 +1,245 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <ClInclude Include="..\..\src\Common\Assert.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\ClientConfigs.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\ConstantManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\CrimsonCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Directory.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\GameDefines.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\LuaManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Singleton.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\Utils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
+      <Filter>Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Components.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Drone.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\EngineCore.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Modules.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\vec2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Math\vec3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\connection.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\CrimsonNetwork.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\GameState.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\NetworkObject.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\ChatMessage.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\InputEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\KeyEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\Killshot.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\LuaCommand.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\MouseEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\PlayerDisconnectingEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\events\PlayerReadyEvent.h">
+      <Filter>Network\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\zlib\zconf.h">
+      <Filter>Network\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Network\zlib\zlib.h">
+      <Filter>Network\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Server\Server.h">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameStdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Common\Assert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\ClientConfigs.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\ConstantManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\LuaManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\Utils.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
+      <Filter>Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Drone.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\vec2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Math\vec3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Network\GameState.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Network\zlib\zlib.cpp">
+      <Filter>Network\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Server\ServerLogic.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Server\ServerNetwork.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameStdAfx.cpp" />
+    <ClCompile Include="..\..\src\Project\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{e944aa59-a350-455e-9bd8-344401906827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Console">
+      <UniqueIdentifier>{bd6c109e-fc47-446f-b0b5-35921722cde8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{aace2264-dd4f-4a70-b125-8abb0c71d991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{98544b80-ea0e-4418-bce8-e6a0862c0b99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{0f3b6176-47d0-4f63-8ce1-ff5089444577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Events">
+      <UniqueIdentifier>{fe868e7b-e08f-4c6a-b520-518987f3bf8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\zlib">
+      <UniqueIdentifier>{8dcb964b-719c-43bc-aeb0-62f1d981e072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{b62f95d9-af0d-4a6d-9054-c176e5a2e3cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Lua">
+      <UniqueIdentifier>{7258980f-cb4d-42fb-a006-39f3502e69e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Settings">
+      <UniqueIdentifier>{2f631cfb-4b76-47d2-932f-b05628c8fe8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{d249d1a1-d030-4952-96bf-927ecad03f07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Server\Server.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\Server\ServerLogic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Server\ServerNetwork.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="..\..\Resources\clientArgs.txt">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\serverArgs.txt">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\scripts\bsp.lua">
+      <Filter>Resources\Lua</Filter>
+    </None>
+    <None Include="..\..\Resources\scripts\classDefinitions.lua">
+      <Filter>Resources\Lua</Filter>
+    </None>
+    <None Include="..\..\Resources\scripts\gui.lua">
+      <Filter>Resources\Lua</Filter>
+    </None>
+    <None Include="..\..\Resources\scripts\init.lua">
+      <Filter>Resources\Lua</Filter>
+    </None>
+    <None Include="..\..\Resources\scripts\luaCommon.lua">
+      <Filter>Resources\Lua</Filter>
+    </None>
+    <None Include="..\..\Data\settings\consoleCommands">
+      <Filter>Resources\Settings</Filter>
+    </None>
+    <None Include="..\..\Data\settings\constants.json">
+      <Filter>Resources\Settings</Filter>
+    </None>
+    <None Include="..\..\Data\settings\constants.xml">
+      <Filter>Resources\Settings</Filter>
+    </None>
+    <None Include="..\..\Data\settings\level.xml">
+      <Filter>Resources\Settings</Filter>
+    </None>
+    <None Include="..\..\Data\settings\settings">
+      <Filter>Resources\Settings</Filter>
+    </None>
+    <None Include="..\..\Data\settings\settings2">
+      <Filter>Resources\Settings</Filter>
+    </None>
   </ItemGroup>
 </Project>

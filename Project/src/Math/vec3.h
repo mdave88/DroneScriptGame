@@ -5,6 +5,7 @@
 #define PI_DEG 0.01745329f	//angle * PI_DEG = radians
 #define EPSILON 0.001
 
+#define VEC3_TO_F3(v)		(float)v.x,(float)v.y,(float)v.z
 
 #ifdef USE_GLM
 typedef glm::vec3 vec3;

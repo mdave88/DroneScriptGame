@@ -298,7 +298,7 @@ private:
 };
 
 #define REG_CONSTR(C)			thisClass.def(C);
-#define REG_FUNC(name, F)		{ thisClass.def(name, F);				GameConsole::addKeywordToConsole(utils::conversion::formatStr("%( )", name)); }
+#define REG_FUNC(name, F)		{ thisClass.def(name, F);				GameConsole::addKeywordToConsole(utils::formatStr("%( )", name)); }
 #define REG_ATTR(name, F)		{ thisClass.def_readwrite(name, F);		GameConsole::addKeywordToConsole(name); }
 #define REG_PROP(name, G, S)	{ thisClass.property(name, G, S);		GameConsole::addKeywordToConsole(name); }
 #define REG_PROPG(name, G)		{ thisClass.property(name, G);			GameConsole::addKeywordToConsole(name); }

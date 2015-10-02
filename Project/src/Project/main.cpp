@@ -1,6 +1,12 @@
 #include "GameStdAfx.h"
+#ifdef CLIENT_SIDE
 #include "Client/ClientMain.h"
+#endif
+
+#ifdef SERVER_SIDE
 #include "Server/Server.h"
+#endif
+
 
 //#define ENABLE_VMEM
 //#define ENABLE_MEMPRO
@@ -18,16 +24,24 @@
 	#include "Common/MemPro.hpp"
 #endif
 
-
+#ifdef CLIENT_SIDE
 ClientConfigs conf;
-network::Client* client;
+network::Client* client = nullptr;
+#endif
+#ifdef SERVER_SIDE
 network::Server* server = nullptr;
+#endif
 
 // shutting down
 void shutDown()
 {
+#ifdef CLIENT_SIDE
 	SAFEDEL(client);
+#endif
+
+#ifdef SERVER_SIDE
 	SAFEDEL(server);
+#endif
 }
 
 /**
@@ -38,6 +52,7 @@ void shutDown()
  */
 void logToConsole(std::string str)
 {
+#ifdef CLIENT_SIDE
 	if (client)
 	{
 		client->getGameConsole()->print(str);
@@ -45,15 +60,15 @@ void logToConsole(std::string str)
 	else if (server && server->isRunning())
 	{
 		TRACE_LUA("> " << str, 0);
-		std::string serialStr = marshal(network::events::LuaCommand(str));
+		const std::string serialStr = marshal(network::events::LuaCommand(str));
 		ENetPacket* packet = enet_packet_create((enet_uint8*) serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
-
 		enet_host_broadcast(server->getENetHost(), 0, packet);
 	}
 	else
 	{
 		TRACE_LUA("> " << str, 0);
 	}
+#endif
 }
 
 #define CLIENT_START_CODE "c"
@@ -62,6 +77,7 @@ void logToConsole(std::string str)
 
 int serverMain(const int argc, char* argv[])
 {
+#ifdef SERVER_SIDE
 	if (argc < 1)
 	{
 		return EXIT_FAILURE;
@@ -92,12 +108,13 @@ int serverMain(const int argc, char* argv[])
 	server->start();
 
 	SAFEDEL(server);
-
+#endif
 	return EXIT_SUCCESS;
 }
 
 int clientMain(int argc, char* argv[], const bool isThickClient)
 {
+#ifdef CLIENT_SIDE
 	//freopen("lualog.txt", "w", stdout);
 	atexit(shutDown);						// called only if the code is EXIT_SUCCESS!
 
@@ -235,12 +252,14 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 
 
 	glutMainLoop();
+#endif
 
 	return 0;
 }
 
 int main(int argc, char* argv[])
 {
+#if defined(CLIENT_SIDE) && defined(SERVER_SIDE)
 	if (strcmp(argv[1], CLIENT_START_CODE) == 0)
 	{
 		return clientMain(argc, argv);
@@ -253,13 +272,17 @@ int main(int argc, char* argv[])
 	{
 		return serverMain(argc, argv);
 	}
-
 	std::cout << "Bad argument. Possible ones are: " << CLIENT_START_CODE << " " << CLIENT_THICK_START_CODE << " " << SERVER_START_CODE;
+#elif defined(CLIENT_SIDE)
+	return clientMain(argc, argv);
+#elif defined(SERVER_SIDE)
+	return serverMain(argc, argv);
+#endif
 }
 
 
 
-
+#ifdef CLIENT_SIDE
 // binding glut functions to client methods
 
 // glutReshapeFunc
@@ -319,3 +342,4 @@ void entryFunc(int state)
 {
 	client->entryFunc(state);
 }
+#endif // CLIENT_SIDE

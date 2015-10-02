@@ -85,7 +85,7 @@ void Server::listen()
 	{
 		serviceResult = 1;
 
-		startTime = glutGet(GLUT_ELAPSED_TIME);
+		startTime = m_pEngineCore->getElapsedTime();
 		processingTime = 0;
 
 		do
@@ -118,12 +118,12 @@ void Server::listen()
 						//pBackBuffer->push_back(m_event);
 
 						//m_eventBufferMutex.lock();
-						//if (glutGet(GLUT_ELAPSED_TIME) - startTime > 10) {
+						//if (m_pEngineCore->getElapsedTime() - startTime > 10) {
 						//	pSwapper = pBackBuffer;
 						//	pBackBuffer = m_pFrontBuffer;
 						//	m_pFrontBuffer = pSwapper;
 
-						//	//startTime = glutGet(GLUT_ELAPSED_TIME);
+						//	//startTime = m_pEngineCore->getElapsedTime();
 						//}
 						//m_eventBufferMutex.unlock();
 
@@ -159,7 +159,7 @@ void Server::listen()
 				}
 			}
 
-			processingTime = glutGet(GLUT_ELAPSED_TIME) - startTime;
+			processingTime = m_pEngineCore->getElapsedTime() - startTime;
 		}
 		while (serviceResult > 0 && processingTime < 10);
 
@@ -337,12 +337,12 @@ void Server::processEvent(const std::string& stringData)
  */
 void Server::broadcast()
 {
-	if (glutGet(GLUT_ELAPSED_TIME) - m_lastBroadcastTime < m_broadcastRate)
+	if (m_pEngineCore->getElapsedTime() - m_lastBroadcastTime < m_broadcastRate)
 	{
 		return;
 	}
 
-	m_pEngineCore->getCamera()->setPerspective(45, 800, 600, 1.0f, 400.0f);
+	///m_pEngineCore->getCamera()->setPerspective(45, 800, 600, 1.0f, 400.0f);
 	//m_pEngineCore->getMap()->updateObservers(m_pEngineCore->getCamera());
 	//m_serverState = getNodeDirectory();
 
@@ -367,7 +367,7 @@ void Server::broadcast()
 	//	send(m_package, entry.second.m_pPeer);
 	//}
 
-	m_lastBroadcastTime = glutGet(GLUT_ELAPSED_TIME);
+	m_lastBroadcastTime = m_pEngineCore->getElapsedTime();
 }
 
 /**

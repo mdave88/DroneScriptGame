@@ -15,10 +15,145 @@
     <ClCompile Include="..\..\src\Client\ClientLogic.cpp" />
     <ClCompile Include="..\..\src\Client\ClientNetwork.cpp" />
     <ClCompile Include="..\..\src\Client\GUI\ClientGUI.cpp" />
+    <ClCompile Include="..\..\src\Common\Assert.cpp" />
+    <ClCompile Include="..\..\src\Common\ClientConfigs.cpp" />
+    <ClCompile Include="..\..\src\Common\ConstantManager.cpp" />
+    <ClCompile Include="..\..\src\Common\CrimsonCommon.cpp" />
+    <ClCompile Include="..\..\src\Common\LuaManager.cpp" />
+    <ClCompile Include="..\..\src\Common\Utils.cpp" />
+    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Drone.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp" />
+    <ClCompile Include="..\..\src\GameStdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Graphics\Camera.cpp" />
+    <ClCompile Include="..\..\src\Graphics\LightSource.cpp" />
+    <ClCompile Include="..\..\src\Graphics\Material.cpp" />
+    <ClCompile Include="..\..\src\Graphics\RenderContext.cpp" />
+    <ClCompile Include="..\..\src\Graphics\Role.cpp" />
+    <ClCompile Include="..\..\src\Graphics\ShadedMesh.cpp" />
+    <ClCompile Include="..\..\src\Graphics\shaders\Shader.cpp" />
+    <ClCompile Include="..\..\src\Math\matrix.cpp" />
+    <ClCompile Include="..\..\src\Math\quaternion.cpp" />
+    <ClCompile Include="..\..\src\Math\vec2.cpp" />
+    <ClCompile Include="..\..\src\Math\vec3.cpp" />
+    <ClCompile Include="..\..\src\Models\3ds\Model3ds.cpp" />
+    <ClCompile Include="..\..\src\Models\3ds\Model3dsLoader.cpp" />
+    <ClCompile Include="..\..\src\Models\md2\ModelMd2.cpp" />
+    <ClCompile Include="..\..\src\Models\md5\ModelMd5Anim.cpp" />
+    <ClCompile Include="..\..\src\Models\md5\ModelMd5Mesh.cpp" />
+    <ClCompile Include="..\..\src\Models\md5\Skeleton.cpp" />
+    <ClCompile Include="..\..\src\Models\mesh\AnimatedMesh.cpp" />
+    <ClCompile Include="..\..\src\Models\mesh\Mesh.cpp" />
+    <ClCompile Include="..\..\src\Models\mesh\Object.cpp" />
+    <ClCompile Include="..\..\src\Network\GameState.cpp" />
+    <ClCompile Include="..\..\src\Network\zlib\zlib.cpp" />
     <ClCompile Include="..\..\src\Project\main.cpp" />
+    <ClCompile Include="..\..\src\Sound\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Client\Client.h" />
+    <ClInclude Include="..\..\src\Client\ClientMain.h" />
+    <ClInclude Include="..\..\src\Client\GUI\OpenGLImageLoader_Devil.h" />
+    <ClInclude Include="..\..\src\Common\Assert.h" />
+    <ClInclude Include="..\..\src\Common\ClientConfigs.h" />
+    <ClInclude Include="..\..\src\Common\ConstantManager.h" />
+    <ClInclude Include="..\..\src\Common\CrimsonCommon.h" />
+    <ClInclude Include="..\..\src\Common\Directory.h" />
+    <ClInclude Include="..\..\src\Common\GameDefines.h" />
+    <ClInclude Include="..\..\src\Common\LuaManager.h" />
+    <ClInclude Include="..\..\src\Common\Singleton.h" />
+    <ClInclude Include="..\..\src\Common\Utils.h" />
+    <ClInclude Include="..\..\src\Console\CrimsonConsole.h" />
+    <ClInclude Include="..\..\src\GameLogic\Components.h" />
+    <ClInclude Include="..\..\src\GameLogic\Drone.h" />
+    <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
+    <ClInclude Include="..\..\src\GameLogic\Modules.h" />
+    <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
+    <ClInclude Include="..\..\src\GameStdAfx.h" />
+    <ClInclude Include="..\..\src\Graphics\Camera.h" />
+    <ClInclude Include="..\..\src\Graphics\LightSource.h" />
+    <ClInclude Include="..\..\src\Graphics\Material.h" />
+    <ClInclude Include="..\..\src\Graphics\RenderContext.h" />
+    <ClInclude Include="..\..\src\Graphics\Role.h" />
+    <ClInclude Include="..\..\src\Graphics\ShadedMesh.h" />
+    <ClInclude Include="..\..\src\Graphics\shaders\Shader.h" />
+    <ClInclude Include="..\..\src\Math\matrix.h" />
+    <ClInclude Include="..\..\src\Math\quaternion.h" />
+    <ClInclude Include="..\..\src\Math\vec2.h" />
+    <ClInclude Include="..\..\src\Math\vec3.h" />
+    <ClInclude Include="..\..\src\Models\3ds\Model3ds.h" />
+    <ClInclude Include="..\..\src\Models\md2\anorms.h" />
+    <ClInclude Include="..\..\src\Models\md2\ModelMd2.h" />
+    <ClInclude Include="..\..\src\Models\md5\ModelMd5.h" />
+    <ClInclude Include="..\..\src\Models\md5\Skeleton.h" />
+    <ClInclude Include="..\..\src\Models\mesh\AnimatedMesh.h" />
+    <ClInclude Include="..\..\src\Models\mesh\Mesh.h" />
+    <ClInclude Include="..\..\src\Models\mesh\Object.h" />
+    <ClInclude Include="..\..\src\Models\mesh\PolyTex.h" />
+    <ClInclude Include="..\..\src\Network\connection.h" />
+    <ClInclude Include="..\..\src\Network\CrimsonNetwork.h" />
+    <ClInclude Include="..\..\src\Network\events\ChatMessage.h" />
+    <ClInclude Include="..\..\src\Network\events\InputEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\KeyEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\Killshot.h" />
+    <ClInclude Include="..\..\src\Network\events\LuaCommand.h" />
+    <ClInclude Include="..\..\src\Network\events\MouseEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerDisconnectingEvent.h" />
+    <ClInclude Include="..\..\src\Network\events\PlayerReadyEvent.h" />
+    <ClInclude Include="..\..\src\Network\GameState.h" />
+    <ClInclude Include="..\..\src\Network\NetworkObject.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zconf.h" />
+    <ClInclude Include="..\..\src\Network\zlib\zlib.h" />
+    <ClInclude Include="..\..\src\Sound\SoundSource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\consoleCommands" />
+    <None Include="..\..\Data\settings\constants.json" />
+    <None Include="..\..\Data\settings\settings" />
+    <None Include="..\..\Data\settings\settings2" />
+    <None Include="..\..\Resources\clientArgs.txt" />
+    <None Include="..\..\Resources\scripts\bsp.lua" />
+    <None Include="..\..\Resources\scripts\classDefinitions.lua" />
+    <None Include="..\..\Resources\scripts\gui.lua" />
+    <None Include="..\..\Resources\scripts\init.lua" />
+    <None Include="..\..\Resources\scripts\luaCommon.lua" />
+    <None Include="..\..\Resources\shaders\Common_v330.frag" />
+    <None Include="..\..\Resources\shaders\Common_v330.vert" />
+    <None Include="..\..\Resources\shaders\Common_vOld.frag" />
+    <None Include="..\..\Resources\shaders\Common_vOld.vert" />
+    <None Include="..\..\Resources\shaders\newone.frag" />
+    <None Include="..\..\Resources\shaders\newone.vert" />
+    <None Include="..\..\Resources\shaders\PostProc\Bloom\BloomPostShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\Bloom\BloomPreShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\BlurXShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\BlurYShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\DepthOfFieldShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\GrayScaleShaderFS.frag" />
+    <None Include="..\..\Resources\shaders\PostProc\PostProcShaderVS.vert" />
+    <None Include="..\..\Resources\shaders\shadow.frag" />
+    <None Include="..\..\Resources\shaders\shadow.vert" />
+    <None Include="..\..\Resources\shaders\simplest.frag" />
+    <None Include="..\..\Resources\shaders\simplest.vert" />
+    <None Include="..\..\Resources\shaders\skinning.frag" />
+    <None Include="..\..\Resources\shaders\skinning.vert" />
+    <None Include="..\..\Resources\shaders\skybox.frag" />
+    <None Include="..\..\Resources\shaders\skybox.vert" />
+    <None Include="..\..\Resources\shaders\storeDepth.frag" />
+    <None Include="..\..\Resources\shaders\storeDepth.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resources\serverArgs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\constants.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Data\settings\level.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3AFC5430-2AA3-4C42-A479-23570F5EE183}</ProjectGuid>

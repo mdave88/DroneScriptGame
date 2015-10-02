@@ -137,7 +137,9 @@ void LuaManager::createTable(const std::string& tableName/*, const std::set<Enti
 	//	GameConsole::addKeywordToConsole(entity->getName());
 	//}
 
+#ifdef CLIENT_SIDE
 	GameConsole::addKeywordToConsole(tableName);
+#endif
 }
 
 

@@ -1,9 +1,9 @@
 #include "GameStdAfx.h"
 #include "Common/CrimsonCommon.h"
 
-#include <malloc.h>
+//#include <malloc.h>
 
-
+#ifdef CLIENT_SIDE
 void CheckGLError()
 {
 	GLuint error = glGetError();
@@ -32,80 +32,6 @@ void CheckGLError()
 		TRACE_ERROR("Unknown gl error: " << error, 0);
 	}
 }
-
-
-// console indentation
-int indentNum = 0;
-
-int getIndentNum()
-{
-	return indentNum;
-}
-
-void updateIndentNum(int inc)
-{
-	if (inc < -100)
-	{
-		inc = 0;
-	}
-	else
-	{
-		indentNum += inc;
-	}
-}
-
-// logging
-
-#ifdef WIN32
-
-short consoleGetColours()
-{
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	if (hConsole != INVALID_HANDLE_VALUE)
-	{
-		CONSOLE_SCREEN_BUFFER_INFO info;
-
-		if (::GetConsoleScreenBufferInfo(hConsole, &info))
-		{
-			return info.wAttributes;
-		}
-	}
-
-	return 0;
-}
-
-void consoleSetColours(short c)
-{
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	if (hConsole != INVALID_HANDLE_VALUE)
-	{
-		::SetConsoleTextAttribute(hConsole, c);
-	}
-}
-
-void consoleSetColours(short fg, short bg)
-{
-	consoleSetColours(((bg & 0xF) << 4) | (fg & 0xF));
-}
-
-#else
-
-short consoleGetColours()
-{
-	return 0;
-}
-
-void consoleSetColours(short c)
-{
-}
-
-void consoleSetColours(short fg, short bg)
-{
-}
-
-
 #endif
 
 

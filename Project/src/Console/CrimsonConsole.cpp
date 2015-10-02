@@ -1,8 +1,8 @@
 #include "GameStdAfx.h"
 #include "Console/CrimsonConsole.h"
 
+#ifdef CLIENT_SIDE
 #include <console/cl.h>
-
 
 ConsoleLibrary* cl = 0;
 std::set<Var*> commands;
@@ -26,9 +26,9 @@ void GameConsole::init(float width, float height)
 	cl = new ConsoleLibrary(width, height);
 
 	const char* dataDir = CONST_STR("dataDir").c_str();
-	const std::string consoleSkin	= utils::conversion::formatStr("%s/consoleSkins/noborder.skin", dataDir);
-	const std::string verdana14Font	= utils::conversion::formatStr("%s/consoleSkins/verdana-14.font", dataDir);
-	const std::string verdana12Font	= utils::conversion::formatStr("%s/consoleSkins/verdana-12.font", dataDir);
+	const std::string consoleSkin	= utils::formatStr("%s/consoleSkins/noborder.skin", dataDir);
+	const std::string verdana14Font	= utils::formatStr("%s/consoleSkins/verdana-14.font", dataDir);
+	const std::string verdana12Font	= utils::formatStr("%s/consoleSkins/verdana-12.font", dataDir);
 
 	gConsole->SetTitle("Survive");
 	gConsole->SetCharTable((char*) verdana14Font.c_str(), 1);
@@ -46,7 +46,7 @@ void GameConsole::init(float width, float height)
 	gConsole->SetWindowSettings(width, height);
 	gConsole->Resize(gConsole->GetWidth(), 100);
 
-	std::ifstream file(utils::conversion::formatStr("%s/settings/consoleCommands", dataDir), std::ifstream::in);
+	std::ifstream file(utils::formatStr("%s/settings/consoleCommands", dataDir), std::ifstream::in);
 	if (file.is_open())
 	{
 		while (!file.eof())
@@ -186,3 +186,81 @@ void GameConsole::addKeywordToConsole(const std::string& keyword)
 		gVars->RegisterVar(var);
 	}
 }
+#endif // CLIENT_SIDE
+
+
+// console indentation
+int indentNum = 0;
+
+int getIndentNum()
+{
+	return indentNum;
+}
+
+void updateIndentNum(int inc)
+{
+	if(inc < -100)
+	{
+		inc = 0;
+	}
+	else
+	{
+		indentNum += inc;
+	}
+}
+
+
+// logging
+
+#ifdef WIN32
+
+short consoleGetColours()
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if(hConsole != INVALID_HANDLE_VALUE)
+	{
+		CONSOLE_SCREEN_BUFFER_INFO info;
+
+		if(::GetConsoleScreenBufferInfo(hConsole, &info))
+		{
+			return info.wAttributes;
+		}
+	}
+
+	return 0;
+}
+
+void consoleSetColours(short c)
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if(hConsole != INVALID_HANDLE_VALUE)
+	{
+		::SetConsoleTextAttribute(hConsole, c);
+	}
+}
+
+void consoleSetColours(short fg, short bg)
+{
+	consoleSetColours(((bg & 0xF) << 4) | (fg & 0xF));
+}
+
+#else
+
+short consoleGetColours()
+{
+	return 0;
+}
+
+void consoleSetColours(short c)
+{
+}
+
+void consoleSetColours(short fg, short bg)
+{
+}
+
+
+#endif
+

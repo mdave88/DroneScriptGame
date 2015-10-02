@@ -57,7 +57,7 @@ void Server::start()
 	{
 		m_networkLog = std::ofstream(networkLogFileName + ".csv");
 		networkLogFileName = "networklog";
-		networkLogFileName += utils::conversion::intToStr(networkLogFileIndex++);
+		networkLogFileName += utils::intToStr(networkLogFileIndex++);
 	}
 	while (!m_networkLog.is_open());
 
@@ -80,7 +80,7 @@ void Server::start()
 		// broadcast and run
 		if (m_isGamePaused && m_clientTable.size() > 0)
 		{
-			m_lastAnimationTime = glutGet(GLUT_ELAPSED_TIME);
+			m_lastAnimationTime = m_pEngineCore->getElapsedTime();
 			m_isGamePaused = false;
 		}
 
@@ -113,13 +113,8 @@ void Server::run()
 {
 	boost::mutex::scoped_lock lock(m_clientTableMutex);
 
-	m_dt = (glutGet(GLUT_ELAPSED_TIME) - m_lastAnimationTime) / 200.0f;
-	m_lastAnimationTime = glutGet(GLUT_ELAPSED_TIME);
-
-	if (m_dt < 0.1f)
-	{
-		m_dt = 0.1;
-	}
+	m_dt = std::min(0.1f, (m_pEngineCore->getElapsedTime() - m_lastAnimationTime) / 200.0f);
+	m_lastAnimationTime = m_pEngineCore->getElapsedTime();
 
 	m_luaProcessingMutex.lock();
 
