@@ -73,6 +73,9 @@
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{a96d9be2-de27-44ed-b93c-5fc3587e419d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameLogic\Systems">
+      <UniqueIdentifier>{b641c642-3bf0-4d14-bf66-cd273d20e0b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Network\GameState.cpp">
@@ -361,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Math\vec2.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\Systems\SerializationSytem.h">
+      <Filter>GameLogic\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

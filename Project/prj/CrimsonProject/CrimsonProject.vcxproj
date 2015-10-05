@@ -76,6 +76,7 @@
     <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
     <ClInclude Include="..\..\src\GameLogic\Modules.h" />
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
+    <ClInclude Include="..\..\src\GameLogic\Systems\SerializationSytem.h" />
     <ClInclude Include="..\..\src\GameStdAfx.h" />
     <ClInclude Include="..\..\src\Graphics\Camera.h" />
     <ClInclude Include="..\..\src\Graphics\LightSource.h" />
