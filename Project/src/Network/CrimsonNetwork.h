@@ -2,12 +2,12 @@
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 
-#include "connection.h"
-#include "GameState.h"
-#include "events/KeyEvent.h"
-#include "events/MouseEvent.h"
-#include "events/LuaCommand.h"
-#include "events/ChatMessage.h"
-#include "events/Killshot.h"
-#include "events/PlayerReadyEvent.h"
-#include "events/PlayerDisconnectingEvent.h"
+#include "Network/connection.h"
+#include "Network/GameState.h"
+#include "Network/events/KeyEvent.h"
+#include "Network/events/MouseEvent.h"
+#include "Network/events/LuaCommand.h"
+#include "Network/events/ChatMessage.h"
+#include "Network/events/Killshot.h"
+#include "Network/events/PlayerReadyEvent.h"
+#include "Network/events/PlayerDisconnectingEvent.h"

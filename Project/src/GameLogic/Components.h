@@ -26,10 +26,10 @@ struct Serializable
 
 	NetworkPriority networkPriority;
 
-	template <typename Archive>
-	void load(Archive& ar, const uint version) = 0;
-	template <typename Archive>
-	void save(Archive& ar, const uint version) const = 0;
+	//template <typename Archive>
+	//void load(Archive& ar, const uint8_t version) = 0;
+	//template <typename Archive>
+	//void save(Archive& ar, const uint8_t version) const = 0;
 };
 
 struct Movement : public Serializable
@@ -42,13 +42,13 @@ struct Movement : public Serializable
 	//vec2 vel;
 
 	template <typename Archive>
-	void load(Archive& ar, const uint version)
+	void load(Archive& ar, const uint32_t version)
 	{
 
 	}
 
 	template <typename Archive>
-	void save(Archive& ar, const uint version) const
+	void save(Archive& ar, const uint32_t version) const
 	{
 
 	}
@@ -56,13 +56,14 @@ struct Movement : public Serializable
 
 struct Health
 {
-	Health(int health = 0) : health(health) {}
+	Health(uint8_t maxHealth = 0, uint8_t health = 0) : maxHealth(maxHealth), health(health) {}
 
-	int health;
+	const uint8_t maxHealth;
+	uint8_t health;
 };
 
 struct Explosive
 {
 	float damageBase;
-	int range;			// damage = <damageBase> modified using <range> and <distance>
+	uint8_t range;			// damage = <damageBase> modified using <range> and <distance>
 };

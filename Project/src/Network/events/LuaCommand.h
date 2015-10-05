@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Network/NetworkObject.h"
+#include <string>
 
 namespace network
 {

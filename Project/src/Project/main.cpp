@@ -5,6 +5,8 @@
 
 #ifdef SERVER_SIDE
 #include "Server/Server.h"
+#include "Network/connection.h"
+#include "Network/events/LuaCommand.h"
 #endif
 
 
@@ -52,23 +54,31 @@ void shutDown()
  */
 void logToConsole(std::string str)
 {
+	bool handled = false;
+
 #ifdef CLIENT_SIDE
 	if (client)
 	{
 		client->getGameConsole()->print(str);
+		handled = true;
 	}
-	else if (server && server->isRunning())
+#endif // CLIENT_SIDE
+
+#ifdef SERVER_SIDE
+	if (!handled && server && server->isRunning())
 	{
 		TRACE_LUA("> " << str, 0);
-		const std::string serialStr = marshal(network::events::LuaCommand(str));
+		const std::string serialStr = network::marshal(network::events::LuaCommand(str));
 		ENetPacket* packet = enet_packet_create((enet_uint8*) serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
 		enet_host_broadcast(server->getENetHost(), 0, packet);
+		handled = true;
 	}
-	else
+#endif // SERVER_SIDE
+
+	if(!handled)
 	{
 		TRACE_LUA("> " << str, 0);
 	}
-#endif
 }
 
 #define CLIENT_START_CODE "c"

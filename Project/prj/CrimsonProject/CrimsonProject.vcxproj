@@ -189,7 +189,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\bin\</OutDir>
+    <OutDir>$(SolutionDir)\bin\</OutDir>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -202,6 +202,7 @@
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
       <PreprocessorDefinitions>_DEBUG;CLIENT_SIDE;SERVER_SIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Externals\lua\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -209,7 +210,7 @@
       <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>glut32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;ConsoleGLd.lib;ImageLoadd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSBR>true</PreserveSBR>

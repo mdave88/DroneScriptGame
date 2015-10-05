@@ -160,6 +160,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CrimsonClient</RootNamespace>
     <ProjectName>CrimsonClient</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -189,7 +190,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\bin\</OutDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -200,7 +203,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>enetd.lib;luad.lib;luabindd.lib;imageloadd.lib;ConsoleGLd.lib;freetype2311_D.lib;libboost_serialization-vc140-mt-gd-1_59.lib;libboost_zlib-vc140-mt-gd-1_59.lib;libboost_filesystem-vc140-mt-gd-1_59.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glew32s.lib;alut.lib;OpenAL32.lib;OpenAL32s.lib;DevIL.lib;ILU.lib;ILUT.lib;ConsoleGLd.lib;ImageLoadd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSBR>true</PreserveSBR>

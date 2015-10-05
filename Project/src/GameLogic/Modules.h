@@ -20,22 +20,22 @@ enum class ModuleType
 
 struct ModuleBase
 {
-	ModuleBase(int energyCostPerTurn = 0, int fuelCostPerTurn = 0, bool isActive = false)
+	ModuleBase(uint8_t energyCostPerTurn = 0, uint8_t fuelCostPerTurn = 0, bool isActive = false)
 		: energyCostPerTurn(energyCostPerTurn)
 		, fuelCostPerTurn(fuelCostPerTurn)
 		, isActive(isActive)
 	{
 	}
 
-	int energyCostPerTurn;	// FuelModule
-	int fuelCostPerTurn;	// EnergyModule
+	uint8_t energyCostPerTurn;	// FuelModule
+	uint8_t fuelCostPerTurn;	// EnergyModule
 	bool isActive;
 };
 
 struct Battery : public ModuleBase
 {
-	int maxCapacity;
-	int capacity;
+	uint8_t maxCapacity;
+	uint8_t capacity;
 };
 
 struct Mobility : public ModuleBase
@@ -46,33 +46,33 @@ struct Mobility : public ModuleBase
 
 struct Memory : public ModuleBase
 {
-	int capacity;
+	uint8_t capacity;
 	std::string contents;
 };
 
 struct Hdd : public ModuleBase
 {
-	int capacity;
+	uint8_t capacity;
 	std::string contents;
 };
 
 struct Welder : public ModuleBase
 {
-	int maxStrength;
-	int strength;
+	uint8_t maxStrength;
+	uint8_t strength;
 };
 
 struct Jackhammer : public ModuleBase
 {
-	int maxStrength;
-	int strength;
-	int durability;
+	uint8_t maxStrength;
+	uint8_t strength;
+	uint8_t durability;
 };
 
 struct RadioTransmitter : public ModuleBase
 {
-	int maxStrength;
-	int strength;
+	uint8_t maxStrength;
+	uint8_t strength;
 };
 
 struct RadioReceiver : public ModuleBase
