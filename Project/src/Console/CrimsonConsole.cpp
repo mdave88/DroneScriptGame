@@ -176,6 +176,7 @@ std::string GameConsole::getCommand() const
 {
 	return gConsole->GetCurrentCommand();
 }
+#endif // CLIENT_SIDE
 
 void GameConsole::addKeywordToConsole(const std::string& keyword)
 {
@@ -186,7 +187,7 @@ void GameConsole::addKeywordToConsole(const std::string& keyword)
 		gVars->RegisterVar(var);
 	}
 }
-#endif // CLIENT_SIDE
+
 
 
 // console indentation

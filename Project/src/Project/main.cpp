@@ -267,8 +267,16 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 	return 0;
 }
 
+#include "GameLogic/Drone.h"
+
 int main(int argc, char* argv[])
 {
+	entityx::EntityX ex;
+
+	Drone drone(ex.entities.create());
+	drone.move(vec2(1, 0));
+	const std::string serialStr = network::marshal(drone, 0);
+
 #if defined(CLIENT_SIDE) && defined(SERVER_SIDE)
 	if (strcmp(argv[1], CLIENT_START_CODE) == 0)
 	{

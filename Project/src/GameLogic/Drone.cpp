@@ -2,18 +2,34 @@
 #include "GameLogic/Drone.h"
 #include "Common/LuaManager.h"
 
-Drone::Drone()
-	: m_id(0)
+Drone::Drone(const entityx::Entity& entity)
+	: m_entity(entity)
+	, m_id(0)
 {
+	m_entity.assign<ModuleBase>();
+	m_entity.assign<Movement>();
+	m_entity.assign<Health>();
 }
 
 void Drone::addModule(const ModuleBase& module)
 {
-	assign<ModuleBase>();
 }
 
 void Drone::removeModule()
 {
+}
+
+void Drone::move(const vec2& vel)
+{
+	if(m_entity.has_component<Movement>())
+	{
+		Movement& movement = *m_entity.component<Movement>().get();
+		movement.set_vel(vel);
+	}
+	else
+	{
+		m_log << "Error in move(): no Movement component" << std::endl;
+	}
 }
 
 void Drone::activateModule(const ModuleType moduleType)
@@ -45,17 +61,15 @@ void Drone::activateModule(const ModuleType moduleType)
 	}
 }
 
-// register methods to lua
-//void Drone::registerMethodsToLua()
-//{
-//	using namespace luabind;
-//
-//	class_<Drone, DronePtr> thisClass("Drone");
-//	thisClass.def(constructor<vec3>());
-//
-//	REG_PROP("posP", &Drone::getPos, &Drone::setPos);
-//	REG_PROP("rotP", &Drone::getRot, &Drone::setRot);
-//	REG_PROP("nameP", &Drone::getName, &Drone::setName);
-//
-//	module(LuaManager::getInstance()->getState()) [ thisClass ];
-//}
+
+// register to lua
+void Drone::registerMethodsToLua()
+{
+	using namespace luabind;
+
+	class_<Drone, std::shared_ptr<Drone>> thisClass("Drone");
+
+	REG_FUNC("move", &Drone::move);
+
+	module(LuaManager::getInstance()->getState())[thisClass];
+}

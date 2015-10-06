@@ -217,8 +217,6 @@ void GameState::serialize(Archive& ar, const uint version)
 	//}
 }
 
-SERIALIZABLE_NOT_UPD(GameState);
-
 } // namespace network
 
 BOOST_CLASS_EXPORT(network::GameState);

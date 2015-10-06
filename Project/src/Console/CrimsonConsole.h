@@ -2,10 +2,10 @@
 
 #include <string>
 
-#ifdef CLIENT_SIDE
 class GameConsole
 {
 public:
+#ifdef CLIENT_SIDE
 	GameConsole();
 	~GameConsole();
 
@@ -28,10 +28,10 @@ public:
 
 	bool isOpen() const;
 	std::string getCommand() const;
+#endif // CLIENT_SIDE
 
 	static void addKeywordToConsole(const std::string& keyword);
 };
-#endif // CLIENT_SIDE
 
 
 // console and script operations

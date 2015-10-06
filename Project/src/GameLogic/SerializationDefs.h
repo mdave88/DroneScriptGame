@@ -11,12 +11,6 @@
 #include "Math/matrix.h"
 
 
-// short version of unsigned int
-#ifndef uint
-typedef uint32_t uint;
-#endif
-
-
 enum class NetworkPriority
 {
 	LOW = 0,
@@ -45,74 +39,13 @@ enum class NetworkPriority
 #define BIT_CHECK_ROLL(b, a)	{ b = a & 1;	a = a >> 1; }
 
 
-// declarations for classes with symmetric serialization
-#define SERIALIZABLE_CLASS			public:																		\
-									virtual Node* clone();														\
-									virtual bool updateProperties(const Node& other, bool serverSide = true);	\
-																												\
-									template <typename Archive>													\
-									void serialize(Archive& ar, const uint version);
-
-// declarations for classes with assymmetric serialization (save/load)
-#define SERIALIZABLE_CLASS_SEPARATED																			\
-									SERIALIZABLE_CLASS															\
-									public:																		\
-									template <typename Archive>													\
-									void load(Archive& ar, const uint version);									\
-									template <typename Archive>													\
-									void save(Archive& ar, const uint version) const;							\
-
-// definitions for classes with symmetric serialization
-#define SERIALIZABLE(T)				template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\
-									template void T::serialize(boost::archive::binary_iarchive&, unsigned);		\
-									template void T::serialize(boost::archive::text_oarchive&, unsigned);		\
-									template void T::serialize(boost::archive::text_iarchive&, unsigned);		\
-																												\
-									Node* T::clone() {															\
-										T* clone = new T();														\
-										clone->updateProperties(*this);											\
-										return clone;															\
-									}																			\
-									BOOST_CLASS_EXPORT_IMPLEMENT(T);
-
-// definitions for classes with symmetric serialization
-#define SERIALIZABLE_(NAMESPACE, T)	template void NAMESPACE::T::serialize(boost::archive::binary_oarchive&, unsigned);		\
-									template void NAMESPACE::T::serialize(boost::archive::binary_iarchive&, unsigned);		\
-									template void NAMESPACE::T::serialize(boost::archive::text_oarchive&, unsigned);		\
-									template void NAMESPACE::T::serialize(boost::archive::text_iarchive&, unsigned);		\
-																															\
-									Node* NAMESPACE::T::clone() {															\
-										NAMESPACE::T* clone = new NAMESPACE::T();											\
-										clone->updateProperties(*this);														\
-										return clone;																		\
-									}																						\
-									BOOST_CLASS_EXPORT_IMPLEMENT(NAMESPACE::T);
-
-// definitions for classes with assymmetric serialization (save/load)
-#define SERIALIZABLE_SEPARATED(T)	SERIALIZABLE(T)																\
-									template void T::save(boost::archive::binary_oarchive&, unsigned) const;	\
-									template void T::save(boost::archive::text_oarchive&, unsigned) const;		\
-									template void T::load(boost::archive::binary_iarchive&, unsigned);			\
-									template void T::load(boost::archive::text_iarchive&, unsigned);			\
-
-
-// definitions for serializable objects without clone() and updateProperties() methods (like GameState)
-#define SERIALIZABLE_NOT_UPD(T)		template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\
-									template void T::serialize(boost::archive::binary_iarchive&, unsigned);		\
-									template void T::serialize(boost::archive::text_oarchive&, unsigned);		\
-									template void T::serialize(boost::archive::text_iarchive&, unsigned);
-
-
-
 // float compression
-template <typename Archive>
-void serializeF32_F16(Archive& ar, float& attrib, uint& attribmask, uint& attribIndex)
+template <typename Archive, typename >
+void serializeF32_F16(Archive& ar, float& attrib, uint8_t& attribMask, uint8_t& attribIndex)
 {
-	using namespace utils::conversion;
-
-	if (BIT_CHECK(attribmask, attribIndex++))
+	if (BIT_CHECK(attribMask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribmask, 31))
+		if (!BIT_CHECK(attribMask, 7))
 		{
 			// save
 			short val = float32Tofloat16(attrib);
@@ -129,16 +62,16 @@ void serializeF32_F16(Archive& ar, float& attrib, uint& attribmask, uint& attrib
 }
 
 template <typename Archive>
-void serializeVec2(Archive& ar, vec2& v, uint32_t& attribMask, uint32_t& attribIndex, bool useF16)
+void serializeVec2(Archive& ar, vec2& v, uint8_t& attribMask, uint8_t& attribIndex, bool useF16)
 {
 	if (BIT_CHECK(attribMask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribMask, 31))
+		if (!BIT_CHECK(attribMask, 7))
 		{
 			// save
 			if (useF16)
 			{
-				short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y);
+				short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y);
 				ar& x & y;
 			}
 			else
@@ -152,7 +85,7 @@ void serializeVec2(Archive& ar, vec2& v, uint32_t& attribMask, uint32_t& attribI
 			{
 				short x, y;
 				ar& x & y;
-				v = vec2F16_to_vec2F32(x, y);
+				v = utils::vec2F16_to_vec2F32(x, y);
 			}
 			else
 			{
@@ -164,16 +97,16 @@ void serializeVec2(Archive& ar, vec2& v, uint32_t& attribMask, uint32_t& attribI
 }
 
 template <typename Archive>
-void serializeVec3(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribIndex, bool useF16)
+void serializeVec3(Archive& ar, vec3& v, uint8_t& attribMask, uint8_t& attribIndex, bool useF16)
 {
 	if (BIT_CHECK(attribmask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribmask, 31))
+		if (!BIT_CHECK(attribmask, 7))
 		{
 			// save
 			if (useF16)
 			{
-				short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y), z = float32Tofloat16(v.z);
+				short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y), z = utils::float32Tofloat16(v.z);
 				ar& x & y & z;
 			}
 			else
@@ -188,7 +121,7 @@ void serializeVec3(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribI
 			{
 				short x, y, z;
 				ar& x & y & z;
-				v = vec3F16_to_vec3F32(x, y, z);
+				v = utils::vec3F16_to_vec3F32(x, y, z);
 			}
 			else
 			{
@@ -200,16 +133,14 @@ void serializeVec3(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribI
 }
 
 template <typename Archive>
-void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribIndex)
+void serializeVec3_F16(Archive& ar, vec3& v, uint8_t& attribMask, uint8_t& attribIndex)
 {
-	using namespace utils::conversion;
-
 	if (BIT_CHECK(attribMask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribMask, 31))
+		if (!BIT_CHECK(attribMask, 7))
 		{
 			// save
-			short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y), z = float32Tofloat16(v.z);
+			short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y), z = utils::float32Tofloat16(v.z);
 			ar& x & y & z;
 		}
 		else
@@ -217,26 +148,24 @@ void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& att
 			// load
 			short x, y, z;
 			ar& x & y & z;
-			v = vec3F16_to_vec3F32(x, y, z);
+			v = utils::vec3F16_to_vec3F32(x, y, z);
 		}
 	}
 }
 
 template <typename Archive>
-void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribMask, uint& attribIndex)
+void serializeMatrix_F16(Archive& ar, Matrix& mat, uint8_t& attribMask, uint8_t& attribIndex)
 {
-	using namespace utils::conversion;
-
 	if (BIT_CHECK(attribMask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribMask, 31))
+		if (!BIT_CHECK(attribMask, 7))
 		{
 			// save
 			Matrix compressedMat = mat;
 			float* matArray = mat.getArray();
 			for (int i = 0; i < 16; i++)
 			{
-				short val = float32Tofloat16(mat[i]);
+				short val = utils::float32Tofloat16(mat[i]);
 				ar& val;
 			}
 		}
@@ -248,7 +177,7 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribMask, uint& attri
 			{
 				short val;
 				ar& val;
-				decompressedMat[i] = float16Tofloat32(val);
+				decompressedMat[i] = utils::float16Tofloat32(val);
 			}
 
 			mat.set(decompressedMat);

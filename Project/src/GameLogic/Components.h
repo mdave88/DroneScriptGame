@@ -53,6 +53,41 @@ struct PersistentComponent
 	{}
 
 	template <typename Archive>
+	void serialize(Archive& ar, const uint version)
+	{
+		BIT_CLEAR(m_attribMask, 7);
+
+		// mark the direction on the most significant bit on the attrib mask: 0 - save, 1 - load
+		boost::serialization::split_member(ar, *this, version);
+		m_attribIndex = 0;
+
+		// network priority can change on the fly -> compressions can vary
+		SER_P(m_networkPriority);
+	}
+
+	template <typename Archive>
+	void save(Archive& ar, const uint version) const
+	{
+		ar << m_attribMask;
+	}
+
+	void finalizeSave()
+	{
+		m_attribMask = 0;
+		m_attribIndex = 0;
+	}
+
+	template <typename Archive>
+	void load(Archive& ar, const uint version)
+	{
+		ar >> m_attribMask;
+
+		// mark the direction -> you may need to reset it if the return value updateProperties() is significant on the client
+		BIT_SET(m_attribMask, 7);
+	}
+
+
+	template <typename Archive>
 	void serializePrimitiveFields(Archive& ar) {}
 
 	template <typename Archive, typename T, typename... Args>
@@ -65,33 +100,11 @@ struct PersistentComponent
 	template <typename Archive>
 	void serializeVec2Fields(Archive& ar) {}
 
-	template <typename Archive>
-	void serializeVec3Fields(Archive& ar) {}
-
 	template <typename Archive, typename... Args>
-	void serializeVec2Fields(Archive& ar, const vec2& field, Args... args)
+	void serializeVec2Fields(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
 	{
-		SER_P_VEC2(field);
+		SER_P_VEC2(field, priority);
 		serializeVec2Fields(ar, args...);
-	}
-
-	template <typename Archive, typename... Args>
-	void serializeVec3Fields(Archive& ar, const vec3& field, Args... args)
-	{
-		SER_P_VEC3(field);
-		serializeVec3Fields(ar, args...);
-	}
-
-
-	template <typename Archive>
-	void serializeVec2FieldsWithPriority(Archive& ar) {}
-
-	template <typename Archive, typename... Args>
-	void serializeVec2FieldsWithPriority(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
-	{
-		//SER_P_VEC2(field, priority);
-		serializeVec2(ar, field, m_attribMask, m_attribIndex, m_networkPriority >= priority);
-		serializeVec2FieldsWithPriority(ar, args...);
 	}
 };
 
@@ -103,7 +116,9 @@ public:
 	template <typename Archive>
 	void serialize(Archive& ar, const uint32_t version)
 	{
-		serializeVec2FieldsWithPriority(ar, pos, NetworkPriority::HIGH, vel, NetworkPriority::MEDIUM);
+		ar& boost::serialization::base_object<PersistentComponent>(*this);
+		serializeVec2Fields(ar, pos, NetworkPriority::HIGH,
+								vel, NetworkPriority::MEDIUM);
 	}
 
 private:
@@ -121,6 +136,7 @@ public:
 	template <typename Archive>
 	void serialize(Archive& ar, const uint32_t version)
 	{
+		ar& boost::serialization::base_object<PersistentComponent>(*this);
 		serializePrimitiveFields(ar, maxHealth, health);
 	}
 
@@ -140,6 +156,7 @@ public:
 	template <typename Archive>
 	void serialize(Archive& ar, const uint32_t version)
 	{
+		ar& boost::serialization::base_object<PersistentComponent>(*this);
 		serializePrimitiveFields(ar, damageBase, range);
 	}
 
