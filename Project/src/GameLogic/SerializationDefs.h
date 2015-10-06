@@ -129,36 +129,107 @@ void serializeF32_F16(Archive& ar, float& attrib, uint& attribmask, uint& attrib
 }
 
 template <typename Archive>
-void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribmask, uint32_t& attribIndex)
+void serializeVec2(Archive& ar, vec2& v, uint32_t& attribMask, uint32_t& attribIndex, bool useF16)
 {
-	using namespace utils::conversion;
+	if (BIT_CHECK(attribMask, attribIndex++))
+	{
+		if (!BIT_CHECK(attribMask, 31))
+		{
+			// save
+			if (useF16)
+			{
+				short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y);
+				ar& x & y;
+			}
+			else
+			{
+				ar& v.x & v.y;
+			}
+		}
+		else
+		{
+			if (useF16)
+			{
+				short x, y;
+				ar& x & y;
+				v = vec2F16_to_vec2F32(x, y);
+			}
+			else
+			{
+				// load
+				ar& v.x & v.y;
+			}
+		}
+	}
+}
 
+template <typename Archive>
+void serializeVec3(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribIndex, bool useF16)
+{
 	if (BIT_CHECK(attribmask, attribIndex++))
 	{
 		if (!BIT_CHECK(attribmask, 31))
 		{
 			// save
+			if (useF16)
+			{
+				short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y), z = float32Tofloat16(v.z);
+				ar& x & y & z;
+			}
+			else
+			{
+				ar& v.x & v.y & v.z;
+			}
+		}
+		else
+		{
+			// load
+			if (useF16)
+			{
+				short x, y, z;
+				ar& x & y & z;
+				v = vec3F16_to_vec3F32(x, y, z);
+			}
+			else
+			{
+				// load
+				ar& v.x & v.y & v.z;
+			}
+		}
+	}
+}
+
+template <typename Archive>
+void serializeVec3_F16(Archive& ar, vec3& v, uint32_t& attribMask, uint32_t& attribIndex)
+{
+	using namespace utils::conversion;
+
+	if (BIT_CHECK(attribMask, attribIndex++))
+	{
+		if (!BIT_CHECK(attribMask, 31))
+		{
+			// save
 			short x = float32Tofloat16(v.x), y = float32Tofloat16(v.y), z = float32Tofloat16(v.z);
-			ar& x& y& z;
+			ar& x & y & z;
 		}
 		else
 		{
 			// load
 			short x, y, z;
-			ar& x& y& z;
+			ar& x & y & z;
 			v = vec3F16_to_vec3F32(x, y, z);
 		}
 	}
 }
 
 template <typename Archive>
-void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribmask, uint& attribIndex)
+void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribMask, uint& attribIndex)
 {
 	using namespace utils::conversion;
 
-	if (BIT_CHECK(attribmask, attribIndex++))
+	if (BIT_CHECK(attribMask, attribIndex++))
 	{
-		if (!BIT_CHECK(attribmask, 31))
+		if (!BIT_CHECK(attribMask, 31))
 		{
 			// save
 			Matrix compressedMat = mat;
@@ -190,17 +261,16 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, uint& attribmask, uint& attri
 // attrib:		the attribute of the object
 // minPriority:	the minimum priority - objects over this priority must be serialized without float compression
 
-#define SER_P(attrib)						if (BIT_CHECK(m_attribmask, m_attribIndex++)) ar & attrib;
-#define SER_P_STR(attrib)					if (BIT_CHECK(m_attribmask, m_attribIndex++)) ar & attrib;
+#define SER_P(attrib)						if (BIT_CHECK(m_attribMask, m_attribIndex++)) ar & attrib;
 
-#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
-											} else									{	serializeF32_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)	{	SER_P(attrib); }													\
+											else									{	serializeF32_F16(ar, attrib, m_attribMask, m_attribIndex); }
 
-#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
-											} else									{	serializeMatrix_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib); }													\
+											else									{	serializeMatrix_F16(ar, attrib, m_attribMask, m_attribIndex); }
 
-#define SER_P_VEC_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib);													\
-											} else									{	serializeVec3_F16(ar, attrib, m_attribmask, m_attribIndex); }
+#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, m_attribMask, m_attribIndex, m_networkPriority >= minPriority);
+#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, m_attribMask, m_attribIndex, m_networkPriority >= minPriority);
 
 // attrib updating
 #define UP_P(param)							updateProperty(this->param, other.param, serverSide)

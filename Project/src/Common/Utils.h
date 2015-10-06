@@ -16,6 +16,7 @@ namespace utils
 	short float32Tofloat16(float num);
 	float float16Tofloat32(int n);
 
+	vec2 vec2F16_to_vec2F32(int x, int y);
 	vec3 vec3F16_to_vec3F32(int x, int y, int z);
 
 	template<typename T>

@@ -130,6 +130,15 @@ namespace utils
 		return s * ((float)(n >> csh) + ((n & cand) / cdiv));
 	}
 
+	vec2 vec2F16_to_vec2F32(int x, int y)
+	{
+		vec2 result;
+		result.x = float16Tofloat32(x);
+		result.y = float16Tofloat32(y);
+
+		return result;
+	}
+
 	vec3 vec3F16_to_vec3F32(int x, int y, int z)
 	{
 		vec3 result;
