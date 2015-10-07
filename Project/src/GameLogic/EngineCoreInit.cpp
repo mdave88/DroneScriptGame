@@ -1,6 +1,7 @@
 #include "GameStdAfx.h"
 #include "GameLogic/EngineCore.h"
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
 
 #ifdef CLIENT_SIDE
 #include "Models/3ds/Model3ds.h"
@@ -169,13 +170,9 @@ void EngineCore::resetLuaScripts()
 	lua_State* luaManagerState = LuaManager::getInstance()->getState();
 
 	module(luaManagerState) [
-	    def("getIndentNum", &getIndentNum),
-	    def("updateIndentNum", &updateIndentNum),
-	    def("logToConsole", &logToConsole),
-
-	    def("getElapsedTime", &getElapsedTimeFunc),
-
-	    def("exitGame", &exitGame)
+		//def("logToConsole", &logToConsole),
+		def("getElapsedTime", &getElapsedTimeFunc),
+		def("exitGame", &exitGame)
 	];
 
 

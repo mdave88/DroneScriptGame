@@ -1,4 +1,6 @@
 #include "GameStdAfx.h"
+#include "Common/LoggerSystem.h"
+
 #ifdef CLIENT_SIDE
 #include "Client/ClientMain.h"
 #endif
@@ -10,27 +12,16 @@
 #endif
 
 
-//#define ENABLE_VMEM
-//#define ENABLE_MEMPRO
-
-#if defined(ENABLE_VMEM)
-	#ifdef ENABLE_MEMPRO
-		#define MEMPRO
-	#endif
-
-	#define OVERRIDE_NEW_DELETE
-	#include "Common/VMem.hpp"
-#elif defined(ENABLE_MEMPRO)
-	#define OVERRIDE_NEW_DELETE
-	#define WAIT_FOR_CONNECT true
-	#include "Common/MemPro.hpp"
-#endif
-
 #ifdef CLIENT_SIDE
+#define CLIENT_START_CODE "c"
+#define CLIENT_THICK_START_CODE "b"
+
 ClientConfigs conf;
 network::Client* client = nullptr;
 #endif
 #ifdef SERVER_SIDE
+#define SERVER_START_CODE "s"
+
 network::Server* server = nullptr;
 #endif
 
@@ -46,18 +37,20 @@ void shutDown()
 #endif
 }
 
+
+
 /**
- * Prints the given std::string to the console. Can be called from lua scripts.
- *
- * logToConsole() is overloaded with different definitions on the server and client side (the server side can broadcasts the std::string).
- * @param str The std::string to be printed.
- */
+* Prints the given std::string to the console. Can be called from lua scripts.
+*
+* logToConsole() is overloaded with different definitions on the server and client side (the server side can broadcasts the std::string).
+* @param str The std::string to be printed.
+*/
 void logToConsole(std::string str)
 {
 	bool handled = false;
 
 #ifdef CLIENT_SIDE
-	if (client)
+	if(client)
 	{
 		client->getGameConsole()->print(str);
 		handled = true;
@@ -65,11 +58,11 @@ void logToConsole(std::string str)
 #endif // CLIENT_SIDE
 
 #ifdef SERVER_SIDE
-	if (!handled && server && server->isRunning())
+	if(!handled && server && server->isRunning())
 	{
 		TRACE_LUA("> " << str, 0);
 		const std::string serialStr = network::marshal(network::events::LuaCommand(str));
-		ENetPacket* packet = enet_packet_create((enet_uint8*) serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
+		ENetPacket* packet = enet_packet_create((enet_uint8*)serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
 		enet_host_broadcast(server->getENetHost(), 0, packet);
 		handled = true;
 	}
@@ -81,9 +74,7 @@ void logToConsole(std::string str)
 	}
 }
 
-#define CLIENT_START_CODE "c"
-#define CLIENT_THICK_START_CODE "b"
-#define SERVER_START_CODE "s"
+
 
 int serverMain(const int argc, char* argv[])
 {

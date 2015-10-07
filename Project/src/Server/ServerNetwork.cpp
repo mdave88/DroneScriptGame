@@ -2,6 +2,7 @@
 #include "Server/Server.h"
 
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
 
 #include "Graphics/Camera.h"
 

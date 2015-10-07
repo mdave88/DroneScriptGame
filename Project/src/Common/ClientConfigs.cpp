@@ -1,6 +1,6 @@
 #include "GameStdAfx.h"
 #include "Common/ClientConfigs.h"
-
+#include "Common/LoggerSystem.h"
 
 ClientConfigs::ClientConfigs()
 	: width0(400)

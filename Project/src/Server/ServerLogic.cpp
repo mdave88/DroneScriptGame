@@ -1,6 +1,7 @@
 #include "GameStdAfx.h"
 #include "Server/Server.h"
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
 
 
 namespace network
@@ -131,46 +132,3 @@ bool Server::isRunning() const
 }
 
 } // namespace network
-
-
-
-
-
-//network::Server* server = nullptr;
-
-//void shutDown() {
-//	//TRACE_NETWORK("Shutting down server.", 0);
-//	SAFEDEL(server);
-//}
-
-///**
-// * Prints the given std::string to the console. Can be called from lua scripts.
-// * If the server is initialized and running the std::string is broadcasted to the clients (overloaded with different definitions on the server and client side).
-// *
-// * @param str The std::string to be printed/broadcasted.
-// */
-//void logToConsole(std::string str) {
-//	if (server && server->isRunning()) {
-//		TRACE_LUA("> " << str, 0);
-//		std::string serialStr = marshal(network::events::LuaCommand(str));
-//		ENetPacket* packet = enet_packet_create((enet_uint8*) serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
-//
-//		enet_host_broadcast(server->getENetHost(), 0, packet);
-//	} else {
-//		TRACE_LUA("> " << str, 0);
-//	}
-//}
-
-//int serverMain(int argc, char* argv[]) {
-//	if (argc < 1)
-//		return EXIT_FAILURE;
-//
-//	atexit(shutDown);
-//
-//	server = new network::Server(atoi(argv[2]), atoi(argv[3]));
-//	server->start();
-//
-//	SAFEDEL(server);
-//
-//	return EXIT_SUCCESS;
-//}

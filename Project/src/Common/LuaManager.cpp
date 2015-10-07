@@ -1,6 +1,6 @@
 #include "GameStdAfx.h"
 #include "Common/LuaManager.h"
-
+#include "Common/LoggerSystem.h"
 
 LuaManager::LuaManager()
 	: m_state(nullptr)
@@ -78,6 +78,17 @@ void LuaManager::doString(const std::string& command)
 	}
 }
 
+void LuaManager::createTable(const std::string & tableName)
+{
+	luabind::object table = luabind::newtable(m_state);
+	luabind::globals(m_state)[tableName] = table;
+	luabind::globals(m_state)[tableName + "Size"] = 0;
+
+#ifdef CLIENT_SIDE
+	GameConsole::addKeywordToConsole(tableName);
+#endif
+}
+
 int LuaManager::handleError(lua_State* state)
 {
 	lua_Debug d;
@@ -95,6 +106,7 @@ int LuaManager::handleError(lua_State* state)
 	msg << " " << err;
 	lua_pushstring(state, msg.str().c_str());
 
+	QLOG("Lua Error: " << msg.str().c_str());
 	TRACE_ERROR("Lua Error: " << msg.str().c_str(), 0);
 
 	return 1;
@@ -114,34 +126,6 @@ lua_State* LuaManager::getState()
 {
 	return m_state;
 }
-
-/**
- * Creates a lua table and fills it with the given collection of entities.
- *
- * @param tableName	The name of the new table.
- * @param entities	The contents of the new table.
- */
-void LuaManager::createTable(const std::string& tableName/*, const std::set<Entity*>& entities*/)
-{
-	luabind::object table = luabind::newtable(m_state);
-	luabind::globals(m_state)[tableName] = table;
-	//luabind::globals(m_state)[tableName + "Size"] = entities.size();
-
-	///
-	//int i = 1;
-	//for (const Entity* entity : entities)
-	//{
-	//	table[i] = *entity;
-	//	i++;
-
-	//	GameConsole::addKeywordToConsole(entity->getName());
-	//}
-
-#ifdef CLIENT_SIDE
-	GameConsole::addKeywordToConsole(tableName);
-#endif
-}
-
 
 bool LuaManager::functionExist(const std::string& functionName)
 {

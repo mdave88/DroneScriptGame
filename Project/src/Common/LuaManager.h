@@ -36,10 +36,31 @@ public:
 	void	doFile(const std::string& file);
 	void	doString(const std::string& command);
 
-	void	createTable(const std::string& tableName/*, const std::set<Entity*>& entities*/);
+	void	createTable(const std::string& tableName);
 
-	void	printError(const luabind::error& e);
-	int		handleError(lua_State* state);
+	/**
+	* Creates a lua table and fills it with a collection of elements.
+	*
+	* @param tableName	The name of the new table.
+	* @param elements	The contents of the new table.
+	*/
+	template <typename Type>
+	void createTable(const std::string& tableName, const std::set<Type*>& elements)
+	{
+		createTable(tableName);
+		luabind::globals(m_state)[tableName + "Size"] = entities.size();
+
+		int i = 1;
+		for (const Type* element : elements)
+		{
+			table[i] = *element;
+			i++;
+
+#ifdef CLIENT_SIDE
+			//GameConsole::addKeywordToConsole(entity->getName());
+#endif
+		}
+	}
 
 	template <typename Type, typename Id>
 	void setTableElement(const std::string& tableName, Id id, Type element)
@@ -47,9 +68,6 @@ public:
 		luabind::globals(m_state)[tableName.c_str()] [id] = element;
 	}
 
-	/**
-	 * Registers a non-entity object. Actor object are located in the entityTable.
-	 */
 	template <typename Type>
 	void registerObject(const std::string& name, const Type element)
 	{
@@ -57,7 +75,7 @@ public:
 	}
 
 	template <typename Type>
-	int registerActor(const Type element, const std::string& name = "")
+	int registerEntity(const Type element, const std::string& name = "")
 	{
 		const int size = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
 		luabind::globals(m_state)["entityTableSize"] = size + 1;
@@ -69,7 +87,7 @@ public:
 	}
 
 	template <typename Type, typename Id>
-	int registerActorToTable(const std::string& tableName, const Type& element, const Id id, const bool registerToActorTable = false)
+	int registerEntityToTable(const std::string& tableName, const Type& element, const Id id, const bool registerToActorTable = false)
 	{
 		const int entityTableSize = luabind::object_cast<int>( luabind::globals(m_state)["entityTableSize"] );
 
@@ -291,14 +309,24 @@ public:
 	// getters-setters
 	lua_State* getState();
 
+private:
+	void	printError(const luabind::error& e);
+	int		handleError(lua_State* state);
 
 private:
 	lua_State*	m_state;
 	bool		m_isOpened;
 };
 
+void addKeywordToConsole(const std::string& keyword)
+{
+#ifdef CLIENT_SIDE
+	GameConsole::addKeywordToConsole(keyword);
+#endif
+}
+
 #define REG_CONSTR(C)			thisClass.def(C);
-#define REG_FUNC(name, F)		{ thisClass.def(name, F);				GameConsole::addKeywordToConsole(utils::formatStr("%( )", name)); }
-#define REG_ATTR(name, F)		{ thisClass.def_readwrite(name, F);		GameConsole::addKeywordToConsole(name); }
-#define REG_PROP(name, G, S)	{ thisClass.property(name, G, S);		GameConsole::addKeywordToConsole(name); }
-#define REG_PROPG(name, G)		{ thisClass.property(name, G);			GameConsole::addKeywordToConsole(name); }
+#define REG_FUNC(name, F)		{ thisClass.def(name, F);				addKeywordToConsole(utils::formatStr("%( )", name)); }
+#define REG_ATTR(name, F)		{ thisClass.def_readwrite(name, F);		addKeywordToConsole(name); }
+#define REG_PROP(name, G, S)	{ thisClass.property(name, G, S);		addKeywordToConsole(name); }
+#define REG_PROPG(name, G)		{ thisClass.property(name, G);			addKeywordToConsole(name); }
