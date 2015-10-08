@@ -136,3 +136,11 @@ bool LuaManager::functionExist(const std::string& functionName)
 
 	return (func && type(func) == LUA_TFUNCTION);
 }
+
+
+void addKeywordToConsole(const std::string& keyword)
+{
+#ifdef CLIENT_SIDE
+	GameConsole::addKeywordToConsole(keyword);
+#endif
+}

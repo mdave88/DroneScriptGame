@@ -28,9 +28,6 @@
     <ClInclude Include="..\..\src\Common\Utils.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
-      <Filter>Console</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\Components.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
       <Filter>Server</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameStdAfx.h" />
+    <ClInclude Include="..\..\src\Common\LoggerSystem.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Common\Assert.cpp">
@@ -123,9 +123,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Common\Utils.cpp">
       <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
-      <Filter>Console</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\Drone.cpp">
       <Filter>GameLogic</Filter>
@@ -165,13 +162,13 @@
     </ClCompile>
     <ClCompile Include="..\..\src\GameStdAfx.cpp" />
     <ClCompile Include="..\..\src\Project\main.cpp" />
+    <ClCompile Include="..\..\src\Common\LoggerSystem.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
       <UniqueIdentifier>{e944aa59-a350-455e-9bd8-344401906827}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Console">
-      <UniqueIdentifier>{bd6c109e-fc47-446f-b0b5-35921722cde8}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameLogic">
       <UniqueIdentifier>{aace2264-dd4f-4a70-b125-8abb0c71d991}</UniqueIdentifier>

@@ -4,6 +4,7 @@
 #ifdef CLIENT_SIDE
 
 #include <imageLoad.h>
+#include "Common/LoggerSystem.h"
 #include "Graphics/Camera.h"
 #include "Graphics/RenderContext.h"
 #include "Graphics/ShadedMesh.h"

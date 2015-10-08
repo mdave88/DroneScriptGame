@@ -1,5 +1,6 @@
 #include "GameStdAfx.h"
 #include "Models/mesh/Mesh.h"
+#include "Common/LoggerSystem.h"
 
 
 namespace models

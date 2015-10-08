@@ -2,6 +2,8 @@
 #include "Models/md5/ModelMd5.h"
 
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
+
 
 namespace models
 {

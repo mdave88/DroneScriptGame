@@ -1,5 +1,7 @@
 #include "GameStdAfx.h"
 #include "Common/CrimsonCommon.h"
+#include "Common/LoggerSystem.h"
+
 
 //#include <malloc.h>
 

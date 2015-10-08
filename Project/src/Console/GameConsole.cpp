@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "Console/CrimsonConsole.h"
+#include "Console/GameConsole.h"
 #include "Common/LoggerSystem.h"
 
 #include <console/cl.h>

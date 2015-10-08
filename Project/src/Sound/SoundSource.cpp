@@ -1,5 +1,6 @@
 #include "GameStdAfx.h"
 #include "Sound/SoundSource.h"
+#include "Common/LoggerSystem.h"
 
 #define vec3ToFloatA6(f, v1, v2)	{ f[0]=v1.x; f[1]=v1.y; f[2]=v1.z; f[3]=v2.x; f[4]=v2.y; f[5]=v2.z; }
 #define SET_AF3(fa,x,y,z)			{ fa[0]=x; fa[1]=y; fa[2]=z; }

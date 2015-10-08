@@ -1,9 +1,9 @@
 #include "GameStdAfx.h"
 #include "Graphics/LightSource.h"
-
 #include "Graphics/Camera.h"
 #include "Graphics/RenderContext.h"
 #include "GameLogic/EngineCore.h"
+#include "Common/LoggerSystem.h"
 
 GLint LightSource::ms_numMaxLights = 0;
 std::vector<GLint> LightSource::ms_enabledLights = std::vector<GLint>();

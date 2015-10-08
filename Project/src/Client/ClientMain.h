@@ -1,6 +1,4 @@
-
 #include "Client/Client.h"
-#include "Console/CrimsonConsole.h"
 
 
 // render

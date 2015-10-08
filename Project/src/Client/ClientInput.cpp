@@ -6,12 +6,13 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
+#include "Common/LoggerSystem.h"
 #include "GameLogic/EngineCore.h"
 
 #include "Graphics/Camera.h"
 #include "Graphics/RenderContext.h"
 
-#include "Console/CrimsonConsole.h"
+#include "Console/GameConsole.h"
 
 #ifdef ENABLE_MYGUI
 #include <MyGUI/MyGUI.h>

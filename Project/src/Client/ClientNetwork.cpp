@@ -1,5 +1,7 @@
 #include "GameStdAfx.h"
 #include "Client/Client.h"
+#include "Common/LoggerSystem.h"
+
 
 // registering the serialized classes (needed for pointer types)
 //BOOST_CLASS_EXPORT_IMPLEMENT(Node);
@@ -172,7 +174,7 @@ void Client::listen()
 							case events::LuaCommand::NETOBJ_LUACOMM:
 								if (unmarshal(m_luaResponse, std::string((char*) m_event.packet->data, m_event.packet->dataLength)))
 								{
-									logToConsole(m_luaResponse.command);
+									///logToConsole(m_luaResponse.command);
 								}
 
 								break;

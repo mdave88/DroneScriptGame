@@ -7,7 +7,7 @@
 #include <boost/serialization/set.hpp>
 
 #include "GameLogic/EngineCore.h"
-#include "console/CrimsonConsole.h"
+#include "console/GameConsole.h"
 
 
 namespace network

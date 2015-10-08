@@ -18,7 +18,7 @@ extern "C"
 #include <luabind/operator.hpp>
 #include <luabind/shared_ptr_converter.hpp>
 
-#include "Console/CrimsonConsole.h"
+#include "Console/GameConsole.h"
 
 
 // creates a boost reference from the pointer
@@ -318,12 +318,7 @@ private:
 	bool		m_isOpened;
 };
 
-void addKeywordToConsole(const std::string& keyword)
-{
-#ifdef CLIENT_SIDE
-	GameConsole::addKeywordToConsole(keyword);
-#endif
-}
+void addKeywordToConsole(const std::string& keyword);
 
 #define REG_CONSTR(C)			thisClass.def(C);
 #define REG_FUNC(name, F)		{ thisClass.def(name, F);				addKeywordToConsole(utils::formatStr("%( )", name)); }

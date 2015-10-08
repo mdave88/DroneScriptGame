@@ -41,7 +41,7 @@
 
 #include "Common/Utils.h"
 #include "Common/ConstantManager.h"
-#include "Console/CrimsonConsole.h"
+#include "Console/GameConsole.h"
 
 #include "GameLogic/SerializationDefs.h"
 

@@ -2,14 +2,14 @@
 #include "Client/Client.h"
 
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
 
 // OpenGL
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#include "Console/CrimsonConsole.h"
-
+#include "Console/GameConsole.h"
 #include "Graphics/RenderContext.h"
 
 

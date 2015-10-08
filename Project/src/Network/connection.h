@@ -37,6 +37,9 @@
 
 #include <enet/enet.h>
 
+#include "Common/LoggerSystem.h"
+
+
 namespace network
 {
 

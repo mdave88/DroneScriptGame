@@ -120,9 +120,6 @@
     <ClCompile Include="..\..\src\Graphics\shaders\Shader.cpp">
       <Filter>Graphics\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
-      <Filter>Console</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Project\main.cpp" />
     <ClCompile Include="..\..\src\Server\ServerLogic.cpp">
       <Filter>Server</Filter>
@@ -199,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Math\vec2.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Console\GameConsole.cpp">
+      <Filter>Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\LoggerSystem.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -279,9 +282,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h">
       <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
-      <Filter>Console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Common\Directory.h">
       <Filter>Common</Filter>
@@ -367,6 +367,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\Systems\SerializationSytem.h">
       <Filter>GameLogic\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Console\GameConsole.h">
+      <Filter>Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\LoggerSystem.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

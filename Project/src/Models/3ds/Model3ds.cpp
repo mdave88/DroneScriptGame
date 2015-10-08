@@ -1,7 +1,9 @@
 #include "GameStdAfx.h"
-#include "Model3ds.h"
+#include "Models/3ds/Model3ds.h"
 
 #include "Common/LuaManager.h"
+#include "Common/LoggerSystem.h"
+
 
 namespace models
 {
