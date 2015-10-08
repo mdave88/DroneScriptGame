@@ -80,6 +80,7 @@ build/
 *.pidb
 *.log
 *.scc
+*.tlog
 
 # Visual C++ cache files
 ipch/
@@ -217,7 +218,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-*.tlog
+
+
+
 /Project/libs/ConsoleGL.lib
 /Project/libs/ConsoleGLd.lib
 /Project/libs/enet.lib
@@ -239,5 +242,5 @@ pip-log.txt
 /Project/libs/MyGUIEngineStatic.lib
 /Project/libs/MyGUIEngineStatic_d.lib
 /Project/libs/CrimsonClientd.lib
-
+/Externals/boost/
 CMakeFiles
