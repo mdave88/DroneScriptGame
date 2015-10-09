@@ -41,10 +41,6 @@
 
 #include "Common/Utils.h"
 #include "Common/ConstantManager.h"
-#include "Console/GameConsole.h"
-
-#include "GameLogic/SerializationDefs.h"
-
 
 #ifdef CLIENT_SIDE
 void CheckGLError();

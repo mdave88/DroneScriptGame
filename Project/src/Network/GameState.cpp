@@ -1,13 +1,14 @@
 #include "GameStdAfx.h"
-#include "GameState.h"
+#include "Network/GameState.h"
+
+#include "GameLogic/EngineCore.h"
+#include "GameLogic/SerializationDefs.h"
+#include "console/GameConsole.h"
 
 #include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/set.hpp>
-
-#include "GameLogic/EngineCore.h"
-#include "console/GameConsole.h"
 
 
 namespace network

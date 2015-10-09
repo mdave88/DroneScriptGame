@@ -7,12 +7,14 @@
 /**
  * @brief Wraps an entityx::Entity.
  */
-class Drone
+class Drone : public Serializable
 {
 public:
+	Drone() {}
 	Drone(const entityx::Entity& entity);
 
-	void addModule(const ModuleBase& module);
+	void addComponent(const ComponentType componentType, PersistentComponent* componentsPtr);
+
 	void removeModule();
 	void activateModule(const ModuleType moduleType);
 	
@@ -20,33 +22,30 @@ public:
 
 	entityx::Entity& getEntity() { return m_entity; }
 
-
-	// serialization
-	template <typename Archive>
-	void serialize(Archive& ar, const uint version)
-	{
-		if(m_entity.has_component<Movement>())
-		{
-			ar& *m_entity.component<Movement>().get();
-		}
-
-		if(m_entity.has_component<Health>())
-		{
-			ar& *m_entity.component<Health>().get();
-		}
-	}
-
 	// register to lua
 	static void registerMethodsToLua();
 
+private:
+	friend class boost::serialization::access;
+
+	// serialization
+	template <typename Archive>
+	void serialize(Archive& ar, const uint version);
+
+	template <typename Archive>
+	void serializeComponents(Archive& ar, const uint version);
+
 protected:
-	entityx::Entity		m_entity;
-	uint8_t				m_id;
-	std::string			m_name;
+	entityx::Entity				m_entity;
+	uint8_t						m_id;
+	std::string					m_name;
 
-	std::stringstream	m_log;
+	PersistentComponent*		m_components[(uint8_t)ComponentType::NUM];
+	//ModuleBase*				m_modules[(uint8_t)ModuleType::NUM];
 
-	uint8_t				m_inventorySize;
+	std::stringstream			m_log;
+
+	uint8_t						m_inventorySize;
 };
 
-BOOST_CLASS_EXPORT_KEY(Drone)
+BOOST_CLASS_EXPORT_KEY(Drone);

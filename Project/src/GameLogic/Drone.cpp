@@ -1,18 +1,25 @@
 #include "GameStdAfx.h"
 #include "GameLogic/Drone.h"
 #include "Common/LuaManager.h"
+#include <boost/serialization/bitset.hpp>
 
 Drone::Drone(const entityx::Entity& entity)
 	: m_entity(entity)
 	, m_id(0)
 {
-	m_entity.assign<ModuleBase>();
-	m_entity.assign<Movement>();
-	m_entity.assign<Health>();
+	for (PersistentComponent* component : m_components)
+	{
+		component = nullptr;
+	}
+
+	addComponent(ComponentType::MOVEMENT, m_entity.assign<Movement>().get());
+	addComponent(ComponentType::HEALTH, m_entity.assign<Health>().get());
 }
 
-void Drone::addModule(const ModuleBase& module)
+void Drone::addComponent(const ComponentType componentType, PersistentComponent* componentsPtr)
 {
+	m_components[(uint8_t)componentType] = componentsPtr;
+	componentsPtr->setAttribMask(&m_attribMask, &m_attribIndex);
 }
 
 void Drone::removeModule()
@@ -21,10 +28,11 @@ void Drone::removeModule()
 
 void Drone::move(const vec2& vel)
 {
-	if(m_entity.has_component<Movement>())
+	//m_modules[ModuleType::MOBYLITY]
+	if (m_entity.has_component<Movement>())
 	{
-		Movement& movement = *m_entity.component<Movement>().get();
-		movement.set_vel(vel);
+		Movement* movement = m_entity.component<Movement>().get();
+		movement->set_vel(vel);
 	}
 	else
 	{
@@ -34,31 +42,7 @@ void Drone::move(const vec2& vel)
 
 void Drone::activateModule(const ModuleType moduleType)
 {
-	switch(moduleType)
-	{
-		case ModuleType::Battery:
-			break;
-		case ModuleType::Mobylity:
-			break;
-		case ModuleType::Memory:
-			break;
-		case ModuleType::Hdd:
-			break;
-		case ModuleType::Welder:
-			break;
-		case ModuleType::Jackhammer:
-			break;
-		case ModuleType::RadioTransmitter:
-			break;
-		case ModuleType::RadioReceiver:
-			break;
-		case ModuleType::Radar:
-			break;
-		case ModuleType::Ladar:
-			break;
-		case ModuleType::FuelCreator:
-			break;
-	}
+
 }
 
 
@@ -73,3 +57,34 @@ void Drone::registerMethodsToLua()
 
 	module(LuaManager::getInstance()->getState())[thisClass];
 }
+
+// serialization
+template <typename Archive>
+void Drone::serialize(Archive& ar, const uint version)
+{
+	uint64_t attribMaskInt = m_attribMask.to_ulong();
+	ar& attribMaskInt;
+
+	serializeComponents(ar, version);
+}
+
+template<typename Archive>
+void Drone::serializeComponents(Archive & ar, const uint version)
+{
+	for (uint8_t i = 0; i < (uint8_t)ComponentType::NUM; ++i)
+	{
+		if (m_components[i] != nullptr)
+		{
+			switch ((ComponentType)i)
+			{
+				case ComponentType::MOVEMENT:
+					static_cast<Movement*>(m_components[i])->serialize(ar, version);
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+
+SERIALIZABLE(Drone);

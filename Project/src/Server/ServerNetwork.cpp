@@ -3,6 +3,7 @@
 
 #include "Common/LuaManager.h"
 #include "Common/LoggerSystem.h"
+#include "GameLogic/SerializationDefs.h"
 
 #include "Graphics/Camera.h"
 

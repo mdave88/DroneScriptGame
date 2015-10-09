@@ -5,20 +5,21 @@
 
 enum class ModuleType
 {
-	Battery,
-	Mobylity,
-	Memory,
-	Hdd,
-	Welder,
-	Jackhammer,
-	RadioTransmitter,
-	RadioReceiver,
-	Radar,
-	Ladar,
-	FuelCreator,
+	BATTERY,
+	MOBYLITY,
+	MEMORY,
+	HDD,
+	WELDER,
+	JACKHAMMER,
+	RADIO_TRANSMITTER,
+	RADIO_RECEIVER,
+	RADAR,
+	LADAR,
+	FUEL_CREATOR,
+	NUM
 };
 
-struct ModuleBase
+struct ModuleBase : public PersistentComponent
 {
 	ModuleBase(uint8_t energyCostPerTurn = 0, uint8_t fuelCostPerTurn = 0, bool isActive = false)
 		: energyCostPerTurn(energyCostPerTurn)
