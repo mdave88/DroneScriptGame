@@ -190,18 +190,23 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, uint8_t& attribMask, uint8_t&
 // attrib:		the attribute of the object
 // minPriority:	the minimum priority - objects over this priority must be serialized without float compression
 
-#define SER_P(attrib)						if (BIT_CHECK(m_attribMask, m_attribIndex++)) ar & attrib;
+#define SER_P(attrib)						if (attribMask[m_attribIndex++]))		ar& attrib;
 
-#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)	{	SER_P(attrib); }													\
-											else									{	serializeF32_F16(ar, attrib, m_attribMask, m_attribIndex); }
+#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)	SER_P(attrib);													\
+											else									serializeF32_F16(ar, attrib, attribMask, m_attribIndex);
 
-#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	{	SER_P(attrib); }													\
-											else									{	serializeMatrix_F16(ar, attrib, m_attribMask, m_attribIndex); }
+#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)	SER_P(attrib);													\
+											else									serializeMatrix_F16(ar, attrib, attribMask, m_attribIndex);
 
-#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, m_attribMask, m_attribIndex, m_networkPriority >= minPriority);
-#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, m_attribMask, m_attribIndex, m_networkPriority >= minPriority);
+#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, attribMask, m_attribIndex, m_networkPriority >= minPriority);
+#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, attribMask, m_attribIndex, m_networkPriority >= minPriority);
 
 // attrib updating
 #define UP_P(param)							updateProperty(this->param, other.param, serverSide)
 #define UP_CP(param)						param.updateProperties(other, serverSide)
 #define UP_CP_SPTR(param, type)				updateComplexPropertySP<type>(this->param, other.param, serverSide)
+
+#define SERIALIZABLE(T)						template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\
+											template void T::serialize(boost::archive::binary_iarchive&, unsigned);		\
+											template void T::serialize(boost::archive::text_oarchive&, unsigned);		\
+											template void T::serialize(boost::archive::text_iarchive&, unsigned);		\

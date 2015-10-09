@@ -5,36 +5,38 @@
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
 											const decltype(name)& get_##name##() { return name; } \
-											void set_##name##(const decltype(name)& newval) { name = newval; BIT_SET(m_attribMask, attribIndex); }
+											void set_##name##(const decltype(name)& newval) { name = newval; BIT_SET(attribMask, attribIndex); }
 
 
-#define CREATE_ACCESSORS1(_1)			public: \
-										static const int numPersistentAttribs = 1; \
-										CREATE_ACCESSOR(_1, 0)
+#define CREATE_ACCESSORS1(_1)				public: \
+											static const int numPersistentAttribs = 1; \
+											CREATE_ACCESSOR(_1, 0)
 
-#define CREATE_ACCESSORS2(_1, _2)		public: \
-										static const int numPersistentAttribs = 2; \
-										CREATE_ACCESSOR(_1, 0) \
-										CREATE_ACCESSOR(_2, 1)
+#define CREATE_ACCESSORS2(_1, _2)			public: \
+											static const int numPersistentAttribs = 2; \
+											CREATE_ACCESSOR(_1, 0) \
+											CREATE_ACCESSOR(_2, 1)
 
-#define CREATE_ACCESSORS3(_1, _2, _3)	public: \
-										static const int numPersistentAttribs = 3; \
-										CREATE_ACCESSOR(_1, 0) \
-										CREATE_ACCESSOR(_2, 1) \
-										CREATE_ACCESSOR(_3, 2)
+#define CREATE_ACCESSORS3(_1, _2, _3)		public: \
+											static const int numPersistentAttribs = 3; \
+											CREATE_ACCESSOR(_1, 0) \
+											CREATE_ACCESSOR(_2, 1) \
+											CREATE_ACCESSOR(_3, 2)
 
-#define CREATE_ACCESSORS4(_1, _2, _3)	public: \
-										static const int numPersistentAttribs = 4; \
-										CREATE_ACCESSOR(_1, 0) \
-										CREATE_ACCESSOR(_2, 1) \
-										CREATE_ACCESSOR(_3, 2) \
-										CREATE_ACCESSOR(_4, 3)
+#define CREATE_ACCESSORS4(_1, _2, _3)		public: \
+											static const int numPersistentAttribs = 4; \
+											CREATE_ACCESSOR(_1, 0) \
+											CREATE_ACCESSOR(_2, 1) \
+											CREATE_ACCESSOR(_3, 2) \
+											CREATE_ACCESSOR(_4, 3)
 
+#define TOTAL_ATTRIB_NUM 64
 
 struct Serializable
 {
 	uint8_t id;
-	std::bitset<64> attribMask;
+	uint8_t attribIndex;
+	std::bitset<TOTAL_ATTRIB_NUM> attribMask;
 	
 	NetworkPriority networkPriority;
 };
@@ -42,51 +44,21 @@ struct Serializable
 // TODO: reset at the start of the main update()
 struct PersistentComponent
 {
-	uint8_t m_attribMask;
-	uint8_t m_attribIndex;
 	NetworkPriority m_networkPriority;
 
-	PersistentComponent(uint8_t attribMask = 0, uint8_t attribIndex = 0, NetworkPriority networkPriority = NetworkPriority::MEDIUM)
-		: m_attribMask(attribMask)
-		, m_attribIndex(attribIndex)
-		, m_networkPriority(networkPriority)
-	{}
-
-	template <typename Archive>
-	void serialize(Archive& ar, const uint version)
+	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM)
+		: m_networkPriority(networkPriority)
 	{
-		BIT_CLEAR(m_attribMask, 7);
-
+	}
+	
+	template <typename Archive>
+	void serialize(Archive& ar, const uint version, std::bitset<TOTAL_ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
+	{
 		// mark the direction on the most significant bit on the attrib mask: 0 - save, 1 - load
-		boost::serialization::split_member(ar, *this, version);
-		m_attribIndex = 0;
-
-		// network priority can change on the fly -> compressions can vary
-		SER_P(m_networkPriority);
+		SER_P(m_networkPriority);	// network priority can change on the fly -> compressions can vary
 	}
-
-	template <typename Archive>
-	void save(Archive& ar, const uint version) const
-	{
-		ar << m_attribMask;
-	}
-
-	void finalizeSave()
-	{
-		m_attribMask = 0;
-		m_attribIndex = 0;
-	}
-
-	template <typename Archive>
-	void load(Archive& ar, const uint version)
-	{
-		ar >> m_attribMask;
-
-		// mark the direction -> you may need to reset it if the return value updateProperties() is significant on the client
-		BIT_SET(m_attribMask, 7);
-	}
-
-
+	
+protected:
 	template <typename Archive>
 	void serializePrimitiveFields(Archive& ar) {}
 
@@ -114,7 +86,7 @@ public:
 	Movement(vec2 pos = vec2(0.0f), vec2 vel = vec2(0.0f)) : pos(pos), vel(vel) {}
 
 	template <typename Archive>
-	void serialize(Archive& ar, const uint32_t version)
+	void serialize(Archive& ar, const uint32_t version, std::bitset<TOTAL_ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
 	{
 		ar& boost::serialization::base_object<PersistentComponent>(*this);
 		serializeVec2Fields(ar, pos, NetworkPriority::HIGH,
@@ -134,7 +106,7 @@ public:
 	Health(uint8_t maxHealth = 0, uint8_t health = 0) : maxHealth(maxHealth), health(health) {}
 
 	template <typename Archive>
-	void serialize(Archive& ar, const uint32_t version)
+	void serialize(Archive& ar, const uint32_t version, std::bitset<TOTAL_ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
 	{
 		ar& boost::serialization::base_object<PersistentComponent>(*this);
 		serializePrimitiveFields(ar, maxHealth, health);
@@ -154,7 +126,7 @@ public:
 	Explosive(uint8_t damageBase = 0, uint8_t range = 0) : damageBase(damageBase), range(range) {}
 
 	template <typename Archive>
-	void serialize(Archive& ar, const uint32_t version)
+	void serialize(Archive& ar, const uint32_t version, std::bitset<TOTAL_ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
 	{
 		ar& boost::serialization::base_object<PersistentComponent>(*this);
 		serializePrimitiveFields(ar, damageBase, range);

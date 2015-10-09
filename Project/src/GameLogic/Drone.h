@@ -7,7 +7,7 @@
 /**
  * @brief Wraps an entityx::Entity.
  */
-class Drone
+class Drone : public Serializable
 {
 public:
 	Drone(const entityx::Entity& entity);
@@ -20,21 +20,9 @@ public:
 
 	entityx::Entity& getEntity() { return m_entity; }
 
-
 	// serialization
 	template <typename Archive>
-	void serialize(Archive& ar, const uint version)
-	{
-		if(m_entity.has_component<Movement>())
-		{
-			ar& *m_entity.component<Movement>().get();
-		}
-
-		if(m_entity.has_component<Health>())
-		{
-			ar& *m_entity.component<Health>().get();
-		}
-	}
+	void serialize(Archive& ar, const uint version);
 
 	// register to lua
 	static void registerMethodsToLua();

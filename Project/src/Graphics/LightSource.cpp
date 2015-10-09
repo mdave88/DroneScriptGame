@@ -355,7 +355,7 @@ void LightSource::render(const graphics::RenderContext& context)
 //	UP_P(m_linearAttenuation);
 //	UP_P(m_quadricAttenuation);
 //
-//	return m_attribmask;
+//	return attribMask;
 //}
 //
 //template <typename Archive>

@@ -2,6 +2,9 @@
 #include "GameLogic/Drone.h"
 #include "Common/LuaManager.h"
 
+
+SERIALIZABLE(Drone)
+
 Drone::Drone(const entityx::Entity& entity)
 	: m_entity(entity)
 	, m_id(0)
@@ -36,27 +39,31 @@ void Drone::activateModule(const ModuleType moduleType)
 {
 	switch(moduleType)
 	{
-		case ModuleType::Battery:
+		case ModuleType::BATTERY:
 			break;
-		case ModuleType::Mobylity:
+		case ModuleType::MOBYLITY:
+			if(m_entity.has_component<Movement>())
+			{
+				//m_entity.component<Movement>()->
+			}
 			break;
-		case ModuleType::Memory:
+		case ModuleType::MEMORY:
 			break;
-		case ModuleType::Hdd:
+		case ModuleType::HDD:
 			break;
-		case ModuleType::Welder:
+		case ModuleType::WELDER:
 			break;
-		case ModuleType::Jackhammer:
+		case ModuleType::JACKHAMMER:
 			break;
-		case ModuleType::RadioTransmitter:
+		case ModuleType::RADIO_TRANSMITTER:
 			break;
-		case ModuleType::RadioReceiver:
+		case ModuleType::RADIO_RECEIVER:
 			break;
-		case ModuleType::Radar:
+		case ModuleType::RADAR:
 			break;
-		case ModuleType::Ladar:
+		case ModuleType::LADAR:
 			break;
-		case ModuleType::FuelCreator:
+		case ModuleType::FUELCREATOR:
 			break;
 	}
 }
@@ -72,4 +79,36 @@ void Drone::registerMethodsToLua()
 	REG_FUNC("move", &Drone::move);
 
 	module(LuaManager::getInstance()->getState())[thisClass];
+}
+
+template <typename Archive>
+void Drone::load(Archive& ar, const uint version)
+{
+	ar& attribIndex;
+	ar& attribMask;
+
+	serializeComponents(ar, version);
+}
+
+template <typename Archive>
+void Drone::save(Archive& ar, const uint version)
+{
+	attribIndex = 0;
+	attribMask.reset();
+
+	serializeComponents(ar, version);
+}
+
+template <typename Archive>
+void Drone::serializeComponents(Archive& ar, const uint version)
+{
+	// TODO: foreach(ComponentType)
+	if(m_entity.has_component<Movement>())
+	{
+		m_entity.component<Movement>().get()->serialize(ar, version, attribMask, attribIndex);
+	}
+	else
+	{
+		attribIndex += Movement::numPersistentAttribs;
+	}
 }

@@ -5,17 +5,17 @@
 
 enum class ModuleType
 {
-	Battery,
-	Mobylity,
-	Memory,
-	Hdd,
-	Welder,
-	Jackhammer,
-	RadioTransmitter,
-	RadioReceiver,
-	Radar,
-	Ladar,
-	FuelCreator,
+	BATTERY,
+	MOBYLITY,
+	MEMORY,
+	HDD,
+	WELDER,
+	JACKHAMMER,
+	RADIO_TRANSMITTER,
+	RADIO_RECEIVER,
+	RADAR,
+	LADAR,
+	FUELCREATOR,
 };
 
 struct ModuleBase
