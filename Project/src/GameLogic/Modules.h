@@ -15,10 +15,11 @@ enum class ModuleType
 	RADIO_RECEIVER,
 	RADAR,
 	LADAR,
-	FUELCREATOR,
+	FUEL_CREATOR,
+	NUM
 };
 
-struct ModuleBase
+struct ModuleBase : public PersistentComponent
 {
 	ModuleBase(uint8_t energyCostPerTurn = 0, uint8_t fuelCostPerTurn = 0, bool isActive = false)
 		: energyCostPerTurn(energyCostPerTurn)
