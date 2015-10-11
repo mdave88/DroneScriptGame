@@ -84,6 +84,10 @@ void Drone::serializeComponents(Archive & ar, const uint version)
 					break;
 			}
 		}
+		else
+		{
+			m_attribIndex += componentAttribNums[i];
+		}
 	}
 }
 

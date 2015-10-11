@@ -2,11 +2,10 @@
 #include "Graphics/ShadedMesh.h"
 #include "Graphics/Role.h"
 #include "Graphics/RenderContext.h"
-
 #include "Models/mesh/Mesh.h"
-
 #include "GameLogic/EngineCore.h"
 
+#include <algorithm>
 
 
 namespace graphics

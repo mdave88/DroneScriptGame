@@ -65,56 +65,6 @@ struct Serializable
 	}
 };
 
-class PersistentComponent
-{
-public:
-	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM)
-		: attribMaskPtr(nullptr)
-		, attribIndexPtr(nullptr)
-		, m_networkPriority(networkPriority)
-	{
-	}
-
-	void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex)
-	{
-		attribMaskPtr = _attribMask;
-		attribIndexPtr = _attribIndex;
-	}
-
-
-	template <typename Archive>
-	void serialize(Archive& ar, const uint version)
-	{
-		SER_P(m_networkPriority);	// network priority can change on the fly -> compressions can vary
-	}
-
-protected:
-	template <typename Archive>
-	void serializePrimitiveFields(Archive& ar) {}
-
-	template <typename Archive, typename T, typename... Args>
-	void serializePrimitiveFields(Archive& ar, T& field, Args... args)
-	{
-		SER_P(field);
-		serializePrimitiveFields(ar, args...);
-	}
-
-	template <typename Archive>
-	void serializeVec2Fields(Archive& ar) {}
-
-	template <typename Archive, typename... Args>
-	void serializeVec2Fields(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
-	{
-		SER_P_VEC2(field, priority);
-		serializeVec2Fields(ar, args...);
-	}
-
-protected:
-	uint8_t* attribIndexPtr;
-	std::bitset<ATTRIB_NUM>* attribMaskPtr;
-	NetworkPriority m_networkPriority;
-};
-
 
 // float compression
 template <typename Archive>

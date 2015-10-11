@@ -1,5 +1,6 @@
 #include "GameStdAfx.h"
 #include "Common/LoggerSystem.h"
+#include "Console/GameConsole.h"
 
 #ifdef CLIENT_SIDE
 #include "Client/ClientMain.h"

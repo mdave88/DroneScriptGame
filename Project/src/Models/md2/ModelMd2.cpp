@@ -1,5 +1,8 @@
 #include "GameStdAfx.h"
-#include "ModelMd2.h"
+#include "Models/md2/ModelMd2.h"
+
+#include <algorithm>
+
 
 namespace models
 {

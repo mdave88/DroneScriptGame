@@ -1,11 +1,10 @@
 #include "GameStdAfx.h"
 #include "Graphics/Role.h"
-
+#include "Graphics/Camera.h"
 #include "Graphics/RenderContext.h"
-
 #include "Models/mesh/Mesh.h"
 
-#include "Graphics/Camera.h"
+#include <algorithm>
 
 
 namespace graphics

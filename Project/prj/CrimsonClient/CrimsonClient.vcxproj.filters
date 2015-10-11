@@ -102,9 +102,6 @@
     <ClCompile Include="..\..\src\Common\Utils.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Console\CrimsonConsole.cpp">
-      <Filter>Console</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\Drone.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
@@ -188,6 +185,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\GameStdAfx.cpp" />
     <ClCompile Include="..\..\src\Project\main.cpp" />
+    <ClCompile Include="..\..\src\Console\GameConsole.cpp">
+      <Filter>Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Common\LoggerSystem.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Client\Client.h">
@@ -225,9 +228,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Common\Utils.h">
       <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Console\CrimsonConsole.h">
-      <Filter>Console</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\Components.h">
       <Filter>GameLogic</Filter>
@@ -350,6 +350,12 @@
       <Filter>Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GameStdAfx.h" />
+    <ClInclude Include="..\..\src\Console\GameConsole.h">
+      <Filter>Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Common\LoggerSystem.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Resources\clientArgs.txt">
