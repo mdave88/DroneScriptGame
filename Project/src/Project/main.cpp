@@ -261,6 +261,7 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 
 #include "GameLogic/Drone.h"
 
+
 int main(int argc, char* argv[])
 {
 	entityx::EntityX ex;

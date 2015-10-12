@@ -18,7 +18,7 @@
 
 #define SER_P(attrib)						if ((*attribMaskPtr)[(*attribIndexPtr)++])	ar & attrib;
 
-#define SER_P_F16(attrib, minPriority)		if (m_networkPriority >= minPriority)		SER_P(attrib);													\
+#define SER_P_F(attrib, minPriority)		if (m_networkPriority >= minPriority)		SER_P(attrib);													\
 											else										serializeF32_F16(ar, attrib, attribMask, attribIndex);
 
 #define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)		SER_P(attrib);													\
@@ -27,12 +27,24 @@
 #define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, *attribMaskPtr, *attribIndexPtr, m_networkPriority >= minPriority);
 #define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, *attribMaskPtr, *attribIndexPtr, m_networkPriority >= minPriority);
 
-// attrib updating
-#define SERIALIZABLE(T)						template void T::serialize(boost::archive::binary_oarchive&, unsigned);		\
-											template void T::serialize(boost::archive::binary_iarchive&, unsigned);		\
-											template void T::serialize(boost::archive::text_oarchive&, unsigned);		\
-											template void T::serialize(boost::archive::text_iarchive&, unsigned);		\
-																														\
+
+#define SERIALIZABLE_CLASS					private:																		\
+											friend class boost::serialization::access;										\
+											template <typename Archive>														\
+											void serialize(Archive& ar, const uint version);
+
+// declarations for classes with assymmetric serialization (save/load)
+#define SERIALIZABLE_CLASS_SEPARATED		SERIALIZABLE_CLASS																\
+											template <typename Archive>														\
+											void load(Archive& ar, const uint version);										\
+											template <typename Archive>														\
+											void save(Archive& ar, const uint version) const;
+
+#define SERIALIZABLE(T)						template void T::serialize(boost::archive::binary_oarchive&, const uint);		\
+											template void T::serialize(boost::archive::binary_iarchive&, const uint);		\
+											template void T::serialize(boost::archive::text_oarchive&, const uint);			\
+											template void T::serialize(boost::archive::text_iarchive&, const uint);			\
+																															\
 											BOOST_CLASS_EXPORT_IMPLEMENT(T);
 
 

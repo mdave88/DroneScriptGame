@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameLogic/SerializationDefs.h"
+#include "Common/LoggerSystem.h"
 #include <bitset>
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
@@ -50,73 +51,68 @@ enum class ComponentType
 
 class PersistentComponent
 {
+	SERIALIZABLE_CLASS
+
 public:
-	PersistentComponent(ComponentType componentType = ComponentType::NUM, NetworkPriority networkPriority = NetworkPriority::MEDIUM)
-		: componentType(componentType)
-		, attribMaskPtr(nullptr)
+	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM)
+		: attribMaskPtr(nullptr)
 		, attribIndexPtr(nullptr)
 		, m_networkPriority(networkPriority)
 	{
 	}
 
-	void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex)
+	virtual void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex)
 	{
 		attribMaskPtr = _attribMask;
 		attribIndexPtr = _attribIndex;
 	}
 
 
-	template <typename Archive>
-	void serialize(Archive& ar, const uint version)
-	{
-		SER_P(m_networkPriority);	// network priority can change on the fly -> compressions can vary
-	}
-
 protected:
 	template <typename Archive>
-	void serializePrimitiveFields(Archive& ar) {}
+	void serializeFields(Archive& ar) {}
 
 	template <typename Archive, typename T, typename... Args>
-	void serializePrimitiveFields(Archive& ar, T& field, Args... args)
+	void serializeFields(Archive& ar, T& field, Args... args)
 	{
 		SER_P(field);
-		serializePrimitiveFields(ar, args...);
+		serializeFields(ar, args...);
 	}
 
-	template <typename Archive>
-	void serializeVec2Fields(Archive& ar) {}
+	template <typename Archive, typename... Args>
+	void serializeFields(Archive& ar, float& field, NetworkPriority priority, Args... args)
+	{
+		SER_P_F(field, priority);
+		serializeFields(ar, args...);
+	}
 
 	template <typename Archive, typename... Args>
-	void serializeVec2Fields(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
+	void serializeFields(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
 	{
 		SER_P_VEC2(field, priority);
-		serializeVec2Fields(ar, args...);
+		serializeFields(ar, args...);
 	}
 
 protected:
-	const ComponentType componentType;
 	uint8_t* attribIndexPtr;
 	std::bitset<ATTRIB_NUM>* attribMaskPtr;
 	NetworkPriority m_networkPriority;
 };
 
+BOOST_CLASS_EXPORT_KEY2(PersistentComponent, "PersistentComponent");
+
 
 class Movement : public PersistentComponent
 {
+	SERIALIZABLE_CLASS
+
 public:
 	Movement(vec2 pos = vec2(0.0f), vec2 vel = vec2(0.0f))
-		: PersistentComponent(ComponentType::MOVEMENT, NetworkPriority::MEDIUM)
+		: PersistentComponent(NetworkPriority::MEDIUM)
 		, pos(pos), vel(vel)
 	{
 	}
 
-	template <typename Archive>
-	void serialize(Archive& ar, const uint32_t version)
-	{
-		ar& boost::serialization::base_object<PersistentComponent>(*this);
-		serializeVec2Fields(ar, pos, NetworkPriority::HIGH,
-								vel, NetworkPriority::MEDIUM);
-	}
 
 private:
 	vec2 pos;
@@ -125,43 +121,48 @@ private:
 	CREATE_ACCESSORS2(pos, vel)
 };
 
-class Health : public PersistentComponent
-{
-public:
-	Health(uint8_t maxHealth = 0, uint8_t health = 0)
-		: PersistentComponent(ComponentType::HEALTH, NetworkPriority::MEDIUM)
-		, maxHealth(maxHealth), health(health)
-	{
-	}
+BOOST_CLASS_EXPORT_KEY2(Movement, "Movement");
 
-	template <typename Archive>
-	void serialize(Archive& ar, const uint32_t version)
-	{
-		ar& boost::serialization::base_object<PersistentComponent>(*this);
-		serializePrimitiveFields(ar, maxHealth, health);
-	}
 
-private:
-	uint8_t maxHealth;
-	uint8_t health;
-
-	// TODO: serialize consts only on creation
-	CREATE_ACCESSORS2(maxHealth, health)
-};
+//class Health : public PersistentComponent
+//{
+//public:
+//	Health(uint8_t maxHealth = 0, uint8_t health = 0)
+//		: PersistentComponent(NetworkPriority::MEDIUM)
+//		, maxHealth(maxHealth), health(health)
+//	{
+//	}
+//
+//
+//private:
+//	friend class boost::serialization::access;
+//
+//	template <typename Archive>
+//	void serialize(Archive& ar, const uint version);
+//
+//private:
+//	uint8_t maxHealth;
+//	uint8_t health;
+//
+//	// TODO: serialize consts only on creation
+//	CREATE_ACCESSORS2(maxHealth, health)
+//};
+//
+//BOOST_CLASS_EXPORT_KEY(Health);
 
 
 static const uint8_t componentAttribNums[(uint8_t)ComponentType::NUM] =
 {
 	Movement::numPersistentAttribs,
-	Health::numPersistentAttribs,
+	0, //Health::numPersistentAttribs,
 	0, //Battery,
 	0, //Mobylity,
 	0, //Memory,
 	0, //Hdd,
 	0, //Welder,
 	0, //Jackhammer,
-	0, //RadioTransmitter::,
-	0, //Radio_receiver,
+	0, //RadioTransmitter,
+	0, //RadioReceiver,
 	0, //Radar,
 	0, //Ladar,
 	0, //Fuel_creator,

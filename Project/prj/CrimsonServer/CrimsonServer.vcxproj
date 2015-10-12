@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\src\Common\LoggerSystem.cpp" />
     <ClCompile Include="..\..\src\Common\LuaManager.cpp" />
     <ClCompile Include="..\..\src\Common\Utils.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\Components.cpp" />
     <ClCompile Include="..\..\src\GameLogic\Drone.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />

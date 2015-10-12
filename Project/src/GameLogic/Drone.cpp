@@ -3,17 +3,18 @@
 #include "Common/LuaManager.h"
 #include <boost/serialization/bitset.hpp>
 
+
 Drone::Drone(const entityx::Entity& entity)
 	: m_entity(entity)
 	, m_id(0)
 {
-	for (PersistentComponent* component : m_components)
+	for (uint8_t i = 0; i < (uint8_t)ComponentType::NUM; ++i)
 	{
-		component = nullptr;
+		m_components[i] = nullptr;
 	}
 
 	addComponent(ComponentType::MOVEMENT, m_entity.assign<Movement>().get());
-	addComponent(ComponentType::HEALTH, m_entity.assign<Health>().get());
+	//addComponent(ComponentType::HEALTH, m_entity.assign<Health>().get());
 }
 
 void Drone::addComponent(const ComponentType componentType, PersistentComponent* componentsPtr)
@@ -62,6 +63,9 @@ void Drone::registerMethodsToLua()
 template <typename Archive>
 void Drone::serialize(Archive& ar, const uint version)
 {
+	//ar.template register_type<PersistentComponent>();
+	//ar.template register_type<Movement>();
+
 	uint64_t attribMaskInt = m_attribMask.to_ulong();
 	ar& attribMaskInt;
 
@@ -69,20 +73,13 @@ void Drone::serialize(Archive& ar, const uint version)
 }
 
 template<typename Archive>
-void Drone::serializeComponents(Archive & ar, const uint version)
+void Drone::serializeComponents(Archive& ar, const uint version)
 {
 	for (uint8_t i = 0; i < (uint8_t)ComponentType::NUM; ++i)
 	{
 		if (m_components[i] != nullptr)
 		{
-			switch ((ComponentType)i)
-			{
-				case ComponentType::MOVEMENT:
-					static_cast<Movement*>(m_components[i])->serialize(ar, version);
-					break;
-				default:
-					break;
-			}
+			ar& m_components[i];
 		}
 		else
 		{
