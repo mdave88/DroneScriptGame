@@ -25,12 +25,12 @@ void Movement::serialize(Archive& ar, const uint version)
 SERIALIZABLE(Movement);
 
 
-//template <typename Archive>
-//void Health::serialize(Archive& ar, const uint version)
-//{
-//	ar& boost::serialization::base_object<PersistentComponent>(*this);
-//	serializeFields(ar, maxHealth,
-//						health);
-//}
-//
-//SERIALIZABLE(Health);
+template <typename Archive>
+void Health::serialize(Archive& ar, const uint version)
+{
+	ar& boost::serialization::base_object<PersistentComponent>(*this);
+	serializeFields(ar, maxHealth,
+						health);
+}
+
+SERIALIZABLE(Health);

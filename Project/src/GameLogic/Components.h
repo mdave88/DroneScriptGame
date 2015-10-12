@@ -5,31 +5,36 @@
 #include <bitset>
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
-											const decltype(name)& get_##name##() { return name; } \
+											const decltype(name)& get_##name##() const { return name; } \
 											void set_##name##(const decltype(name)& newval) { name = newval; (*attribMaskPtr)[*attribIndexPtr] = true; }
 
 
 #define CREATE_ACCESSORS1(_1)				public: \
 											static const int numPersistentAttribs = 1; \
-											CREATE_ACCESSOR(_1, 0)
+											CREATE_ACCESSOR(_1, 0) \
+											SERIALIZABLE_CLASS
 
 #define CREATE_ACCESSORS2(_1, _2)			public: \
 											static const int numPersistentAttribs = 2; \
 											CREATE_ACCESSOR(_1, 0) \
-											CREATE_ACCESSOR(_2, 1)
+											CREATE_ACCESSOR(_2, 1) \
+											SERIALIZABLE_CLASS
 
 #define CREATE_ACCESSORS3(_1, _2, _3)		public: \
 											static const int numPersistentAttribs = 3; \
 											CREATE_ACCESSOR(_1, 0) \
 											CREATE_ACCESSOR(_2, 1) \
-											CREATE_ACCESSOR(_3, 2)
+											CREATE_ACCESSOR(_3, 2) \
+											SERIALIZABLE_CLASS
 
 #define CREATE_ACCESSORS4(_1, _2, _3)		public: \
 											static const int numPersistentAttribs = 4; \
 											CREATE_ACCESSOR(_1, 0) \
 											CREATE_ACCESSOR(_2, 1) \
 											CREATE_ACCESSOR(_3, 2) \
-											CREATE_ACCESSOR(_4, 3)
+											CREATE_ACCESSOR(_4, 3) \
+											SERIALIZABLE_CLASS
+
 
 enum class ComponentType
 {
@@ -99,20 +104,17 @@ protected:
 	NetworkPriority m_networkPriority;
 };
 
-BOOST_CLASS_EXPORT_KEY2(PersistentComponent, "PersistentComponent");
+BOOST_CLASS_EXPORT_KEY(PersistentComponent);
 
 
 class Movement : public PersistentComponent
 {
-	SERIALIZABLE_CLASS
-
 public:
 	Movement(vec2 pos = vec2(0.0f), vec2 vel = vec2(0.0f))
 		: PersistentComponent(NetworkPriority::MEDIUM)
 		, pos(pos), vel(vel)
 	{
 	}
-
 
 private:
 	vec2 pos;
@@ -121,40 +123,33 @@ private:
 	CREATE_ACCESSORS2(pos, vel)
 };
 
-BOOST_CLASS_EXPORT_KEY2(Movement, "Movement");
+BOOST_CLASS_EXPORT_KEY(Movement);
 
 
-//class Health : public PersistentComponent
-//{
-//public:
-//	Health(uint8_t maxHealth = 0, uint8_t health = 0)
-//		: PersistentComponent(NetworkPriority::MEDIUM)
-//		, maxHealth(maxHealth), health(health)
-//	{
-//	}
-//
-//
-//private:
-//	friend class boost::serialization::access;
-//
-//	template <typename Archive>
-//	void serialize(Archive& ar, const uint version);
-//
-//private:
-//	uint8_t maxHealth;
-//	uint8_t health;
-//
-//	// TODO: serialize consts only on creation
-//	CREATE_ACCESSORS2(maxHealth, health)
-//};
-//
-//BOOST_CLASS_EXPORT_KEY(Health);
+class Health : public PersistentComponent
+{
+public:
+	Health(uint8_t maxHealth = 0, uint8_t health = 0)
+		: PersistentComponent(NetworkPriority::MEDIUM)
+		, maxHealth(maxHealth), health(health)
+	{
+	}
+
+private:
+	uint8_t maxHealth;
+	uint8_t health;
+
+	// TODO: serialize consts only on creation
+	CREATE_ACCESSORS2(maxHealth, health)
+};
+
+BOOST_CLASS_EXPORT_KEY(Health);
 
 
 static const uint8_t componentAttribNums[(uint8_t)ComponentType::NUM] =
 {
 	Movement::numPersistentAttribs,
-	0, //Health::numPersistentAttribs,
+	Health::numPersistentAttribs,
 	0, //Battery,
 	0, //Mobylity,
 	0, //Memory,
