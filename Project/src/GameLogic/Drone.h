@@ -9,11 +9,13 @@
  */
 class Drone : public Serializable
 {
+	SERIALIZABLE_CLASS_SEPARATED
+
 public:
 	Drone() {}
 	Drone(const entityx::Entity& entity);
 
-	void addComponent(const ComponentType componentType, PersistentComponent* componentsPtr);
+	void addComponent(const ComponentType componentType, PersistentComponent* componentPtr);
 
 	void removeModule();
 	void activateModule(const ModuleType moduleType);
@@ -26,12 +28,6 @@ public:
 	static void registerMethodsToLua();
 
 private:
-	friend class boost::serialization::access;
-
-	// serialization
-	template <typename Archive>
-	void serialize(Archive& ar, const uint version);
-
 	template <typename Archive>
 	void serializeComponents(Archive& ar, const uint version);
 

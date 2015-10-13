@@ -1,5 +1,6 @@
 #include "GameStdAfx.h"
 #include "GameLogic/Drone.h"
+#include "GameLogic/ComponentFactory.h"
 #include "Common/LuaManager.h"
 #include <boost/serialization/bitset.hpp>
 
@@ -12,15 +13,18 @@ Drone::Drone(const entityx::Entity& entity)
 	{
 		m_components[i] = nullptr;
 	}
-
-	addComponent(ComponentType::MOVEMENT, m_entity.assign<Movement>().get());
-	//addComponent(ComponentType::HEALTH, m_entity.assign<Health>().get());
 }
 
-void Drone::addComponent(const ComponentType componentType, PersistentComponent* componentsPtr)
+void Drone::addComponent(const ComponentType componentType, PersistentComponent* componentPtr)
 {
-	m_components[(uint8_t)componentType] = componentsPtr;
-	componentsPtr->setAttribMask(&m_attribMask, &m_attribIndex);
+	m_components[(uint8_t)componentType] = componentPtr;
+
+	uint8_t attribStartIndex = 1;
+	for(uint8_t i = 0; i < (uint8_t)componentType; ++i)
+	{
+		attribStartIndex += componentAttribNums[i];
+	}
+	componentPtr->setAttribMask(&m_attribMask, &m_attribIndex, attribStartIndex);
 }
 
 void Drone::removeModule()
@@ -29,7 +33,6 @@ void Drone::removeModule()
 
 void Drone::move(const vec2& vel)
 {
-	//m_modules[ModuleType::MOBYLITY]
 	if (m_entity.has_component<Movement>())
 	{
 		Movement* movement = m_entity.component<Movement>().get();
@@ -63,27 +66,63 @@ void Drone::registerMethodsToLua()
 template <typename Archive>
 void Drone::serialize(Archive& ar, const uint version)
 {
-	//ar.template register_type<PersistentComponent>();
-	//ar.template register_type<Movement>();
+	// reset a direction marking bit
+	m_attribMask.reset(0);
+	m_attribIndex = 0;
 
-	uint64_t attribMaskInt = m_attribMask.to_ulong();
-	ar& attribMaskInt;
+	// mark the direction on the first bit on the attrib mask: 0 - save, 1 - load
+	boost::serialization::split_member(ar, *this, version);
 
 	serializeComponents(ar, version);
 }
+
+
+template<class Archive>
+void Drone::save(Archive& ar, const uint version) const
+{
+	uint64_t attribMaskInt = m_attribMask.to_ulong();
+	ar << attribMaskInt;
+}
+
+template<class Archive>
+void Drone::load(Archive& ar, const uint version)
+{
+	uint64_t attribMaskInt;
+	ar >> attribMaskInt;
+	m_attribMask = std::bitset<ATTRIB_NUM>(attribMaskInt);
+	m_attribMask.set(0);
+}
+
 
 template<typename Archive>
 void Drone::serializeComponents(Archive& ar, const uint version)
 {
 	for (uint8_t i = 0; i < (uint8_t)ComponentType::NUM; ++i)
 	{
-		if (m_components[i] != nullptr)
+		const bool saving = m_attribMask[0] == false;
+		if (saving)							// save
 		{
-			ar& m_components[i];
+			if (m_components[i] != nullptr)
+			{
+				ar& m_components[i];
+			}
+			else
+			{
+				m_attribIndex += componentAttribNums[i];
+			}
 		}
-		else
+		else								// load
 		{
-			m_attribIndex += componentAttribNums[i];
+			if (m_components[i] != nullptr)
+			{
+				ar& m_components[i];
+			}
+			else
+			{
+				PersistentComponent* componentPtr = ComponentFactory::getInstance()->assignComponent(m_entity, (ComponentType)i);
+				addComponent((ComponentType)i, componentPtr);
+				ar& m_components[i];
+			}
 		}
 	}
 }

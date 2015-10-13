@@ -18,14 +18,14 @@
 
 #define SER_P(attrib)						if ((*attribMaskPtr)[(*attribIndexPtr)++])	ar & attrib;
 
-#define SER_P_F(attrib, minPriority)		if (m_networkPriority >= minPriority)		SER_P(attrib);													\
+#define SER_P_F(attrib, minPriority)		if (networkPriority >= minPriority)			SER_P(attrib);													\
 											else										serializeF32_F16(ar, attrib, attribMask, attribIndex);
 
-#define SER_P_M_F16(attrib, minPriority)	if (m_networkPriority >= minPriority)		SER_P(attrib);													\
+#define SER_P_M_F16(attrib, minPriority)	if (networkPriority >= minPriority)			SER_P(attrib);													\
 											else										serializeMatrix_F16(ar, attrib, attribMask, attribIndex);
 
-#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, *attribMaskPtr, *attribIndexPtr, m_networkPriority >= minPriority);
-#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, *attribMaskPtr, *attribIndexPtr, m_networkPriority >= minPriority);
+#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, *attribMaskPtr, *attribIndexPtr, networkPriority >= minPriority);
+#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, *attribMaskPtr, *attribIndexPtr, networkPriority >= minPriority);
 
 
 #define SERIALIZABLE_CLASS					private:																		\
@@ -33,7 +33,7 @@
 											template <typename Archive>														\
 											void serialize(Archive& ar, const uint version);
 
-// declarations for classes with assymmetric serialization (save/load)
+// declarations for classes with asymmetric serialization (save/load)
 #define SERIALIZABLE_CLASS_SEPARATED		SERIALIZABLE_CLASS																\
 											template <typename Archive>														\
 											void load(Archive& ar, const uint version);										\
@@ -66,12 +66,12 @@ struct Serializable
 	uint8_t m_attribIndex;
 	std::bitset<ATTRIB_NUM> m_attribMask;
 
-	NetworkPriority m_networkPriority;
+	NetworkPriority networkPriority;
 
 	Serializable(uint8_t id = 0, uint8_t attribIndex = 0, NetworkPriority networkPriority = NetworkPriority::MEDIUM)
 		: m_id(id)
 		, m_attribIndex(attribIndex)
-		, m_networkPriority(networkPriority)
+		, networkPriority(networkPriority)
 	{
 
 	}
@@ -84,7 +84,7 @@ void serializeF32_F16(Archive& ar, float& attrib, std::bitset<ATTRIB_NUM>& attri
 {
 	if (attribMask[attribIndex++])
 	{
-		if (!attribMask[7])
+		if (!attribMask[0])
 		{
 			// save
 			short val = float32Tofloat16(attrib);
@@ -105,7 +105,7 @@ void serializeVec2(Archive& ar, vec2& v, std::bitset<ATTRIB_NUM>& attribMask, ui
 {
 	if (attribMask[attribIndex++])
 	{
-		if (!attribMask[7])
+		if (!attribMask[0])
 		{
 			// save
 			if (useF16)
@@ -140,7 +140,7 @@ void serializeVec3(Archive& ar, vec3& v, std::bitset<ATTRIB_NUM>& attribMask, ui
 {
 	if (attribmask[attribIndex++])
 	{
-		if (!attribmask[7])
+		if (!attribMask[0])
 		{
 			// save
 			if (useF16)
@@ -176,7 +176,7 @@ void serializeVec3_F16(Archive& ar, vec3& v, std::bitset<ATTRIB_NUM>& attribMask
 {
 	if (attribMask[attribIndex++])
 	{
-		if (!attribMask[7])
+		if (!attribMask[0])
 		{
 			// save
 			short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y), z = utils::float32Tofloat16(v.z);
@@ -197,7 +197,7 @@ void serializeMatrix_F16(Archive& ar, Matrix& mat, std::bitset<ATTRIB_NUM>& attr
 {
 	if (attribMask[attribIndex++])
 	{
-		if (!attribMask[7])
+		if (!attribMask[0])
 		{
 			// save
 			Matrix compressedMat = mat;

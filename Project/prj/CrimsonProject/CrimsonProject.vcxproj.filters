@@ -203,6 +203,9 @@
     <ClCompile Include="..\..\src\Common\LoggerSystem.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\Components.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Network\connection.h">

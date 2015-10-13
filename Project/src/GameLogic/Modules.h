@@ -19,7 +19,7 @@ enum class ModuleType
 	NUM
 };
 
-struct ModuleBase// : public PersistentComponent
+struct ModuleBase : public PersistentComponent
 {
 	ModuleBase(uint8_t energyCostPerTurn = 0, uint8_t fuelCostPerTurn = 0, bool isActive = false)
 		: energyCostPerTurn(energyCostPerTurn)

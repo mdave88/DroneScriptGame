@@ -170,7 +170,6 @@ void EngineCore::resetLuaScripts()
 	lua_State* luaManagerState = LuaManager::getInstance()->getState();
 
 	module(luaManagerState) [
-		//def("logToConsole", &logToConsole),
 		def("getElapsedTime", &getElapsedTimeFunc),
 		def("exitGame", &exitGame)
 	];

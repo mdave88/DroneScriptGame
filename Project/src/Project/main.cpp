@@ -38,45 +38,6 @@ void shutDown()
 #endif
 }
 
-
-
-/**
-* Prints the given std::string to the console. Can be called from lua scripts.
-*
-* logToConsole() is overloaded with different definitions on the server and client side (the server side can broadcasts the std::string).
-* @param str The std::string to be printed.
-*/
-void logToConsole(std::string str)
-{
-	bool handled = false;
-
-#ifdef CLIENT_SIDE
-	if(client)
-	{
-		client->getGameConsole()->print(str);
-		handled = true;
-	}
-#endif // CLIENT_SIDE
-
-#ifdef SERVER_SIDE
-	if(!handled && server && server->isRunning())
-	{
-		TRACE_LUA("> " << str, 0);
-		const std::string serialStr = network::marshal(network::events::LuaCommand(str));
-		ENetPacket* packet = enet_packet_create((enet_uint8*)serialStr.c_str(), serialStr.length(), ENET_PACKET_FLAG_RELIABLE);
-		enet_host_broadcast(server->getENetHost(), 0, packet);
-		handled = true;
-	}
-#endif // SERVER_SIDE
-
-	if(!handled)
-	{
-		TRACE_LUA("> " << str, 0);
-	}
-}
-
-
-
 int serverMain(const int argc, char* argv[])
 {
 #ifdef SERVER_SIDE
@@ -260,15 +221,22 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 }
 
 #include "GameLogic/Drone.h"
+#include "GameLogic/ComponentFactory.h"
 
 
 int main(int argc, char* argv[])
 {
+	new ComponentFactory();
 	entityx::EntityX ex;
 
 	Drone drone(ex.entities.create());
+	drone.addComponent(ComponentType::MOVEMENT, ComponentFactory::getInstance()->assignComponent(drone.getEntity(), ComponentType::MOVEMENT));
+
 	drone.move(vec2(1, 0));
 	const std::string serialStr = network::marshal(drone, 0);
+
+	Drone drone2(ex.entities.create());
+	network::unmarshal(drone2, serialStr, 0);
 
 #if defined(CLIENT_SIDE) && defined(SERVER_SIDE)
 	if (strcmp(argv[1], CLIENT_START_CODE) == 0)

@@ -6,7 +6,7 @@
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
 											const decltype(name)& get_##name##() const { return name; } \
-											void set_##name##(const decltype(name)& newval) { name = newval; (*attribMaskPtr)[*attribIndexPtr] = true; }
+											void set_##name##(const decltype(name)& newval) { name = newval; (*attribMaskPtr)[attribStartIndex + attribIndex] = true; }
 
 
 #define CREATE_ACCESSORS1(_1)				public: \
@@ -54,6 +54,7 @@ enum class ComponentType
 	NUM
 };
 
+
 class PersistentComponent
 {
 	SERIALIZABLE_CLASS
@@ -62,14 +63,16 @@ public:
 	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM)
 		: attribMaskPtr(nullptr)
 		, attribIndexPtr(nullptr)
-		, m_networkPriority(networkPriority)
+		, attribStartIndex(0)
+		, networkPriority(networkPriority)
 	{
 	}
 
-	virtual void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex)
+	virtual void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex, uint8_t _attribStartIndex)
 	{
 		attribMaskPtr = _attribMask;
 		attribIndexPtr = _attribIndex;
+		attribStartIndex = _attribStartIndex;
 	}
 
 
@@ -99,9 +102,10 @@ protected:
 	}
 
 protected:
+	uint8_t attribStartIndex;
 	uint8_t* attribIndexPtr;
 	std::bitset<ATTRIB_NUM>* attribMaskPtr;
-	NetworkPriority m_networkPriority;
+	NetworkPriority networkPriority;
 };
 
 BOOST_CLASS_EXPORT_KEY(PersistentComponent);

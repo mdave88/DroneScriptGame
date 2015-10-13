@@ -104,6 +104,9 @@
     <ClInclude Include="..\..\src\Common\LoggerSystem.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\ComponentFactory.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Common\Assert.cpp">

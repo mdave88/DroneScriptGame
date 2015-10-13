@@ -92,6 +92,7 @@
     <ClInclude Include="..\..\src\Common\LuaManager.h" />
     <ClInclude Include="..\..\src\Common\Singleton.h" />
     <ClInclude Include="..\..\src\Common\Utils.h" />
+    <ClInclude Include="..\..\src\GameLogic\ComponentFactory.h" />
     <ClInclude Include="..\..\src\GameLogic\Components.h" />
     <ClInclude Include="..\..\src\GameLogic\Drone.h" />
     <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
