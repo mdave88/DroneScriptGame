@@ -6,7 +6,7 @@
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
 											const decltype(name)& get_##name##() const { return name; } \
-											void set_##name##(const decltype(name)& newval) { name = newval; (*attribMaskPtr)[attribStartIndex + attribIndex] = true; }
+											void set_##name##(const decltype(name)& newval) { name = newval; attribMask[attribIndex] = true; }
 
 
 #define CREATE_ACCESSORS1(_1)				public: \
@@ -54,62 +54,13 @@ enum class ComponentType
 	NUM
 };
 
-
-class PersistentComponent
+class PersistentComponent : public Serializable
 {
-	SERIALIZABLE_CLASS
-
 public:
-	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM)
-		: attribMaskPtr(nullptr)
-		, attribIndexPtr(nullptr)
-		, attribStartIndex(0)
-		, networkPriority(networkPriority)
+	PersistentComponent(NetworkPriority networkPriority = NetworkPriority::MEDIUM) : Serializable(networkPriority)
 	{
 	}
-
-	virtual void setAttribMask(std::bitset<64>* _attribMask, uint8_t* _attribIndex, uint8_t _attribStartIndex)
-	{
-		attribMaskPtr = _attribMask;
-		attribIndexPtr = _attribIndex;
-		attribStartIndex = _attribStartIndex;
-	}
-
-
-protected:
-	template <typename Archive>
-	void serializeFields(Archive& ar) {}
-
-	template <typename Archive, typename T, typename... Args>
-	void serializeFields(Archive& ar, T& field, Args... args)
-	{
-		SER_P(field);
-		serializeFields(ar, args...);
-	}
-
-	template <typename Archive, typename... Args>
-	void serializeFields(Archive& ar, float& field, NetworkPriority priority, Args... args)
-	{
-		SER_P_F(field, priority);
-		serializeFields(ar, args...);
-	}
-
-	template <typename Archive, typename... Args>
-	void serializeFields(Archive& ar, vec2& field, NetworkPriority priority, Args... args)
-	{
-		SER_P_VEC2(field, priority);
-		serializeFields(ar, args...);
-	}
-
-protected:
-	uint8_t attribStartIndex;
-	uint8_t* attribIndexPtr;
-	std::bitset<ATTRIB_NUM>* attribMaskPtr;
-	NetworkPriority networkPriority;
 };
-
-BOOST_CLASS_EXPORT_KEY(PersistentComponent);
-
 
 class Movement : public PersistentComponent
 {

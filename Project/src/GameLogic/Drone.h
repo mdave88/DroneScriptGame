@@ -1,15 +1,18 @@
 #pragma once
 
+#include "GameLogic/Modules.h"
+
 #include <entityx/entityx.h>
 
-#include "GameLogic/Modules.h"
+typedef std::map<ComponentType, PersistentComponent*> ComponentMap;
+
 
 /**
  * @brief Wraps an entityx::Entity.
  */
 class Drone : public Serializable
 {
-	SERIALIZABLE_CLASS_SEPARATED
+	SERIALIZABLE_CLASS
 
 public:
 	Drone() {}
@@ -36,8 +39,7 @@ protected:
 	uint8_t						m_id;
 	std::string					m_name;
 
-	PersistentComponent*		m_components[(uint8_t)ComponentType::NUM];
-	//ModuleBase*				m_modules[(uint8_t)ModuleType::NUM];
+	ComponentMap				m_components;
 
 	std::stringstream			m_log;
 

@@ -47,10 +47,8 @@ public:
 	ShadedMeshDirectory& getShadedMeshDirectory() { return m_shadedMeshDirectory; };
 
 	graphics::ShaderPtr getShader(const std::string& name) const { return m_shaderDirectory.at(name); };
-#endif
 
 private:
-#ifdef CLIENT_SIDE
 	// setup
 	bool setupShaders();
 	void setupFBOs();
