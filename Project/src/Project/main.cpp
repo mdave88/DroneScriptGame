@@ -220,7 +220,7 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 	return 0;
 }
 
-#include "GameLogic/Drone.h"
+#include "GameLogic/GameObject.h"
 #include "GameLogic/ComponentFactory.h"
 
 
@@ -230,13 +230,13 @@ int main(int argc, char* argv[])
 	new ComponentFactory();
 	entityx::EntityX ex;
 
-	Drone drone(ex.entities.create());
+	GameObject drone(ex.entities.create());
 	drone.addComponent(ComponentType::MOVEMENT, ComponentFactory::getInstance()->assignComponent(drone.getEntity(), ComponentType::MOVEMENT));
 
 	drone.move(vec2(1, 0));
 	const std::string serialStr = network::marshal(drone, 0);
 
-	Drone drone2(ex.entities.create());
+	GameObject drone2(ex.entities.create());
 	network::unmarshal(drone2, serialStr, 0);
 
 #if defined(CLIENT_SIDE) && defined(SERVER_SIDE)

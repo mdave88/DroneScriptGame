@@ -10,13 +10,13 @@ typedef std::map<ComponentType, PersistentComponent*> ComponentMap;
 /**
  * @brief Wraps an entityx::Entity.
  */
-class Drone : public Serializable
+class GameObject : public Serializable
 {
 	SERIALIZABLE_CLASS
 
 public:
-	Drone() {}
-	Drone(const entityx::Entity& entity);
+	GameObject() {}
+	GameObject(const entityx::Entity& entity);
 
 	void addComponent(const ComponentType componentType, PersistentComponent* componentPtr);
 
@@ -46,4 +46,4 @@ protected:
 	uint8_t						m_inventorySize;
 };
 
-BOOST_CLASS_EXPORT_KEY(Drone);
+BOOST_CLASS_EXPORT_KEY(GameObject);

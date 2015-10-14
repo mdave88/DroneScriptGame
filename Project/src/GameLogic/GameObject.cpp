@@ -1,5 +1,5 @@
 #include "GameStdAfx.h"
-#include "GameLogic/Drone.h"
+#include "GameLogic/GameObject.h"
 #include "GameLogic/ComponentFactory.h"
 #include "Common/LuaManager.h"
 
@@ -7,22 +7,22 @@
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/nvp.hpp>
 
-Drone::Drone(const entityx::Entity& entity)
+GameObject::GameObject(const entityx::Entity& entity)
 	: m_entity(entity)
 	, m_id(0)
 {
 }
 
-void Drone::addComponent(const ComponentType componentType, PersistentComponent* componentPtr)
+void GameObject::addComponent(const ComponentType componentType, PersistentComponent* componentPtr)
 {
 	m_components[componentType] = componentPtr;
 }
 
-void Drone::removeModule()
+void GameObject::removeModule()
 {
 }
 
-void Drone::move(const vec2& vel)
+void GameObject::move(const vec2& vel)
 {
 	if (m_entity.has_component<Movement>())
 	{
@@ -35,35 +35,35 @@ void Drone::move(const vec2& vel)
 	}
 }
 
-void Drone::activateModule(const ModuleType moduleType)
+void GameObject::activateModule(const ModuleType moduleType)
 {
 
 }
 
 
 // register to lua
-void Drone::registerMethodsToLua()
+void GameObject::registerMethodsToLua()
 {
 	using namespace luabind;
 
-	class_<Drone, std::shared_ptr<Drone>> thisClass("Drone");
+	class_<GameObject, std::shared_ptr<GameObject>> thisClass("GameObject");
 
-	REG_FUNC("move", &Drone::move);
+	REG_FUNC("move", &GameObject::move);
 
 	module(LuaManager::getInstance()->getState())[thisClass];
 }
 
 // serialization
 template <typename Archive>
-void Drone::serialize(Archive& ar, const uint version)
+void GameObject::serialize(Archive& ar, const uint version)
 {
 	ar& boost::serialization::base_object<Serializable>(*this);
 	ar& BOOST_SERIALIZATION_NVP(m_components);
 }
 
 template<typename Archive>
-void Drone::serializeComponents(Archive& ar, const uint version)
+void GameObject::serializeComponents(Archive& ar, const uint version)
 {
 }
 
-SERIALIZABLE(Drone);
+SERIALIZABLE(GameObject);
