@@ -59,7 +59,6 @@ void Drone::serialize(Archive& ar, const uint version)
 {
 	ar& boost::serialization::base_object<Serializable>(*this);
 	ar& BOOST_SERIALIZATION_NVP(m_components);
-	//serializeComponents(ar, version);
 }
 
 template<typename Archive>

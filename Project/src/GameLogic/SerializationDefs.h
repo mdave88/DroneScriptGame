@@ -16,16 +16,13 @@
 // attrib:		the attribute of the object
 // minPriority:	the minimum priority - objects over this priority must be serialized without float compression
 
-#define SER_P(attrib)						if (attribMask[attribIndex++])		ar & attrib;
+#define SER_P(attrib)						if (attribMask[attribIndex++])		ar& attrib;
+#define SER_P_CONST(attrib)					if (attribMask[attribIndex++])		ar& const_cast<decltype(attrib)>(attrib);
 
-#define SER_P_F(attrib, minPriority)		if (networkPriority >= minPriority)	SER_P(attrib);													\
-											else								serializeF32_F16(ar, attrib, attribMask, attribIndex);
-
-#define SER_P_M_F16(attrib, minPriority)	if (networkPriority >= minPriority)	SER_P(attrib);													\
-											else								serializeMatrix_F16(ar, attrib, attribMask, attribIndex);
-
+#define SER_P_F(attrib, minPriority)		serializeFloat(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
 #define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
 #define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
+#define SER_P_MAT(attrib, minPriority)		serializeMatrix(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
 
 
 #define SERIALIZABLE_CLASS					private:																		\
@@ -76,10 +73,19 @@ protected:
 	template <typename Archive>
 	void serializeFields(Archive& ar) {}
 
+	
+
 	template <typename Archive, typename T, typename... Args>
 	void serializeFields(Archive& ar, T& field, Args... args)
 	{
 		SER_P(field);
+		serializeFields(ar, args...);
+	}
+
+	template <typename Archive, typename T, typename... Args>
+	void serializeFields(Archive& ar, const T& field, Args... args)
+	{
+		SER_P_CONST(field);
 		serializeFields(ar, args...);
 	}
 
@@ -121,7 +127,7 @@ private:
 	{
 		// reset a direction marking bit
 		attribMask.reset(0);
-		attribIndex = 0;
+		attribIndex = 1;
 
 		// mark the direction on the first bit on the attrib mask: 0 - save, 1 - load
 		boost::serialization::split_member(ar, *this, version);
@@ -140,146 +146,13 @@ protected:
 
 // float compression
 template <typename Archive>
-void serializeF32_F16(Archive& ar, float& attrib, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
-{
-	if (attribMask[attribIndex++])
-	{
-		if (!attribMask[0])
-		{
-			// save
-			short val = float32Tofloat16(attrib);
-			ar& val;
-		}
-		else
-		{
-			// load
-			short val;
-			ar& val;
-			attrib = float16Tofloat32(val);
-		}
-	}
-}
+void serializeFloat(Archive& ar, float& attrib, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16);
 
 template <typename Archive>
-void serializeVec2(Archive& ar, vec2& v, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16)
-{
-	if (attribMask[attribIndex++])
-	{
-		if (!attribMask[0])
-		{
-			// save
-			if (useF16)
-			{
-				short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y);
-				ar& x & y;
-			}
-			else
-			{
-				ar& v.x & v.y;
-			}
-		}
-		else
-		{
-			if (useF16)
-			{
-				short x, y;
-				ar& x & y;
-				v = utils::vec2F16_to_vec2F32(x, y);
-			}
-			else
-			{
-				// load
-				ar& v.x & v.y;
-			}
-		}
-	}
-}
+void serializeVec2(Archive& ar, vec2& v, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16);
 
 template <typename Archive>
-void serializeVec3(Archive& ar, vec3& v, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16)
-{
-	if (attribmask[attribIndex++])
-	{
-		if (!attribMask[0])
-		{
-			// save
-			if (useF16)
-			{
-				short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y), z = utils::float32Tofloat16(v.z);
-				ar& x & y & z;
-			}
-			else
-			{
-				ar& v.x & v.y & v.z;
-			}
-		}
-		else
-		{
-			// load
-			if (useF16)
-			{
-				short x, y, z;
-				ar& x & y & z;
-				v = utils::vec3F16_to_vec3F32(x, y, z);
-			}
-			else
-			{
-				// load
-				ar& v.x & v.y & v.z;
-			}
-		}
-	}
-}
+void serializeVec3(Archive& ar, vec3& v, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16);
 
 template <typename Archive>
-void serializeVec3_F16(Archive& ar, vec3& v, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
-{
-	if (attribMask[attribIndex++])
-	{
-		if (!attribMask[0])
-		{
-			// save
-			short x = utils::float32Tofloat16(v.x), y = utils::float32Tofloat16(v.y), z = utils::float32Tofloat16(v.z);
-			ar& x & y & z;
-		}
-		else
-		{
-			// load
-			short x, y, z;
-			ar& x & y & z;
-			v = utils::vec3F16_to_vec3F32(x, y, z);
-		}
-	}
-}
-
-template <typename Archive>
-void serializeMatrix_F16(Archive& ar, Matrix& mat, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex)
-{
-	if (attribMask[attribIndex++])
-	{
-		if (!attribMask[0])
-		{
-			// save
-			Matrix compressedMat = mat;
-			float* matArray = mat.getArray();
-			for (int i = 0; i < 16; i++)
-			{
-				short val = utils::float32Tofloat16(mat[i]);
-				ar& val;
-			}
-		}
-		else
-		{
-			// load
-			float decompressedMat[16];
-			for (int i = 0; i < 16; i++)
-			{
-				short val;
-				ar& val;
-				decompressedMat[i] = utils::float16Tofloat32(val);
-			}
-
-			mat.set(decompressedMat);
-		}
-	}
-}
+void serializeMatrix(Archive& ar, Matrix& mat, std::bitset<ATTRIB_NUM>& attribMask, uint8_t& attribIndex, bool useF16);

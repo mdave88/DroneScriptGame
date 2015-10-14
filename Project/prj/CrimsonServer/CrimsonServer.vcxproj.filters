@@ -171,6 +171,9 @@
     <ClCompile Include="..\..\src\GameLogic\Components.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\SerializationDefs.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

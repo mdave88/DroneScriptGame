@@ -226,6 +226,7 @@ int clientMain(int argc, char* argv[], const bool isThickClient)
 
 int main(int argc, char* argv[])
 {
+	new LoggerSystem();
 	new ComponentFactory();
 	entityx::EntityX ex;
 

@@ -132,6 +132,7 @@
     <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\SerializationDefs.cpp" />
     <ClCompile Include="..\..\src\GameStdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

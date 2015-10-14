@@ -7,7 +7,7 @@ void Movement::serialize(Archive& ar, const uint version)
 {
 	ar& boost::serialization::base_object<PersistentComponent>(*this);
 	serializeFields(ar, pos, NetworkPriority::HIGH,
-						vel, NetworkPriority::MEDIUM);
+						vel, NetworkPriority::HIGH);
 }
 
 SERIALIZABLE(Movement);

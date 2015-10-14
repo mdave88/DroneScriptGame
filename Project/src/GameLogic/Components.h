@@ -6,7 +6,7 @@
 
 #define CREATE_ACCESSOR(name, attribIndex)	public: \
 											const decltype(name)& get_##name##() const { return name; } \
-											void set_##name##(const decltype(name)& newval) { name = newval; attribMask[attribIndex] = true; }
+											void set_##name##(const decltype(name)& newval) { name = newval; attribMask[attribIndex + 2] = true; }
 
 
 #define CREATE_ACCESSORS1(_1)				public: \
