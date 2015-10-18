@@ -13,7 +13,7 @@ GameObject::GameObject(const entityx::Entity& entity)
 {
 }
 
-void GameObject::addComponent(const ComponentType componentType, PersistentComponent* componentPtr)
+void GameObject::addComponent(const ComponentType componentType, ComponentBase* componentPtr)
 {
 	m_components[componentType] = componentPtr;
 }

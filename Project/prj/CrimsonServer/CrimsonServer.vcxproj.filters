@@ -31,9 +31,6 @@
     <ClInclude Include="..\..\src\GameLogic\Components.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Drone.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GameLogic\EngineCore.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
@@ -107,6 +104,9 @@
     <ClInclude Include="..\..\src\GameLogic\ComponentFactory.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\GameObject.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Common\Assert.cpp">
@@ -126,9 +126,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Common\Utils.cpp">
       <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Drone.cpp">
-      <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp">
       <Filter>GameLogic</Filter>
@@ -172,6 +169,9 @@
       <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\SerializationDefs.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\GameObject.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
   </ItemGroup>

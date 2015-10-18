@@ -24,10 +24,11 @@
     <ClCompile Include="..\..\src\Common\Utils.cpp" />
     <ClCompile Include="..\..\src\Console\GameConsole.cpp" />
     <ClCompile Include="..\..\src\GameLogic\Components.cpp" />
-    <ClCompile Include="..\..\src\GameLogic\Drone.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCore.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreInit.cpp" />
     <ClCompile Include="..\..\src\GameLogic\EngineCoreRender.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\GameObject.cpp" />
+    <ClCompile Include="..\..\src\GameLogic\SerializationDefs.cpp" />
     <ClCompile Include="..\..\src\GameStdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -75,8 +76,8 @@
     <ClInclude Include="..\..\src\Common\Utils.h" />
     <ClInclude Include="..\..\src\Console\GameConsole.h" />
     <ClInclude Include="..\..\src\GameLogic\Components.h" />
-    <ClInclude Include="..\..\src\GameLogic\Drone.h" />
     <ClInclude Include="..\..\src\GameLogic\EngineCore.h" />
+    <ClInclude Include="..\..\src\GameLogic\GameObject.h" />
     <ClInclude Include="..\..\src\GameLogic\Modules.h" />
     <ClInclude Include="..\..\src\GameLogic\SerializationDefs.h" />
     <ClInclude Include="..\..\src\GameLogic\Systems\SerializationSytem.h" />

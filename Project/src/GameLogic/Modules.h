@@ -19,7 +19,7 @@ enum class ModuleType
 	NUM
 };
 
-struct ModuleBase : public PersistentComponent
+struct ModuleBase : public ComponentBase
 {
 	ModuleBase(uint8_t energyCostPerTurn = 0, uint8_t fuelCostPerTurn = 0, bool isActive = false)
 		: energyCostPerTurn(energyCostPerTurn)
@@ -31,18 +31,30 @@ struct ModuleBase : public PersistentComponent
 	uint8_t energyCostPerTurn;	// FuelModule
 	uint8_t fuelCostPerTurn;	// EnergyModule
 	bool isActive;
+
+
+	SERIALIZABLE_CLASS;
+	SERIALIZE3(energyCostPerTurn, fuelCostPerTurn, isActive);
 };
 
 struct Battery : public ModuleBase
 {
 	uint8_t maxCapacity;
 	uint8_t capacity;
+
+
+	SERIALIZABLE_CLASS;
+	SERIALIZE2(maxCapacity, capacity);
 };
 
 struct Mobility : public ModuleBase
 {
 	float maxSpeed;
 	float speed;	// set by the drone
+
+
+	SERIALIZABLE_CLASS;
+	SERIALIZE2(maxSpeed, speed);
 };
 
 struct Memory : public ModuleBase

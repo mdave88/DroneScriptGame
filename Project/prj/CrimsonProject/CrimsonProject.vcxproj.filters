@@ -191,9 +191,6 @@
     <ClCompile Include="..\..\src\Common\ClientConfigs.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\GameLogic\Drone.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Math\vec2.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -204,6 +201,12 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\GameLogic\Components.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\GameObject.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLogic\SerializationDefs.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
   </ItemGroup>
@@ -362,9 +365,6 @@
     <ClInclude Include="..\..\src\Common\ClientConfigs.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GameLogic\Drone.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Math\vec2.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -376,6 +376,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Common\LoggerSystem.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GameLogic\GameObject.h">
+      <Filter>GameLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

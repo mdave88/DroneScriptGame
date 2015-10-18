@@ -4,7 +4,7 @@
 
 #include <entityx/entityx.h>
 
-typedef std::map<ComponentType, PersistentComponent*> ComponentMap;
+typedef std::map<ComponentType, ComponentBase*> ComponentMap;
 
 
 /**
@@ -18,7 +18,7 @@ public:
 	GameObject() {}
 	GameObject(const entityx::Entity& entity);
 
-	void addComponent(const ComponentType componentType, PersistentComponent* componentPtr);
+	void addComponent(const ComponentType componentType, ComponentBase* componentPtr);
 
 	void removeModule();
 	void activateModule(const ModuleType moduleType);

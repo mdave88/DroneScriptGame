@@ -12,37 +12,69 @@
 #include "Math/matrix.h"
 
 
+#define SERIALIZE_I(idx0, name, attribIndex)	public: \
+												const decltype(name)& get_##name##() const { return name; } \
+												void set_##name##(const decltype(name)& newval) { name = newval; attribMask[attribIndex + idx0 + 2] = true; }
+
+#define SERIALIZE(name, attribIndex)			SERIALIZE_I(0, name, attribIndex)
+
+
+#ifdef WIN32
+// Workaroud for bug in VC compiler
+// https://connect.microsoft.com/VisualStudio/feedback/details/380090/variadic-macro-replacement
+
+#define SERIALIZE1(X)							SERIALIZE(X, 0)
+#define SERIALIZE2(X, _1)						SERIALIZE(X, 1) SERIALIZE1(_1)
+#define SERIALIZE3(X, _2, _1)					SERIALIZE(X, 2) SERIALIZE2(_2, _1)
+#define SERIALIZE4(X, _3, _2, _1)				SERIALIZE(X, 3) SERIALIZE3(_3, _2, _1)
+
+#define SERIALIZE1_I(idx0, X)					SERIALIZE_I(idx0, X, 0)
+#define SERIALIZE2_I(idx0, X, _1)				SERIALIZE_I(idx0, X, 1) SERIALIZE1_I(idx0, _1)
+#define SERIALIZE3_I(idx0, X, _2, _1)			SERIALIZE_I(idx0, X, 2) SERIALIZE2_I(idx0, _2, _1)
+#define SERIALIZE4_I(idx0, X, _3, _2, _1)		SERIALIZE_I(idx0, X, 3) SERIALIZE3_I(idx0, _3, _2, _1)
+#else
+#define SERIALIZE1(X)							SERIALIZE(X, 0)
+#define SERIALIZE2(X, ...)						SERIALIZE(X, 1) SERIALIZE1(__VA_ARGS__)
+#define SERIALIZE3(X, ...)						SERIALIZE(X, 2) SERIALIZE2(__VA_ARGS__)
+#define SERIALIZE4(X, ...)						SERIALIZE(X, 3) SERIALIZE3(__VA_ARGS__)
+
+#define SERIALIZE1_I(idx0, X)					SERIALIZE_I(idx0, X, 0)
+#define SERIALIZE2_I(idx0, X, ...)				SERIALIZE_I(idx0, X, 1) SERIALIZE1_I(idx0, __VA_ARGS__)
+#define SERIALIZE3_I(idx0, X, ...)				SERIALIZE_I(idx0, X, 2) SERIALIZE2_I(idx0, __VA_ARGS__)
+#define SERIALIZE4_I(idx0, X, ...)				SERIALIZE_I(idx0, X, 3) SERIALIZE3_I(idx0, __VA_ARGS__)
+#endif
+
 // attrib serialization
 // attrib:		the attribute of the object
 // minPriority:	the minimum priority - objects over this priority must be serialized without float compression
 
-#define SER_P(attrib)						if (attribMask[attribIndex++])		ar& attrib;
-#define SER_P_CONST(attrib)					if (attribMask[attribIndex++])		ar& const_cast<decltype(attrib)>(attrib);
+#define SER_P(attrib)							if (attribMask[attribIndex++])		ar& attrib;
+#define SER_P_CONST(attrib)						if (attribMask[attribIndex++])		ar& const_cast<decltype(attrib)>(attrib);
 
-#define SER_P_F(attrib, minPriority)		serializeFloat(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
-#define SER_P_VEC3(attrib, minPriority)		serializeVec3(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
-#define SER_P_VEC2(attrib, minPriority)		serializeVec2(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
-#define SER_P_MAT(attrib, minPriority)		serializeMatrix(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
+#define SER_P_F(attrib, minPriority)			serializeFloat(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
+#define SER_P_VEC3(attrib, minPriority)			serializeVec3(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
+#define SER_P_VEC2(attrib, minPriority)			serializeVec2(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
+#define SER_P_MAT(attrib, minPriority)			serializeMatrix(ar, attrib, attribMask, attribIndex, networkPriority >= minPriority);
 
 
-#define SERIALIZABLE_CLASS					private:																		\
-											friend class boost::serialization::access;										\
-											template <typename Archive>														\
-											void serialize(Archive& ar, const uint version);
+#define SERIALIZABLE_CLASS						private:																		\
+												friend class boost::serialization::access;										\
+												template <typename Archive>														\
+												void serialize(Archive& ar, const uint version);
 
-// declarations for classes with asymmetric serialization (save/load)
-#define SERIALIZABLE_CLASS_SEPARATED		SERIALIZABLE_CLASS																\
-											template <typename Archive>														\
-											void load(Archive& ar, const uint version);										\
-											template <typename Archive>														\
-											void save(Archive& ar, const uint version) const;
+// declarations for classes with asymmetric	serialization (save/load)
+#define SERIALIZABLE_CLASS_SEPARATED			SERIALIZABLE_CLASS																\
+												template <typename Archive>														\
+												void load(Archive& ar, const uint version);										\
+												template <typename Archive>														\
+												void save(Archive& ar, const uint version) const;
 
-#define SERIALIZABLE(T)						template void T::serialize(boost::archive::binary_oarchive&, const uint);		\
-											template void T::serialize(boost::archive::binary_iarchive&, const uint);		\
-											template void T::serialize(boost::archive::text_oarchive&, const uint);			\
-											template void T::serialize(boost::archive::text_iarchive&, const uint);			\
-																															\
-											BOOST_CLASS_EXPORT_IMPLEMENT(T);
+#define SERIALIZABLE(T)							template void T::serialize(boost::archive::binary_oarchive&, const uint);		\
+												template void T::serialize(boost::archive::binary_iarchive&, const uint);		\
+												template void T::serialize(boost::archive::text_oarchive&, const uint);			\
+												template void T::serialize(boost::archive::text_iarchive&, const uint);			\
+																																\
+												BOOST_CLASS_EXPORT_IMPLEMENT(T);
 
 
 typedef uint8_t attribMaskIntType;

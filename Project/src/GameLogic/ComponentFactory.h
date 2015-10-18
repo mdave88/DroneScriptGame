@@ -13,7 +13,7 @@ public:
 		return entity.assign<C>().get();
 	}
 
-	PersistentComponent* assignComponent(entityx::Entity& entity, ComponentType componentType)
+	ComponentBase* assignComponent(entityx::Entity& entity, ComponentType componentType)
 	{
 		switch(componentType)
 		{
